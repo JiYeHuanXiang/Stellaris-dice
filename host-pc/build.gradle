@@ -1,0 +1,37 @@
+
+
+plugins {
+    id 'application'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+application {
+    mainClass = 'stellaris.host.HostMain'
+}
+
+dependencies {
+    implementation project(':bridge')
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.10.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+tasks.named('run') {
+    workingDir = rootProject.projectDir
+}
+
+tasks.register('runGui', JavaExec) {
+    group = 'application'
+    description = '启动 PC Swing GUI'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'stellaris.host.HostGui'
+    workingDir = rootProject.projectDir
+}

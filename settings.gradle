@@ -1,0 +1,36 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+rootProject.name = 'stellaris-dice'
+
+
+include 'spi'
+project(':spi').projectDir = file('spi')
+
+
+include 'core'
+project(':core').projectDir = file('core')
+
+
+include 'presence'
+project(':presence').projectDir = file('presence')
+
+
+
+
+include 'bridge'
+project(':bridge').projectDir = file('bridge')
+
+
+include 'host-pc'
+project(':host-pc').projectDir = file('host-pc')

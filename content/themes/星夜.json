@@ -1,0 +1,30 @@
+{
+  "name": "星夜",
+  "author": "群星官方示例",
+  "version": "1.1",
+  "color": "#3fa7d6",
+  "pages": {
+    "home": "#4f9cf0",
+    "console": "#3fb5a3",
+    "settings": "#8f7ff0",
+    "texts": "#59b57a",
+    "reply": "#e08f5f"
+  },
+  "style": {
+    "pageBg": "#0f141a",
+    "cardBg": "#171d26",
+    "cardBorder": "#2a3342",
+    "line": "#222a36",
+    "text": "#e8ecf2",
+    "textSub": "#9aa8ba",
+    "ghostBorder": "#3d4a5c",
+    "cardRadius": 10,
+    "buttonRadius": 6
+  },
+  "quotes": [
+    "愿骰子今晚站在你这边。\n——星夜主题随附",
+    "山海自有归期，风雨自有相逢。\n——《星夜旅人》",
+    "夜色再深，也深不过骰子的二十面。",
+    "知之为知之，不知为不知，是知也。\n——《论语·为政》"
+  ]
+}

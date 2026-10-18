@@ -1,0 +1,16 @@
+* text=auto eol=lf
+
+*.bat text eol=crlf
+
+*.jar   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.wav   binary
+*.zip   binary
+
+*.sdeck binary
+
+gradle/wrapper/gradle-wrapper.jar  linguist-generated

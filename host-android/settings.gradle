@@ -1,0 +1,26 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'stellaris-android'
+include ':app'
+
+
+includeBuild('..') {
+    dependencySubstitution {
+        substitute module('stellaris.dice:spi') using project(':spi')
+        substitute module('stellaris.dice:core') using project(':core')
+        substitute module('stellaris.dice:bridge') using project(':bridge')
+    }
+}

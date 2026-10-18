@@ -1,0 +1,54 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'stellaris.host.android'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'stellaris.dice'
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName '0.1.0'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        buildConfig false
+    }
+
+
+    sourceSets {
+        main {
+            assets.srcDirs += ['../../content']
+        }
+    }
+
+    packaging {
+        resources {
+            excludes += [
+                    'META-INF/DEPENDENCIES',
+                    'META-INF/LICENSE*',
+                    'META-INF/NOTICE*',
+                    'META-INF/*.kotlin_module'
+            ]
+        }
+    }
+}
+
+configurations.all {
+
+    exclude group: 'org.json', module: 'json'
+}
+
+dependencies {
+    implementation 'stellaris.dice:bridge:0.1.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:2.0.21'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+}

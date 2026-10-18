@@ -1,0 +1,275 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[plugin]
+id = "stellaris.sn"
+version = "1.2.2"
+apiVersion = 1
+minStellaVersion = "1.4"
+
+[[lua]]
+name = "stellaris-sn"
+platform = ""
+debug = false
+
+
+after_message = "onAfterMessage"
+lua = '''
+
+
+
+local COC_FORMAT = "{pc_name} hp{pc_hp}/{pc_cocmaxhp} san{pc_san}/{pc_cocmaxsan} dex{pc_dex}"
+local DND_FORMAT = "{pc_name} hp{pc_hp}/{pc_dndmaxhp} ac{pc_ac} dc{pc_dc} pp{pc_pp}"
+
+
+local HELP = table.concat({
+    "跑团名片修改",
+    "注意：",
+    "本设定针对人物卡，由你持有的人物卡确定是否自动改群名片，骰子必须是管理员才能使用。",
+    "",
+    "其中模板格式为 {pc_技能名}",
+    "",
+    ".sn coc // 自动设置coc名片",
+    ".sn dnd // 自动设置dnd名片",
+    ".sn expr // 自设格式",
+    ".sn off // 取消自动设置",
+    ".sn set yyds // 修改群名片为yyds（其中yyds可以改成任何字符）",
+    ".sn on //打开自动设置",
+}, "\n")
+
+
+local NOT_ADMIN = table.concat({
+    "当前骰不是管理员，解决方法：",
+    "1.取消并重新设置管理员",
+    "2.可能是缓存（AstralDice/.MiraiCache/骰QQ/ANDROID_PAD/contact/文件夹）引起的，由骰主删除后重启也许会修复",
+}, "\n")
+
+local function trim(s)
+    if s == nil then return "" end
+    return (s:gsub("^%s+", ""):gsub("%s+$", ""))
+end
+
+
+
+local MAX_SET_LEN = 64
+local MAX_EXPR_LEN = 200
+
+
+
+local function sanitize(s)
+    if s == nil then return "" end
+    return trim((tostring(s):gsub("%c", " ")))
+end
+
+
+
+local function clamp_chars(s, n)
+    local i, cnt, len = 1, 0, #s
+    while i <= len and cnt < n do
+        local b = s:byte(i)
+        i = i + (b < 0x80 and 1 or (b < 0xE0 and 2 or (b < 0xF0 and 3 or 4)))
+        cnt = cnt + 1
+    end
+    return s:sub(1, i - 1)
+end
+
+
+
+local function to_dbc(s)
+    local out = {}
+    local i, n = 1, #s
+    while i <= n do
+        local b = s:byte(i)
+        if b < 0x80 then
+            out[#out + 1] = s:sub(i, i); i = i + 1
+        elseif b == 0xE3 and i + 2 <= n and s:byte(i + 1) == 0x80 then
+            local b3 = s:byte(i + 2)
+            if b3 == 0x80 then
+                out[#out + 1] = " "; i = i + 3
+            elseif b3 == 0x82 then
+                out[#out + 1] = "."; i = i + 3
+            else
+                out[#out + 1] = s:sub(i, i); i = i + 1
+            end
+        elseif b == 0xEF and i + 2 <= n then
+            local b2, b3 = s:byte(i + 1), s:byte(i + 2)
+            if b2 == 0xBC and b3 >= 0x81 and b3 <= 0xBF then
+                out[#out + 1] = string.char(b3 - 0x60); i = i + 3
+            elseif b2 == 0xBD and b3 >= 0x80 and b3 <= 0x9E then
+                out[#out + 1] = string.char(b3 - 0x20); i = i + 3
+            else
+                out[#out + 1] = s:sub(i, i); i = i + 1
+            end
+        else
+            out[#out + 1] = s:sub(i, i); i = i + 1
+        end
+    end
+    return table.concat(out)
+end
+
+
+
+
+
+
+
+
+
+local function strip_keyword(params, keyword)
+    local norm = to_dbc(params):lower()
+    if norm:sub(1, #keyword) ~= keyword then
+        return nil
+    end
+    local i, consumed, n = 1, 0, #params
+    while i <= n and consumed < #keyword do
+        local b = params:byte(i)
+        local width = b < 0x80 and 1 or (b < 0xE0 and 2 or (b < 0xF0 and 3 or 4))
+        i = i + width
+        consumed = consumed + 1
+    end
+    return trim(params:sub(i))
+end
+
+
+
+
+local function receipt(r)
+    return "已针对人物卡【" .. clamp_chars(sanitize(r.playerName), MAX_SET_LEN) .. "】设置自动改名片状态为：" ..
+        tostring(r.autoNameStatus) .. ", 名片格式：" .. clamp_chars(sanitize(r.autoNameFormat), MAX_EXPR_LEN) .. ", 请注意作用域。"
+end
+
+local function apply_format(user, group, format, enabled)
+    if not ZhaoDiceSDK.group.setCard(user, "", group) then
+        return NOT_ADMIN
+    end
+    local r = ZhaoDiceSDK.playerCard.configureAutoName(user, group, format, enabled)
+    if r == nil then
+        return "自动名片设置失败（人物卡可能已达数量上限）"
+    end
+    return receipt(r)
+end
+
+local function handle_sn(msg)
+    local params = trim(msg.fromParams)
+
+
+
+
+    local keyword, payload = nil, nil
+    for _, kw in ipairs({"coc", "dnd", "expr", "off", "on", "set"}) do
+        local rest = strip_keyword(params, kw)
+        if rest ~= nil then
+            keyword, payload = kw, rest
+            break
+        end
+    end
+    if keyword == nil then
+        return HELP
+    end
+
+    local user = msg.fromQQ
+    local group = msg.fromGroup
+    if keyword == "set" then
+        if group == nil or group == "" then
+            return "当前会话不是群聊，不能针对群设置。"
+        end
+
+        local text = clamp_chars(sanitize(payload), MAX_SET_LEN)
+        if text == "" then
+            return "用法：.sn set 要设置的群名片文本"
+        end
+        if ZhaoDiceSDK.group.setCard(user, text, group) then
+            return "设置完成"
+        end
+        return "设置失败"
+    end
+
+    if group == nil or group == "" or user == nil or user == "" then
+        return "本指令仅限群内使用。"
+    end
+    if keyword == "off" then
+
+
+        local r = ZhaoDiceSDK.playerCard.configureAutoName(user, group, "", false)
+        if r == nil then
+            return "自动名片设置失败（人物卡可能已达数量上限）"
+        end
+        return receipt(r)
+    end
+    if keyword == "coc" then
+        return apply_format(user, group, COC_FORMAT, true)
+    elseif keyword == "dnd" then
+        return apply_format(user, group, DND_FORMAT, true)
+    elseif keyword == "expr" then
+
+        local fmt = payload
+        if fmt ~= "" then
+            fmt = clamp_chars(sanitize(fmt), MAX_EXPR_LEN)
+        end
+        return apply_format(user, group, fmt, true)
+    end
+    return apply_format(user, group, "", true)
+end
+
+commands = {}
+commands["sn"] = "onSn"
+commands["setasn"] = "onSetasn"
+
+function onSn(msg)
+    return handle_sn(msg)
+end
+
+
+function onSetasn(msg)
+    local params = trim(msg.fromParams)
+    local on = strip_keyword(params, "on")
+    local off = strip_keyword(params, "off")
+    local yes = strip_keyword(params, "y")
+    local no = strip_keyword(params, "n")
+    if on ~= nil or yes ~= nil then
+        return handle_sn({fromParams = "on", fromQQ = msg.fromQQ, fromGroup = msg.fromGroup})
+    elseif off ~= nil or no ~= nil then
+        return handle_sn({fromParams = "off", fromQQ = msg.fromQQ, fromGroup = msg.fromGroup})
+    end
+    return "setasn 已被 sn 取代：.setasn on / .setasn off 仍可用，其余请用 .sn（帮助：.sn）"
+end
+
+
+
+function onAfterMessage(msg)
+    if msg.fromGroup == nil or msg.fromQQ == nil then
+        return
+    end
+    ZhaoDiceSDK.playerCard.syncAutoName(msg.fromQQ, msg.fromGroup)
+end
+'''

@@ -1,0 +1,17 @@
+
+
+
+
+
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version "${kotlin_version}" apply false
+}
+
+allprojects {
+    group = 'stellaris.dice'
+    version = '0.1.0'
+
+    repositories {
+        mavenCentral()
+    }
+}

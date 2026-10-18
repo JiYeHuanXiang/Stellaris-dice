@@ -1,0 +1,32 @@
+{
+  "name": "青瓷",
+  "author": "群星官方示例",
+  "version": "1.0",
+  "color": "#2b7a6f",
+  "pages": {
+    "home": "#3d8b7a",
+    "console": "#3e88a8",
+    "settings": "#4c7fb0",
+    "texts": "#6a6fa8",
+    "reply": "#c07a55"
+  },
+  "style": {
+    "pageBg": "#f6f4ef",
+    "cardBg": "#ffffff",
+    "cardBorder": "#e7e2d8",
+    "line": "#efece5",
+    "text": "#2e3338",
+    "textSub": "#8f887e",
+    "ghostBorder": "#d9d3c8",
+    "cardRadius": 10,
+    "buttonRadius": 6
+  },
+  "quotes": [
+    "愿骰子今晚站在你这边。\n——青瓷",
+    "雨过天青的颜色，最适合开一局新团。\n——青瓷",
+    "瓷器怕磕碰，故事不怕。\n——放手一掷",
+    "杯中茶未凉，这一局还长。",
+    "骰运像釉色，急不来，也躲不掉。",
+    "大成功和大失败，都是好故事的开头。"
+  ]
+}

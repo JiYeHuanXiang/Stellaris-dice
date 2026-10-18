@@ -1,0 +1,2301 @@
+{
+ "mod": "法术（D&D 5E SRD）",
+ "author": "D&D 5E SRD 5.1（Wizards of the Coast，CC-BY-4.0）；中文译本：SagiriWWW/DND.SRD.zh-CN",
+ "breif": "D&D 5e SRD 5.1 的法术词条，共 344 条",
+ "comment": "数据来源见 author；SRD 5.1 由 Wizards of the Coast 以 CC-BY-4.0 发布。",
+ "helpdoc": {
+  "施法/法术环位": "每个法术都有 0 到 9 的环位。法术环位通常表示其威力强弱，从低微但依然令人印象深刻的 1 环 *magic missile*，到撼动大地的 9 环 *wish*。戏法是 0 环法术，简单却强大，角色几乎可以凭本能施放。法术环位越高，施法者通常必须越高等级才能使用该法术。\n\n法术环位和角色等级并不直接对应。通常，角色必须至少达到 17 级，而不是 9 级，才能施放 9 环法术。",
+  "施法/已知与已准备法术": "施法者在使用法术前，必须将该法术牢牢记在心中，或必须能通过魔法物品使用该法术。少数职业的成员，包括吟游诗人和术士，拥有有限的已知法术列表，这些法术始终固定在心中。许多会使用魔法的怪物也是如此。其他施法者，例如牧师和法师，则会经历准备法术的过程。这个过程因职业而异，详见各职业描述。\n\n在任何情况下，施法者在任意时刻能固定在心中的法术数量都取决于角色等级。",
+  "施法/法术位": "无论施法者知道或准备了多少法术，在休息前都只能施放有限数量的法术。操纵魔法织构并引导其能量，即使只是简单法术，也会在身体和精神上造成负担；更高环位的法术更是如此。因此，每个施法职业的描述（邪术师除外）都包含一张表，显示角色在各等级可以使用多少个各环位法术位。例如，3 级法师 Umara 有四个 1 环法术位和两个 2 环法术位。\n\n当角色施放法术时，会消耗一个等同于该法术环位或更高环位的法术位，实际上是用该法术“填入”一个法术位。你可以把法术位理解为某种大小的槽位，1 环槽位较小，更高环位的槽位更大。1 环法术可以放入任意大小的槽位，但 9 环法术只能放入 9 环槽位。因此，当 Umara 施放 1 环法术 *magic missile* 时，她会消耗四个 1 环法术位中的一个，并剩下三个。\n\n完成一次长休会恢复所有已消耗的法术位。\n\n某些角色和怪物拥有特殊能力，可以不使用法术位施放法术。例如，遵循四象宗的武僧、选择特定魔能祈唤的邪术师，以及来自九狱的深狱炼魔，都可以以这种方式施放法术。\n\n### 使用更高环位施放法术\n\n当施法者使用高于法术本身环位的法术位施放法术时，该法术在此次施放中视为更高环位。例如，如果 Umara 使用一个 2 环法术位施放 *magic missile*，该 *magic missile* 就是 2 环。实际上，该法术会扩展以填满放入它的槽位。\n\n某些法术，例如 *magic missile* 和 *cure wounds*，在使用更高环位施放时会产生更强效果，详见法术描述。\n\n> **穿甲施法**\n>\n>由于施法需要精神专注和精确手势，你必须熟练使用你穿着的护甲才能施放法术。否则，你会因护甲而过度分心并受到身体阻碍，无法施法。\n\n# 戏法\n\n戏法是可以随意施放的法术，不需要使用法术位，也不需要提前准备。反复练习已将该法术固定在施法者心中，并使施法者充满能反复产生该效果所需的魔法。戏法的法术环位为 0。\n\n# 仪式\n\n某些法术具有特殊标签：仪式。这样的法术可以按正常施法规则施放，也可以作为仪式施放。仪式版本的施法时间比正常多 10 分钟。它也不会消耗法术位，这意味着法术的仪式版本不能使用更高环位施放。\n\n若要将法术作为仪式施放，施法者必须拥有赋予这种能力的特性。例如，牧师和德鲁伊拥有这样的特性。施法者还必须已准备该法术，或该法术必须在其已知法术列表中，除非该角色的仪式特性另有说明，如法师的特性。\n\n>***魔法学派***\n>\n>魔法学院将法术归入八类，称为魔法学派。学者，尤其是法师，会把这些类别应用于所有法术，认为所有魔法本质上都以相同方式运作，无论其源自严谨研究还是由神祇赐予。\n>\n>魔法学派有助于描述法术；它们本身没有规则，尽管某些规则会提及学派。\n>\n>**防护系** 法术本质上具有保护性，尽管其中一些也有攻击用途。它们创造魔法屏障、抵消有害效果、伤害入侵者，或将生物放逐到其他存在位面。\n>\n>**咒法系** 法术涉及将物件和生物从一个地点转移到另一个地点。有些法术召唤生物或物件到施法者身边，有些允许施法者传送到另一个地点。有些咒法会从无中创造物件或效果。\n>\n>**预言系** 法术揭示信息，无论是被长期遗忘的秘密、未来的片段、隐藏事物的位置、幻象背后的真相，还是远方人物或地点的景象。\n>\n>**惑控系** 法术影响他人的心智，影响或控制其行为。这类法术可以使敌人把施法者视为朋友，迫使生物采取某项行动，甚至像操纵傀儡一样控制另一个生物。\n>\n>**塑能系** 法术操纵魔法能量以产生期望效果。有些召来火焰或闪电爆发。有些引导正能量治疗伤口。\n>\n>**幻术系** 法术欺骗他人的感官或心智。它们使人看见不存在的事物、错过存在的事物、听见幻象噪音，或记住从未发生的事情。有些幻术创造任何生物都能看见的幻影图像，但最阴险的幻术会直接在生物心中植入图像。\n>\n>**死灵系** 法术操纵生与死的能量。这类法术可以赋予额外生命力储备、从另一个生物身上抽取生命能量、创造不死生物，甚至使死者复生。\n>\n>通过使用 *animate dead* 等死灵法术创造不死生物并非善行，只有邪恶施法者才会频繁使用这类法术。\n>\n>**变化系** 法术改变生物、物件或环境的性质。它们可能将敌人变成无害生物，增强盟友的力量，使物件按施法者命令移动，或强化生物的先天愈合能力以快速从伤害中恢复。\n\n# 施放法术\n\n当角色施放任何法术时，无论角色职业或法术效果如何，都遵循相同的基本规则。\n\n每个法术描述都以一组信息开头，包括法术名称、环位、魔法学派、施法时间、射程、成分和持续时间。法术条目的其余部分描述法术效果。",
+  "施法/施法时间": "大多数法术需要一个动作来施放，但有些法术需要附赠动作、反应，或更多时间。\n\n### 附赠动作\n\n使用附赠动作施放的法术特别迅速。你必须在你的回合使用附赠动作施放该法术，前提是你本回合尚未采取附赠动作。你在同一回合不能施放另一个法术，除非该法术是施法时间为 1 动作的戏法。\n\n### 反应\n\n某些法术可以作为反应施放。这些法术在一瞬间完成，并响应某个事件而施放。如果某个法术可以作为反应施放，其法术描述会明确说明你何时可以这样做。\n\n### 更长施法时间\n\n某些法术（包括作为仪式施放的法术）需要更多时间施放：数分钟甚至数小时。当你施放施法时间长于单个动作或反应的法术时，你必须在每个回合花费动作来施放该法术，并且必须在此期间维持专注（见下文“专注”）。如果你的专注被打断，法术失败，但你不会消耗法术位。如果你想再次尝试施放该法术，必须重新开始。",
+  "施法/法术射程": "法术的目标必须位于法术射程内。对于 *magic missile* 这样的法术，目标是一个生物。对于 *fireball* 这样的法术，目标是火球爆发的空间点。\n\n大多数法术的射程以尺表示。某些法术只能以你接触的生物（包括你自己）为目标。其他法术，例如 *shield*，只影响你自己。这些法术的射程为自身。\n\n创造锥状或线状效果且起点来自你的法术也具有自身射程，表示法术效果的起点必须是你（见本章后文“效果区域”）。\n\n一旦法术施放，其效果不受射程限制，除非法术描述另有说明。",
+  "施法/成分": "法术成分是你施放法术必须满足的物理要求。每个法术描述都会说明它是否需要言语（V）、姿势（S）或材料（M）成分。如果你无法提供法术的一种或多种成分，你就无法施放该法术。\n\n### 言语（V）\n\n大多数法术需要吟唱神秘词句。词句本身并不是法术力量的来源；相反，特定声音组合，以及特定音高和共振，会使魔法丝线开始运作。因此，被堵住嘴的角色，或处于由 *silence* 法术创造的沉默区域中的角色，不能施放带有言语成分的法术。\n\n### 姿势（S）\n\n施法手势可能包括有力的手势或复杂的一系列动作。如果法术需要姿势成分，施法者必须至少有一只手可自由使用以完成这些手势。\n\n### 材料（M）\n\n施放某些法术需要特定物件，这些物件在成分条目中以括号注明。角色可以使用**材料包**或**施法法器**（见“装备”）替代法术指定的成分。但如果成分标明了价格，角色必须在施放该法术前拥有该特定成分。\n\n如果法术说明其材料成分会被法术消耗，施法者每次施放该法术时都必须提供该成分。\n\n施法者必须有一只空手来取用法术材料成分，或持握施法法器，但这可以是同一只用于完成姿势成分的手。",
+  "施法/持续时间": "法术持续时间是法术持续存在的时间长度。持续时间可以用轮、分钟、小时甚至年表示。某些法术注明其效果持续到法术被解除或摧毁。\n\n### 立即\n\n许多法术是立即生效的。法术以无法被解除的方式伤害、治疗、创造或改变一个生物或物件，因为其魔法只存在一瞬间。\n\n### 专注\n\n某些法术要求你维持专注，才能保持其魔法活跃。如果你失去专注，这样的法术会结束。\n\n如果法术必须以专注维持，该事实会出现在其持续时间条目中，且法术会说明你可以对其专注多久。你可以随时结束专注（无需动作）。\n\n移动和攻击等正常活动不会干扰专注。下列因素可能打断专注：\n\n- **施放另一个需要专注的法术。** 如果你施放另一个需要专注的法术，你会失去当前法术的专注。你不能同时专注于两个法术。\n- **受到伤害。** 每当你在专注于法术时受到伤害，你必须进行一次体质豁免以维持专注。DC 等于 10 或你所受伤害的一半，取较高者。如果你从多个来源受到伤害，例如一支箭和一头龙的吐息，你需要分别为每个伤害来源进行一次豁免。\n- **失能或死亡。** 如果你失能或死亡，你会失去对法术的专注。\n\nGM 也可以决定某些环境现象，例如你在风暴中的船上被浪头拍过，需要你通过一次 DC 10 的体质豁免来维持对法术的专注。",
+  "施法/目标": "典型法术要求你选择一个或多个目标受其魔法影响。法术描述会说明该法术以生物、物件，还是效果区域的起点（见下文）为目标。\n\n除非法术具有可感知效果，否则生物可能完全不知道自己成为了法术目标。劈啪作响的闪电等效果显而易见，但更微妙的效果，例如尝试读取生物思想，通常不会被察觉，除非法术另有说明。\n\n### 通向目标的清晰路径\n\n若要指定某物为目标，你必须有通向它的清晰路径，因此它不能处于全掩护之后。\n\n如果你将效果区域放置在你看不见的一点，并且你与该点之间有障碍物，例如墙壁，则起点会出现在该障碍物靠近你的一侧。\n\n### 以自己为目标\n\n如果一个法术以你选择的生物为目标，你可以选择自己，除非该生物必须是敌对生物，或特别说明为你以外的生物。如果你处于自己施放法术的效果区域内，你可以以自己为目标。",
+  "施法/效果区域": "*burning hands* 和 *cone of cold* 等法术覆盖一片区域，使其能够同时影响多个生物。\n\n法术描述会说明其效果区域，通常具有五种不同形状之一：锥状、立方体、圆柱体、线状或球体。每个效果区域都有一个**起点**，即法术能量爆发的位置。每种形状的规则会说明如何放置其起点。通常，起点是空间中的一点，但某些法术的区域起点是一个生物或物件。\n\n法术效果从起点沿直线扩展。如果没有一条未被阻挡的直线从起点延伸到效果区域内某个位置，则该位置不包括在法术区域中。若要阻挡这些假想直线之一，障碍物必须提供全掩护。\n\n### 锥状\n\n锥状区域从其起点沿你选择的方向延伸。锥状区域在其长度上任一点的宽度，等于该点到起点的距离。锥状效果区域会注明其最大长度。\n\n锥状区域的起点不包括在该锥状效果区域内，除非你另行决定。\n\n### 立方体\n\n你选择立方体的起点，该点位于立方效果的任意一面上。立方体大小以每条边的长度表示。\n\n立方体的起点不包括在该立方体效果区域内，除非你另行决定。\n\n### 圆柱体\n\n圆柱体的起点是法术描述所给特定半径圆形的中心。该圆必须位于地面上，或位于法术效果的高度。圆柱体中的能量从起点沿直线扩展到圆周，形成圆柱体底面。随后法术效果从底面向上或从顶面向下射出，距离等于圆柱体高度。\n\n圆柱体的起点包括在该圆柱体效果区域内。\n\n### 线状\n\n线状区域从其起点沿直线延伸至其长度，并覆盖由其宽度定义的区域。\n\n线状区域的起点不包括在该线状效果区域内，除非你另行决定。\n\n### 球体\n\n你选择球体的起点，球体从该点向外扩展。球体大小以从该点延伸的尺数半径表示。\n\n球体的起点包括在该球体效果区域内。\n\n# 法术豁免\n\n许多法术注明目标可以进行豁免，以避免部分或全部法术效果。法术会说明目标使用哪个属性进行豁免，以及成功或失败时会发生什么。\n\n抵抗你的一个法术的 DC = 8 + 你的施法属性调整值 + 你的熟练加值 + 任何特殊调整值。\n\n# 法术攻击检定\n\n某些法术要求施法者进行攻击检定，以判断法术效果是否命中预期目标。你的法术攻击加值等于你的施法属性调整值 + 你的熟练加值。\n\n大多数需要攻击检定的法术涉及远程攻击。记住，如果你位于一个能看见你且未失能的敌对生物 5 尺内，你进行远程攻击检定时具有劣势。\n\n# 组合魔法效果\n\n不同法术的效果会在其持续时间重叠时相加。然而，同一法术被多次施放产生的效果不会叠加。相反，在持续时间重叠期间，由这些施法中最强的效果，例如最高加值，生效。\n\n例如，如果两名牧师对同一个目标施放 *bless*，该角色只获得一次法术益处；他或她不会掷两个奖励骰。",
+  "法术列表（替代版）/吟游诗人法术": "#### 戏法（0 环）\n\n- [[Dancing Lights|舞光术]]\n- [[Light|光亮术]]\n- [[Mage Hand|法师之手]]\n- [[Mending|修复术]]\n- [[Message|传讯术]]\n- [[Minor Illusion|次级幻影]]\n- [[Prestidigitation|魔法伎俩]]\n- [[True Strike|克敌机先]]\n- [[Vicious Mockery|恶毒嘲笑]]\n\n#### 1 环\n\n- [[Animal Friendship|动物友谊]]\n- [[Bane|灾祸术]]\n- [[Charm Person|魅惑人类]]\n- [[Comprehend Languages|通晓语言]]\n- [[Cure Wounds|治疗伤势]]\n- [[Detect Magic|侦测魔法]]\n- [[Disguise Self|易容术]]\n- [[Faerie Fire|妖火]]\n- [[Feather Fall|羽落术]]\n- [[Healing Word|治疗真言]]\n- [[Heroism|英勇术]]\n- [[Hideous Laughter|狂笑术]]\n- [[Identify|鉴定术]]\n- [[Illusory Script|幻术文字]]\n- [[Longstrider|大步奔行]]\n- [[Silent Image|无声幻影]]\n- [[Sleep|睡眠术]]\n- [[Speak with Animals|动物交谈]]\n- [[Thunderwave|雷鸣波]]\n- [[Unseen Servant|隐形仆役]]\n\n#### 2 环\n\n- [[Animal Messenger|动物信使]]\n- [[Blindness-Deafness|致盲术/致聋术]]\n- [[Calm Emotions|安定心神]]\n- [[Detect Thoughts|侦测思想]]\n- [[Enhance Ability|强化属性]]\n- [[Enthrall|迷魂术]]\n- [[Heat Metal|灼热金属]]\n- [[Hold Person|人类定身术]]\n- [[Invisibility|隐形术]]\n- [[Knock|敲击术]]\n- [[Lesser Restoration|次级复原术]]\n- [[Locate Animals or Plants|动植物定位术]]\n- [[Locate Object|物品定位术]]\n- [[Magic Mouth|魔嘴术]]\n- [[See Invisibility|看破隐形]]\n- [[Shatter|粉碎音波]]\n- [[Silence|沉默术]]\n- [[Suggestion|暗示术]]\n- [[Zone of Truth|诚实之域]]\n\n#### 3 环\n\n- [[Bestow Curse|降咒术]]\n- [[Clairvoyance|千里眼/顺风耳]]\n- [[Dispel Magic|解除魔法]]\n- [[Fear|恐惧术]]\n- [[Glyph of Warding|守护刻文]]\n- [[Hypnotic Pattern|催眠图纹]]\n- [[Major Image|高等幻影]]\n- [[Nondetection|回避侦测]]\n- [[Plant Growth|植物滋长]]\n- [[Sending|传讯]]\n- [[Speak with Dead|死者交谈]]\n- [[Speak with Plants|植物交谈]]\n- [[Stinking Cloud|臭云术]]\n- [[Tiny Hut|小屋术]]\n- [[Tongues|通晓语言]]\n\n#### 4 环\n\n- [[Compulsion|强迫术]]\n- [[Confusion|困惑术]]\n- [[Dimension Door|任意门]]\n- [[Freedom of Movement|行动自如]]\n- [[Greater Invisibility|高等隐形术]]\n- [[Hallucinatory Terrain|幻景地形]]\n- [[Locate Creature|生物定位术]]\n- [[Polymorph|变形术]]\n\n#### 5 环\n\n- [[Animate Objects|操纵物件]]\n- [[Awaken|启蒙术]]\n- [[Dominate Person|支配人类]]\n- [[Dream|托梦术]]\n- [[Geas|指使术]]\n- [[Greater Restoration|高等复原术]]\n- [[Hold Monster|怪物定身术]]\n- [[Legend Lore|通晓传奇]]\n- [[Mass Cure Wounds|群体治疗伤势]]\n- [[Mislead|误导术]]\n- [[Modify Memory|修改记忆]]\n- [[Planar Binding|异界誓缚]]\n- [[Raise Dead|死者复活]]\n- [[Scrying|探知术]]\n- [[Seeming|群体伪装]]\n- [[Teleportation Circle|传送法阵]]\n\n#### 6 环\n\n- [[Eyebite|摄魂目光]]\n- [[Find the Path|寻路术]]\n- [[Guards and Wards|警戒守卫]]\n- [[Irresistible Dance|难抗之舞]]\n- [[Mass Suggestion|群体暗示术]]\n- [[Programmed Illusion|预置幻象]]\n- [[True Seeing|真实视觉]]\n\n#### 7 环\n\n- [[Arcane Sword|奥术之剑]]\n- [[Etherealness|以太化]]\n- [[Forcecage|力场牢笼]]\n- [[Magnificent Mansion|华丽宅邸]]\n- [[Mirage Arcane|海市蜃楼]]\n- [[Project Image|投影术]]\n- [[Regenerate|再生术]]\n- [[Resurrection|复生术]]\n- [[Symbol|徽记术]]\n- [[Teleport|传送术]]\n\n#### 8 环\n\n- [[Dominate Monster|支配怪物]]\n- [[Feeblemind|弱智术]]\n- [[Glibness|花言巧语]]\n- [[Mind Blank|心灵屏障]]\n- [[Power Word Stun|律令震慑]]\n\n#### 9 环\n\n- [[Foresight|预知术]]\n- [[Power Word Kill|律令死亡]]\n- [[True Polymorph|完全变形术]]",
+  "法术列表（替代版）/牧师法术": "#### 戏法（0 环）\n\n- [[Guidance|神导术]]\n- [[Light|光亮术]]\n- [[Mending|修复术]]\n- [[Resistance|抵抗术]]\n- [[Sacred Flame|圣火术]]\n- [[Spare the Dying|稳定伤势]]\n- [[Thaumaturgy|奇术]]\n\n#### 1 环\n\n- [[Bane|灾祸术]]\n- [[Bless|祝福术]]\n- [[Command|命令术]]\n- [[Create or Destroy Water|造水术/毁水术]]\n- [[Cure Wounds|治疗伤势]]\n- [[Detect Evil and Good|侦测善恶]]\n- [[Detect Magic|侦测魔法]]\n- [[Detect Poison and Disease|侦测毒素和疾病]]\n- [[Guiding Bolt|曳光弹]]\n- [[Healing Word|治疗真言]]\n- [[Inflict Wounds|致伤术]]\n- [[Protection from Evil and Good|防护善恶]]\n- [[Purify Food and Drink|净化食粮]]\n- [[Sanctuary|圣域术]]\n- [[Shield of Faith|信仰护盾]]\n\n#### 2 环\n\n- [[Aid|援助术]]\n- [[Augury|卜筮术]]\n- [[Blindness-Deafness|致盲术/致聋术]]\n- [[Calm Emotions|安定心神]]\n- [[Continual Flame|恒焰术]]\n- [[Enhance Ability|强化属性]]\n- [[Find Traps|寻找陷阱]]\n- [[Gentle Repose|遗体防腐]]\n- [[Hold Person|人类定身术]]\n- [[Lesser Restoration|次级复原术]]\n- [[Locate Object|物品定位术]]\n- [[Prayer of Healing|治疗祷言]]\n- [[Protection from Poison|防护毒素]]\n- [[Silence|沉默术]]\n- [[Spiritual Weapon|灵体武器]]\n- [[Warding Bond|守护之链]]\n- [[Zone of Truth|诚实之域]]\n\n#### 3 环\n\n- [[Animate Dead|操纵死尸]]\n- [[Beacon of Hope|希望信标]]\n- [[Bestow Curse|降咒术]]\n- [[Clairvoyance|千里眼/顺风耳]]\n- [[Create Food and Water|创造食物和水]]\n- [[Daylight|昼明术]]\n- [[Dispel Magic|解除魔法]]\n- [[Glyph of Warding|守护刻文]]\n- [[Magic Circle|魔法法阵]]\n- [[Mass Healing Word|群体治疗真言]]\n- [[Meld into Stone|融入石中]]\n- [[Protection from Energy|能量防护]]\n- [[Remove Curse|移除诅咒]]\n- [[Revivify|亡者复活]]\n- [[Sending|传讯]]\n- [[Speak with Dead|死者交谈]]\n- [[Spirit Guardians|灵体卫士]]\n- [[Tongues|通晓语言]]\n- [[Water Walk|水面行走]]\n\n#### 4 环\n\n- [[Banishment|放逐术]]\n- [[Control Water|操控水体]]\n- [[Death Ward|死亡防护]]\n- [[Divination|占卜术]]\n- [[Freedom of Movement|行动自如]]\n- [[Guardian of Faith|信仰守卫]]\n- [[Locate Creature|生物定位术]]\n- [[Stone Shape|塑石术]]\n\n#### 5 环\n\n- [[Commune|通神术]]\n- [[Contagion|疫病术]]\n- [[Dispel Evil and Good|解除善恶]]\n- [[Flame Strike|焰击术]]\n- [[Geas|指使术]]\n- [[Greater Restoration|高等复原术]]\n- [[Hallow|圣化术]]\n- [[Insect Plague|虫群瘟疫]]\n- [[Legend Lore|通晓传奇]]\n- [[Mass Cure Wounds|群体治疗伤势]]\n- [[Planar Binding|异界誓缚]]\n- [[Raise Dead|死者复活]]\n- [[Scrying|探知术]]\n\n#### 6 环\n\n- [[Blade Barrier|刀刃屏障]]\n- [[Create Undead|创造不死生物]]\n- [[Find the Path|寻路术]]\n- [[Forbiddance|禁制术]]\n- [[Harm|伤害术]]\n- [[Heal|医疗术]]\n- [[Heroes' Feast|英雄宴]]\n- [[Planar Ally|异界盟友]]\n- [[True Seeing|真实视觉]]\n- [[Word of Recall|回返真言]]\n\n#### 7 环\n\n- [[Conjure Celestial|召唤天界生物]]\n- [[Divine Word|神圣真言]]\n- [[Etherealness|以太化]]\n- [[Fire Storm|火焰风暴]]\n- [[Plane Shift|异界传送]]\n- [[Regenerate|再生术]]\n- [[Resurrection|复生术]]\n- [[Symbol|徽记术]]\n\n#### 8 环\n\n- [[Antimagic Field|反魔法力场]]\n- [[Control Weather|操控天气]]\n- [[Earthquake|地震术]]\n- [[Holy Aura|神圣灵光]]\n\n#### 9 环\n\n- [[Astral Projection|星界投影]]\n- [[Gate|异界之门]]\n- [[Mass Heal|群体医疗术]]\n- [[True Resurrection|完全复活术]]",
+  "法术列表（替代版）/德鲁伊法术": "#### 戏法（0 环）\n\n- [[Druidcraft|德鲁伊伎俩]]\n- [[Guidance|神导术]]\n- [[Mending|修复术]]\n- [[Poison Spray|毒气喷溅]]\n- [[Produce Flame|燃火术]]\n- [[Resistance|抵抗术]]\n- [[Shillelagh|橡棍术]]\n\n#### 1 环\n\n- [[Animal Friendship|动物友谊]]\n- [[Charm Person|魅惑人类]]\n- [[Create or Destroy Water|造水术/毁水术]]\n- [[Cure Wounds|治疗伤势]]\n- [[Detect Magic|侦测魔法]]\n- [[Detect Poison and Disease|侦测毒素和疾病]]\n- [[Entangle|缠绕术]]\n- [[Faerie Fire|妖火]]\n- [[Fog Cloud|云雾术]]\n- [[Goodberry|神莓术]]\n- [[Healing Word|治疗真言]]\n- [[Jump|跳跃术]]\n- [[Longstrider|大步奔行]]\n- [[Purify Food and Drink|净化食粮]]\n- [[Speak with Animals|动物交谈]]\n- [[Thunderwave|雷鸣波]]\n\n#### 2 环\n\n- [[Animal Messenger|动物信使]]\n- [[Barkskin|树皮术]]\n- [[Darkvision|黑暗视觉]]\n- [[Enhance Ability|强化属性]]\n- [[Find Traps|寻找陷阱]]\n- [[Flame Blade|火焰刀]]\n- [[Flaming Sphere|炽焰法球]]\n- [[Gust of Wind|造风术]]\n- [[Heat Metal|灼热金属]]\n- [[Hold Person|人类定身术]]\n- [[Lesser Restoration|次级复原术]]\n- [[Locate Animals or Plants|动植物定位术]]\n- [[Locate Object|物品定位术]]\n- [[Moonbeam|月华之光]]\n- [[Pass without Trace|行踪无迹]]\n- [[Protection from Poison|防护毒素]]\n- [[Spike Growth|尖刺丛生]]\n\n#### 3 环\n\n- [[Call Lightning|召雷术]]\n- [[Conjure Animals|召唤动物]]\n- [[Daylight|昼明术]]\n- [[Dispel Magic|解除魔法]]\n- [[Meld into Stone|融入石中]]\n- [[Plant Growth|植物滋长]]\n- [[Protection from Energy|能量防护]]\n- [[Sleet Storm|冰雨风暴]]\n- [[Speak with Plants|植物交谈]]\n- [[Water Breathing|水下呼吸]]\n- [[Water Walk|水面行走]]\n- [[Wind Wall|风墙术]]\n\n#### 4 环\n\n- [[Blight|枯萎术]]\n- [[Confusion|困惑术]]\n- [[Conjure Minor Elementals|召唤次级元素生物]]\n- [[Conjure Woodland Beings|召唤林地生物]]\n- [[Control Water|操控水体]]\n- [[Dominate Beast|支配野兽]]\n- [[Freedom of Movement|行动自如]]\n- [[Giant Insect|巨虫术]]\n- [[Hallucinatory Terrain|幻景地形]]\n- [[Ice Storm|冰风暴]]\n- [[Locate Creature|生物定位术]]\n- [[Polymorph|变形术]]\n- [[Stone Shape|塑石术]]\n- [[Stoneskin|石肤术]]\n- [[Wall of Fire|火墙术]]\n\n#### 5 环\n\n- [[Antilife Shell|反生物法罩]]\n- [[Awaken|启蒙术]]\n- [[Commune with Nature|通晓自然]]\n- [[Conjure Elemental|召唤元素生物]]\n- [[Contagion|疫病术]]\n- [[Geas|指使术]]\n- [[Greater Restoration|高等复原术]]\n- [[Insect Plague|虫群瘟疫]]\n- [[Mass Cure Wounds|群体治疗伤势]]\n- [[Planar Binding|异界誓缚]]\n- [[Reincarnate|转生术]]\n- [[Scrying|探知术]]\n- [[Tree Stride|树跃术]]\n- [[Wall of Stone|石墙术]]\n\n#### 6 环\n\n- [[Conjure Fey|召唤精类]]\n- [[Find the Path|寻路术]]\n- [[Heal|医疗术]]\n- [[Heroes' Feast|英雄宴]]\n- [[Move Earth|移土术]]\n- [[Sunbeam|阳炎射线]]\n- [[Transport via Plants|植物传送]]\n- [[Wall of Thorns|荆棘墙]]\n- [[Wind Walk|风行术]]\n\n#### 7 环\n\n- [[Fire Storm|火焰风暴]]\n- [[Mirage Arcane|海市蜃楼]]\n- [[Plane Shift|异界传送]]\n- [[Regenerate|再生术]]\n- [[Reverse Gravity|反转重力]]\n\n#### 8 环\n\n- [[Animal Shapes|动物形态]]\n- [[Antipathy-Sympathy|厌恶/共鸣术]]\n- [[Control Weather|操控天气]]\n- [[Earthquake|地震术]]\n- [[Feeblemind|弱智术]]\n- [[Sunburst|阳炎爆]]\n\n#### 9 环\n\n- [[Foresight|预知术]]\n- [[Shapechange|形体变化]]\n- [[Storm of Vengeance|复仇风暴]]\n- [[True Resurrection|完全复活术]]",
+  "法术列表（替代版）/圣武士法术": "#### 1 环\n\n- [[Bless|祝福术]]\n- [[Command|命令术]]\n- [[Cure Wounds|治疗伤势]]\n- [[Detect Evil and Good|侦测善恶]]\n- [[Detect Magic|侦测魔法]]\n- [[Detect Poison and Disease|侦测毒素和疾病]]\n- [[Divine Favor|神恩]]\n- [[Heroism|英勇术]]\n- [[Protection from Evil and Good|防护善恶]]\n- [[Purify Food and Drink|净化食粮]]\n- [[Shield of Faith|信仰护盾]]\n\n#### 2 环\n\n- [[Aid|援助术]]\n- [[Branding Smite|印记斩]]\n- [[Find Steed|寻获坐骑]]\n- [[Lesser Restoration|次级复原术]]\n- [[Locate Object|物品定位术]]\n- [[Magic Weapon|魔化武器]]\n- [[Protection from Poison|防护毒素]]\n- [[Zone of Truth|诚实之域]]\n\n#### 3 环\n\n- [[Create Food and Water|创造食物和水]]\n- [[Daylight|昼明术]]\n- [[Dispel Magic|解除魔法]]\n- [[Magic Circle|魔法法阵]]\n- [[Remove Curse|移除诅咒]]\n- [[Revivify|亡者复活]]\n\n#### 4 环\n\n- [[Banishment|放逐术]]\n- [[Death Ward|死亡防护]]\n- [[Locate Creature|生物定位术]]\n\n#### 5 环\n\n- [[Dispel Evil and Good|解除善恶]]\n- [[Geas|指使术]]\n- [[Raise Dead|死者复活]]",
+  "法术列表（替代版）/游侠法术": "#### 1 环\n\n- [[Alarm|警报术]]\n- [[Animal Friendship|动物友谊]]\n- [[Cure Wounds|治疗伤势]]\n- [[Detect Magic|侦测魔法]]\n- [[Detect Poison and Disease|侦测毒素和疾病]]\n- [[Fog Cloud|云雾术]]\n- [[Goodberry|神莓术]]\n- [[Hunter's Mark|猎人印记]]\n- [[Jump|跳跃术]]\n- [[Longstrider|大步奔行]]\n- [[Speak with Animals|动物交谈]]\n\n#### 2 环\n\n- [[Animal Messenger|动物信使]]\n- [[Barkskin|树皮术]]\n- [[Darkvision|黑暗视觉]]\n- [[Find Traps|寻找陷阱]]\n- [[Lesser Restoration|次级复原术]]\n- [[Locate Animals or Plants|动植物定位术]]\n- [[Locate Object|物品定位术]]\n- [[Pass without Trace|行踪无迹]]\n- [[Protection from Poison|防护毒素]]\n- [[Silence|沉默术]]\n- [[Spike Growth|尖刺丛生]]\n\n#### 3 环\n\n- [[Conjure Animals|召唤动物]]\n- [[Daylight|昼明术]]\n- [[Nondetection|回避侦测]]\n- [[Plant Growth|植物滋长]]\n- [[Protection from Energy|能量防护]]\n- [[Speak with Plants|植物交谈]]\n- [[Water Breathing|水下呼吸]]\n- [[Water Walk|水面行走]]\n- [[Wind Wall|风墙术]]\n\n#### 4 环\n\n- [[Conjure Woodland Beings|召唤林地生物]]\n- [[Freedom of Movement|行动自如]]\n- [[Locate Creature|生物定位术]]\n- [[Stoneskin|石肤术]]\n\n#### 5 环\n\n- [[Commune with Nature|通晓自然]]\n- [[Tree Stride|树跃术]]",
+  "法术列表（替代版）/术士法术": "#### 戏法（0 环）\n\n- [[Acid Splash|酸液飞溅]]\n- [[Chill Touch|寒冷之触]]\n- [[Dancing Lights|舞光术]]\n- [[Fire Bolt|火焰箭]]\n- [[Light|光亮术]]\n- [[Mage Hand|法师之手]]\n- [[Mending|修复术]]\n- [[Message|传讯术]]\n- [[Minor Illusion|次级幻影]]\n- [[Poison Spray|毒气喷溅]]\n- [[Prestidigitation|魔法伎俩]]\n- [[Ray of Frost|冰冻射线]]\n- [[Shocking Grasp|电爪]]\n- [[True Strike|克敌机先]]\n\n#### 1 环\n\n- [[Burning Hands|燃烧之手]]\n- [[Charm Person|魅惑人类]]\n- [[Color Spray|七彩喷射]]\n- [[Comprehend Languages|通晓语言]]\n- [[Detect Magic|侦测魔法]]\n- [[Disguise Self|易容术]]\n- [[Expeditious Retreat|脚底抹油]]\n- [[False Life|虚假生命]]\n- [[Feather Fall|羽落术]]\n- [[Fog Cloud|云雾术]]\n- [[Jump|跳跃术]]\n- [[Mage Armor|法师护甲]]\n- [[Magic Missile|魔法飞弹]]\n- [[Shield|护盾术]]\n- [[Silent Image|无声幻影]]\n- [[Sleep|睡眠术]]\n- [[Thunderwave|雷鸣波]]\n\n#### 2 环\n\n- [[Alter Self|变身自我]]\n- [[Blindness-Deafness|致盲术/致聋术]]\n- [[Blur|模糊术]]\n- [[Darkness|黑暗术]]\n- [[Darkvision|黑暗视觉]]\n- [[Detect Thoughts|侦测思想]]\n- [[Enhance Ability|强化属性]]\n- [[Enlarge-Reduce|变巨术/缩小术]]\n- [[Gust of Wind|造风术]]\n- [[Hold Person|人类定身术]]\n- [[Invisibility|隐形术]]\n- [[Knock|敲击术]]\n- [[Levitate|浮空术]]\n- [[Mirror Image|镜影术]]\n- [[Misty Step|迷踪步]]\n- [[Scorching Ray|灼热射线]]\n- [[See Invisibility|看破隐形]]\n- [[Shatter|粉碎音波]]\n- [[Spider Climb|蛛行术]]\n- [[Suggestion|暗示术]]\n- [[Web|蛛网术]]\n\n#### 3 环\n\n- [[Blink|闪现术]]\n- [[Clairvoyance|千里眼/顺风耳]]\n- [[Counterspell|反制法术]]\n- [[Daylight|昼明术]]\n- [[Dispel Magic|解除魔法]]\n- [[Fear|恐惧术]]\n- [[Fireball|火球术]]\n- [[Fly|飞行术]]\n- [[Gaseous Form|气化形体]]\n- [[Haste|加速术]]\n- [[Hypnotic Pattern|催眠图纹]]\n- [[Lightning Bolt|闪电束]]\n- [[Major Image|高等幻影]]\n- [[Protection from Energy|能量防护]]\n- [[Sleet Storm|冰雨风暴]]\n- [[Slow|迟缓术]]\n- [[Stinking Cloud|臭云术]]\n- [[Tongues|通晓语言]]\n- [[Water Breathing|水下呼吸]]\n- [[Water Walk|水面行走]]\n\n#### 4 环\n\n- [[Banishment|放逐术]]\n- [[Blight|枯萎术]]\n- [[Confusion|困惑术]]\n- [[Dimension Door|任意门]]\n- [[Dominate Beast|支配野兽]]\n- [[Greater Invisibility|高等隐形术]]\n- [[Ice Storm|冰风暴]]\n- [[Polymorph|变形术]]\n- [[Stoneskin|石肤术]]\n- [[Wall of Fire|火墙术]]\n\n#### 5 环\n\n- [[Animate Objects|操纵物件]]\n- [[Cloudkill|死云术]]\n- [[Cone of Cold|寒冰锥]]\n- [[Creation|创造术]]\n- [[Dominate Person|支配人类]]\n- [[Hold Monster|怪物定身术]]\n- [[Insect Plague|虫群瘟疫]]\n- [[Seeming|群体伪装]]\n- [[Telekinesis|念动力]]\n- [[Teleportation Circle|传送法阵]]\n- [[Wall of Stone|石墙术]]\n\n#### 6 环\n\n- [[Chain Lightning|连锁闪电]]\n- [[Circle of Death|死亡法环]]\n- [[Disintegrate|解离术]]\n- [[Eyebite|摄魂目光]]\n- [[Globe of Invulnerability|法术无效结界]]\n- [[Mass Suggestion|群体暗示术]]\n- [[Move Earth|移土术]]\n- [[Sunbeam|阳炎射线]]\n- [[True Seeing|真实视觉]]\n\n#### 7 环\n\n- [[Delayed Blast Fireball|延迟爆裂火球]]\n- [[Etherealness|以太化]]\n- [[Finger of Death|死亡一指]]\n- [[Fire Storm|火焰风暴]]\n- [[Plane Shift|异界传送]]\n- [[Prismatic Spray|虹光喷射]]\n- [[Reverse Gravity|反转重力]]\n- [[Teleport|传送术]]\n\n#### 8 环\n\n- [[Dominate Monster|支配怪物]]\n- [[Earthquake|地震术]]\n- [[Incendiary Cloud|焚云术]]\n- [[Power Word Stun|律令震慑]]\n- [[Sunburst|阳炎爆]]\n\n#### 9 环\n\n- [[Gate|异界之门]]\n- [[Meteor Swarm|流星爆]]\n- [[Power Word Kill|律令死亡]]\n- [[Time Stop|时间停止]]\n- [[Wish|祈愿术]]",
+  "法术列表（替代版）/邪术师法术": "#### 戏法（0 环）\n\n- [[Chill Touch|寒冷之触]]\n- [[Eldritch Blast|魔能爆]]\n- [[Mage Hand|法师之手]]\n- [[Minor Illusion|次级幻影]]\n- [[Poison Spray|毒气喷溅]]\n- [[Prestidigitation|魔法伎俩]]\n- [[True Strike|克敌机先]]\n\n#### 1 环\n\n- [[Charm Person|魅惑人类]]\n- [[Comprehend Languages|通晓语言]]\n- [[Expeditious Retreat|脚底抹油]]\n- [[Hellish Rebuke|地狱斥喝]]\n- [[Illusory Script|幻术文字]]\n- [[Protection from Evil and Good|防护善恶]]\n- [[Unseen Servant|隐形仆役]]\n\n#### 2 环\n\n- [[Darkness|黑暗术]]\n- [[Enthrall|迷魂术]]\n- [[Hold Person|人类定身术]]\n- [[Invisibility|隐形术]]\n- [[Mirror Image|镜影术]]\n- [[Misty Step|迷踪步]]\n- [[Ray of Enfeeblement|衰弱射线]]\n- [[Shatter|粉碎音波]]\n- [[Spider Climb|蛛行术]]\n- [[Suggestion|暗示术]]\n\n#### 3 环\n- [[Counterspell|反制法术]]\n- [[Dispel Magic|解除魔法]]\n- [[Fear|恐惧术]]\n- [[Fly|飞行术]]\n- [[Gaseous Form|气化形体]]\n- [[Hypnotic Pattern|催眠图纹]]\n- [[Magic Circle|魔法法阵]]\n- [[Major Image|高等幻影]]\n- [[Remove Curse|移除诅咒]]\n- [[Tongues|通晓语言]]\n- [[Vampiric Touch|吸血鬼之触]]\n\n#### 4 环\n\n- [[Banishment|放逐术]]\n- [[Blight|枯萎术]]\n- [[Dimension Door|任意门]]\n- [[Hallucinatory Terrain|幻景地形]]\n\n#### 5 环\n\n- [[Contact Other Plane|异界探知]]\n- [[Dream|托梦术]]\n- [[Hold Monster|怪物定身术]]\n- [[Scrying|探知术]]\n\n#### 6 环\n\n- [[Circle of Death|死亡法环]]\n- [[Conjure Fey|召唤精类]]\n- [[Create Undead|创造不死生物]]\n- [[Eyebite|摄魂目光]]\n- [[Flesh to Stone|石化术]]\n- [[Mass Suggestion|群体暗示术]]\n- [[True Seeing|真实视觉]]\n\n#### 7 环\n\n- [[Etherealness|以太化]]\n- [[Finger of Death|死亡一指]]\n- [[Forcecage|力场牢笼]]\n- [[Plane Shift|异界传送]]\n\n#### 8 环\n\n- [[Demiplane|半位面]]\n- [[Dominate Monster|支配怪物]]\n- [[Feeblemind|弱智术]]\n- [[Glibness|花言巧语]]\n- [[Power Word Stun|律令震慑]]\n\n#### 9 环\n\n- [[Astral Projection|星界投影]]\n- [[Foresight|预知术]]\n- [[Imprisonment|禁锢术]]\n- [[Power Word Kill|律令死亡]]\n- [[True Polymorph|完全变形术]]",
+  "法术列表（替代版）/法师法术": "#### 戏法（0 环）\n\n- [[Acid Splash|酸液飞溅]]\n- [[Chill Touch|寒冷之触]]\n- [[Dancing Lights|舞光术]]\n- [[Fire Bolt|火焰箭]]\n- [[Light|光亮术]]\n- [[Mage Hand|法师之手]]\n- [[Mending|修复术]]\n- [[Message|传讯术]]\n- [[Minor Illusion|次级幻影]]\n- [[Poison Spray|毒气喷溅]]\n- [[Prestidigitation|魔法伎俩]]\n- [[Ray of Frost|冰冻射线]]\n- [[Shocking Grasp|电爪]]\n- [[True Strike|克敌机先]]\n\n#### 1 环\n\n- [[Alarm|警报术]]\n- [[Burning Hands|燃烧之手]]\n- [[Charm Person|魅惑人类]]\n- [[Color Spray|七彩喷射]]\n- [[Comprehend Languages|通晓语言]]\n- [[Detect Magic|侦测魔法]]\n- [[Disguise Self|易容术]]\n- [[Expeditious Retreat|脚底抹油]]\n- [[False Life|虚假生命]]\n- [[Feather Fall|羽落术]]\n- [[Find Familiar|寻获魔宠]]\n- [[Floating Disk|浮碟术]]\n- [[Fog Cloud|云雾术]]\n- [[Grease|油腻术]]\n- [[Hideous Laughter|狂笑术]]\n- [[Identify|鉴定术]]\n- [[Illusory Script|幻术文字]]\n- [[Jump|跳跃术]]\n- [[Longstrider|大步奔行]]\n- [[Mage Armor|法师护甲]]\n- [[Magic Missile|魔法飞弹]]\n- [[Protection from Evil and Good|防护善恶]]\n- [[Shield|护盾术]]\n- [[Silent Image|无声幻影]]\n- [[Sleep|睡眠术]]\n- [[Thunderwave|雷鸣波]]\n- [[Unseen Servant|隐形仆役]]\n\n#### 2 环\n\n- [[Acid Arrow|强酸箭]]\n- [[Alter Self|变身自我]]\n- [[Arcane Lock|奥术锁]]\n- [[Arcanist's Magic Aura|奥术师魔法灵光]]\n- [[Blindness-Deafness|致盲术/致聋术]]\n- [[Blur|模糊术]]\n- [[Continual Flame|恒焰术]]\n- [[Darkness|黑暗术]]\n- [[Darkvision|黑暗视觉]]\n- [[Detect Thoughts|侦测思想]]\n- [[Enlarge-Reduce|变巨术/缩小术]]\n- [[Flaming Sphere|炽焰法球]]\n- [[Gentle Repose|遗体防腐]]\n- [[Gust of Wind|造风术]]\n- [[Hold Person|人类定身术]]\n- [[Invisibility|隐形术]]\n- [[Knock|敲击术]]\n- [[Levitate|浮空术]]\n- [[Locate Object|物品定位术]]\n- [[Magic Mouth|魔嘴术]]\n- [[Magic Weapon|魔化武器]]\n- [[Mirror Image|镜影术]]\n- [[Misty Step|迷踪步]]\n- [[Ray of Enfeeblement|衰弱射线]]\n- [[Rope Trick|绳技术]]\n- [[Scorching Ray|灼热射线]]\n- [[See Invisibility|看破隐形]]\n- [[Shatter|粉碎音波]]\n- [[Spider Climb|蛛行术]]\n- [[Suggestion|暗示术]]\n- [[Web|蛛网术]]\n\n#### 3 环\n\n- [[Animate Dead|操纵死尸]]\n- [[Bestow Curse|降咒术]]\n- [[Blink|闪现术]]\n- [[Clairvoyance|千里眼/顺风耳]]\n- [[Counterspell|反制法术]]\n- [[Dispel Magic|解除魔法]]\n- [[Fear|恐惧术]]\n- [[Fireball|火球术]]\n- [[Fly|飞行术]]\n- [[Gaseous Form|气化形体]]\n- [[Glyph of Warding|守护刻文]]\n- [[Haste|加速术]]\n- [[Hypnotic Pattern|催眠图纹]]\n- [[Lightning Bolt|闪电束]]\n- [[Magic Circle|魔法法阵]]\n- [[Major Image|高等幻影]]\n- [[Nondetection|回避侦测]]\n- [[Phantom Steed|魅影驹]]\n- [[Protection from Energy|能量防护]]\n- [[Remove Curse|移除诅咒]]\n- [[Sending|传讯]]\n- [[Sleet Storm|冰雨风暴]]\n- [[Slow|迟缓术]]\n- [[Stinking Cloud|臭云术]]\n- [[Tiny Hut|小屋术]]\n- [[Tongues|通晓语言]]\n- [[Vampiric Touch|吸血鬼之触]]\n- [[Water Breathing|水下呼吸]]\n\n#### 4 环\n\n- [[Arcane Eye|奥术眼]]\n- [[Banishment|放逐术]]\n- [[Black Tentacles|黑触手]]\n- [[Blight|枯萎术]]\n- [[Confusion|困惑术]]\n- [[Conjure Minor Elementals|召唤次级元素生物]]\n- [[Control Water|操控水体]]\n- [[Dimension Door|任意门]]\n- [[Fabricate|加工术]]\n- [[Faithful Hound|忠犬术]]\n- [[Fire Shield|火焰护盾]]\n- [[Greater Invisibility|高等隐形术]]\n- [[Hallucinatory Terrain|幻景地形]]\n- [[Ice Storm|冰风暴]]\n- [[Locate Creature|生物定位术]]\n- [[Phantasmal Killer|魅影杀手]]\n- [[Polymorph|变形术]]\n- [[Private Sanctum|私密圣所]]\n- [[Resilient Sphere|弹力法球]]\n- [[Secret Chest|秘藏箱]]\n- [[Stone Shape|塑石术]]\n- [[Stoneskin|石肤术]]\n- [[Wall of Fire|火墙术]]\n\n#### 5 环\n\n- [[Animate Objects|操纵物件]]\n- [[Arcane Hand|奥术之手]]\n- [[Cloudkill|死云术]]\n- [[Cone of Cold|寒冰锥]]\n- [[Conjure Elemental|召唤元素生物]]\n- [[Contact Other Plane|异界探知]]\n- [[Creation|创造术]]\n- [[Dominate Person|支配人类]]\n- [[Dream|托梦术]]\n- [[Geas|指使术]]\n- [[Hold Monster|怪物定身术]]\n- [[Legend Lore|通晓传奇]]\n- [[Mislead|误导术]]\n- [[Modify Memory|修改记忆]]\n- [[Passwall|穿墙术]]\n- [[Planar Binding|异界誓缚]]\n- [[Scrying|探知术]]\n- [[Seeming|群体伪装]]\n- [[Telekinesis|念动力]]\n- [[Telepathic Bond|心灵连结]]\n- [[Teleportation Circle|传送法阵]]\n- [[Wall of Force|力场墙]]\n- [[Wall of Stone|石墙术]]\n\n#### 6 环\n\n- [[Chain Lightning|连锁闪电]]\n- [[Circle of Death|死亡法环]]\n- [[Contingency|触发术]]\n- [[Create Undead|创造不死生物]]\n- [[Disintegrate|解离术]]\n- [[Eyebite|摄魂目光]]\n- [[Flesh to Stone|石化术]]\n- [[Freezing Sphere|冰封法球]]\n- [[Globe of Invulnerability|法术无效结界]]\n- [[Guards and Wards|警戒守卫]]\n- [[Instant Summons|即时召唤]]\n- [[Irresistible Dance|难抗之舞]]\n- [[Magic Jar|魔魂壶]]\n- [[Mass Suggestion|群体暗示术]]\n- [[Move Earth|移土术]]\n- [[Programmed Illusion|预置幻象]]\n- [[Sunbeam|阳炎射线]]\n- [[True Seeing|真实视觉]]\n- [[Wall of Ice|冰墙术]]\n\n#### 7 环\n\n- [[Arcane Sword|奥术之剑]]\n- [[Delayed Blast Fireball|延迟爆裂火球]]\n- [[Etherealness|以太化]]\n- [[Finger of Death|死亡一指]]\n- [[Forcecage|力场牢笼]]\n- [[Magnificent Mansion|华丽宅邸]]\n- [[Mirage Arcane|海市蜃楼]]\n- [[Plane Shift|异界传送]]\n- [[Prismatic Spray|虹光喷射]]\n- [[Project Image|投影术]]\n- [[Reverse Gravity|反转重力]]\n- [[Sequester|隐匿术]]\n- [[Simulacrum|拟像术]]\n- [[Symbol|徽记术]]\n- [[Teleport|传送术]]\n\n#### 8 环\n\n- [[Antimagic Field|反魔法力场]]\n- [[Antipathy-Sympathy|厌恶/共鸣术]]\n- [[Clone|克隆术]]\n- [[Control Weather|操控天气]]\n- [[Demiplane|半位面]]\n- [[Dominate Monster|支配怪物]]\n- [[Feeblemind|弱智术]]\n- [[Incendiary Cloud|焚云术]]\n- [[Maze|迷宫术]]\n- [[Mind Blank|心灵屏障]]\n- [[Power Word Stun|律令震慑]]\n- [[Sunburst|阳炎爆]]\n\n#### 9 环\n\n- [[Astral Projection|星界投影]]\n- [[Foresight|预知术]]\n- [[Gate|异界之门]]\n- [[Imprisonment|禁锢术]]\n- [[Meteor Swarm|流星爆]]\n- [[Power Word Kill|律令死亡]]\n- [[Prismatic Wall|虹光法墙]]\n- [[Shapechange|形体变化]]\n- [[Time Stop|时间停止]]\n- [[True Polymorph|完全变形术]]\n- [[Weird|怪影杀手]]\n- [[Wish|祈愿术]]",
+  "法术列表/吟游诗人法术": "#### 戏法（0 环）\n\n- 舞光术\n- 光亮术\n- 法师之手\n- 修复术\n- 传讯术\n- 次级幻影\n- 魔法伎俩\n- 克敌机先\n- 恶毒嘲笑\n\n#### 1 环\n\n- 动物友谊\n- 灾祸术\n- 魅惑人类\n- 通晓语言\n- 治疗伤势\n- 侦测魔法\n- 易容术\n- 妖火\n- 羽落术\n- 治疗真言\n- 英勇术\n- 狂笑术\n- 鉴定术\n- 幻术文字\n- 大步奔行\n- 无声幻影\n- 睡眠术\n- 动物交谈\n- 雷鸣波\n- 隐形仆役\n\n#### 2 环\n\n- 动物信使\n- 致盲术/致聋术\n- 安定心神\n- 侦测思想\n- 强化属性\n- 迷魂术\n- 灼热金属\n- 人类定身术\n- 隐形术\n- 敲击术\n- 次级复原术\n- 动植物定位术\n- 物品定位术\n- 魔嘴术\n- 看破隐形\n- 粉碎音波\n- 沉默术\n- 暗示术\n- 诚实之域\n\n#### 3 环\n\n- 降咒术\n- 千里眼/顺风耳\n- 解除魔法\n- 恐惧术\n- 守护刻文\n- 催眠图纹\n- 高等幻影\n- 回避侦测\n- 植物滋长\n- 传讯\n- 死者交谈\n- 植物交谈\n- 臭云术\n- 小屋术\n- 通晓语言\n\n#### 4 环\n\n- 强迫术\n- 困惑术\n- 任意门\n- 行动自如\n- 高等隐形术\n- 幻景地形\n- 生物定位术\n- 变形术\n\n#### 5 环\n\n- 操纵物件\n- 启蒙术\n- 支配人类\n- 托梦术\n- 指使术\n- 高等复原术\n- 怪物定身术\n- 通晓传奇\n- 群体治疗伤势\n- 误导术\n- 修改记忆\n- 异界誓缚\n- 死者复活\n- 探知术\n- 群体伪装\n- 传送法阵\n\n#### 6 环\n\n- 摄魂目光\n- 寻路术\n- 警戒守卫\n- 难抗之舞\n- 群体暗示术\n- 预置幻象\n- 真实视觉\n\n#### 7 环\n\n- 奥术之剑\n- 以太化\n- 力场牢笼\n- 华丽宅邸\n- 海市蜃楼\n- 投影术\n- 再生术\n- 复生术\n- 徽记术\n- 传送术\n\n#### 8 环\n\n- 支配怪物\n- 弱智术\n- 花言巧语\n- 心灵屏障\n- 律令震慑\n\n#### 9 环\n\n- 预知术\n- 律令死亡\n- 完全变形术",
+  "法术列表/牧师法术": "#### 戏法（0 环）\n\n- 神导术\n- 光亮术\n- 修复术\n- 抵抗术\n- 圣火术\n- 稳定伤势\n- 奇术\n\n#### 1 环\n\n- 灾祸术\n- 祝福术\n- 命令术\n- 造水术/毁水术\n- 治疗伤势\n- 侦测善恶\n- 侦测魔法\n- 侦测毒素和疾病\n- 曳光弹\n- 治疗真言\n- 致伤术\n- 防护善恶\n- 净化食粮\n- 圣域术\n- 信仰护盾\n\n#### 2 环\n\n- 援助术\n- 卜筮术\n- 致盲术/致聋术\n- 安定心神\n- 恒焰术\n- 强化属性\n- 寻找陷阱\n- 遗体防腐\n- 人类定身术\n- 次级复原术\n- 物品定位术\n- 治疗祷言\n- 防护毒素\n- 沉默术\n- 灵体武器\n- 守护之链\n- 诚实之域\n\n#### 3 环\n\n- 操纵死尸\n- 希望信标\n- 降咒术\n- 千里眼/顺风耳\n- 创造食物和水\n- 昼明术\n- 解除魔法\n- 守护刻文\n- 魔法法阵\n- 群体治疗真言\n- 融入石中\n- 能量防护\n- 移除诅咒\n- 亡者复活\n- 传讯\n- 死者交谈\n- 灵体卫士\n- 通晓语言\n- 水面行走\n\n#### 4 环\n\n- 放逐术\n- 操控水体\n- 死亡防护\n- 占卜术\n- 行动自如\n- 信仰守卫\n- 生物定位术\n- 塑石术\n\n#### 5 环\n\n- 通神术\n- 疫病术\n- 解除善恶\n- 焰击术\n- 指使术\n- 高等复原术\n- 圣化术\n- 虫群瘟疫\n- 通晓传奇\n- 群体治疗伤势\n- 异界誓缚\n- 死者复活\n- 探知术\n\n#### 6 环\n\n- 刀刃屏障\n- 创造不死生物\n- 寻路术\n- 禁制术\n- 伤害术\n- 医疗术\n- 英雄宴\n- 异界盟友\n- 真实视觉\n- 回返真言\n\n#### 7 环\n\n- 召唤天界生物\n- 神圣真言\n- 以太化\n- 火焰风暴\n- 异界传送\n- 再生术\n- 复生术\n- 徽记术\n\n#### 8 环\n\n- 反魔法力场\n- 操控天气\n- 地震术\n- 神圣灵光\n\n#### 9 环\n\n- 星界投影\n- 异界之门\n- 群体医疗术\n- 完全复活术",
+  "法术列表/德鲁伊法术": "#### 戏法（0 环）\n\n- 德鲁伊伎俩\n- 神导术\n- 修复术\n- 毒气喷溅\n- 燃火术\n- 抵抗术\n- 橡棍术\n\n#### 1 环\n\n- 动物友谊\n- 魅惑人类\n- 造水术/毁水术\n- 治疗伤势\n- 侦测魔法\n- 侦测毒素和疾病\n- 缠绕术\n- 妖火\n- 云雾术\n- 神莓术\n- 治疗真言\n- 跳跃术\n- 大步奔行\n- 净化食粮\n- 动物交谈\n- 雷鸣波\n\n#### 2 环\n\n- 动物信使\n- 树皮术\n- 黑暗视觉\n- 强化属性\n- 寻找陷阱\n- 火焰刀\n- 炽焰法球\n- 造风术\n- 灼热金属\n- 人类定身术\n- 次级复原术\n- 动植物定位术\n- 物品定位术\n- 月华之光\n- 行踪无迹\n- 防护毒素\n- 尖刺丛生\n\n#### 3 环\n\n- 召雷术\n- 召唤动物\n- 昼明术\n- 解除魔法\n- 融入石中\n- 植物滋长\n- 能量防护\n- 冰雨风暴\n- 植物交谈\n- 水下呼吸\n- 水面行走\n- 风墙术\n\n#### 4 环\n\n- 枯萎术\n- 困惑术\n- 召唤次级元素生物\n- 召唤林地生物\n- 操控水体\n- 支配野兽\n- 行动自如\n- 巨虫术\n- 幻景地形\n- 冰风暴\n- 生物定位术\n- 变形术\n- 塑石术\n- 石肤术\n- 火墙术\n\n#### 5 环\n\n- 反生物法罩\n- 启蒙术\n- 通晓自然\n- 召唤元素生物\n- 疫病术\n- 指使术\n- 高等复原术\n- 虫群瘟疫\n- 群体治疗伤势\n- 异界誓缚\n- 转生术\n- 探知术\n- 树跃术\n- 石墙术\n\n#### 6 环\n\n- 召唤精类\n- 寻路术\n- 医疗术\n- 英雄宴\n- 移土术\n- 阳炎射线\n- 植物传送\n- 荆棘墙\n- 风行术\n\n#### 7 环\n\n- 火焰风暴\n- 海市蜃楼\n- 异界传送\n- 再生术\n- 反转重力\n\n#### 8 环\n\n- 动物形态\n- 厌恶/共鸣术\n- 操控天气\n- 地震术\n- 弱智术\n- 阳炎爆\n\n#### 9 环\n\n- 预知术\n- 形体变化\n- 复仇风暴\n- 完全复活术",
+  "法术列表/圣武士法术": "#### 1 环\n\n- 祝福术\n- 命令术\n- 治疗伤势\n- 侦测善恶\n- 侦测魔法\n- 侦测毒素和疾病\n- 神恩\n- 英勇术\n- 防护善恶\n- 净化食粮\n- 信仰护盾\n\n#### 2 环\n\n- 援助术\n- 印记斩\n- 寻获坐骑\n- 次级复原术\n- 物品定位术\n- 魔化武器\n- 防护毒素\n- 诚实之域\n\n#### 3 环\n\n- 创造食物和水\n- 昼明术\n- 解除魔法\n- 魔法法阵\n- 移除诅咒\n- 亡者复活\n\n#### 4 环\n\n- 放逐术\n- 死亡防护\n- 生物定位术\n\n#### 5 环\n\n- 解除善恶\n- 指使术\n- 死者复活",
+  "法术列表/游侠法术": "#### 1 环\n\n- 警报术\n- 动物友谊\n- 治疗伤势\n- 侦测魔法\n- 侦测毒素和疾病\n- 云雾术\n- 神莓术\n- 猎人印记\n- 跳跃术\n- 大步奔行\n- 动物交谈\n\n#### 2 环\n\n- 动物信使\n- 树皮术\n- 黑暗视觉\n- 寻找陷阱\n- 次级复原术\n- 动植物定位术\n- 物品定位术\n- 行踪无迹\n- 防护毒素\n- 沉默术\n- 尖刺丛生\n\n#### 3 环\n\n- 召唤动物\n- 昼明术\n- 回避侦测\n- 植物滋长\n- 能量防护\n- 植物交谈\n- 水下呼吸\n- 水面行走\n- 风墙术\n\n#### 4 环\n\n- 召唤林地生物\n- 行动自如\n- 生物定位术\n- 石肤术\n\n#### 5 环\n\n- 通晓自然\n- 树跃术",
+  "法术列表/术士法术": "#### 戏法（0 环）\n\n- 酸液飞溅\n- 寒冷之触\n- 舞光术\n- 火焰箭\n- 光亮术\n- 法师之手\n- 修复术\n- 传讯术\n- 次级幻影\n- 毒气喷溅\n- 魔法伎俩\n- 冰冻射线\n- 电爪\n- 克敌机先\n\n#### 1 环\n\n- 燃烧之手\n- 魅惑人类\n- 七彩喷射\n- 通晓语言\n- 侦测魔法\n- 易容术\n- 脚底抹油\n- 虚假生命\n- 羽落术\n- 云雾术\n- 跳跃术\n- 法师护甲\n- 魔法飞弹\n- 护盾术\n- 无声幻影\n- 睡眠术\n- 雷鸣波\n\n#### 2 环\n\n- 变身自我\n- 致盲术/致聋术\n- 模糊术\n- 黑暗术\n- 黑暗视觉\n- 侦测思想\n- 强化属性\n- 变巨术/缩小术\n- 造风术\n- 人类定身术\n- 隐形术\n- 敲击术\n- 浮空术\n- 镜影术\n- 迷踪步\n- 灼热射线\n- 看破隐形\n- 粉碎音波\n- 蛛行术\n- 暗示术\n- 蛛网术\n\n#### 3 环\n\n- 闪现术\n- 千里眼/顺风耳\n- 反制法术\n- 昼明术\n- 解除魔法\n- 恐惧术\n- 火球术\n- 飞行术\n- 气化形体\n- 加速术\n- 催眠图纹\n- 闪电束\n- 高等幻影\n- 能量防护\n- 冰雨风暴\n- 迟缓术\n- 臭云术\n- 通晓语言\n- 水下呼吸\n- 水面行走\n\n#### 4 环\n\n- 放逐术\n- 枯萎术\n- 困惑术\n- 任意门\n- 支配野兽\n- 高等隐形术\n- 冰风暴\n- 变形术\n- 石肤术\n- 火墙术\n\n#### 5 环\n\n- 操纵物件\n- 死云术\n- 寒冰锥\n- 创造术\n- 支配人类\n- 怪物定身术\n- 虫群瘟疫\n- 群体伪装\n- 念动力\n- 传送法阵\n- 石墙术\n\n#### 6 环\n\n- 连锁闪电\n- 死亡法环\n- 解离术\n- 摄魂目光\n- 法术无效结界\n- 群体暗示术\n- 移土术\n- 阳炎射线\n- 真实视觉\n\n#### 7 环\n\n- 延迟爆裂火球\n- 以太化\n- 死亡一指\n- 火焰风暴\n- 异界传送\n- 虹光喷射\n- 反转重力\n- 传送术\n\n#### 8 环\n\n- 支配怪物\n- 地震术\n- 焚云术\n- 律令震慑\n- 阳炎爆\n\n#### 9 环\n\n- 异界之门\n- 流星爆\n- 律令死亡\n- 时间停止\n- 祈愿术",
+  "法术列表/邪术师法术": "#### 戏法（0 环）\n\n- 寒冷之触\n- 魔能爆\n- 法师之手\n- 次级幻影\n- 毒气喷溅\n- 魔法伎俩\n- 克敌机先\n\n#### 1 环\n\n- 魅惑人类\n- 通晓语言\n- 脚底抹油\n- 地狱斥喝\n- 幻术文字\n- 防护善恶\n- 隐形仆役\n\n#### 2 环\n\n- 黑暗术\n- 迷魂术\n- 人类定身术\n- 隐形术\n- 镜影术\n- 迷踪步\n- 衰弱射线\n- 粉碎音波\n- 蛛行术\n- 暗示术\n\n#### 3 环\n- 反制法术\n- 解除魔法\n- 恐惧术\n- 飞行术\n- 气化形体\n- 催眠图纹\n- 魔法法阵\n- 高等幻影\n- 移除诅咒\n- 通晓语言\n- 吸血鬼之触\n\n#### 4 环\n\n- 放逐术\n- 枯萎术\n- 任意门\n- 幻景地形\n\n#### 5 环\n\n- 异界探知\n- 托梦术\n- 怪物定身术\n- 探知术\n\n#### 6 环\n\n- 死亡法环\n- 召唤精类\n- 创造不死生物\n- 摄魂目光\n- 石化术\n- 群体暗示术\n- 真实视觉\n\n#### 7 环\n\n- 以太化\n- 死亡一指\n- 力场牢笼\n- 异界传送\n\n#### 8 环\n\n- 半位面\n- 支配怪物\n- 弱智术\n- 花言巧语\n- 律令震慑\n\n#### 9 环\n\n- 星界投影\n- 预知术\n- 禁锢术\n- 律令死亡\n- 完全变形术",
+  "法术列表/法师法术": "#### 戏法（0 环）\n\n- 酸液飞溅\n- 寒冷之触\n- 舞光术\n- 火焰箭\n- 光亮术\n- 法师之手\n- 修复术\n- 传讯术\n- 次级幻影\n- 毒气喷溅\n- 魔法伎俩\n- 冰冻射线\n- 电爪\n- 克敌机先\n\n#### 1 环\n\n- 警报术\n- 燃烧之手\n- 魅惑人类\n- 七彩喷射\n- 通晓语言\n- 侦测魔法\n- 易容术\n- 脚底抹油\n- 虚假生命\n- 羽落术\n- 寻获魔宠\n- 浮碟术\n- 云雾术\n- 油腻术\n- 狂笑术\n- 鉴定术\n- 幻术文字\n- 跳跃术\n- 大步奔行\n- 法师护甲\n- 魔法飞弹\n- 防护善恶\n- 护盾术\n- 无声幻影\n- 睡眠术\n- 雷鸣波\n- 隐形仆役\n\n#### 2 环\n\n- 强酸箭\n- 变身自我\n- 奥术锁\n- 奥术师魔法灵光\n- 致盲术/致聋术\n- 模糊术\n- 恒焰术\n- 黑暗术\n- 黑暗视觉\n- 侦测思想\n- 变巨术/缩小术\n- 炽焰法球\n- 遗体防腐\n- 造风术\n- 人类定身术\n- 隐形术\n- 敲击术\n- 浮空术\n- 物品定位术\n- 魔嘴术\n- 魔化武器\n- 镜影术\n- 迷踪步\n- 衰弱射线\n- 绳技术\n- 灼热射线\n- 看破隐形\n- 粉碎音波\n- 蛛行术\n- 暗示术\n- 蛛网术\n\n#### 3 环\n\n- 操纵死尸\n- 降咒术\n- 闪现术\n- 千里眼/顺风耳\n- 反制法术\n- 解除魔法\n- 恐惧术\n- 火球术\n- 飞行术\n- 气化形体\n- 守护刻文\n- 加速术\n- 催眠图纹\n- 闪电束\n- 魔法法阵\n- 高等幻影\n- 回避侦测\n- 魅影驹\n- 能量防护\n- 移除诅咒\n- 传讯\n- 冰雨风暴\n- 迟缓术\n- 臭云术\n- 小屋术\n- 通晓语言\n- 吸血鬼之触\n- 水下呼吸\n\n#### 4 环\n\n- 奥术眼\n- 放逐术\n- 黑触手\n- 枯萎术\n- 困惑术\n- 召唤次级元素生物\n- 操控水体\n- 任意门\n- 加工术\n- 忠犬术\n- 火焰护盾\n- 高等隐形术\n- 幻景地形\n- 冰风暴\n- 生物定位术\n- 魅影杀手\n- 变形术\n- 私密圣所\n- 弹力法球\n- 秘藏箱\n- 塑石术\n- 石肤术\n- 火墙术\n\n#### 5 环\n\n- 操纵物件\n- 奥术之手\n- 死云术\n- 寒冰锥\n- 召唤元素生物\n- 异界探知\n- 创造术\n- 支配人类\n- 托梦术\n- 指使术\n- 怪物定身术\n- 通晓传奇\n- 误导术\n- 修改记忆\n- 穿墙术\n- 异界誓缚\n- 探知术\n- 群体伪装\n- 念动力\n- 心灵连结\n- 传送法阵\n- 力场墙\n- 石墙术\n\n#### 6 环\n\n- 连锁闪电\n- 死亡法环\n- 触发术\n- 创造不死生物\n- 解离术\n- 摄魂目光\n- 石化术\n- 冰封法球\n- 法术无效结界\n- 警戒守卫\n- 即时召唤\n- 难抗之舞\n- 魔魂壶\n- 群体暗示术\n- 移土术\n- 预置幻象\n- 阳炎射线\n- 真实视觉\n- 冰墙术\n\n#### 7 环\n\n- 奥术之剑\n- 延迟爆裂火球\n- 以太化\n- 死亡一指\n- 力场牢笼\n- 华丽宅邸\n- 海市蜃楼\n- 异界传送\n- 虹光喷射\n- 投影术\n- 反转重力\n- 隐匿术\n- 拟像术\n- 徽记术\n- 传送术\n\n#### 8 环\n\n- 反魔法力场\n- 厌恶/共鸣术\n- 克隆术\n- 操控天气\n- 半位面\n- 支配怪物\n- 弱智术\n- 焚云术\n- 迷宫术\n- 心灵屏障\n- 律令震慑\n- 阳炎爆\n\n#### 9 环\n\n- 星界投影\n- 预知术\n- 异界之门\n- 禁锢术\n- 流星爆\n- 律令死亡\n- 虹光法墙\n- 形体变化\n- 时间停止\n- 完全变形术\n- 怪影杀手\n- 祈愿术",
+  "强酸箭": "*2 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 90 尺\n\n**成分：** V、S、M（磨碎的大黄叶和一只蝰蛇的胃）\n\n**持续时间：** 瞬间\n\n一支闪烁着绿光的箭矢射向射程内目标，并在命中时爆成一片酸液。对目标进行一次远程法术攻击。若命中，目标立刻受到 4d4 点强酸伤害，并在其下个回合结束时再受到 2d4 点强酸伤害。若未命中，箭矢仍会溅到目标身上，造成初始伤害的一半，且在其下个回合结束时不再造成伤害。\n\n***高环位施法。*** 当你使用 3 环或更高法术位施放此法术时，初始伤害和后续伤害都会因法术位每高于 2 环一级而各增加 1d4。",
+  "酸液飞溅": "*咒法 戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 瞬间\n\n你掷出一个酸液泡泡。选择一个你在射程内看得见的生物，或选择两个你在射程内看得见且彼此相距不超过 5 尺的生物。目标必须成功通过一次敏捷豁免，否则受到 1d6 点强酸伤害。\n\n当你达到 5 级时，此法术的伤害增加 1d6（2d6）；11 级时增加为 3d6；17 级时增加为 4d6。",
+  "援助术": "*2 环 防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一小条白布）\n\n**持续时间：** 8 小时\n\n你的法术以坚韧与决心强化你的盟友。选择射程内至多三个生物。持续时间内，每个目标的生命值上限和当前生命值都增加 5。\n\n***高环位施法。*** 当你使用 3 环或更高法术位施放此法术时，法术位每高于 2 环一级，目标的生命值便额外增加 5。",
+  "警报术": "*1 环 防护系（仪式）*\n\n**施法时间：** 1 分钟\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一枚小铃铛和一截细银丝）\n\n**持续时间：** 8 小时\n\n你设下一道针对不速之客的警报。选择一扇门、一扇窗，或射程内一块不超过 20 尺立方体的区域。直到法术结束前，只要有微型或更大体型的生物触碰或进入被守护区域，警报便会提醒你。施法时，你可以指定不会触发警报的生物。你还可以选择警报是心灵型还是可听型。\n\n心灵警报会在你距离被守护区域 1 英里内时，于你脑海中发出提示音。若你正在睡觉，这个提示会将你唤醒。\n\n可听警报则会在 60 尺内发出手铃般的响声，持续 10 秒。",
+  "变身自我": "*2 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 小时\n\n你变为另一种形态。施法时，从以下选项中选择一种，其效果持续到法术结束。在法术持续期间，你可以用一个动作结束当前选项，并改为获得另一选项的收益。\n\n***水栖适应。*** 你的身体适应水中环境，长出鳃和蹼。你可以在水下呼吸，并获得等同于步行速度的游泳速度。\n\n***改变外貌。*** 你改变自己的外貌。你可以决定自己看起来是什么样子，包括身高、体重、面部特征、声音、发长、颜色以及任何显著特征。你可以让自己看起来像另一种种族的成员，但你的任何数值都不会改变。你也不能让自己看起来像与自己体型不同的生物，而且你的基本体态必须保持一致；例如，若你是双足生物，就不能借此法术变成四足生物。在法术持续期间的任何时候，你都可以用一个动作再次这样改变外貌。\n\n***天然武器。*** 你长出爪、獠牙、尖刺、角，或你选择的其他天然武器。你的徒手攻击会依照你所选择的天然武器类型，造成 1d6 点钝击、穿刺或挥砍伤害，并且你熟练你的徒手攻击。最后，这种天然武器视为魔法武器，且你使用它进行的攻击检定和伤害掷骰具有 +1 加值。",
+  "动物友谊": "*1 环 惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一小块食物）\n\n**持续时间：** 24 小时\n\n此法术让你说服一只野兽相信你并无恶意。选择一只你在射程内看得见的野兽。它必须看得见并听得见你。若该野兽的智力为 4 或更高，则法术自动失败。否则，该野兽必须成功通过一次感知豁免，否则在法术持续时间内被你魅惑。若你或你的同伴伤害了目标，则法术结束。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放此法术时，法术位每高于 1 环一级，你便可额外影响一只野兽。",
+  "动物信使": "*2 环 惑控系（仪式）*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一小块食物）\n\n**持续时间：** 24 小时\n\n借助此法术，你可以让一只动物传递信息。选择一只你在射程内看得见的微型野兽，例如松鼠、蓝松鸦或蝙蝠。你指定一个你曾经到访过的地点，以及一个符合概括性描述的收信者，例如“穿着城镇卫兵制服的男人或女人”，或“戴着尖顶帽子的红发矮人”。你还说出一段至多 25 个词的信息。目标野兽会在法术持续时间内朝指定地点前进；若是飞行信使，每 24 小时约可行进 50 英里，其他动物则约为 25 英里。\n\n信使抵达后，会以你的声音向你所描述的生物传达信息。信使只会对符合你给出描述的生物说话。若信使在法术结束前未能抵达目的地，则信息丢失，而该野兽会自行返回你施放此法术的地点。\n\n***高环位施法。*** 若你使用 3 环或更高法术位施放此法术，法术位每高于 2 环一级，法术持续时间便增加 48 小时。",
+  "动物形态": "*8 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 24 小时\n\n你的魔法将他人变为野兽。选择射程内任意数量你看得见的自愿生物。你将每个目标变成挑战等级为 4 或更低、体型为大型或更小的野兽形态。在后续回合中，你可以用一个动作将受影响生物变成新的形态。\n\n对每个目标而言，该变形会持续至法术结束，或直到目标生命值降至 0 或死亡。你可以为每个目标选择不同形态。目标的游戏数据会被所选野兽的数据取代，但目标保留其阵营，以及智力、感知和魅力值。目标获得新形态的生命值；当它恢复正常形态时，会回到变形前拥有的生命值。若它因生命值降至 0 而恢复原形，则任何溢出伤害都会转移到其正常形态上。只要溢出伤害没有将该生物正常形态的生命值降至 0，它就不会失去意识。该生物可采取的动作受其新形态本质限制，并且不能说话或施法。\n\n目标的装备会融入新形态中。目标无法启动、持用或以其他方式受益于其任何装备。",
+  "操纵死尸": "*3 环 死灵系*\n\n**施法时间：** 1 分钟\n\n**射程：** 10 尺\n\n**成分：** V、S、M（一滴血、一片肉，以及一撮骨粉）\n\n**持续时间：** 瞬间\n\n此法术创造一个不死仆从。选择射程内一堆骨骸，或一具中型或小型人型生物尸体。你的法术向目标灌注一种邪秽的生命仿像，将其唤起为不死生物。若你选择的是骨骸，目标会变为骷髅；若选择的是尸体，目标会变为僵尸（其游戏数据由 GM 掌握）。\n\n在你的每个回合中，若由此法术创造的任意生物位于你 60 尺内，你都可以用一个附赠动作以心灵向其下令（若你控制多个生物，你可以同时命令其中任意数量或全部，并向每个生物下达相同命令）。你决定该生物在其下个回合采取什么动作，以及移动到哪里；或者你也可以下达一项概括命令，例如守卫某个房间或走廊。若你没有下达命令，该生物只会保护自己免受敌对生物攻击。命令一旦下达，该生物会持续执行，直到任务完成。\n\n该生物会受你控制 24 小时，此后它将不再服从你下达的任何命令。若要再维持对该生物 24 小时的控制，你必须在当前 24 小时结束前再次对该生物施放此法术。此用法不会唤起新的不死生物，而是重新确立你对至多四个由此法术操纵的不死生物的控制。\n\n***高环位施法。*** 当你使用 4 环或更高法术位施放此法术时，法术位每高于 3 环一级，你可以额外唤起或重新确立对两个不死生物的控制。每个生物都必须来自不同的尸体或骨堆。",
+  "操纵物件": "*5 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n物件会在你的命令下活化。选择射程内至多十个未被穿戴或携带的非魔法物件。中型目标计作两个物件，大型目标计作四个物件，巨型目标计作八个物件。你不能活化任何比巨型更大的物件。每个目标都会活化，并在法术结束或其生命值降至 0 前成为受你控制的生物。\n\n作为一个附赠动作，若由此法术创造的任意生物位于你 500 尺内，你可以以心灵向其下令（若你控制多个生物，你可以同时命令其中任意数量或全部，并向每个生物下达相同命令）。你决定该生物在其下个回合采取什么动作，以及移动到哪里；或者你也可以下达一项概括命令，例如守卫某个房间或走廊。若你没有下达命令，该生物只会保护自己免受敌对生物攻击。命令一旦下达，该生物会持续执行，直到任务完成。\n\n**表格 - 活化物件数据**\n\n| 体型 | 生命值 | AC | 攻击 | 力量 | 敏捷 |\n|--------|----|----|----------------------------|-----|-----|\n| 微型 | 20 | 18 | 命中 +8，1d4 + 4 伤害 | 4   | 18  |\n| 小型 | 25 | 16 | 命中 +6，1d8 + 2 伤害 | 6   | 14  |\n| 中型 | 40 | 13 | 命中 +5，2d6 + 1 伤害 | 10  | 12  |\n| 大型 | 50 | 10 | 命中 +6，2d10 + 2 伤害 | 14  | 10  |\n| 超大型 | 80 | 10 | 命中 +8，2d12 + 4 伤害 | 18  | 6   |\n|        |    |    |                            |     |     |\n\n活化物件是一种构装体，其 AC、生命值、攻击、力量和敏捷由其尺寸决定。它的体质为 10，智力和感知为 3，魅力为 1。它的速度为 30 尺；若该物件没有腿或其他可用于移动的附肢，则改为拥有 30 尺飞行速度并能悬浮。若该物件牢固连接在某个表面或更大物体上，例如一条铆在墙上的锁链，则其速度为 0。它具有半径 30 尺的盲视，并且在该距离之外处于目盲。活化物件生命值降至 0 时，会恢复为原本的物件形态，任何剩余伤害都会转移到其原本物件形态上。\n\n若你命令一个物件攻击，它可以对其 5 尺内的一个生物进行一次近战攻击。它进行一次猛击攻击，其攻击加值和钝击伤害由尺寸决定。GM 可以根据特定物件的形态，裁定它造成挥砍或穿刺伤害。\n\n***高环位施法。*** 若你使用 6 环或更高法术位施放此法术，法术位每高于 5 环一级，你可以额外活化两个物件。",
+  "反生物法罩": "*5 环 防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身（10 尺半径）\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 小时\n\n一道闪烁的屏障从你身上向外延伸 10 尺半径，并随你移动，始终以你为中心，将除不死生物与构装体外的生物阻隔在外。该屏障持续到法术结束。\n\n屏障阻止受影响生物穿过或将身体伸入其中。受影响生物仍可穿过屏障施放法术，或以远程武器及触及武器进行攻击。\n\n若你移动到使某个受影响生物被迫穿过该屏障，则法术结束。",
+  "反魔法力场": "*8 环 防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身（10 尺半径球形）\n\n**成分：** V、S、M（一撮铁粉或铁屑）\n\n**持续时间：** 专注，至多 1 小时\n\n一个半径 10 尺的隐形反魔法球形区域环绕着你。该区域与弥漫多元宇宙的魔法能量相隔绝。在球形区域内，法术无法被施放，被召唤的生物会消失，甚至魔法物品也会变为普通物品。直到法术结束前，球形区域以你为中心，并随你移动。\n\n除神器或神祇创造的效果外，法术和其他魔法效果会在球形区域内被压制，并且无法伸入其中。为施放被压制法术而消耗的法术位仍会被消耗。效果被压制期间不会运作，但其被压制的时间仍计入持续时间。\n\n***指定目标效果。*** 指定球形区域内生物或物件为目标的法术和其他魔法效果，例如 *magic missile* 和 *charm person*，对该目标没有效果。\n\n***魔法区域。*** 另一个法术或魔法效果的区域，例如 *fireball*，无法延伸进球形区域内。若球形区域与某个魔法区域重叠，则被球形区域覆盖的那部分区域会被压制。例如，*wall of fire* 创造出的火焰在球形区域内会被压制；若重叠范围足够大，火墙中便会出现一道缺口。\n\n***法术。*** 球形区域内生物或物件身上的任何持续法术或其他魔法效果，只要该生物或物件位于其中，就会被压制。\n\n***魔法物品。*** 魔法物品的属性和力量会在球形区域内被压制。例如，球形区域内的一把 *+1 longsword* 会作为一把非魔法长剑运作。\n\n若魔法武器被用于攻击球形区域内的目标，或由球形区域内的攻击者持用，则其属性和力量会被压制。若一件魔法武器或一发魔法弹药完全离开球形区域（例如你向球形区域外的目标射出魔法箭矢，或投掷魔法长矛），该物品的魔法会在离开球形区域时立即不再被压制。\n\n***魔法旅行。*** 传送和位面旅行在球形区域内无法生效，无论球形区域是这类魔法旅行的目的地还是出发点。通往其他地点、世界或存在位面的传送门，以及通往异次元空间的开口，例如 *rope trick* 法术创造的开口，在位于球形区域内时会暂时关闭。\n\n***生物与物件。*** 由魔法召唤或创造的生物或物件会在球形区域内暂时从存在中消失。一旦该生物原本占据的空间不再位于球形区域内，它会立刻重新出现。\n\n***解除魔法***。*dispel magic* 等法术和魔法效果对该球形区域没有效果。同样，不同 *antimagic field* 法术创造的球形区域也不会彼此抵消。",
+  "厌恶术/共感术": "*8 环 惑控系*\n\n**施法时间：** 1 小时\n\n**射程：** 60 尺\n\n**成分：** V、S、M（用于 *antipathy* 效果时为一块浸过醋的明矾；用于 *sympathy* 效果时为一滴蜂蜜）\n\n**持续时间：** 10 天\n\n此法术会吸引或排斥你选择的生物。你指定射程内某个目标，可以是一件巨型或更小的物件或生物，也可以是一片不超过 200 尺立方体的区域。随后指定一种智慧生物，例如红龙、goblin 或吸血鬼。你为目标灌注一道灵光，在持续时间内吸引或排斥指定生物。选择厌恶或共感作为该灵光的效果。\n\n***厌恶。*** 该惑控使你指定类别的生物产生强烈冲动，想要离开该区域并避开目标。当这类生物能看见目标，或进入目标 60 尺内时，该生物必须成功通过一次感知豁免，否则陷入恐慌。只要该生物能看见目标，或位于其 60 尺内，它就保持恐慌状态。当它因目标而恐慌时，必须使用其移动力移动到最近的安全地点，使自己无法看见目标。若该生物移动到距离目标超过 60 尺且无法看见目标，则不再恐慌；但若它重新看见目标，或移动到其 60 尺内，则会再次陷入恐慌。\n\n***共感。*** 该惑控使指定生物在位于目标 60 尺内或能够看见目标时，产生强烈冲动想要接近目标。当这类生物能看见目标，或进入目标 60 尺内时，该生物必须成功通过一次感知豁免，否则会在其每个回合使用移动力进入该区域，或移动到目标触及范围内。一旦它这样做，它就不能自愿远离目标。\n\n若目标对受影响生物造成伤害或以其他方式加害它，受影响生物可以进行一次感知豁免以结束此效果，详见下文。\n\n***结束效果。*** 若受影响生物在回合结束时既不位于目标 60 尺内，也不能看见目标，则该生物进行一次感知豁免。豁免成功时，该生物不再受目标影响，并意识到这种厌恶或吸引感是魔法造成的。此外，只要此法术仍持续，受影响生物每 24 小时还可以再进行一次感知豁免。\n\n成功豁免抵抗此效果的生物，会对此效果免疫 1 分钟，之后它可以再次受到影响。",
+  "奥术眼": "*4 环 预言系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一点蝙蝠毛）\n\n**持续时间：** 专注，至多 1 小时\n\n你在射程内创造出一只隐形的魔法眼，它会在持续时间内悬浮于空中。\n\n你会以心灵方式从这只眼睛接收视觉信息。它拥有普通视觉，以及 30 尺范围的黑暗视觉。它可以向任意方向观察。\n\n作为一个动作，你可以将这只眼睛朝任意方向移动至多 30 尺。它能离你多远没有限制，但它不能进入另一个存在位面。实体屏障会阻挡这只眼睛的移动，但它可以穿过直径小至 1 英寸的开口。",
+  "奥术之手": "*5 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S、M（一片蛋壳和一只蛇皮手套）\n\n**持续时间：** 专注，至多 1 分钟\n\n你在射程内一个你看得见的未被占据空间中，创造出一只大型、闪烁半透明光辉的力场之手。该手持续至法术结束，并会依照你的命令移动，模仿你自己手掌的动作。\n\n这只手是一个物件，AC 为 20，生命值等于你的生命值上限。若其生命值降至 0，则法术结束。它的力量为 26（+8），敏捷为 10（+0）。这只手不会填满其所在空间。\n\n当你施放此法术时，以及在你后续回合中作为附赠动作，你可以将这只手移动至多 60 尺，然后令其产生下列效果之一。\n\n***紧握拳。*** 这只手打击其 5 尺内的一个生物或物件。使用你的游戏数据为这只手进行一次近战法术攻击。若命中，目标受到 4d8 点力场伤害。\n\n***强推手。*** 这只手试图将其 5 尺内的一个生物朝你选择的方向推开。\n\n使用这只手的力量进行一次检定，并与目标的力量（运动）检定对抗。若目标为中型或更小，你在该检定上具有优势。若你成功，这只手会将目标推开至多 5 尺，再加上等同于你施法属性调整值 5 倍的尺数。这只手会随目标移动，以保持在其 5 尺内。\n\n***擒拿手。*** 这只手试图擒抱其 5 尺内一个巨型或更小的生物。你使用这只手的力量值来结算擒抱。若目标为中型或更小，你在该检定上具有优势。当这只手正在擒抱目标时，你可以用一个附赠动作令它挤压目标。这样做时，目标受到 `2d6 + 你的施法属性调整值` 点钝击伤害。\n\n***阻隔手。*** 这只手会挡在你与一个你选择的生物之间，直到你向它下达不同命令。它会移动以保持在你与目标之间，为你提供对抗该目标的半身掩护。若目标的力量值小于或等于这只手的力量值，则目标不能穿过这只手的空间。若目标的力量值高于这只手的力量值，它可以穿过这只手的空间朝你移动，但该空间对目标而言属于困难地形。\n\n***高环位施法。*** 当你使用 6 环或更高法术位施放此法术时，法术位每高于 5 环一级，“紧握拳”选项的伤害增加 2d8，“擒拿手”的伤害增加 2d6。",
+  "奥术锁": "*2 环 防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（价值至少 25 gp 的金粉，且会被法术消耗）\n\n**持续时间：** 直到被解除\n\n你触碰一扇关闭的门、窗、闸门、箱子或其他入口，使其在持续时间内被锁住。你和你在施放此法术时指定的生物可以正常打开该物件。你也可以设定一个口令；当该口令在该物件 5 尺内被说出时，此法术会被压制 1 分钟。否则，在该物件被破坏，或法术被解除或压制前，它无法被通过。对该物件施放 *knock* 会压制 *arcane lock* 10 分钟。\n\n受此法术影响时，该物件更难被破坏或强行打开；破坏该物件或撬开其上任何锁具的 DC 增加 10。",
+  "奥术之剑": "*7 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一把微型白金剑，其剑柄与剑首由铜和锌制成，价值 250 gp）\n\n**持续时间：** 专注，至多 1 分钟\n\n你创造出一把剑形力场，悬浮于射程内。它持续到法术结束。\n\n当这把剑出现时，你对所选目标进行一次近战法术攻击，目标必须位于剑的 5 尺内。若命中，目标受到 3d10 点力场伤害。直到法术结束前，你在自己每个回合都可以用一个附赠动作将这把剑移动至多 20 尺到你看得见的位置，并对同一目标或另一目标再次进行这次攻击。",
+  "奥术师魔法灵光": "*2 环 幻术系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（一小块方形丝绸）\n\n**持续时间：** 24 小时\n\n你在一个你触碰的生物或物件上放置幻象，使预言系法术在探查它时显示虚假信息。目标可以是一个自愿生物，或一个未被其他生物携带或穿戴的物件。\n\n施放此法术时，从以下效果中选择一种或两种。该效果持续至法术结束。若你连续 30 天每天都对同一生物或物件施放此法术，并每次都放置同样效果，则该幻象会一直持续到被解除为止。\n\n***虚假灵光。*** 你改变目标在探测魔法灵光的法术和魔法效果面前呈现的方式，例如 *detect magic*。你可以让非魔法物件显得像魔法物件，让魔法物件显得像非魔法物件，或改变物件的魔法灵光，使其看起来属于你选择的某个特定魔法学派。当你将此效果用于物件时，也可以让任何持握该物品的生物都能明显感知到这种虚假魔法。\n\n***伪装。*** 你改变目标在探测生物类型的法术和魔法效果面前呈现的方式，例如圣武士的神圣感知或 *symbol* 法术的触发条件。你选择一种生物类型和一种阵营，其他法术和魔法效果会将目标视作该类型或该阵营的生物。",
+  "星界投影": "*9 环 死灵系*\n\n**施法时间：** 1 小时\n\n**射程：** 10 尺\n\n**成分：** V、S、M（你以此法术影响的每个生物，都需要提供一颗价值至少 1,000 gp 的风信子石，以及一根价值至少 100 gp、雕刻精美的银条；所有这些材料都会被法术消耗）\n\n**持续时间：** 特殊\n\n你和射程内至多八个自愿生物，将你们的星界身体投射到星界位面（若你已经在该位面，则法术失败且此次施法白费）。你们留下的物质身体处于失去意识和假死状态；它不需要食物或空气，也不会衰老。\n\n你的星界身体几乎在各方面都类似于你的凡俗形体，并复制你的游戏数据和财物。主要差异在于，一条银色细索从你两肩胛骨之间延伸出来，拖曳在你身后，并在 1 尺后逐渐隐没。此索是你与物质身体的系绳。只要系绳保持完整，你就能找到回家的路。若该系绳被切断，且只有明确说明能切断它的效果才可能做到这一点，你的灵魂和身体会被分离，令你立刻死亡。\n\n你的星界形体可以在星界位面中自由旅行，并可穿过其中通往任何其他位面的传送门。若你进入一个新位面，或返回你施放此法术时所在的位面，你的身体与财物会沿银索被传送过去，使你在进入新位面时重新进入自己的身体。你的星界形体是一个独立化身。任何作用于它的伤害或其他效果，都不会影响你的物质身体，也不会在你返回身体后继续存在。\n\n当你用一个动作解除此法术时，此法术会对你和你的同伴结束。法术结束时，受影响生物返回其物质身体，并醒来。\n\n此法术也可能提前对你或你的某个同伴结束。对星界身体或物质身体成功施放 *dispel magic*，会结束该生物身上的此法术。若生物原本的身体或其星界形体生命值降至 0，则此法术对该生物结束。若法术结束且银索仍完好，银索会将该生物的星界形体拉回其身体，从而结束其假死状态。\n\n若你提前返回自己的身体，你的同伴仍会保持星界形体，并必须自行找到返回身体的方法，通常是让生命值降至 0。",
+  "卜筮术": "*2 环 预言系（仪式）*\n\n**施法时间：** 1 分钟\n\n**射程：** 自身\n\n**成分：** V、S、M（带有特殊标记的木签、骨片或类似信物，价值至少 25 gp）\n\n**持续时间：** 瞬间\n\n通过投掷镶嵌宝石的木签、掷出龙骨、铺开华丽卡牌，或使用其他占卜工具，你从异界实体处获得一个预兆，用以判断你计划在接下来 30 分钟内采取的某项具体行动会带来何种结果。GM 从以下可能预兆中选择：\n\n- *吉*，代表好结果\n- *凶*，代表坏结果\n- *吉凶参半*，代表既有好结果也有坏结果\n- *无*，代表结果既不特别好也不特别坏\n\n此法术不会考虑任何可能改变结果的后续情况，例如额外施放法术，或失去、获得一名同伴。\n\n若你在完成下一次长休前施放此法术两次或更多次，则从第二次施法开始，每次施法都有累积 25% 的概率得到随机解读。GM 会暗中进行此掷骰。",
+  "启蒙术": "*5 环 变化系*\n\n**施法时间：** 8 小时\n\n**射程：** 接触\n\n**成分：** V、S、M（一颗价值至少 1,000 gp 的玛瑙，且会被法术消耗）\n\n**持续时间：** 瞬间\n\n在施法时间内，你于一颗贵重宝石中描绘魔法路径，然后触碰一只巨型或更小体型的野兽或植物。目标必须没有智力值，或智力为 3 或更低。目标的智力变为 10。目标还获得说一种你所知语言的能力。若目标是植物，它获得移动其枝干、根须、藤蔓、蔓藤等部位的能力，并获得类似人类的感官。GM 会为被启蒙的植物选择适当数据，例如觉醒灌木或觉醒树的数据。\n\n被启蒙的野兽或植物会被你魅惑 30 天，或直到你或你的同伴对其做出任何有害行为为止。当魅惑状态结束时，该被启蒙生物会根据你在其被魅惑期间如何对待它，自行选择是否继续对你保持友善。",
+  "灾祸术": "*1 环 惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一滴血）\n\n**持续时间：** 专注，至多 1 分钟\n\n你在射程内选择至多三个你看得见的生物，它们必须进行魅力豁免。若目标豁免失败，则在法术结束前，每当该目标进行一次攻击检定或豁免时，都必须额外掷一个 d4，并将掷出的点数从该次攻击检定或豁免中减去。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放此法术时，法术位每高于 1 环一级，你就可以额外指定一个目标生物。",
+  "放逐术": "*4 环 防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一件令目标厌恶的物品）\n\n**持续时间：** 专注，至多 1 分钟\n\n你试图将一个射程内你看得见的生物送往另一个位面。目标必须成功通过一次魅力豁免，否则便会被放逐。\n\n若目标原本就来自你当前所在的位面，则你会把它放逐到一个无害的半位面中。在那里，它处于失能状态。目标会一直留在那里，直到法术结束；届时，它会重新出现在原先离开的空间内，若该空间已被占据，则出现在最近的未被占据空间中。\n\n若目标原本来自与你当前所在位面不同的位面，则它会伴随一声轻微的爆响被放逐回自己的原生位面。若法术在 1 分钟过去前结束，则目标会重新出现在原先离开的空间内，若该空间已被占据，则出现在最近的未被占据空间中。否则，目标将不会返回。\n\n***高环位施法。*** 当你使用 5 环或更高法术位施放此法术时，法术位每高于 4 环一级，你就可以额外指定一个目标生物。",
+  "树皮术": "*2 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（一把橡树皮）\n\n**持续时间：** 专注，至多 1 小时\n\n你触碰一个自愿生物。直到法术结束前，目标的皮肤会呈现粗糙、如树皮般的外观，而无论它穿着何种护甲，其 AC 都不会低于 16。",
+  "希望信标": "*3 环 防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n此法术赐予希望与活力。选择射程内任意数量的生物。持续时间内，每个目标在感知豁免和死亡豁免上具有优势，并且从任何治疗效果中恢复的生命值都取最大值。",
+  "降咒术": "*3 环 死灵系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n你触碰一个生物，该生物必须成功通过一次感知豁免，否则在法术持续时间内受到诅咒。施放此法术时，从下列诅咒效果中选择一种：\n\n- 选择一项属性值。受到诅咒期间，目标以该属性进行的属性检定和豁免都具有劣势。\n- 受到诅咒期间，目标对你进行的攻击检定具有劣势。\n- 受到诅咒期间，目标在其每个回合开始时都必须进行一次感知豁免。若失败，则它会浪费该回合的动作，什么也不做。\n- 目标受到诅咒期间，你对其造成的攻击和法术伤害会额外附加 1d8 点黯蚀伤害。\n\n一个 *remove curse* 法术可以结束此效果。GM 也可以允许你选择其他诅咒效果，但其强度不应超过上述效果。此类诅咒的最终裁定权归 GM 所有。\n\n***高环位施法。*** 若你使用 4 环或更高法术位施放此法术，则其持续时间为“专注，至多 10 分钟”。若你使用 5 环或更高法术位，则持续时间为 8 小时。若你使用 7 环或更高法术位，则持续时间为 24 小时。若你使用 9 环法术位，则法术会一直持续到被解除为止。使用 5 环或更高法术位施放时，该持续时间无需专注。",
+  "黑触手": "*4 环 咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 90 尺\n\n**成分：** V、S、M（一截巨型章鱼或巨型乌贼的触手）\n\n**持续时间：** 专注，至多 1 分钟\n\n扭动的乌黑触手充满你在射程内看得见的地面上一块边长 20 尺的方形区域。持续时间内，这些触手会让该区域地面变为困难地形。\n\n当生物在一个回合内第一次进入受影响区域，或在其中开始其回合时，该生物必须成功通过一次敏捷豁免，否则受到 3d6 点钝击伤害，并被触手受拘束直到法术结束。若一个生物在该区域开始其回合时，已经被这些触手受拘束，则其再受到 3d6 点钝击伤害。\n\n被触手受拘束的生物可以用一个动作，选择进行一次力量或敏捷检定，对抗你的法术豁免 DC。若成功，则该生物挣脱束缚。",
+  "刀刃屏障": "*6 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 90 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 10 分钟\n\n你创造出一面由魔法能量构成、垂直竖立的旋转锋刃之墙。此墙出现在射程内，并持续至法术结束。你可以制造一面最长 100 尺、高 20 尺、厚 5 尺的直墙，或一面直径至多 60 尺、高 20 尺、厚 5 尺的环形墙。墙体会为其后的生物提供四分之三掩护，而其所在空间视为困难地形。\n\n当生物在一个回合内第一次进入墙体区域，或在其中开始其回合时，该生物必须进行一次敏捷豁免。豁免失败则受到 6d10 点挥砍伤害；豁免成功则只受到一半伤害。",
+  "祝福术": "*1 环 惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（少量洒出的圣水）\n\n**持续时间：** 专注，至多 1 分钟\n\n你祝福射程内至多三个你选择的生物。在法术结束前，每当目标进行一次攻击检定或豁免时，目标都可以额外掷一个 d4，并将掷出的点数加到该次攻击检定或豁免上。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放此法术时，法术位每高于 1 环一级，你就可以额外指定一个目标生物。",
+  "枯萎术": "*4 环 死灵系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S\n\n**持续时间：** 瞬间\n\n死灵能量冲刷射程内一个你看得见、由你选择的生物，抽离其体内的水分与活力。目标必须进行一次体质豁免。豁免失败则受到 8d8 点黯蚀伤害；豁免成功则只受到一半伤害。此法术对不死生物与构装体无效。\n\n若你指定的目标是植物生物或魔法植物，则它进行该豁免时具有劣势，且此法术对其造成最大伤害。\n\n若你指定的目标是非魔法植物且并非生物，例如树木或灌木，则它不进行豁免，而是直接枯萎死亡。\n\n***高环位施法。*** 当你使用 5 环或更高法术位施放此法术时，法术位每高于 4 环一级，伤害便增加 1d8。",
+  "致盲术/致聋术": "*2 环 死灵系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V\n\n**持续时间：** 1 分钟\n\n你可以令敌人失明或失聪。选择一个你在射程内看得见的生物，使其进行一次体质豁免。若其失败，则目标在持续时间内陷入目盲或耳聋状态（由你选择）。在其每个回合结束时，目标都可以再次进行一次体质豁免。若成功，则法术结束。\n\n***高环位施法。*** 当你使用 3 环或更高法术位施放此法术时，法术位每高于 2 环一级，你就可以额外指定一个目标生物。",
+  "闪现术": "*3 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S\n\n**持续时间：** 1 分钟\n\n在法术持续期间，你在自己每个回合结束时掷一个 d20。若结果为 11 或更高，你会从当前所在位面消失，并出现在以太位面中（若你本就在该位面，则法术失败且此次施法白费）。在你下个回合开始时，以及若法术结束时你仍位于以太位面时，你会回到你消失处 10 尺内一个你看得见、由你选择的未被占据空间中。若该范围内没有未被占据空间，则你会出现在最近的未被占据空间中（若有多个同样近的空间，则随机决定）。你可以用一个动作解除此法术。\n\n当你位于以太位面时，你可以看见并听见你原本所在的位面，只不过一切都呈现灰白色调，且你无法看见 60 尺外的任何事物。你只能影响并被位于以太位面的其他生物所影响。不在该位面的生物无法察觉你，也无法与你互动，除非它们具有相应能力。",
+  "模糊术": "*2 环 幻术系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V\n\n**持续时间：** 专注，至多 1 分钟\n\n你的身体在所有能看见你的人眼中变得模糊不清、摇曳不定。持续时间内，任何生物对你进行的攻击检定都具有劣势。若攻击者不依赖视觉，例如具备盲视，或能够看穿幻象，例如具备真视，则不受此效果影响。",
+  "印记斩": "*2 环 塑能系*\n\n**施法时间：** 1 附赠动作\n\n**射程：** 自身\n\n**成分：** V\n\n**持续时间：** 专注，至多 1 分钟\n\n在此法术结束前，下一次你以武器攻击命中一个生物时，你的武器会在打击时闪耀星界光辉。该攻击对目标额外造成 2d6 点光耀伤害；若目标处于隐形状态，则会显形，并在半径 5 尺内散发微光，且在法术结束前无法变为隐形。\n\n***高环位施法。*** 当你使用 3 环或更高法术位施放此法术时，法术位每高于 2 环一级，额外伤害便增加 1d6。",
+  "燃烧之手": "*1 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身（15 尺圆锥）\n\n**成分：** V、S\n\n**持续时间：** 瞬间\n\n你双手拇指相触、手指张开，一片薄薄的火焰幕自你伸出的指尖喷射而出。15 尺圆锥范围内的每个生物都必须进行一次敏捷豁免。豁免失败的生物受到 3d6 点火焰伤害；豁免成功则只受到一半伤害。\n\n火焰会点燃区域内任何未被穿戴或携带的可燃物体。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放此法术时，法术位每高于 1 环一级，伤害便增加 1d6。",
+  "召雷术": "*3 环 咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 10 分钟\n\n一片暴风云以圆柱形出现，其高 10 尺、半径 60 尺，并以你正上方、射程内一个你看得见的点为中心。若你看不见一处可供暴风云出现的空中位置（例如你处在一间容不下云团的房间内），则法术失败。\n\n当你施放此法术时，选择云团下方一个你看得见的点。一道闪电从云团劈向该点。该点 5 尺内的每个生物都必须进行一次敏捷豁免。豁免失败的生物受到 3d10 点闪电伤害；豁免成功则只受到一半伤害。直到法术结束前，你在自己的每个回合都可以用动作再次以这种方式召下闪电，目标可以是同一点或不同点。\n\n若你在户外暴风雨环境中施放此法术，则法术不会创造新的风暴，而是让你控制现有风暴。在这种情况下，此法术的伤害增加 1d10。\n\n***高环位施法。*** 当你使用 4 环或更高法术位施放此法术时，法术位每高于 3 环一级，伤害便增加 1d10。",
+  "安定心神": "*2 环 惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n你试图压制一群人的强烈情绪。以射程内你选择的一点为中心、半径 20 尺球形区域内的每个人型生物都必须进行一次魅力豁免；生物也可以自愿选择豁免失败。若某生物豁免失败，则从以下两个效果中选择一个作用于它。\n\n你可以压制任何令目标处于魅惑或恐慌状态的效果。当此法术结束时，任何被压制的效果都会恢复，前提是其持续时间尚未在此期间结束。\n\n或者，你可以让目标对你选择的、原本与其敌对的生物变得冷漠。若目标受到攻击、被法术伤害，或目睹其任何同伴受到伤害，则这种冷漠结束。当法术结束时，除非 GM 另有裁定，否则该生物会重新变为敌对。",
+  "连锁闪电": "*6 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 150 尺\n\n**成分：** V、S、M（一点毛皮；一块琥珀、玻璃或一根水晶棒；以及三枚银针）\n\n**持续时间：** 瞬间\n\n你创造出一道闪电，弧射向射程内一个你看得见且由你选择的目标。随后，三道闪电从该目标跳跃至至多三个其他目标，每个目标都必须位于第一个目标 30 尺内。目标可以是生物或物件，且每个目标只能被其中一道闪电指定。\n\n每个目标都必须进行一次敏捷豁免。豁免失败则受到 10d8 点闪电伤害；豁免成功则只受到一半伤害。\n\n***高环位施法。*** 当你使用 7 环或更高法术位施放此法术时，法术位每高于 6 环一级，都会有一道额外闪电从第一个目标跳向另一个目标。",
+  "魅惑人类": "*1 环 惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S\n\n**持续时间：** 1 小时\n\n你试图魅惑一个射程内你看得见的人型生物。它必须进行一次感知豁免；若你或你的同伴正在与其战斗，则它在此豁免上具有优势。若其豁免失败，则它会在法术结束前被你魅惑，或直到你或你的同伴对其做出任何有害行为为止。被魅惑的生物会将你视为友善的熟人。法术结束时，该生物会知道自己曾被你魅惑。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放此法术时，法术位每高于 1 环一级，你就可以额外指定一个目标生物。被指定的生物在成为目标时，彼此之间必须位于 30 尺内。",
+  "寒冷之触": "*死灵系 戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S\n\n**持续时间：** 1 轮\n\n你在射程内一个生物的空间中创造出一只幽魂般的骸骨手。对该生物进行一次远程法术攻击，以坟墓般的寒意袭击它。若命中，目标受到 1d8 点黯蚀伤害，并且直到你下个回合开始前无法恢复生命值。在此之前，那只手会紧附在目标身上。\n\n若你命中的是不死生物，则它在直到你下个回合结束前对你进行的攻击检定上还具有劣势。\n\n当你达到 5 级时，此法术的伤害增加 1d8（2d8）；11 级时增加为 3d8；17 级时增加为 4d8。",
+  "死亡法环": "*6 环 死灵系*\n\n**施法时间：** 1 动作\n\n**射程：** 150 尺\n\n**成分：** V、S、M（由一颗价值至少 500 gp 的黑珍珠碾碎而成的粉末）\n\n**持续时间：** 瞬间\n\n一团负能量从射程内一点向外波动，形成半径 60 尺的球形区域。该区域内的每个生物都必须进行一次体质豁免。豁免失败的目标受到 8d6 点黯蚀伤害；豁免成功则只受到一半伤害。\n\n***高环位施法。*** 当你使用 7 环或更高法术位施放此法术时，法术位每高于 6 环一级，伤害便增加 2d6。",
+  "千里眼/顺风耳": "*3 环 预言系*\n\n**施法时间：** 10 分钟\n\n**射程：** 1 英里\n\n**成分：** V、S、M（价值至少 100 gp 的法器，若用于听觉则为镶宝石的号角，若用于视觉则为玻璃眼）\n\n**持续时间：** 专注，至多 10 分钟\n\n你在射程内创造一个隐形传感器，其位置可以是你熟悉的地点（你曾到访或见过的地点），也可以是一个你不熟悉但位置明确的地点（例如门后、拐角处，或一片树林中）。该传感器会在持续时间内停留原地，且无法被攻击或以其他方式互动。\n\n施放此法术时，你选择视觉或听觉。你可以通过传感器使用所选感官，就如同自己处在传感器所在空间一样。作为一个动作，你可以在视觉与听觉之间切换。\n\n能看见该传感器的生物（例如受益于 *see invisibility* 或真视的生物），会看到一个约拳头大小、发光且无实体的球体。",
+  "克隆术": "*8 环 死灵系*\n\n**施法时间：** 1 小时\n\n**射程：** 接触\n\n**成分：** V、S、M（一颗价值至少 1,000 gp 的钻石，至少 1 立方英寸来自待克隆生物的血肉且会被法术消耗，以及一个价值至少 2,000 gp、带有可密封盖子且足以容纳一个中型生物的容器，例如巨大的瓮、棺材、地面中充满泥浆的囊腔，或装满盐水的水晶容器）\n\n**持续时间：** 瞬间\n\n此法术会培育出一个活体生物的惰性复制体，作为对抗死亡的保障。该克隆体在密封容器中形成，并在 120 天后成长至完整尺寸与成熟状态；你也可以选择让克隆体成为同一生物的年轻版本。只要容器不受扰动，克隆体就会保持惰性并无限期保存。\n\n克隆体成熟后的任何时候，若原生物死亡，且其灵魂自由并愿意返回，则其灵魂会转移到克隆体中。\n\n克隆体在身体上与原生物完全相同，并拥有相同的人格、记忆与能力，但不具备原生物的任何装备。若原生物的遗骸仍然存在，则会变为惰性，且此后不能再被复活，因为该生物的灵魂已经转移到别处。",
+  "死云术": "*5 环 咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 10 分钟\n\n你在射程内选择一点，以其为中心创造出半径 20 尺的黄绿色剧毒雾团。雾气会绕过拐角扩散。它持续至法术结束，或直到强风驱散雾气并结束法术。其区域属于重度遮蔽。\n\n当生物在一个回合内第一次进入法术区域，或在其中开始其回合时，该生物必须进行一次体质豁免。豁免失败则受到 5d8 点毒素伤害；豁免成功则只受到一半伤害。即使生物屏住呼吸或不需要呼吸，仍会受到影响。\n\n雾气会在你每个回合开始时沿地表向远离你的方向移动 10 尺。由于这些蒸气比空气更重，它们会下沉到地势最低处，甚至会倾泻进开口之中。\n\n***高环位施法。*** 当你使用 6 环或更高法术位施放此法术时，法术位每高于 5 环一级，伤害便增加 1d8。",
+  "七彩喷射": "*1 环 幻术系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身（15 尺圆锥）\n\n**成分：** V、S、M（一撮红、黄、蓝三色粉末或沙子）\n\n**持续时间：** 1 轮\n\n一阵绚烂闪烁的彩色光芒从你手中迸发。掷 6d10；总数即为此法术能够影响的生物生命值总量。从你发出的 15 尺圆锥内的生物，会按其当前生命值从低到高的顺序受到影响（忽略失去意识的生物，以及无法看见的生物）。\n\n从当前生命值最低的生物开始，每个受此法术影响的生物都会陷入目盲状态，直到你下个回合结束。在转向下一个当前生命值更高的生物前，先从总数中减去该生物的生命值。一个生物的生命值必须小于或等于剩余总数，才能受到影响。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放此法术时，法术位每高于 1 环一级，额外掷 2d10。",
+  "命令术": "*1 环 惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V\n\n**持续时间：** 1 轮\n\n你对射程内一个你看得见的生物说出一个单词的命令。目标必须成功通过一次感知豁免，否则会在其下个回合遵从该命令。若目标是不死生物、不懂你的语言，或你的命令会直接对其造成伤害，则此法术无效。\n\n以下是一些典型命令及其效果。你也可以发出这里未列出的其他命令；若如此，GM 将决定目标如何行动。若目标无法执行你的命令，则法术结束。\n\n***靠近。*** 目标沿最短且最直接的路径向你移动；若它移动到距离你 5 尺内，则结束其回合。\n\n***丢下。*** 目标丢弃手中所持之物，然后结束其回合。\n\n***逃跑。*** 目标会尽其所能以最快方式远离你。\n\n***匍匐。*** 目标倒地，然后结束其回合。\n\n***停止。*** 目标不移动，也不采取任何动作。\n\n飞行生物若能保持飞行，则仍会停留在空中。若它必须移动才能维持飞行，则它会飞行维持滞空所需的最短距离。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放此法术时，法术位每高于 1 环一级，你就可以额外影响一个生物。被指定的生物在成为目标时，彼此之间必须位于 30 尺内。",
+  "通晓自然": "*5 环 预言系（仪式）*\n\n**施法时间：** 1 分钟\n\n**射程：** 自身\n\n**成分：** V、S\n\n**持续时间：** 瞬间\n\n你短暂地与自然合而为一，并获得周边地域的信息。在户外，此法术会让你获知自身 3 英里范围内土地的信息。在洞穴和其他天然地下环境中，该半径限制为 300 尺。若自然已被建筑取代，例如地下城与城镇中，此法术不起作用。\n\n你立刻获知下列主题中至多三项你所选择事实，只要这些事实与该区域有关：\n\n- 地形与水体\n- 常见植物、矿物、动物或人群\n- 强大的天界生物、精类、邪魔、元素生物或不死生物\n- 其他存在位面的影响\n- 建筑物\n\n例如，你可以确定区域内强大不死生物的位置、主要安全饮用水源的位置，以及附近任何城镇的位置。",
+  "通神术": "*5 环 预言系（仪式）*\n\n**施法时间：** 1 分钟\n\n**射程：** 自身\n\n**成分：** V、S、M（熏香和一小瓶圣水或邪水）\n\n**持续时间：** 1 分钟\n\n你联系自己的神祇或一位神圣代理者，并提出至多三个可用“是”或“否”回答的问题。你必须在法术结束前提出这些问题。每个问题都会得到正确答案。\n\n神圣存在并不一定全知，因此若问题涉及超出该神祇知识范围的信息，你可能会得到“尚不明确”的答案。若一个单词的回答可能产生误导，或与该神祇利益相悖，GM 可以改用一句简短短语作为答案。\n\n若你在完成下一次长休前施放此法术两次或更多次，则从第二次施法开始，每次施法都有累积 25% 的概率得不到回答。GM 会暗中进行此掷骰。",
+  "通晓语言": "*1 环 预言系（仪式）*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S、M（一撮煤灰和盐）\n\n**持续时间：** 1 小时\n\n持续时间内，你能理解所听到任何口语的字面含义。你也能理解所看见的任何书面语言，但你必须触碰书写文字所在的表面。阅读一页文字大约需要 1 分钟。\n\n此法术无法解读文本中的密文，也无法解读并非书面语言组成部分的符文，例如奥术印记。",
+  "强迫术": "*4 环 惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n你在射程内选择你看得见且能听见你的生物，它们必须进行一次感知豁免。若目标无法被魅惑，则自动通过此豁免。豁免失败的目标会受到此法术影响。直到法术结束前，你可以在自己的每个回合用一个附赠动作指定一个相对你而言的水平方向。每个受影响目标都必须在其下个回合尽可能使用其移动力朝该方向移动。它可以在移动前采取动作。以这种方式移动后，它可以再进行一次感知豁免，试图结束此效果。\n\n目标不会被迫移动进明显致命的危险中，例如火焰或坑洞；但它会为了朝指定方向移动而触发借机攻击。",
+  "寒冰锥": "*5 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身（60 尺圆锥）\n\n**成分：** V、S、M（一个小型水晶或玻璃圆锥）\n\n**持续时间：** 瞬间\n\n一阵寒冷气流从你双手中爆发。60 尺圆锥内的每个生物都必须进行一次体质豁免。豁免失败的生物受到 8d8 点寒冷伤害；豁免成功则只受到一半伤害。\n\n被此法术杀死的生物会变成一座冰冻雕像，直到解冻为止。\n\n***高环位施法。*** 当你使用 6 环或更高法术位施放此法术时，法术位每高于 5 环一级，伤害便增加 1d8。",
+  "困惑术": "*4 环 惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 90 尺\n\n**成分：** V、S、M（三枚坚果壳）\n\n**持续时间：** 专注，至多 1 分钟\n\n此法术冲击并扭曲生物的心智，制造妄念并引发失控行动。当你施放此法术时，以射程内你选择的一点为中心、半径 10 尺球形区域内的每个生物，都必须成功通过一次感知豁免，否则受到此法术影响。\n\n受影响目标不能采取反应，并且必须在其每个回合开始时掷一个 d10，以决定该回合的行为。\n\n**表格 - 困惑行为**\n\n| d10  | 行为                                                                                                                                                                                            |\n|------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| 1    | 该生物用其全部移动力朝随机方向移动。要决定方向，掷一个 d8，并为每个骰面指定一个方向。该生物本回合不采取动作。 |\n| 2-6  | 该生物本回合不移动，也不采取动作。 |\n| 7-8  | 该生物用其动作对其触及范围内随机决定的一个生物进行一次近战攻击。若其触及范围内没有生物，则该生物本回合什么也不做。 |\n| 9-10 | 该生物可以正常行动和移动。 |\n|      |                                                                                                                                                                                                 |\n\n在受影响目标每个回合结束时，它可以进行一次感知豁免。若成功，则此效果对该目标结束。\n\n***高环位施法。*** 当你使用 5 环或更高法术位施放此法术时，法术位每高于 4 环一级，球形区域半径便增加 5 尺。",
+  "召唤动物": "*3 环 咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 小时\n\n你召唤精类灵体，它们呈现为野兽形态，并出现在射程内你看得见的未被占据空间中。从以下选项中选择一种作为出现的生物：\n\n- 一个挑战等级 2 或更低的野兽\n- 两个挑战等级 1 或更低的野兽\n- 四个挑战等级 1/2 或更低的野兽\n- 八个挑战等级 1/4 或更低的野兽\n\n每个野兽也被视为精类，并在生命值降至 0 或法术结束时消失。\n\n被召唤生物对你和你的同伴友善。为这些被召唤生物作为一个群体掷先攻，它们拥有自己的回合。它们会服从你对它们下达的任何口头命令（你无需为此消耗动作）。若你没有向它们下达命令，它们会保护自己免受敌对生物攻击，但除此之外不采取动作。\n\n这些生物的数据由 GM 掌握。\n\n***高环位施法。*** 当你使用某些更高环位法术位施放此法术时，选择上述召唤选项之一，并出现更多生物：使用 5 环法术位时数量加倍，使用 7 环法术位时数量变为三倍，使用 9 环法术位时数量变为四倍。",
+  "召唤天界生物": "*7 环 咒法系*\n\n**施法时间：** 1 分钟\n\n**射程：** 90 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 小时\n\n你召唤一个挑战等级 4 或更低的天界生物，它出现在射程内你看得见的一个未被占据空间中。该天界生物会在生命值降至 0 或法术结束时消失。\n\n持续时间内，该天界生物对你和你的同伴友善。为该天界生物掷先攻，它拥有自己的回合。只要不违背其阵营，它会服从你下达的任何口头命令（你无需为此消耗动作）。若你没有向该天界生物下达命令，它会保护自己免受敌对生物攻击，但除此之外不采取动作。\n\n该天界生物的数据由 GM 掌握。\n\n***高环位施法。*** 当你使用 9 环法术位施放此法术时，你召唤一个挑战等级 5 或更低的天界生物。",
+  "召唤元素生物": "*5 环 咒法系*\n\n**施法时间：** 1 分钟\n\n**射程：** 90 尺\n\n**成分：** V、S、M（空气对应燃烧的熏香，土对应柔软黏土，火对应硫磺和磷，水对应水和沙）\n\n**持续时间：** 专注，至多 1 小时\n\n你召来一个元素仆从。选择射程内一块充满空气、土、火或水且大小为 10 尺立方体的区域。一个适合你所选区域、挑战等级 5 或更低的元素生物，会出现在距该区域 10 尺内一个未被占据空间中。例如，火元素会从篝火中出现，土元素则会从地面中升起。该元素生物会在生命值降至 0 或法术结束时消失。\n\n持续时间内，该元素生物对你和你的同伴友善。为该元素生物掷先攻，它拥有自己的回合。它会服从你下达的任何口头命令（你无需为此消耗动作）。若你没有向该元素生物下达命令，它会保护自己免受敌对生物攻击，但除此之外不采取动作。\n\n若你的专注被打断，该元素生物不会消失。相反，你会失去对该元素生物的控制，它会对你和你的同伴变为敌对，并且可能发动攻击。你无法解散一个失控的元素生物，它会在你召唤它 1 小时后消失。\n\n该元素生物的数据由 GM 掌握。\n\n***高环位施法。*** 当你使用 6 环或更高法术位施放此法术时，法术位每高于 5 环一级，挑战等级便增加 1。",
+  "召唤精类": "*6 环 咒法系*\n\n**施法时间：** 1 分钟\n\n**射程：** 90 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 小时\n\n你召唤一个挑战等级 6 或更低的精类生物，或一个呈现为挑战等级 6 或更低野兽形态的精类灵体。它出现在射程内你看得见的一个未被占据空间中。该精类生物会在生命值降至 0 或法术结束时消失。\n\n持续时间内，该精类生物对你和你的同伴友善。为该生物掷先攻，它拥有自己的回合。只要不违背其阵营，它会服从你下达的任何口头命令（你无需为此消耗动作）。若你没有向该精类生物下达命令，它会保护自己免受敌对生物攻击，但除此之外不采取动作。\n\n若你的专注被打断，该精类生物不会消失。相反，你会失去对该精类生物的控制，它会对你和你的同伴变为敌对，并且可能发动攻击。你无法解散一个失控的精类生物，它会在你召唤它 1 小时后消失。\n\n该精类生物的数据由 GM 掌握。\n\n***高环位施法。*** 当你使用 7 环或更高法术位施放此法术时，法术位每高于 6 环一级，挑战等级便增加 1。",
+  "召唤次级元素生物": "*4 环 咒法系*\n\n**施法时间：** 1 分钟\n\n**射程：** 90 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 小时\n\n你召唤元素生物，它们出现在射程内你看得见的未被占据空间中。从以下选项中选择一种作为出现的生物：\n\n- 一个挑战等级 2 或更低的元素生物\n- 两个挑战等级 1 或更低的元素生物\n- 四个挑战等级 1/2 或更低的元素生物\n- 八个挑战等级 1/4 或更低的元素生物\n\n由此法术召唤的元素生物会在生命值降至 0 或法术结束时消失。\n\n被召唤生物对你和你的同伴友善。为这些被召唤生物作为一个群体掷先攻，它们拥有自己的回合。它们会服从你对它们下达的任何口头命令（你无需为此消耗动作）。若你没有向它们下达命令，它们会保护自己免受敌对生物攻击，但除此之外不采取动作。\n\n这些生物的数据由 GM 掌握。\n\n***高环位施法。*** 当你使用某些更高环位法术位施放此法术时，选择上述召唤选项之一，并出现更多生物：使用 6 环法术位时数量加倍，使用 8 环法术位时数量变为三倍。",
+  "召唤林地生物": "*4 环 咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（每个被召唤生物需要一颗冬青浆果）\n\n**持续时间：** 专注，至多 1 小时\n\n你召唤精类生物，它们出现在射程内你看得见的未被占据空间中。从以下选项中选择一种作为出现的生物：\n\n- 一个挑战等级 2 或更低的精类生物\n- 两个挑战等级 1 或更低的精类生物\n- 四个挑战等级 1/2 或更低的精类生物\n- 八个挑战等级 1/4 或更低的精类生物\n\n被召唤生物会在生命值降至 0 或法术结束时消失。\n\n被召唤生物对你和你的同伴友善。为这些被召唤生物作为一个群体掷先攻，它们拥有自己的回合。它们会服从你对它们下达的任何口头命令（你无需为此消耗动作）。若你没有向它们下达命令，它们会保护自己免受敌对生物攻击，但除此之外不采取动作。\n\n这些生物的数据由 GM 掌握。\n\n***高环位施法。*** 当你使用某些更高环位法术位施放此法术时，选择上述召唤选项之一，并出现更多生物：使用 6 环法术位时数量加倍，使用 8 环法术位时数量变为三倍。",
+  "异界探知": "*5 环 预言系（仪式）*\n\n**施法时间：** 1 分钟\n\n**射程：** 自身\n\n**成分：** V\n\n**持续时间：** 1 分钟\n\n你以心灵联系一位半神、早已逝去贤者的灵魂，或来自另一个位面的其他神秘实体。接触这种异位面智能可能会使你的心智承受重压，甚至崩溃。当你施放此法术时，进行一次 DC 15 的智力豁免。若失败，你受到 6d6 点心灵伤害，并陷入疯狂，直到你完成一次长休为止。疯狂期间，你不能采取动作，不能理解其他生物所说的话，不能阅读，并且只能说出胡言乱语。对你施放 *greater restoration* 可以结束此效果。\n\n若豁免成功，你可以向该实体询问至多五个问题。你必须在法术结束前提出这些问题。GM 会用一个词回答每个问题，例如“是”、“否”、“也许”、“绝不”、“无关”或“不明确”（若该实体不知道问题答案）。若一个词的回答会产生误导，GM 可以改用一句简短短语作为答案。",
+  "疫病术": "*5 环 死灵系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S\n\n**持续时间：** 7 天\n\n你的触碰会感染疾病。对你触及范围内的一个生物进行一次近战法术攻击。若命中，目标陷入中毒状态。\n\n在中毒目标每个回合结束时，目标必须进行一次体质豁免。若目标在这些豁免中成功三次，它不再中毒，且法术结束。若目标失败三次，它也不再中毒，但你从下列疾病中选择一种。目标在法术持续时间内感染所选疾病。\n\n由于此法术会在目标身上引发一种自然疾病，任何移除疾病或以其他方式缓解疾病效果的效果都适用于它。\n\n***致盲病。*** 痛楚攫住该生物的心智，其双眼变为乳白色。该生物在感知检定和感知豁免上具有劣势，并且陷入目盲状态。\n\n***污秽热。*** 狂暴高热席卷该生物全身。该生物在力量检定、力量豁免，以及使用力量的攻击检定上具有劣势。\n\n***血肉腐烂。*** 该生物的血肉开始腐烂。该生物在魅力检定上具有劣势，并且对所有伤害具有易伤。\n\n***心火病。*** 该生物的心智变得高热狂乱。该生物在智力检定和智力豁免上具有劣势，并且在战斗中表现得如同处于 *confusion* 法术效果下。\n\n***痉挛症。*** 该生物被颤抖压倒。该生物在敏捷检定、敏捷豁免，以及使用敏捷的攻击检定上具有劣势。\n\n***黏液末日。*** 该生物开始无法控制地流血。该生物在体质检定和体质豁免上具有劣势。此外，每当该生物受到伤害时，它都会陷入震慑状态，直到其下个回合结束。",
+  "触发术": "*6 环 塑能系*\n\n**施法时间：** 10 分钟\n\n**射程：** 自身\n\n**成分：** V、S、M（一尊由象牙雕成、以宝石装饰且价值至少 1,500 gp 的你自身小雕像）\n\n**持续时间：** 10 天\n\n选择一个你能够施放、施法时间为 1 动作、且能够以你为目标的 5 环或更低法术。你在施放 *contingency* 的过程中施放该法术，称为触发法术；两个法术的法术位都会被消耗，但触发法术不会立即生效。相反，它会在某个特定情境发生时生效。你在施放这两个法术时描述该情境。例如，与 *water breathing* 一同施放的 *contingency*，可以规定当你被水或类似液体包围时，*water breathing* 生效。\n\n触发法术会在该情境第一次满足后立刻生效，无论你是否愿意；随后 *contingency* 结束。\n\n触发法术只会作用于你，即使它通常也能以其他生物为目标。你同一时间只能拥有一个 *contingency* 法术。若你再次施放此法术，另一个作用于你身上的 *contingency* 效果会结束。此外，若此法术的材料成分不再随身携带，作用于你身上的 *contingency* 也会结束。",
+  "恒焰术": "*2 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（价值 50 gp 的红宝石粉尘，且会被法术消耗）\n\n**持续时间：** 直到被解除\n\n一道亮度等同火把的火焰，从你触碰的物件上跃出。该效果看起来像普通火焰，但不会产生热量，也不消耗氧气。*continual flame* 可以被遮盖或隐藏，但不能被闷熄或浇灭。",
+  "操控水体": "*4 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 300 尺\n\n**成分：** V、S、M（一滴水和一撮尘土）\n\n**持续时间：** 专注，至多 10 分钟\n\n直到法术结束前，你控制你所选择区域内的任何独立水体，该区域至多为边长 100 尺的立方体。施放此法术时，你可以从以下效果中选择一种。在你回合中作为一个动作，你可以重复同一效果，或选择另一个效果。\n\n***洪水。*** 你使区域内所有静止水体的水位升高至多 20 尺。若该区域包括岸边，泛滥的水会漫过干燥陆地。\n\n若你选择的是大型水体中的一片区域，则改为创造一道 20 尺高的浪潮，从该区域一侧移动到另一侧，然后坠落。浪潮路径上的任何巨型或更小载具都会被浪潮带到另一侧。任何被浪潮击中的巨型或更小载具有 25% 的概率倾覆。\n\n水位会保持升高，直到法术结束或你选择另一个效果。若此效果产生了浪潮，则在洪水效果持续期间，该浪潮会在你下个回合开始时重复出现。\n\n***分水。*** 你使区域内的水向两侧分开并创造出一条沟槽。沟槽横贯法术区域，而分开的水在两侧形成水墙。沟槽会持续到法术结束，或直到你选择另一个效果。随后，水会在接下来一轮中缓慢填回沟槽，直到恢复正常水位。\n\n***改向水流。*** 你使区域内流动的水朝你选择的方向移动，即使水必须越过障碍、沿墙向上流，或朝其他不寻常方向流动。区域内的水会按你指示移动；但一旦离开法术区域，它就会根据地形条件恢复原本流向。水会继续朝你选择的方向移动，直到法术结束或你选择另一个效果。\n\n***漩涡。*** 此效果需要一片至少 50 尺见方、25 尺深的水体。你使区域中心形成一个漩涡。该漩涡形成一个底部宽 5 尺、顶部最宽 50 尺、高 25 尺的涡流。水中且位于涡流 25 尺内的任何生物或物件，都会被向涡流方向拉近 10 尺。生物可以进行一次力量（运动）检定，对抗你的法术豁免 DC，以游离涡流。\n\n当生物在一个回合内第一次进入涡流，或在其中开始其回合时，它必须进行一次力量豁免。豁免失败则受到 2d8 点钝击伤害，并被困在涡流中直到法术结束。豁免成功则受到一半伤害，且不会被困在涡流中。被困在涡流中的生物可以用一个动作按上文所述尝试游离涡流，但进行该力量（运动）检定时具有劣势。\n\n每回合中，物件第一次进入涡流时会受到 2d8 点钝击伤害；它停留在涡流中的每一轮都会再次受到该伤害。",
+  "操控天气": "*8 环 变化系*\n\n**施法时间：** 10 分钟\n\n**射程：** 自身（5 英里半径）\n\n**成分：** V、S、M（燃烧的熏香，以及混入水中的泥土和木屑）\n\n**持续时间：** 专注，至多 8 小时\n\n持续时间内，你控制自己 5 英里范围内的天气。你必须在户外才能施放此法术。若你移动到无法清楚通向天空的位置，法术会提前结束。\n\n施放此法术时，你改变当前天气状况；当前天气由 GM 根据气候和季节决定。你可以改变降水、温度和风。新天气状况需要 `1d4 × 10` 分钟才会生效。一旦生效，你可以再次改变天气状况。法术结束时，天气会逐渐恢复正常。\n\n当你改变天气状况时，在下列表格中找到当前状况，并将其阶段向上或向下改变一级。改变风时，你也可以改变风向。\n\n**表格 - 操控天气（降水）**\n\n| 阶段 | 状况                                      |\n|-------|--------------------------------------------|\n| 1     | 晴朗                                      |\n| 2     | 薄云                                      |\n| 3     | 阴天或地雾                                |\n| 4     | 雨、冰雹或雪                              |\n| 5     | 暴雨、强冰雹或暴风雪                      |\n|       |                                            |\n\n**表格 - 操控天气（温度）**\n\n| 阶段 | 状况            |\n|-------|-----------------|\n| 1     | 难以忍受的酷热 |\n| 2     | 炎热            |\n| 3     | 温暖            |\n| 4     | 凉爽            |\n| 5     | 寒冷            |\n| 6     | 极寒            |\n|       |                 |\n\n**表格 - 操控天气（风）**\n\n| 阶段 | 状况          |\n|-------|---------------|\n| 1     | 无风          |\n| 2     | 中等风        |\n| 3     | 强风          |\n| 4     | 大风          |\n| 5     | 风暴          |\n|       |               |",
+  "反制法术": "*3 环 防护系*\n\n**施法时间：** 1 反应，当你看见 60 尺内的一个生物正在施放法术时采取\n\n**射程：** 60 尺\n\n**成分：** S\n\n**持续时间：** 瞬间\n\n你试图打断一个生物正在施放法术的过程。若该生物正在施放 3 环或更低法术，则其法术失败且没有效果。若它正在施放 4 环或更高法术，则使用你的施法属性进行一次属性检定。DC 等于 `10 + 该法术环位`。若成功，该生物的法术失败且没有效果。\n\n***高环位施法。*** 当你使用 4 环或更高法术位施放此法术时，若被打断法术的环位小于或等于你所使用的法术位环位，则该法术没有效果。",
+  "创造食物和水": "*3 环 咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S\n\n**持续时间：** 瞬间\n\n你在射程内的地面上或容器中创造 45 磅食物和 30 加仑水，足以维持至多十五个人型生物或五匹坐骑 24 小时。食物味道寡淡但有营养，若 24 小时后仍未食用则会变质。水是干净的，且不会变坏。",
+  "创造不死生物": "*6 环 死灵系*\n\n**施法时间：** 1 分钟\n\n**射程：** 10 尺\n\n**成分：** V、S、M（每具尸体需要一只装满墓土的陶罐、一只装满咸水的陶罐，以及一颗价值 150 gp 的黑玛瑙）\n\n**持续时间：** 瞬间\n\n你只能在夜间施放此法术。选择射程内至多三具中型或小型人型生物的尸体。每具尸体都会变为一只受你控制的食尸鬼。（这些生物的游戏数据由 GM 掌握。）\n\n在你的每个回合中，若由此法术操纵的任意生物位于你 120 尺内，你可以用一个附赠动作以心灵向其下令（若你控制多个生物，你可以同时命令其中任意数量或全部，并向每个生物下达相同命令）。你决定该生物在其下个回合采取什么动作，以及移动到哪里；或者你也可以下达一项概括命令，例如守卫某个房间或走廊。若你没有下达命令，该生物只会保护自己免受敌对生物攻击。命令一旦下达，该生物会持续执行，直到任务完成。\n\n该生物会受你控制 24 小时，此后它将不再服从你下达的任何命令。若要再维持对该生物 24 小时的控制，你必须在当前 24 小时结束前再次对该生物施放此法术。此用法不会操纵新的不死生物，而是重新确立你对至多三个由此法术操纵的不死生物的控制。\n\n***高环位施法。*** 当你使用 7 环法术位施放此法术时，你可以操纵或重新确立对四只食尸鬼的控制。当你使用 8 环法术位施放此法术时，你可以操纵或重新确立对五只食尸鬼，或两只妖鬼或尸妖的控制。当你使用 9 环法术位施放此法术时，你可以操纵或重新确立对六只食尸鬼、三只妖鬼或尸妖，或两具木乃伊的控制。",
+  "造水术/毁水术": "*1 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（造水时为一滴水，毁水时为几粒沙）\n\n**持续时间：** 瞬间\n\n你创造或摧毁水。\n\n***造水。*** 你在射程内一个敞开的容器中创造至多 10 加仑清水。或者，这些水以雨的形式落在射程内一个 30 尺立方体区域中，熄灭该区域内暴露的火焰。\n\n***毁水。*** 你摧毁射程内一个敞开容器中的至多 10 加仑水。或者，你摧毁射程内一个 30 尺立方体区域中的雾气。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放此法术时，法术位每高于 1 环一级，你创造或摧毁的水增加 10 加仑，或立方体区域边长增加 5 尺。",
+  "创造术": "*5 环 幻术系*\n\n**施法时间：** 1 分钟\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一小块与你计划创造物品同类型的物质）\n\n**持续时间：** 特殊\n\n你从影界牵引出缕缕暗影物质，在射程内创造一个由植物质材料构成的非活体物件，例如软质物品、绳索、木材或类似物。你也可以用此法术创造由矿物构成的物件，例如石头、水晶或金属。被创造物件不得大于 5 尺立方体，并且其形状与材料必须是你曾经见过的。\n\n持续时间取决于物件的材料。若该物件由多种材料构成，则使用其中最短的持续时间。\n\n**表格 - 创造术持续时间**\n\n| 材料                  | 持续时间   |\n|-----------------------|------------|\n| 植物质材料            | 1 天       |\n| 石头或水晶            | 12 小时    |\n| 贵金属                | 1 小时     |\n| 宝石                  | 10 分钟    |\n| 精金或秘银            | 1 分钟     |\n|                       |            |\n\n使用此法术创造出的任何材料作为另一个法术的材料成分，都会导致该法术失败。\n\n***高环位施法。*** 当你使用 6 环或更高法术位施放此法术时，法术位每高于 5 环一级，立方体边长便增加 5 尺。",
+  "治疗伤势": "*1 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S\n\n**持续时间：** 瞬间\n\n你触碰的一个生物恢复等同于 `1d8 + 你的施法属性调整值` 的生命值。此法术对不死生物或构装体没有效果。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放此法术时，法术位每高于 1 环一级，治疗量便增加 1d8。",
+  "舞光术": "*塑能系 戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S、M（一点磷、巫木，或一只萤火虫）\n\n**持续时间：** 专注，至多 1 分钟\n\n你在射程内创造至多四团火把大小的光，使其在持续时间内呈现为火把、提灯或发光球体，并悬浮在空中。你也可以将四团光合并为一个发光的、轮廓模糊的中型类人形体。无论你选择哪种形态，每团光都会在半径 10 尺内散发微光。\n\n在你的回合中，作为一个附赠动作，你可以将这些光移动至多 60 尺到射程内的新位置。每团光必须位于此法术创造的另一团光 20 尺内，若某团光超出法术射程，则会熄灭。",
+  "黑暗术": "*2 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、M（蝙蝠毛和一滴沥青或一块煤）\n\n**持续时间：** 专注，至多 10 分钟\n\n魔法黑暗从射程内你选择的一点扩散开来，在持续时间内填满一个半径 15 尺的球形区域。黑暗会绕过拐角扩散。具有黑暗视觉的生物无法看穿此黑暗，非魔法光源也无法照亮它。\n\n若你选择的点位于你持有的物件上，或位于一个未被穿戴或携带的物件上，则黑暗会从该物件散发，并随其移动。用不透明物件完全遮住黑暗来源，例如用碗或头盔盖住，即可阻挡黑暗。\n\n若此法术的任何区域与一个由 2 环或更低法术创造的光亮区域重叠，则创造该光亮的法术被解除。",
+  "黑暗视觉": "*2 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（一撮干胡萝卜或一颗玛瑙）\n\n**持续时间：** 8 小时\n\n你触碰一个自愿生物，赋予其在黑暗中视物的能力。持续时间内，该生物获得 60 尺范围的黑暗视觉。",
+  "昼明术": "*3 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 1 小时\n\n一片半径 60 尺的光亮球形区域从射程内你选择的一点扩散开来。该球形区域为明亮光照，并在额外 60 尺范围内散发微光。\n\n若你选择的点位于你持有的物件上，或位于一个未被穿戴或携带的物件上，则光亮会从该物件散发，并随其移动。用不透明物件完全遮住受影响物件，例如用碗或头盔盖住，即可阻挡光亮。\n\n若此法术的任何区域与一个由 3 环或更低法术创造的黑暗区域重叠，则创造该黑暗的法术被解除。",
+  "死亡防护": "*4 环 防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S\n\n**持续时间：** 8 小时\n\n你触碰一个生物，赋予其一定程度的死亡防护。\n\n当目标第一次因受到伤害而将生命值降至 0 时，目标改为降至 1 点生命值，且法术结束。\n\n若法术仍在生效，而目标受到一个会在不造成伤害的情况下使其立刻死亡的效果影响，则该效果对目标改为被抵消，且法术结束。",
+  "延迟爆裂火球": "*7 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 150 尺\n\n**成分：** V、S、M（一小球蝙蝠粪和硫磺）\n\n**持续时间：** 专注，至多 1 分钟\n\n一道黄色光束从你指出的手指闪出，随后在射程内你选择的一点凝结成一颗发光珠子，并在持续时间内停留在那里。当法术结束时，无论是因为你的专注被打断，还是因为你决定结束它，这颗珠子都会伴随低沉轰鸣绽放成一场绕过拐角扩散的火焰爆炸。以该点为中心、半径 20 尺球形区域内的每个生物都必须进行一次敏捷豁免。豁免失败的生物受到等同于累计伤害总量的火焰伤害；豁免成功则只受到一半伤害。\n\n此法术的基础伤害为 12d6。若在你回合结束时珠子尚未引爆，则伤害增加 1d6。\n\n若发光珠子在时间结束前被触碰，触碰它的生物必须进行一次敏捷豁免。若豁免失败，法术立刻结束，使珠子爆发成火焰。若豁免成功，该生物可以将珠子投掷至多 40 尺。当它撞上一名生物或实体物件时，法术结束，珠子爆炸。\n\n火焰会伤害区域内物件，并点燃未被穿戴或携带的可燃物。\n\n***高环位施法。*** 当你使用 8 环或更高法术位施放此法术时，法术位每高于 7 环一级，基础伤害便增加 1d6。",
+  "半位面": "*8 环 咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** S\n\n**持续时间：** 1 小时\n\n你在射程内一个你看得见的平坦实体表面上创造出一道阴影门。该门足够大，可让中型生物无阻碍地通过。打开时，门通往一个半位面，看起来像一间三维各 30 尺、由木材或石头构成的空房间。当法术结束时，门会消失，而半位面内的任何生物或物件都会被困在那里，因为门也会从另一侧消失。\n\n每次施放此法术时，你可以创造一个新的半位面，或让这道阴影门连接到你先前施放此法术所创造的半位面。此外，若你知道由另一个生物施放此法术创造的半位面的性质与内容，也可以让阴影门改为连接到它的半位面。",
+  "侦测善恶": "*1 环 预言系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 10 分钟\n\n持续时间内，你知道自己 30 尺内是否有异怪、天界生物、元素生物、精类、邪魔或不死生物，以及该生物所在位置。同样地，你也知道自己 30 尺内是否有被魔法祝圣或亵渎的地点或物件。\n\n此法术可以穿透大多数屏障，但会被 1 尺厚的石头、1 英寸厚的普通金属、一层薄铅片，或 3 尺厚的木材或泥土阻挡。",
+  "侦测魔法": "*1 环 预言系（仪式）*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 10 分钟\n\n持续时间内，你能感知自己 30 尺内是否存在魔法。若你以这种方式感知到魔法，你可以用一个动作看见区域内任何带有魔法且可见的生物或物件周围的微弱灵光，并得知其魔法学派（若有）。\n\n此法术可以穿透大多数屏障，但会被 1 尺厚的石头、1 英寸厚的普通金属、一层薄铅片，或 3 尺厚的木材或泥土阻挡。",
+  "侦测毒素和疾病": "*1 环 预言系（仪式）*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S、M（一片紫杉叶）\n\n**持续时间：** 专注，至多 10 分钟\n\n持续时间内，你可以感知自己 30 尺内毒素、有毒生物和疾病的存在与位置。你也会辨识出每一种情况下毒素、有毒生物或疾病的种类。\n\n此法术可以穿透大多数屏障，但会被 1 尺厚的石头、1 英寸厚的普通金属、一层薄铅片，或 3 尺厚的木材或泥土阻挡。",
+  "侦测思想": "*2 环 预言系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S、M（一枚铜币）\n\n**持续时间：** 专注，至多 1 分钟\n\n持续时间内，你可以读取某些生物的思想。当你施放此法术时，以及直到法术结束前你每个回合用动作时，你可以将心智集中在你 30 尺内一个你看得见的生物上。若你选择的生物智力为 3 或更低，或不会任何语言，则该生物不受影响。\n\n你最初会得知该生物的表层思想，即此刻它最在意的内容。作为一个动作，你可以将注意力转移到另一个生物的思想上，或试图深入探查同一生物的心智。若你深入探查，目标必须进行一次感知豁免。若失败，你会洞察其推理过程（若有）、情绪状态，以及其心中占据重要位置的某件事（例如它担忧、热爱或憎恨的事物）。若成功，法术结束。无论结果如何，目标都会知道你正在探查其心智；并且除非你将注意力转移到另一个生物的思想上，否则该生物可以在其回合用动作进行一次智力检定，与你的智力检定对抗；若它成功，法术结束。\n\n口头向目标生物提出的问题会自然塑造其思维走向，因此此法术作为审讯的一部分尤其有效。\n\n你也可以用此法术侦测你看不见的思维生物的存在。当你施放此法术时，或在持续时间内用动作时，你可以搜索自己 30 尺内的思想。此法术可以穿透屏障，但会被 2 尺厚的岩石、2 英寸厚的任何非铅金属，或一层薄铅片阻挡。你无法侦测智力为 3 或更低的生物，或不会任何语言的生物。\n\n一旦你以这种方式侦测到某个生物的存在，你便可以在剩余持续时间内按上文所述读取其思想，即使你看不见它；但它仍必须位于射程内。",
+  "任意门": "*4 环 咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 500 尺\n\n**成分：** V\n\n**持续时间：** 瞬间\n\n你将自己从当前位置传送到射程内的任意其他位置。你会精确抵达目标地点。该地点可以是你看得见的地方、你能想象出的地方，或你通过距离与方向描述出的地方，例如“垂直向下 200 尺”，或“向西北上方 45 度角，300 尺”。\n\n只要物件重量不超过你能携带的重量，你就可以一并携带这些物件。你也可以带上一名与你体型相同或更小的自愿生物，且该生物携带的装备不超过其载重能力。当你施放此法术时，该生物必须位于你 5 尺内。\n\n若你将要抵达的位置已经被物件或生物占据，则你和与你同行的任何生物各受到 4d6 点力场伤害，且法术无法将你们传送。",
+  "易容术": "*1 环 幻术系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S\n\n**持续时间：** 1 小时\n\n你让自己，包括你的衣物、护甲、武器和随身其他财物，看起来变成另一种样子，直到法术结束或你用动作解除它为止。你可以显得矮或高 1 尺，也可以显得瘦、胖或介于两者之间。你不能改变自己的身体类型，因此必须采用肢体基本结构相同的形态。除此之外，幻象的具体程度由你决定。\n\n此法术造成的变化无法经受物理检查。例如，若你用此法术给自己的装束增加一顶帽子，物件会直接穿过帽子，任何触碰它的人都不会摸到东西，或会摸到你的头和头发。若你用此法术让自己看起来比实际更瘦，伸手触碰你的人会在手看似还悬在半空时碰到你。\n\n若要识破你的伪装，一个生物可以用动作检查你的外貌，并必须成功通过一次智力（调查）检定，对抗你的法术豁免 DC。",
+  "解离术": "*6 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一块磁石和一撮尘土）\n\n**持续时间：** 瞬间\n\n一道细细的绿色射线从你指出的手指射向射程内一个你看得见的目标。目标可以是一个生物、一个物件，或一个魔法力场造物，例如 *wall of force* 创造的墙。\n\n被此法术指定为目标的生物必须进行一次敏捷豁免。豁免失败时，目标受到 `10d6 + 40` 点力场伤害。若该伤害使目标生命值降至 0，则目标被解离。\n\n被解离的生物及其穿戴和携带的一切物品，除魔法物品外，都会化为一堆细灰。该生物只能通过 *true resurrection* 或 *wish* 法术恢复生命。\n\n此法术会自动解离一个大型或更小的非魔法物件，或一个魔法力场造物。若目标是巨型或更大的物件或力场造物，则此法术会解离其中一块 10 尺立方体部分。魔法物品不受此法术影响。\n\n***高环位施法。*** 当你使用 7 环或更高法术位施放此法术时，法术位每高于 6 环一级，伤害便增加 3d6。",
+  "解除善恶": "*5 环 防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S、M（圣水，或银粉和铁粉）\n\n**持续时间：** 专注，至多 1 分钟\n\n闪烁的能量环绕并保护你，使你免受精类、不死生物，以及来自物质位面之外的生物影响。持续时间内，天界生物、元素生物、精类、邪魔和不死生物对你进行的攻击检定具有劣势。\n\n你可以通过使用以下任一特殊功能提前结束此法术。\n\n***破除惑控。*** 作为你的动作，你触碰一个你可触及、且被天界生物、元素生物、精类、邪魔或不死生物魅惑、恐慌或附身的生物。你触碰的生物不再被这类生物魅惑、恐慌或附身。\n\n***驱离。*** 作为你的动作，对一个你可触及的天界生物、元素生物、精类、邪魔或不死生物进行一次近战法术攻击。若命中，你试图将该生物驱回其原生位面。该生物必须成功通过一次魅力豁免，否则被送回其原生位面（若它尚未在那里）。若它们不在自己的原生位面，不死生物会被送往影界，精类会被送往妖精荒野。",
+  "解除魔法": "*3 环 防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S\n\n**持续时间：** 瞬间\n\n选择射程内一个生物、物件或魔法效果。目标身上的任何 3 环或更低法术结束。对于目标身上的每个 4 环或更高法术，使用你的施法属性进行一次属性检定。DC 等于 `10 + 该法术环位`。检定成功时，该法术结束。\n\n***高环位施法。*** 当你使用 4 环或更高法术位施放此法术时，若目标身上某个法术的环位小于或等于你所使用的法术位环位，则你自动结束该法术效果。",
+  "占卜术": "*4 环 预言系（仪式）*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S、M（熏香和与你宗教相符的献祭供品，总价值至少 25 gp，且会被法术消耗）\n\n**持续时间：** 瞬间\n\n你的魔法与供品使你与一位神祇或神祇的仆从取得联系。你询问一个关于 7 天内将发生的某个具体目标、事件或活动的问题。GM 会给出真实答复。该答复可能是一句短语、一段隐晦韵文，或一个预兆。\n\n此法术不会考虑任何可能改变结果的后续情况，例如额外施放法术，或失去、获得一名同伴。\n\n若你在完成下一次长休前施放此法术两次或更多次，则从第二次施法开始，每次施法都有累积 25% 的概率得到随机解读。GM 会暗中进行此掷骰。",
+  "神恩": "*1 环 塑能系*\n\n**施法时间：** 1 附赠动作\n\n**射程：** 自身\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n你的祈祷以神圣光辉强化你。直到法术结束前，你的武器攻击命中时额外造成 1d4 点光耀伤害。",
+  "神圣真言": "*7 环 塑能系*\n\n**施法时间：** 1 附赠动作\n\n**射程：** 30 尺\n\n**成分：** V\n\n**持续时间：** 瞬间\n\n你吐出一句神圣真言，其中蕴含着创世之初塑造世界的力量。选择射程内任意数量你看得见的生物。每个能听见你的生物都必须进行一次魅力豁免。豁免失败时，生物会根据其当前生命值承受效果：\n\n- 50 点生命值或更少：耳聋 1 分钟\n- 40 点生命值或更少：耳聋并目盲 10 分钟\n- 30 点生命值或更少：目盲、耳聋并震慑 1 小时\n- 20 点生命值或更少：立刻死亡\n\n无论当前生命值是多少，豁免失败的天界生物、元素生物、精类或邪魔都会被强制送回其原生位面（若它尚未在那里），并且在 24 小时内无法以任何方式返回你当前所在位面，除非借助 *wish* 法术。",
+  "支配野兽": "*4 环 惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n你试图迷惑射程内一个你看得见的野兽。它必须成功通过一次感知豁免，否则在持续时间内被你魅惑。若你或对你友善的生物正在与它战斗，则它在该豁免上具有优势。\n\n当该野兽被魅惑时，只要你们两者位于同一存在位面，你便与它拥有心灵链接。你可以在自己有意识时通过此心灵链接向该生物下达命令（无需动作），它会尽力服从。你可以指定一项简单且概括的行动方针，例如“攻击那个生物”、“跑到那边去”或“取来那个物件”。若该生物完成命令且没有收到你的进一步指示，它会尽其所能保护并维持自身安全。\n\n你可以用动作完全且精确地控制目标。直到你下个回合结束前，该生物只会采取你选择的动作，并且不会做任何你不允许它做的事。在此期间，你也可以令该生物使用一个反应，但这也需要你使用自己的反应。\n\n每当目标受到伤害时，它都会针对该法术进行一次新的感知豁免。若豁免成功，法术结束。\n\n***高环位施法。*** 当你使用 5 环法术位施放此法术时，持续时间为“专注，至多 10 分钟”。当你使用 6 环法术位时，持续时间为“专注，至多 1 小时”。当你使用 7 环或更高法术位时，持续时间为“专注，至多 8 小时”。",
+  "支配怪物": "*8 环 惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 小时\n\n你试图迷惑射程内一个你看得见的生物。它必须成功通过一次感知豁免，否则在持续时间内被你魅惑。若你或对你友善的生物正在与它战斗，则它在该豁免上具有优势。\n\n当该生物被魅惑时，只要你们两者位于同一存在位面，你便与它拥有心灵链接。你可以在自己有意识时通过此心灵链接向该生物下达命令（无需动作），它会尽力服从。你可以指定一项简单且概括的行动方针，例如“攻击那个生物”、“跑到那边去”或“取来那个物件”。若该生物完成命令且没有收到你的进一步指示，它会尽其所能保护并维持自身安全。\n\n你可以用动作完全且精确地控制目标。直到你下个回合结束前，该生物只会采取你选择的动作，并且不会做任何你不允许它做的事。在此期间，你也可以令该生物使用一个反应，但这也需要你使用自己的反应。\n\n每当目标受到伤害时，它都会针对该法术进行一次新的感知豁免。若豁免成功，法术结束。\n\n***高环位施法。*** 当你使用 9 环法术位施放此法术时，持续时间为“专注，至多 8 小时”。",
+  "支配人类": "*5 环 惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n你试图迷惑射程内一个你看得见的人型生物。它必须成功通过一次感知豁免，否则在持续时间内被你魅惑。若你或对你友善的生物正在与它战斗，则它在该豁免上具有优势。\n\n当目标被魅惑时，只要你们两者位于同一存在位面，你便与它拥有心灵链接。你可以在自己有意识时通过此心灵链接向该生物下达命令（无需动作），它会尽力服从。你可以指定一项简单且概括的行动方针，例如“攻击那个生物”、“跑到那边去”或“取来那个物件”。若该生物完成命令且没有收到你的进一步指示，它会尽其所能保护并维持自身安全。\n\n你可以用动作完全且精确地控制目标。直到你下个回合结束前，该生物只会采取你选择的动作，并且不会做任何你不允许它做的事。在此期间，你也可以令该生物使用一个反应，但这也需要你使用自己的反应。\n\n每当目标受到伤害时，它都会针对该法术进行一次新的感知豁免。若豁免成功，法术结束。\n\n***高环位施法。*** 当你使用 6 环法术位施放此法术时，持续时间为“专注，至多 10 分钟”。当你使用 7 环法术位时，持续时间为“专注，至多 1 小时”。当你使用 8 环或更高法术位时，持续时间为“专注，至多 8 小时”。",
+  "托梦术": "*5 环 幻术系*\n\n**施法时间：** 1 分钟\n\n**射程：** 特殊\n\n**成分：** V、S、M（一把沙子、一点墨水，以及一支从睡鸟身上拔下的羽毛笔）\n\n**持续时间：** 8 小时\n\n此法术塑造一个生物的梦境。选择一个你认识的生物作为此法术的目标。目标必须与你位于同一存在位面。不睡眠的生物，例如精灵，无法被此法术联系。你，或一个你触碰的自愿生物，会进入出神状态并作为信使。出神期间，信使能感知周围环境，但不能采取动作或移动。\n\n若目标正在睡眠，信使会出现在目标梦中，并能在法术持续时间内，只要目标仍保持睡眠，就与目标交谈。信使也可以塑造梦境环境，创造景观、物件和其他图像。信使可以随时从出神状态中醒来，使此法术效果提前结束。目标醒来后会完美记得该梦。若你施放此法术时目标醒着，信使会知道这一点，并可以结束出神状态（以及法术），或等待目标入睡；届时信使会出现在目标梦中。\n\n你可以让信使在目标眼中显得怪异而可怖。若如此，信使可以传达一段不超过十个词的信息，随后目标必须进行一次感知豁免。若豁免失败，幻象怪物的回响会制造一场持续至目标睡眠结束的噩梦，并阻止目标从该次休息中获得任何收益。此外，当目标醒来时，它受到 3d6 点心灵伤害。\n\n若你拥有目标的一部分身体组织、一绺头发、剪下的指甲，或类似身体部位，目标进行该豁免时具有劣势。",
+  "德鲁伊伎俩": "*变化系 戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S\n\n**持续时间：** 瞬间\n\n你向自然灵低语，在射程内创造以下效果之一：\n\n- 你创造一个微小、无害的感官效果，用以预示你所在位置接下来 24 小时内的天气。该效果可能表现为代表晴空的金色球体、代表降雨的云朵、代表降雪的飘落雪花等等。此效果持续 1 轮。\n- 你立刻使一朵花绽放、一个种荚打开，或一枚叶芽抽出。\n- 你创造一个瞬间且无害的感官效果，例如落叶、一阵微风、小动物的声音，或淡淡的臭鼬气味。该效果必须能容纳在一个 5 尺立方体内。\n- 你立刻点燃或熄灭一支蜡烛、一支火把，或一小堆营火。",
+  "地震术": "*8 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 500 尺\n\n**成分：** V、S、M（一撮泥土、一块石头和一团黏土）\n\n**持续时间：** 专注，至多 1 分钟\n\n你在射程内一个你看得见的地面点制造地震扰动。持续时间内，以该点为中心、半径 100 尺的圆形区域中，猛烈震动撕裂地面，并震撼与该区域地面接触的生物和结构。\n\n该区域的地面变为困难地形。\n\n该区域内地面上的每个正在专注的生物都必须进行一次体质豁免。豁免失败时，该生物的专注被打断。\n\n当你施放此法术时，以及你维持专注的每个回合结束时，该区域内地面上的每个生物都必须进行一次敏捷豁免。豁免失败时，该生物倒地。\n\n此法术可能根据该区域地形产生额外效果，具体由 GM 决定。\n\n***裂隙。*** 你施放此法术后的下个回合开始时，裂隙会在法术区域内各处张开。总共有 1d6 条这类裂隙在 GM 选择的位置出现。每条裂隙深 `1d10 × 10` 尺，宽 10 尺，并从法术区域的一侧边缘延伸到相对一侧。站在裂隙张开位置上的生物必须成功通过一次敏捷豁免，否则坠入其中。成功豁免的生物会随裂隙边缘张开而移动。\n\n若裂隙在一座结构下方张开，该结构会自动倒塌（见下文）。\n\n***结构。*** 当你施放此法术时，以及直到法术结束前你每个回合开始时，震动都会对该区域内任何与地面接触的结构造成 50 点钝击伤害。若一座结构的生命值降至 0，它会倒塌，并可能伤害附近生物。位于该结构高度一半距离内的生物必须进行一次敏捷豁免。豁免失败时，该生物受到 5d6 点钝击伤害，倒地，并被埋在瓦砾中，需要用一个动作成功通过一次 DC 20 的力量（运动）检定才能逃脱。GM 可以根据瓦砾性质提高或降低该 DC。豁免成功时，该生物只受到一半伤害，且不会倒地或被掩埋。",
+  "魔能爆": "*塑能系 戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S\n\n**持续时间：** 瞬间\n\n一道噼啪作响的能量束射向射程内一个生物。对目标进行一次远程法术攻击。若命中，目标受到 1d10 点力场伤害。\n\n当你达到更高等级时，此法术会创造不止一道能量束：5 级时为两道，11 级时为三道，17 级时为四道。你可以将这些能量束指向同一目标或不同目标。每道能量束分别进行攻击检定。",
+  "强化属性": "*2 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（来自野兽的毛皮或羽毛）\n\n**持续时间：** 专注，至多 1 小时\n\n你触碰一个生物，并赋予其魔法强化。选择下列效果之一；目标获得该效果直到法术结束。\n\n***熊之坚韧。*** 目标在体质检定上具有优势。它还获得 2d6 点临时生命值，这些临时生命值会在法术结束时失去。\n\n***牛之力量。*** 目标在力量检定上具有优势，且其载重能力翻倍。\n\n***猫之优雅。*** 目标在敏捷检定上具有优势。若目标未处于失能状态，从 20 尺或更低高度坠落时也不会受到伤害。\n\n***鹰之威仪。*** 目标在魅力检定上具有优势。\n\n***狐之狡黠。*** 目标在智力检定上具有优势。\n\n***枭之智慧。*** 目标在感知检定上具有优势。\n\n***高环位施法。*** 当你使用 3 环或更高法术位施放此法术时，法术位每高于 2 环一级，你就可以额外指定一个目标生物。",
+  "变巨术/缩小术": "*2 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一撮铁粉）\n\n**持续时间：** 专注，至多 1 分钟\n\n你使射程内一个你看得见的生物或物件在持续时间内变大或变小。选择一个生物，或一个既未被穿戴也未被携带的物件。若目标不愿意，它可以进行一次体质豁免。若成功，法术没有效果。\n\n若目标是生物，它所穿戴和携带的一切都会随其改变尺寸。受影响生物丢下的任何物品都会立刻恢复正常尺寸。\n\n***变巨。*** 目标在所有维度上的尺寸翻倍，重量变为原来的八倍。此增长会使其体型增大一个等级，例如从中型变为大型。若没有足够空间让目标尺寸翻倍，该生物或物件会在可用空间内达到最大可能尺寸。直到法术结束前，目标在力量检定和力量豁免上具有优势。目标的武器也会增大以匹配其新尺寸。这些武器处于增大状态时，目标使用它们进行的攻击额外造成 1d4 点伤害。\n\n***缩小。*** 目标在所有维度上的尺寸减半，重量减少至正常的八分之一。此缩小会使其体型减小一个等级，例如从中型变为小型。直到法术结束前，目标在力量检定和力量豁免上具有劣势。目标的武器也会缩小以匹配其新尺寸。这些武器处于缩小状态时，目标使用它们进行的攻击少造成 1d4 点伤害（这不能将伤害降低到 1 以下）。",
+  "缠绕术": "*1 环 咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 90 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n抓握的杂草与藤蔓从射程内一点开始，在一片边长 20 尺的方形区域中从地面冒出。持续时间内，这些植物会将该区域地面变为困难地形。\n\n当你施放此法术时，区域内的生物必须成功通过一次力量豁免，否则被缠绕植物受拘束，直到法术结束。被这些植物受拘束的生物可以用动作进行一次力量检定，对抗你的法术豁免 DC。若成功，它挣脱束缚。\n\n法术结束时，被召唤出的植物会枯萎消失。",
+  "迷魂术": "*2 环 惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 1 分钟\n\n你编织一串令人分心的话语，使射程内你选择、你看得见且能听见你的生物进行一次感知豁免。任何无法被魅惑的生物都会自动通过此豁免；若你或你的同伴正在与某生物战斗，该生物在豁免上具有优势。豁免失败时，目标在直到法术结束或其不再能听见你之前，对除你之外任何生物进行感知（察觉）检定时具有劣势。若你陷入失能或无法再说话，法术结束。",
+  "以太化": "*7 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S\n\n**持续时间：** 至多 8 小时\n\n你踏入以太位面的边界区域，也就是它与你当前位面重叠的区域。你会在法术持续时间内停留在边界以太，或直到你用动作解除此法术。此期间，你可以向任意方向移动。若你向上或向下移动，每移动 1 尺都要额外消耗 1 尺移动力。你可以看见并听见自己原本所在的位面，但那里的一切都呈灰色，而且你看不见 60 尺外的任何事物。\n\n当你位于以太位面时，你只能影响并被该位面上的其他生物所影响。不在以太位面的生物无法察觉你，也无法与你互动，除非某种特殊能力或魔法赋予它们这样做的能力。\n\n你忽略所有不在以太位面上的物件和效果，因此可以穿过你在原本位面中感知到的物件。\n\n法术结束时，你立刻返回原本所在位面，并出现在你当前占据的位置。若此时你与一个实体物件或生物占据同一位置，你会立刻被挤到你能占据的最近未被占据空间，并受到等于你被移动尺数两倍的力场伤害。\n\n若你在以太位面上，或在一个不与以太位面接壤的位面上施放此法术，例如某个外层位面，则此法术没有效果。\n\n***高环位施法。*** 当你使用 8 环或更高法术位施放此法术时，法术位每高于 7 环一级，你可以指定至多三个自愿生物为目标（包括你自己）。当你施放此法术时，这些生物必须位于你 10 尺内。",
+  "脚底抹油": "*1 环 变化系*\n\n**施法时间：** 1 附赠动作\n\n**射程：** 自身\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 10 分钟\n\n此法术使你能够以惊人速度移动。当你施放此法术时，以及直到法术结束前你每个回合用附赠动作时，你都可以采取疾走动作。",
+  "摄魂目光": "*6 环 死灵系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n在法术持续时间内，你的双眼变成充满恐怖力量的墨黑虚空。选择你 60 尺内一个你看得见的生物，它必须成功通过一次感知豁免，否则在持续时间内受到你选择的以下效果之一影响。直到法术结束前，你在自己的每个回合都可以用动作指定另一个生物为目标，但若某生物已经成功通过了对本次 *eyebite* 施法的豁免，你不能再次指定该生物。\n\n***沉睡。*** 目标失去意识。若它受到任何伤害，或另一个生物用动作摇醒沉睡者，它便会醒来。\n\n***惊慌。*** 目标对你陷入恐慌。在其每个回合中，该恐慌生物都必须采取疾走动作，并沿可用的最安全且最短路径远离你，除非无处可走。若目标移动到至少距你 60 尺且无法再看见你的位置，此效果结束。\n\n***恶心。*** 目标在攻击检定和属性检定上具有劣势。在其每个回合结束时，它可以再次进行一次感知豁免。若成功，此效果结束。",
+  "加工术": "*4 环 变化系*\n\n**施法时间：** 10 分钟\n\n**射程：** 120 尺\n\n**成分：** V、S\n\n**持续时间：** 瞬间\n\n你将原材料转化为由相同材料构成的成品。例如，你可以用一片树林制造一座木桥，用一片麻制造绳索，用亚麻或羊毛制造衣物。\n\n选择射程内你看得见的原材料。只要原材料数量足够，你可以制造一个大型或更小的物件（容纳在一个 10 尺立方体内，或八个相连的 5 尺立方体内）。不过，若你处理的是金属、石头或其他矿物质，制造出的物件不得大于中型（容纳在一个 5 尺立方体内）。此法术制造物品的品质与原材料品质相称。\n\n此法术不能创造或变化生物或魔法物品。你也不能用它制造通常需要高度工艺的物品，例如珠宝、武器、玻璃或护甲，除非你熟练用于制作这类物品的工匠工具。",
+  "妖火": "*1 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V\n\n**持续时间：** 专注，至多 1 分钟\n\n射程内一个 20 尺立方体中的每个物件都会被蓝色、绿色或紫色光芒勾勒轮廓（由你选择颜色）。施法时位于该区域内的任何生物，若敏捷豁免失败，也会被光芒勾勒轮廓。持续时间内，物件和受影响生物会在半径 10 尺内散发微光。\n\n若攻击者能看见受影响生物或物件，则对其进行的任何攻击检定都具有优势，且受影响生物或物件不能从隐形中受益。",
+  "忠犬术": "*4 环 咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一只微型银哨、一块骨头和一根线）\n\n**持续时间：** 8 小时\n\n你在射程内一个你看得见的未被占据空间中召唤一只幻影看门犬。它会在持续时间内停留在那里，直到你用动作解散它，或直到你移动到距离它超过 100 尺的位置。\n\n除你之外，所有生物都看不见这只猎犬，且它不能被伤害。当一个小型或更大体型的生物在没有先说出你施放此法术时指定的口令的情况下进入其 30 尺内时，猎犬会开始大声吠叫。猎犬能看见隐形生物，也能看入以太位面。它无视幻象。\n\n在你每个回合开始时，猎犬会试图咬击其 5 尺内一个对你敌对的生物。猎犬的攻击加值等于你的施法属性调整值 + 你的熟练加值。若命中，它造成 4d8 点穿刺伤害。",
+  "虚假生命": "*1 环 死灵系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S、M（少量酒精或蒸馏烈酒）\n\n**持续时间：** 1 小时\n\n你以死灵魔法伪造出的生命表象强化自身，在持续时间内获得 `1d4 + 4` 点临时生命值。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放此法术时，法术位每高于 1 环一级，你额外获得 5 点临时生命值。",
+  "恐惧术": "*3 环 幻术系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身（30 尺圆锥）\n\n**成分：** V、S、M（一根白羽毛或一颗母鸡心脏）\n\n**持续时间：** 专注，至多 1 分钟\n\n你投射出生物最深恐惧的幻象。30 尺圆锥内的每个生物都必须成功通过一次感知豁免，否则丢下手中所持之物，并在持续时间内陷入恐慌。\n\n当生物因本法术而恐慌时，它在自己的每个回合都必须采取疾走动作，并沿可用的最安全路线远离你，除非无处可走。若该生物在无法看见你的位置结束其回合，则它可以进行一次感知豁免。若成功，此法术对该生物结束。",
+  "羽落术": "*1 环 变化系*\n\n**施法时间：** 1 反应，当你或你 60 尺内的一个生物坠落时采取\n\n**射程：** 60 尺\n\n**成分：** V、M（一小片羽毛或绒羽）\n\n**持续时间：** 1 分钟\n\n选择射程内至多五个正在坠落的生物。直到法术结束前，坠落生物的下降速度减缓为每轮 60 尺。若该生物在法术结束前着陆，则它不会受到坠落伤害，并能以脚着地，且法术对该生物结束。",
+  "弱智术": "*8 环 惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 150 尺\n\n**成分：** V、S、M（一把黏土、水晶、玻璃或矿物小球）\n\n**持续时间：** 瞬间\n\n你轰击射程内一个你看得见的生物的心智，试图粉碎其智力与人格。目标受到 4d6 点心灵伤害，并必须进行一次智力豁免。\n\n豁免失败时，该生物的智力和魅力值变为 1。该生物不能施法、启动魔法物品、理解语言，或以任何可理解方式交流。不过，该生物仍能辨认自己的朋友、跟随他们，甚至保护他们。\n\n每过 30 天结束时，该生物都可以再次进行一次针对此法术的豁免。若其豁免成功，法术结束。\n\n此法术也可以由 *greater restoration*、*heal* 或 *wish* 结束。",
+  "寻获魔宠": "*1 环 咒法系（仪式）*\n\n**施法时间：** 1 小时\n\n**射程：** 10 尺\n\n**成分：** V、S、M（价值 10 gp 的木炭、熏香和草药，必须在黄铜火盆中以火焚尽）\n\n**持续时间：** 瞬间\n\n你获得一只魔宠的服务。魔宠是一个灵体，会呈现为你选择的动物形态：蝙蝠、猫、蟹、蛙（蟾蜍）、鹰、蜥蜴、章鱼、猫头鹰、毒蛇、鱼（食人鱼）、鼠、渡鸦、海马、蜘蛛或鼬。魔宠出现在射程内一个未被占据空间中，并具有所选形态的数据，但它不是野兽，而是天界生物、精类或邪魔（由你选择）。\n\n你的魔宠独立于你行动，但始终服从你的命令。在战斗中，它掷自己的先攻，并在自己的回合行动。魔宠不能攻击，但可以正常采取其他动作。\n\n当魔宠生命值降至 0 时，它会消失，不留下实体形态。你再次施放此法术后，它会重新出现。\n\n当你的魔宠位于你 100 尺内时，你可以与它进行心灵交流。此外，作为一个动作，你可以通过魔宠的眼睛观看，并听见它所听见的声音，直到你下个回合开始，同时获得魔宠拥有的任何特殊感官收益。在此期间，你对于自己的感官而言处于耳聋和目盲状态。\n\n作为一个动作，你可以暂时遣散你的魔宠。它会消失到一个袖珍次元中，等待你的召唤。或者，你也可以永久遣散它。当它被暂时遣散时，你可以用一个动作令它重新出现在你 30 尺内任意一个未被占据空间中。\n\n你同一时间不能拥有超过一只魔宠。若你在已经拥有魔宠时施放此法术，则改为让它采用新的形态。从上方列表中选择一种形态。你的魔宠会变为所选生物。\n\n最后，当你施放射程为接触的法术时，你的魔宠可以像自己施放该法术一样传递它。你的魔宠必须位于你 100 尺内，并且必须在你施放法术时使用它的反应来传递该法术。若该法术需要攻击检定，则使用你的攻击调整值进行该掷骰。",
+  "寻获坐骑": "*2 环 咒法系*\n\n**施法时间：** 10 分钟\n\n**射程：** 30 尺\n\n**成分：** V、S\n\n**持续时间：** 瞬间\n\n你召唤一个灵体，使其呈现为异常聪明、强壮且忠诚的坐骑形态，并与它建立长久纽带。该坐骑出现在射程内一个未被占据空间中，并呈现为你选择的形态：战马、小马、骆驼、麋鹿或獒犬。（你的 GM 也可能允许召唤其他动物作为坐骑。）坐骑具有所选形态的数据，但它不是通常类型，而是天界生物、精类或邪魔（由你选择）。此外，若你的坐骑智力为 5 或更低，则其智力变为 6，并获得理解你所说一种语言的能力，由你选择。\n\n你的坐骑会在战斗内外作为坐骑为你服务，而你与它拥有一种本能纽带，使你们能如同无缝一体般战斗。当你骑乘你的坐骑时，你施放的任何只以你为目标的法术，也可以同时以你的坐骑为目标。\n\n当坐骑生命值降至 0 时，它会消失，不留下实体形态。你也可以随时用一个动作遣散你的坐骑，使其消失。无论哪种情况，再次施放此法术都会召唤同一坐骑，并使其恢复到生命值上限。\n\n当你的坐骑位于你 1 英里内时，你们可以彼此进行心灵交流。\n\n你同一时间不能拥有超过一匹由此法术建立纽带的坐骑。作为一个动作，你可以随时解除该坐骑的纽带，使其消失。",
+  "寻找陷阱": "*2 环 预言系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S\n\n**持续时间：** 瞬间\n\n你感知射程内且位于你视线范围内的任何陷阱的存在。就此法术而言，陷阱包括任何会造成你认为有害或不受欢迎的突发或意外效果，且其创造者专门如此设计的事物。因此，此法术会感知受 *alarm* 法术影响的区域、*glyph of warding*，或机械落坑陷阱，但不会揭示地板的天然薄弱处、不稳定的天花板，或隐藏的塌陷坑。\n\n此法术只揭示有陷阱存在。\n\n你不会得知每个陷阱的位置，但会得知你所感知陷阱造成危险的大致性质。",
+  "寻路术": "*6 环 预言系*\n\n**施法时间：** 1 分钟\n\n**射程：** 自身\n\n**成分：** V、S、M（一套价值 100 gp 的占卜工具，例如骨片、象牙签、卡牌、牙齿或雕刻符文，以及一件来自你想寻找地点的物品）\n\n**持续时间：** 专注，至多 1 天\n\n此法术让你找到通往同一存在位面上某个你熟悉的固定地点的最短、最直接实体路线。若你说出的目的地位于另一个存在位面、会移动（例如移动堡垒），或并不具体（例如“一条绿龙的巢穴”），则法术失败。\n\n持续时间内，只要你与目的地位于同一存在位面，你就知道它距离你多远，以及位于哪个方向。当你前往该地时，每当途中出现路径选择，你都会自动判断哪条路是通往目的地的最短且最直接路线（但不一定是最安全路线）。",
+  "死亡一指": "*7 环 死灵系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 瞬间\n\n你让负能量涌过射程内一个你看得见的生物，使其承受灼痛。目标必须进行一次体质豁免。豁免失败则受到 `7d8 + 30` 点黯蚀伤害；豁免成功则只受到一半伤害。\n\n被此法术杀死的人型生物会在你下个回合开始时以僵尸形态站起，并永久受你指挥，尽其所能服从你的口头命令。",
+  "火焰箭": "*塑能系 戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S\n\n**持续时间：** 瞬间\n\n你向射程内一个生物或物件掷出一粒火焰。对目标进行一次远程法术攻击。若命中，目标受到 1d10 点火焰伤害。被此法术命中的可燃物件若未被穿戴或携带，则会被点燃。\n\n当你达到 5 级时，此法术的伤害增加 1d10（2d10）；11 级时增加为 3d10；17 级时增加为 4d10。",
+  "火焰护盾": "*4 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S、M（一点磷或一只萤火虫）\n\n**持续时间：** 10 分钟\n\n稀薄而飘忽的火焰在持续时间内缠绕你的身体，在半径 10 尺内散发明亮光照，并在额外 10 尺范围内散发微光。你可以用一个动作解除此法术，使其提前结束。\n\n火焰会按你的选择，为你提供暖盾或寒盾。暖盾使你对寒冷伤害具有抗性，寒盾使你对火焰伤害具有抗性。\n\n此外，每当你 5 尺内的一个生物以近战攻击命中你时，护盾都会爆发火焰。若为暖盾，攻击者受到 2d8 点火焰伤害；若为寒盾，攻击者受到 2d8 点寒冷伤害。",
+  "火焰风暴": "*7 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 150 尺\n\n**成分：** V、S\n\n**持续时间：** 瞬间\n\n一场由咆哮火焰幕构成的风暴出现在射程内你选择的位置。风暴区域由至多十个 10 尺立方体组成，你可以任意排列这些立方体。每个立方体必须至少有一面与另一个立方体的一面相邻。区域内每个生物都必须进行一次敏捷豁免。豁免失败则受到 7d10 点火焰伤害；豁免成功则只受到一半伤害。\n\n火焰会伤害区域内物件，并点燃未被穿戴或携带的可燃物。若你选择，区域内的植物不会受此法术影响。",
+  "火球术": "*3 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 150 尺\n\n**成分：** V、S、M（一小球蝙蝠粪和硫磺）\n\n**持续时间：** 瞬间\n\n一道明亮光线从你指出的手指闪向射程内你选择的一点，随后伴随低沉轰鸣绽放成火焰爆炸。以该点为中心、半径 20 尺球形区域内的每个生物都必须进行一次敏捷豁免。豁免失败的目标受到 8d6 点火焰伤害；豁免成功则只受到一半伤害。\n\n火焰会绕过拐角扩散。它会点燃区域内未被穿戴或携带的可燃物。\n\n***高环位施法。*** 当你使用 4 环或更高法术位施放此法术时，法术位每高于 3 环一级，伤害便增加 1d6。",
+  "火焰刀": "*2 环 塑能系*\n\n**施法时间：** 1 附赠动作\n\n**射程：** 自身\n\n**成分：** V、S、M（一片漆树叶）\n\n**持续时间：** 专注，至多 10 分钟\n\n你在空着的手中唤出一把火焰刀。该刀在大小和形状上类似弯刀，并持续到法术结束。若你放开这把刀，它会消失，但你可以用一个附赠动作再次唤出它。\n\n你可以用动作以火焰刀进行一次近战法术攻击。若命中，目标受到 3d6 点火焰伤害。\n\n火焰刀在半径 10 尺内散发明亮光照，并在额外 10 尺范围内散发微光。\n\n***高环位施法。*** 当你使用 4 环或更高法术位施放此法术时，法术位每比 2 环高两级，伤害便增加 1d6。",
+  "焰击术": "*5 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一撮硫磺）\n\n**持续时间：** 瞬间\n\n一道神圣火焰的垂直柱从天而降，轰击你指定的位置。以射程内一点为中心、半径 10 尺且高 40 尺的圆柱区域内，每个生物都必须进行一次敏捷豁免。豁免失败的生物受到 4d6 点火焰伤害和 4d6 点光耀伤害；豁免成功则只受到一半伤害。\n\n***高环位施法。*** 当你使用 6 环或更高法术位施放此法术时，法术位每高于 5 环一级，火焰伤害或光耀伤害（由你选择）增加 1d6。",
+  "炽焰法球": "*2 环 咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一点牛油、一撮硫磺，以及少量铁粉）\n\n**持续时间：** 专注，至多 1 分钟\n\n一个直径 5 尺的火焰球体出现在射程内一个你选择的未被占据空间中，并持续到法术结束。任何在距该球体 5 尺内结束其回合的生物都必须进行一次敏捷豁免。豁免失败的生物受到 2d6 点火焰伤害；豁免成功则只受到一半伤害。\n\n作为一个附赠动作，你可以将球体移动至多 30 尺。若你让球体撞向一个生物，该生物必须针对球体伤害进行豁免，且球体本回合停止移动。\n\n当你移动球体时，你可以指引它越过至多 5 尺高的障碍，并跳过至多 10 尺宽的坑洞。球体会点燃未被穿戴或携带的可燃物，并在半径 20 尺内散发明亮光照，在额外 20 尺范围内散发微光。\n\n***高环位施法。*** 当你使用 3 环或更高法术位施放此法术时，法术位每高于 2 环一级，伤害便增加 1d6。",
+  "石化术": "*6 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一撮石灰、水和泥土）\n\n**持续时间：** 专注，至多 1 分钟\n\n你试图将射程内一个你看得见的生物变成石头。若目标的身体由血肉构成，该生物必须进行一次体质豁免。豁免失败时，其血肉开始硬化，并陷入受拘束状态。豁免成功时，该生物不受影响。\n\n被此法术受拘束的生物必须在其每个回合结束时再次进行一次体质豁免。若它针对此法术成功豁免三次，则法术结束。若它豁免失败三次，则会变成石头，并在持续时间内陷入石化状态。成功与失败不需要连续；分别记录两者，直到目标累计任意一种三次。\n\n若该生物在石化状态下身体被物理破坏，则当它恢复原状时，也会受到类似畸形影响。\n\n若你在此法术的整个可能持续时间内都维持专注，该生物会变成石头，直到该效果被移除。",
+  "浮碟术": "*1 环 咒法系（仪式）*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一滴水银）\n\n**持续时间：** 1 小时\n\n此法术创造一个直径 3 尺、厚 1 英寸、水平放置的圆形力场平面，它会在射程内一个你看得见的未被占据空间中，悬浮于地面上方 3 尺。该圆盘持续至法术结束，并可承载至多 500 磅。若放置在其上的重量超过此限制，法术结束，圆盘上的一切都会落到地面。\n\n当你位于圆盘 20 尺内时，圆盘保持不动。若你移动到距离它超过 20 尺，它会跟随你，以保持在你 20 尺内。它可以越过不平地形，上下楼梯、斜坡等，但不能跨越 10 尺或更高的高差。例如，该圆盘不能越过一个 10 尺深的坑；若它是在坑底创造的，也无法离开该坑。\n\n若你移动到距离圆盘超过 100 尺的位置（通常是因为它无法绕过障碍跟随你），法术结束。",
+  "飞行术": "*3 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（任意鸟类的一根翅羽）\n\n**持续时间：** 专注，至多 10 分钟\n\n你触碰一个自愿生物。持续时间内，目标获得 60 尺飞行速度。法术结束时，若目标仍在空中且无法阻止坠落，则会坠落。\n\n***高环位施法。*** 当你使用 4 环或更高法术位施放此法术时，法术位每高于 3 环一级，你就可以额外指定一个目标生物。",
+  "云雾术": "*1 环 咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 小时\n\n你在射程内一点创造出半径 20 尺的雾气球形区域。该球形区域会绕过拐角扩散，其区域属于重度遮蔽。它持续至法术结束，或直到中等或更强风速（至少每小时 10 英里）的风将其吹散。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放此法术时，法术位每高于 1 环一级，雾气半径增加 20 尺。",
+  "禁制术": "*6 环 防护系（仪式）*\n\n**施法时间：** 10 分钟\n\n**射程：** 接触\n\n**成分：** V、S、M（少量圣水、稀有熏香，以及价值至少 1,000 gp 的红宝石粉）\n\n**持续时间：** 1 天\n\n你创造一道抵御魔法旅行的防护，保护至多 40,000 平方尺的地面区域，保护高度为地面以上 30 尺。持续时间内，生物不能传送进入该区域，也不能使用传送门，例如 *gate* 法术创造的传送门，进入该区域。此法术会防护该区域免受位面旅行进入，因此阻止生物通过星界位面、以太位面、妖精荒野、影界或 *plane shift* 法术进入该区域。\n\n此外，此法术会伤害你施法时选择的生物类型。选择以下一种或多种：天界生物、元素生物、精类、邪魔和不死生物。当被选择的生物在一个回合内第一次进入法术区域，或在其中开始其回合时，该生物受到 5d10 点光耀或黯蚀伤害（由你施放此法术时选择）。\n\n施放此法术时，你可以指定一个口令。生物在进入该区域时说出口令，则不会受到此法术伤害。\n\n此法术的区域不能与另一个 *forbiddance* 法术的区域重叠。若你连续 30 天每天都在同一地点施放 *forbiddance*，此法术会一直持续到被解除，且材料成分会在最后一次施法时被消耗。",
+  "力场牢笼": "*7 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 100 尺\n\n**成分：** V、S、M（价值 1,500 gp 的红宝石粉）\n\n**持续时间：** 1 小时\n\n一个由魔法力场构成、不可移动、隐形且呈立方体形状的牢狱，突然出现在射程内你选择的一片区域周围。该牢狱可以是笼子，也可以是实心盒子，由你选择。\n\n笼子形态的牢狱每边最长 20 尺，由直径 1/2 英寸、间距 1/2 英寸的栅条构成。\n\n盒子形态的牢狱每边最长 10 尺，会创造一道实体屏障，阻止任何物质穿过，并阻挡施入或施出该区域的任何法术。\n\n当你施放此法术时，任何完全位于牢笼区域内的生物都会被困住。仅部分位于该区域内的生物，或太大而无法容纳在该区域内的生物，会被从区域中心推开，直到完全位于该区域外。\n\n牢笼内的生物无法以非魔法方式离开。若该生物试图使用传送或跨位面旅行离开牢笼，它必须先进行一次魅力豁免。若成功，该生物可以使用该魔法离开牢笼。若失败，该生物不能离开牢笼，并浪费该法术或效果的使用。牢笼也延伸至以太位面，阻挡以太旅行。\n\n此法术不能被 *dispel magic* 解除。",
+  "预知术": "*9 环 预言系*\n\n**施法时间：** 1 分钟\n\n**射程：** 接触\n\n**成分：** V、S、M（一根蜂鸟羽毛）\n\n**持续时间：** 8 小时\n\n你触碰一个自愿生物，赋予其有限感知近未来的能力。持续时间内，目标不会措手不及，并且在攻击检定、属性检定和豁免上具有优势。此外，持续时间内，其他生物对目标进行的攻击检定具有劣势。\n\n若你在此法术持续时间结束前再次施放此法术，则此法术立刻结束。",
+  "行动自如": "*4 环 防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（一条绑在手臂或类似附肢上的皮带）\n\n**持续时间：** 1 小时\n\n你触碰一个自愿生物。持续时间内，目标的移动不受困难地形影响，法术和其他魔法效果既不能降低目标速度，也不能使目标陷入麻痹或受拘束状态。\n\n目标也可以花费 5 尺移动力，自动从非魔法束缚中挣脱，例如镣铐，或某个擒抱它的生物。最后，在水下不会对目标的移动或攻击造成任何惩罚。",
+  "冰封法球": "*6 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 300 尺\n\n**成分：** V、S、M（一个小水晶球）\n\n**持续时间：** 瞬间\n\n一颗寒冷能量构成的冰冷球体从你指尖飞向射程内你选择的一点，并在那里爆炸成半径 60 尺的球形区域。区域内每个生物都必须进行一次体质豁免。豁免失败的生物受到 10d6 点寒冷伤害；豁免成功则只受到一半伤害。\n\n若该球体击中一片水体，或主要由水构成的液体（不包括水基生物），它会将一片边长 30 尺区域内的液体冻结至 6 英寸深。这层冰持续 1 分钟。原本在被冻结水面上游泳的生物会被困在冰中。被困生物可以用一个动作进行一次力量检定，对抗你的法术豁免 DC，以挣脱束缚。\n\n若你愿意，可以在完成法术后暂不发射球体。一个约投石索弹丸大小、触感冰冷的小球会出现在你手中。任何时候，你或你交给该球的生物都可以投掷该球（射程 40 尺），或用投石索掷出它（使用投石索的正常射程）。它会在撞击时碎裂，并产生与正常施放此法术相同的效果。你也可以将该球放下而不使其碎裂。1 分钟后，若该球尚未碎裂，它会爆炸。\n\n***高环位施法。*** 当你使用 7 环或更高法术位施放此法术时，法术位每高于 6 环一级，伤害便增加 1d6。",
+  "气化形体": "*3 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（一点纱布和一缕烟）\n\n**持续时间：** 专注，至多 1 小时\n\n你将一个你触碰的自愿生物，连同其穿戴和携带的一切，在持续时间内变成一团雾状云。若该生物生命值降至 0，法术结束。无实体生物不受影响。\n\n处于此形态时，目标唯一的移动方式是 10 尺飞行速度。目标可以进入并占据另一个生物的空间。目标对非魔法伤害具有抗性，并且在力量、敏捷和体质豁免上具有优势。目标可以穿过小孔、狭窄开口，甚至裂缝，不过它会将液体视为实体表面。目标不会坠落，即使在震慑或以其他方式失能时，也会继续悬浮在空中。\n\n处于雾状云形态时，目标不能说话或操纵物件，且其携带或持握的任何物件都不能被丢下、使用或以其他方式互动。目标不能攻击或施法。",
+  "异界之门": "*9 环 咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一颗价值至少 5,000 gp 的钻石）\n\n**持续时间：** 专注，至多 1 分钟\n\n你召出一道传送门，将射程内一个你看得见的未被占据空间，连接到另一个存在位面上的某个精确位置。传送门是一个圆形开口，直径可为 5 到 20 尺。你可以让传送门朝向你选择的任意方向。传送门持续至法术结束。\n\n传送门在其出现的每个位面上都有正面和背面。只有穿过其正面，才能通过传送门旅行。任何这样做的事物都会被立刻传送到另一个位面，并出现在距离传送门最近的未被占据空间中。\n\n神祇和其他位面统治者可以阻止此法术创造的传送门在其面前或其领域内任何地点开启。\n\n当你施放此法术时，你可以说出某个特定生物的真名（假名、头衔或昵称无效）。若该生物位于不同于你所在位面的另一个位面上，传送门会在被点名生物的近旁开启，并将该生物拉过传送门，来到你这一侧传送门最近的未被占据空间中。你不会因此获得对该生物的任何特殊权力，它可以按 GM 认为合适的方式自由行动。它可能离开、攻击你，或帮助你。",
+  "指使术": "*5 环 惑控系*\n\n**施法时间：** 1 分钟\n\n**射程：** 60 尺\n\n**成分：** V\n\n**持续时间：** 30 天\n\n你对射程内一个你看得见的生物施加魔法命令，强迫它按你决定去完成某项服务，或避免某种行动或行为方式。若该生物能理解你，它必须成功通过一次感知豁免，否则在持续时间内被你魅惑。当该生物被你魅惑时，每当它以直接违背你指令的方式行动，都会受到 5d10 点心灵伤害，但每天最多一次。无法理解你的生物不受此法术影响。\n\n你可以下达任何你选择的命令，但不能命令其进行必然导致死亡的活动。若你下达自杀性命令，法术结束。\n\n你可以用一个动作解除此法术，使其提前结束。*remove curse*、*greater restoration* 或 *wish* 法术也可以结束此法术。\n\n***高环位施法。*** 当你使用 7 环或 8 环法术位施放此法术时，持续时间为 1 年。当你使用 9 环法术位施放此法术时，该法术会持续到被上述法术之一结束为止。",
+  "遗体防腐": "*2 环 死灵系（仪式）*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（一撮盐，以及分别放在尸体双眼上的一枚铜币；这些铜币必须在持续时间内保持原位）\n\n**持续时间：** 10 天\n\n你触碰一具尸体或其他遗骸。持续时间内，目标受到保护而不会腐烂，也不能变成不死生物。\n\n此法术还会有效延长复活目标的时间限制，因为目标处于此法术影响下的天数，不计入 *raise dead* 等法术的时间限制。",
+  "巨虫术": "*4 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 10 分钟\n\n你将射程内至多十只蜈蚣、三只蜘蛛、五只黄蜂，或一只蝎子，在持续时间内变为其自然形态的巨型版本。蜈蚣变为巨型蜈蚣，蜘蛛变为巨型蜘蛛，黄蜂变为巨型黄蜂，蝎子变为巨型蝎子。\n\n每个生物都会服从你的口头命令；在战斗中，它们每轮在你的回合行动。GM 掌握这些生物的数据，并结算它们的行动与移动。\n\n生物会维持巨型尺寸直到持续时间结束、其生命值降至 0，或直到你用动作解除其身上的效果。\n\nGM 也可以允许你选择不同目标。例如，若你变化一只蜜蜂，其巨型版本可以使用巨型黄蜂的数据。",
+  "花言巧语": "*8 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V\n\n**持续时间：** 1 小时\n\n直到法术结束前，每当你进行魅力检定时，你可以将掷骰结果替换为 15。此外，无论你说什么，任何用于判断你是否说真话的魔法都会显示你说的是真话。",
+  "法术无效结界": "*6 环 防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身（10 尺半径）\n\n**成分：** V、S、M（一颗在法术结束时碎裂的玻璃或水晶珠）\n\n**持续时间：** 专注，至多 1 分钟\n\n一道不可移动、微微闪烁的屏障在你周围半径 10 尺内出现，并持续到法术结束。\n\n任何从屏障外施放的 5 环或更低法术，即使使用更高环位法术位施放，也不能影响屏障内的生物或物件。这类法术可以指定屏障内的生物和物件为目标，但法术对它们没有效果。同样，屏障内的区域也会被排除在这类法术影响的区域之外。\n\n***高环位施法。*** 当你使用 7 环或更高法术位施放此法术时，法术位每高于 6 环一级，屏障就能阻挡高一级的法术。",
+  "守护刻文": "*3 环 防护系*\n\n**施法时间：** 1 小时\n\n**射程：** 接触\n\n**成分：** V、S、M（价值至少 200 gp 的熏香和钻石粉，且会被法术消耗）\n\n**持续时间：** 直到被解除或触发\n\n当你施放此法术时，你刻写一个会伤害其他生物的刻文，可以刻在某个表面上（例如桌子、地板或墙壁的一段），也可以刻在可关闭的物件内部（例如书、卷轴或宝箱）以隐藏刻文。刻文覆盖区域的直径不得超过 10 尺。若该表面或物件从你施放此法术的位置移动超过 10 尺，刻文会被破坏，法术也会在未被触发的情况下结束。\n\n刻文几乎不可见，需要成功通过一次智力（调查）检定，对抗你的法术豁免 DC，才能发现。\n\n施放此法术时，你决定触发刻文的条件。对于刻在表面上的刻文，最典型触发条件包括触碰或站在刻文上、移开覆盖刻文的另一个物件、接近刻文至一定距离内，或操纵刻有刻文的物件。对于刻在物件内部的刻文，最常见触发条件包括打开该物件、接近该物件至一定距离内，或看见或阅读刻文。一旦刻文被触发，此法术结束。\n\n你可以进一步细化触发条件，使法术只在特定情境下，或根据物理特征（例如身高或体重）、生物类别（例如该守护可以设为影响异怪或卓尔），或阵营触发。你也可以为不会触发刻文的生物设定条件，例如说出某个口令。\n\n当你刻写刻文时，选择 *explosive runes* 或 *spell glyph*。\n\n***爆炸符文。*** 被触发时，刻文会以其为中心、半径 20 尺的球形区域中爆发魔法能量。该球形区域会绕过拐角扩散。区域内每个生物都必须进行一次敏捷豁免。豁免失败时，生物受到 5d8 点强酸、寒冷、火焰、闪电或雷鸣伤害（由你创造刻文时选择）；豁免成功则只受到一半伤害。\n\n***法术刻文。*** 你可以在创造刻文的过程中施放一个已准备的 3 环或更低法术，将其储存在刻文中。该法术必须以一个生物或一片区域为目标。以这种方式施放时，被储存的法术不会立即生效。刻文被触发时，储存的法术会被施放。若该法术有目标，它会以触发刻文的生物为目标。若该法术影响一片区域，该区域会以该生物为中心。若该法术召唤敌对生物，或创造有害物件或陷阱，它们会尽可能靠近入侵者出现并攻击它。若该法术需要专注，它会持续到其完整持续时间结束。\n\n***高环位施法。*** 当你使用 4 环或更高法术位施放此法术时，法术位每高于 3 环一级，*explosive runes* 刻文的伤害增加 1d8。若你创造 *spell glyph*，则可以储存任意环位不高于你用于施放 *glyph of warding* 的法术位环位的法术。",
+  "神莓术": "*1 环 变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（一小枝槲寄生）\n\n**持续时间：** 瞬间\n\n至多十颗浆果出现在你手中，并在持续时间内注入魔法。生物可以用动作吃下一颗浆果。吃下一颗浆果会恢复 1 点生命值，且该浆果提供足以维持一个生物一天所需的营养。\n\n若这些浆果在施放此法术后 24 小时内未被食用，它们会失去效力。",
+  "油腻术": "*1 环 咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一点猪皮或黄油）\n\n**持续时间：** 1 分钟\n\n滑腻油脂覆盖以射程内一点为中心、边长 10 尺的方形地面，并在持续时间内将其变为困难地形。\n\n当油脂出现时，站在其区域内的每个生物都必须成功通过一次敏捷豁免，否则倒地。进入该区域或在其中结束回合的生物也必须成功通过一次敏捷豁免，否则倒地。",
+  "高等隐形术": "*4 环 幻术系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n你或你触碰的一个生物会变为隐形，直到法术结束。只要目标穿戴或携带的任何物品仍在其身上，这些物品也会隐形。",
+  "高等复原术": "*5 环 防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（价值至少 100 gp 的钻石粉，且会被法术消耗）\n\n**持续时间：** 瞬间\n\n你向一个你触碰的生物灌注正能量，以解除一种削弱性效果。你可以将目标的力竭等级降低一级，或结束目标身上的以下效果之一：\n\n- 一个使目标被魅惑或石化的效果\n- 一个诅咒，包括目标与一件受诅咒魔法物品的同调\n- 目标某项属性值的任何降低\n- 一个降低目标生命值上限的效果",
+  "信仰守卫": "*4 环 咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V\n\n**持续时间：** 8 小时\n\n一个大型幽灵守卫出现，并在持续时间内悬浮于射程内一个你选择且看得见的未被占据空间中。该守卫占据该空间，除了一把闪耀的剑和一面饰有你神祇徽记的盾牌外，其余轮廓模糊不清。\n\n任何对你敌对的生物在一个回合内第一次移动到守卫 10 尺内的空间时，必须成功通过一次敏捷豁免。豁免失败的生物受到 20 点光耀伤害；豁免成功则只受到一半伤害。当守卫总共造成 60 点伤害后，它会消失。",
+  "警戒守卫": "*6 环 防护系*\n\n**施法时间：** 10 分钟\n\n**射程：** 接触\n\n**成分：** V、S、M（燃烧的熏香、少量硫磺和油、一根打结的绳子、少量土巨怪血液，以及一根价值至少 10 gp 的小银棒）\n\n**持续时间：** 24 小时\n\n你创造一道防护，保护至多 2,500 平方尺的地面区域（即边长 50 尺的区域、一百个 5 尺方格，或二十五个 10 尺方格）。被防护区域最高可达 20 尺，并可按你的意愿塑形。你可以将区域分配到要塞的多个楼层，只要在施放法术时你能走入每个相连区域。\n\n施放此法术时，你可以指定一些个体，使其不受你所选择任意或全部效果影响。你也可以指定一个口令；当口令被大声说出时，说话者会对此类效果免疫。\n\n*Guards and wards* 会在被防护区域内创造以下效果。\n\n***走廊。*** 雾气填满所有被防护走廊，使其重度遮蔽。此外，在每个交叉路口或提供方向选择的岔路处，除你之外的生物有 50% 的概率相信自己正朝与所选方向相反的方向前进。\n\n***门。*** 被防护区域内所有门都被魔法锁住，如同被 *arcane lock* 法术封住。此外，你可以用幻象覆盖至多十扇门（等同于 *minor illusion* 法术的幻象物件功能），使其看起来像普通墙面的一部分。\n\n***楼梯。*** 被防护区域内所有楼梯从上到下都被蛛网填满，如同 *web* 法术。只要 *guards and wards* 持续，这些蛛丝若被烧毁或撕开，会在 10 分钟内重新长出。\n\n***其他法术效果。*** 你可以在要塞的被防护区域内放置以下魔法效果之一，由你选择。\n\n- 在四条走廊中放置 *dancing lights*。你可以指定一个简单程序，使这些光在 *guards and wards* 持续期间重复执行。\n- 在两个位置放置 *magic mouth*。\n- 在两个位置放置 *stinking cloud*。蒸气出现在你指定的位置；只要 *guards and wards* 持续，若它们被风吹散，会在 10 分钟内返回。\n- 在一条走廊或一个房间中放置一道持续的 *gust of wind*。\n- 在一个位置放置 *suggestion*。你选择一片至多 5 尺见方的区域，任何进入或穿过该区域的生物都会以心灵方式接收到该暗示。\n\n整个被防护区域都会散发魔法。对某个特定效果施放 *dispel magic*，若成功，只会移除该效果。\n\n若你连续一年每天都在同一处施放此法术，你可以创造一座永久受警戒与守卫保护的结构。",
+  "神导术": "*预言系 戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n你触碰一个自愿生物。在法术结束前一次，目标可以掷一个 d4，并将掷出的点数加到自己选择的一次属性检定上。它可以在进行该属性检定前或后掷这个骰子。随后法术结束。",
+  "曳光弹": "*1 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S\n\n**持续时间：** 1 轮\n\n一道闪光飞向射程内一个由你选择的生物。对目标进行一次远程法术攻击。若命中，目标受到 4d6 点光耀伤害；并且直到你下个回合结束前，由于目标身上闪烁着神秘微光，对该目标进行的下一次攻击检定具有优势。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放此法术时，法术位每高于 1 环一级，伤害便增加 1d6。",
+  "造风术": "*2 环 塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身（60 尺线状）\n\n**成分：** V、S、M（一颗豆科植物种子）\n\n**持续时间：** 专注，至多 1 分钟\n\n一道长 60 尺、宽 10 尺的强风从你身上沿你选择的方向吹出，并在法术持续时间内保持。每个在该线状区域中开始其回合的生物，都必须成功通过一次力量豁免，否则沿该线状区域方向被推离你 15 尺。\n\n该线状区域内的任何生物，若要向你靠近，每移动 1 尺都必须花费 2 尺移动力。\n\n这阵强风会驱散气体或蒸气，并熄灭区域内蜡烛、火把和类似无防护火焰。它会使受保护火焰，例如提灯中的火焰，剧烈摇曳，并有 50% 概率将其熄灭。\n\n直到法术结束前，你在自己的每个回合都可以用一个附赠动作改变这道强风从你身上吹出的方向。",
+  "圣化术": "*5 环塑能系*\n\n**施法时间：** 24 小时\n\n**射程：** 接触\n\n**成分：** V、S、M（价值至少 1,000 gp 的草药、油和熏香，法术会消耗这些材料）\n\n**持续时间：** 直至被解除\n\n你接触一点，并以神圣（或邪恶）的力量灌注其周围区域。该区域半径最高可达 60 尺；若半径内包含已经处于 *hallow* 法术影响下的区域，则本法术失败。受影响区域具有以下效果。\n\n首先，天界生物、元素生物、精类、邪魔和不死生物不能进入该区域，也不能魅惑、恐吓或附身于区域内的生物。任何被这类生物魅惑、恐吓或附身的生物在进入该区域时，不再处于对应状态。你可以让上述一种或多种生物类型不受此效果影响。\n\n其次，你可以将一项额外效果绑定到该区域。你可以从下列列表中选择一项效果，或选择 GM 提供的效果。某些效果会影响区域内的生物；你可以指定该效果影响所有生物、追随特定神祇或领袖的生物，或特定种类的生物，例如兽人或巨魔。当会受到影响的生物在一个回合中首次进入法术区域，或在其中开始其回合时，它可以进行一次魅力豁免。豁免成功时，该生物忽略这项额外效果，直到它离开该区域。\n\n***勇气。*** 受影响的生物在该区域内不会陷入恐慌。\n\n***黑暗。*** 黑暗充满该区域。普通光照以及由低于你施放本法术所用法术位环位的法术创造的魔法光照，无法照亮该区域。\n\n***日光。*** 明亮光照充满该区域。由低于你施放本法术所用法术位环位的法术创造的魔法黑暗，无法熄灭这道光。\n\n***能量防护。*** 区域内受影响的生物对你选择的一种伤害类型具有抗性，但不能选择钝击、穿刺或挥砍。\n\n***能量易伤。*** 区域内受影响的生物对你选择的一种伤害类型具有易伤，但不能选择钝击、穿刺或挥砍。\n\n***永恒安息。*** 埋葬在该区域内的尸体不能被转化为不死生物。\n\n***跨维干扰。*** 受影响的生物不能通过传送、跨维度或跨位面手段移动或旅行。\n\n***恐惧。*** 受影响的生物在该区域内陷入恐慌。\n\n***沉默。*** 声音不能从区域内传出，也不能传入其中。\n\n***通晓语言。*** 受影响的生物可以与该区域内任何其他生物交流，即使它们没有共同语言。",
+  "幻景地形": "*4 环幻术系*\n\n**施法时间：** 10 分钟\n\n**射程：** 300 尺\n\n**成分：** V、S、M（一块石头、一根树枝和一点绿色植物）\n\n**持续时间：** 24 小时\n\n你使射程内一个 150 尺立方体中的自然地形，在外观、声音和气味上变成另一种自然地形。因此，开阔田野或道路可以被变得像沼泽、山丘、裂隙或其他难以通过或无法通行的地形。池塘可以变得像草地，悬崖可以变得像缓坡，岩石沟壑可以变得像宽阔平坦的道路。人工建筑、装备和生物的外观不会改变。\n\n地形的触觉特征不会改变，因此进入该区域的生物很可能看穿幻象。如果差异并非通过触碰就明显可见，仔细检查幻象的生物可以进行一次智力（调查）检定，对抗你的法术豁免 DC。检定成功时，该生物识破幻象。识破幻象的生物会看见一层模糊的影像覆盖在真实地形之上。",
+  "伤害术": "*6 环死灵系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n你向射程内一个你能看见的生物释放强烈疾病。目标必须进行一次体质豁免。豁免失败时，它受到 14d6 点黯蚀伤害；豁免成功时，伤害减半。该伤害不能将目标的生命值降至 1 以下。如果目标豁免失败，其生命值上限还会降低，降低值等于其受到的黯蚀伤害，持续 1 小时。任何移除疾病的效果都能在持续时间结束前使目标的生命值上限恢复正常。",
+  "加速术": "*3 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一片甘草根刨花）\n\n**持续时间：** 专注，至多 1 分钟\n\n选择射程内一个你能看见的自愿生物。直到法术结束，目标的速度翻倍，AC 获得 +2 加值，敏捷豁免具有优势，并且在每个自己的回合获得一个额外动作。该动作只能用于攻击（仅限一次武器攻击）、疾走、撤离、躲藏或使用物品动作。\n\n法术结束时，一阵倦怠感席卷目标，使其直到其下个回合结束后才能移动或采取动作。",
+  "医疗术": "*6 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n选择射程内一个你能看见的生物。一股正能量涌过该生物，使其恢复 70 点生命值。该法术还会终止目标身上的目盲、耳聋以及任何疾病。本法术对构装生物和不死生物无效。\n\n***高环位施法。*** 当你使用 7 环或更高法术位施放本法术时，法术位每高于 6 环一环，治疗量增加 10 点。",
+  "治疗真言": "*1 环塑能系*\n\n**施法时间：** 1 附赠动作\n\n**射程：** 60 尺\n\n**成分：** V\n\n**持续时间：** 立即\n\n你选择射程内一个你能看见的生物，它恢复等于 1d4 + 你的施法属性调整值的生命值。本法术对不死生物和构装生物无效。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放本法术时，法术位每高于 1 环一环，治疗量增加 1d4。",
+  "灼热金属": "*2 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一块铁和一团火焰）\n\n**持续时间：** 专注，至多 1 分钟\n\n选择射程内一个你能看见的人造金属物件，例如一件金属武器或一套重甲或中甲。你使该物件灼热到发红。任何与该物件有物理接触的生物在你施放本法术时受到 2d8 点火焰伤害。直到法术结束，你可以在随后每个自己的回合使用附赠动作，再次造成此伤害。\n\n如果一个生物正持握或穿戴该物件并因此受到伤害，它必须通过一次体质豁免，否则在能放开该物件的情况下将其丢下。若它没有丢下该物件，则直到你下个回合开始，它的攻击检定和属性检定具有劣势。\n\n***高环位施法。*** 当你使用 3 环或更高法术位施放本法术时，法术位每高于 2 环一环，伤害增加 1d8。",
+  "地狱斥喝": "*1 环塑能系*\n\n**施法时间：** 1 反应，在你受到 60 尺内一个你能看见的生物伤害时作出\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n你指向伤害你的生物，地狱般的火焰瞬间包围它。该生物必须进行一次敏捷豁免。豁免失败时，它受到 2d10 点火焰伤害；豁免成功时，伤害减半。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放本法术时，法术位每高于 1 环一环，伤害增加 1d10。",
+  "英雄宴": "*6 环咒法系*\n\n**施法时间：** 10 分钟\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一个镶嵌宝石、价值至少 1,000 gp 的碗，法术会消耗该材料）\n\n**持续时间：** 立即\n\n你召来一场盛大的宴席，包括华美的食物和饮品。宴席需要 1 小时享用，并在该时间结束时消失；有益效果要到这一小时结束后才生效。最多十二个生物可以参与这场宴席。\n\n参与宴席的生物会治愈所有疾病和毒素，免疫毒素和恐慌，并且所有感知豁免具有优势。其生命值上限还会增加 2d10，并获得等量生命值。这些有益效果持续 24 小时。",
+  "英勇术": "*1 环惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n你接触一个自愿生物，并向其灌注勇气。直到法术结束，该生物免疫恐慌，并在其每个回合开始时获得等于你的施法属性调整值的临时生命值。法术结束时，目标失去本法术赋予的所有剩余临时生命值。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放本法术时，法术位每高于 1 环一环，你可以额外指定一个生物为目标。",
+  "狂笑术": "*1 环惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（小馅饼和一根在空中挥动的羽毛）\n\n**持续时间：** 专注，至多 1 分钟\n\n选择射程内一个你能看见的生物。如果本法术影响它，它会觉得一切都滑稽可笑，并陷入狂笑。目标必须通过一次感知豁免，否则倒地，变为失能，且在持续时间内无法站起。智力值为 4 或更低的生物不受影响。\n\n在目标每个回合结束时，以及每次它受到伤害时，它都可以再次进行一次感知豁免。如果该豁免由伤害触发，则目标在豁免中具有优势。豁免成功时，法术结束。",
+  "怪物定身术": "*5 环惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 90 尺\n\n**成分：** V、S、M（一小段笔直的铁）\n\n**持续时间：** 专注，至多 1 分钟\n\n选择射程内一个你能看见的生物。目标必须通过一次感知豁免，否则在持续时间内陷入麻痹。本法术对不死生物无效。在目标每个回合结束时，它可以再次进行一次感知豁免。豁免成功时，目标身上的法术结束。\n\n***高环位施法。*** 当你使用 6 环或更高法术位施放本法术时，法术位每高于 5 环一环，你可以额外指定一个生物为目标。你指定目标时，这些生物彼此之间必须在 30 尺内。",
+  "人类定身术": "*2 环惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一小段笔直的铁）\n\n**持续时间：** 专注，至多 1 分钟\n\n选择射程内一个你能看见的人型生物。目标必须通过一次感知豁免，否则在持续时间内陷入麻痹。在目标每个回合结束时，它可以再次进行一次感知豁免。豁免成功时，目标身上的法术结束。\n\n***高环位施法。*** 当你使用 3 环或更高法术位施放本法术时，法术位每高于 2 环一环，你可以额外指定一个人型生物为目标。你指定目标时，这些人型生物彼此之间必须在 30 尺内。",
+  "神圣灵光": "*8 环防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S、M（一个价值至少 1,000 gp、装有圣物的小圣骨匣，例如圣徒长袍的一片布料或宗教文献的一小片羊皮纸）\n\n**持续时间：** 专注，至多 1 分钟\n\n神圣光芒从你身上涌出，并在你周围 30 尺半径内凝聚成柔和光辉。你施放本法术时在该半径内由你选择的生物，会在 5 尺半径内发出微光，并在所有豁免中具有优势；直到法术结束，其他生物对它们的攻击检定具有劣势。此外，当邪魔或不死生物以近战攻击命中一个受影响生物时，灵光会闪耀出明亮光芒。攻击者必须通过一次体质豁免，否则直到法术结束陷入目盲。",
+  "猎人印记": "*1 环预言系*\n\n**施法时间：** 1 附赠动作\n\n**射程：** 90 尺\n\n**成分：** V\n\n**持续时间：** 专注，至多 1 小时\n\n你选择射程内一个你能看见的生物，并以魔法将其标记为你的猎物。直到法术结束，每当你以武器攻击命中该目标时，你对其额外造成 1d6 点伤害，并且你为寻找该目标而进行的任何感知（察觉）或感知（求生）检定具有优势。如果目标在本法术结束前降至 0 生命值，你可以在自己随后的一个回合使用附赠动作，标记一个新的生物。\n\n***高环位施法。*** 当你使用 3 环或 4 环法术位施放本法术时，你可以维持对本法术的专注至多 8 小时。当你使用 5 环或更高法术位时，你可以维持对本法术的专注至多 24 小时。",
+  "催眠图纹": "*3 环幻术系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** S、M（一支发光的熏香，或一个装满磷光材料的水晶小瓶）\n\n**持续时间：** 专注，至多 1 分钟\n\n你创造出一组扭动的色彩图纹，在射程内一个 30 尺立方体中的空气里交织。图纹出现片刻后消失。该区域内每个看见图纹的生物都必须进行一次感知豁免。豁免失败时，该生物在持续时间内陷入魅惑。当生物被本法术魅惑时，它处于失能状态，且速度为 0。\n\n如果受影响生物受到任何伤害，或其他人使用一个动作将该生物从恍惚中摇醒，则该生物身上的法术结束。",
+  "冰风暴": "*4 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 300 尺\n\n**成分：** V、S、M（一撮尘土和几滴水）\n\n**持续时间：** 立即\n\n一阵坚硬如石的冰雹砸向地面，以射程内一点为中心，形成一个半径 20 尺、高 40 尺的圆柱体。圆柱体内的每个生物都必须进行一次敏捷豁免。豁免失败时，生物受到 2d8 点钝击伤害和 4d6 点寒冷伤害；豁免成功时，伤害减半。\n\n冰雹使风暴效果区域变为困难地形，持续到你下个回合结束。\n\n***高环位施法。*** 当你使用 5 环或更高法术位施放本法术时，法术位每高于 4 环一环，钝击伤害增加 1d8。",
+  "鉴定术": "*1 环预言系（仪式）*\n\n**施法时间：** 1 分钟\n\n**射程：** 接触\n\n**成分：** V、S、M（一颗价值至少 100 gp 的珍珠和一根猫头鹰羽毛）\n\n**持续时间：** 立即\n\n你选择一个物件，并且在整个施法过程中都必须接触它。如果它是魔法物品或其他灌注了魔法的物件，你会知晓它的性质、使用方式、使用它是否需要同调，以及它拥有多少充能（若有）。你会知晓是否有法术正在影响该物品，以及这些法术是什么。如果该物品由法术创造，你会知晓创造它的是哪个法术。\n\n如果你在整个施法过程中改为接触一个生物，你会知晓当前有哪些法术正在影响它（若有）。",
+  "幻术文字": "*1 环幻术系（仪式）*\n\n**施法时间：** 1 分钟\n\n**射程：** 接触\n\n**成分：** S、M（价值至少 10 gp 的铅基墨水，法术会消耗该材料）\n\n**持续时间：** 10 天\n\n你在羊皮纸、纸张或其他合适书写材料上书写，并向其灌注一层强力幻象，在持续时间内生效。\n\n对你以及你施放本法术时指定的任何生物而言，文字看起来正常，像是由你亲手书写，并传达你书写时想表达的含义。对其他所有生物而言，文字看起来像是以某种未知或魔法文字书写，无法理解。或者，你也可以让文字看起来像一段完全不同的信息，以不同笔迹和语言书写，但该语言必须是你知晓的语言。\n\n如果本法术被解除，原始文字和幻象都会消失。\n\n具有真实视觉的生物可以阅读隐藏信息。",
+  "禁锢术": "*9 环防护系*\n\n**施法时间：** 1 分钟\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一幅目标形象的羊皮纸画像或一尊目标形象的雕像，以及一种根据你选择的法术版本而变化的特殊成分，其价值至少为目标每个生命骰 500 gp）\n\n**持续时间：** 直至被解除\n\n你创造一道魔法束缚，用来困住射程内一个你能看见的生物。目标必须通过一次感知豁免，否则被本法术束缚；如果它豁免成功，则在你再次施放本法术时免疫该法术。当生物受本法术影响时，它不需要呼吸、进食或饮水，也不会衰老。预言法术无法定位或感知目标。\n\n施放本法术时，你选择下列一种禁锢形式。\n\n***活埋。*** 目标被埋葬在地底深处，困在一个刚好足以容纳它的魔法力场球体中。任何事物都不能穿过该球体，任何生物也不能通过传送或位面旅行进入或离开其中。\n\n此版本法术的特殊成分是一颗小型秘银球。\n\n***锁链。*** 沉重锁链牢牢扎根于地面，将目标固定在原地。直到法术结束，目标处于受拘束状态，且不能以任何方式移动或被移动。\n\n此版本法术的特殊成分是一条由贵金属制成的精致锁链。\n\n***围蔽囚牢。*** 本法术将目标传送到一个微型半位面，该半位面受到防护，阻止传送和位面旅行。半位面可以是迷宫、牢笼、高塔，或你选择的任何类似封闭结构或区域。\n\n此版本法术的特殊成分是一件以玉石制成的囚牢微缩模型。\n\n***微缩囚禁。*** 目标缩小到 1 寸高，并被囚禁在一颗宝石或类似物件内。光线可以正常穿过宝石（使目标能够看向外界，其他生物也能看见里面），但其他任何事物都不能穿过，即使借助传送或位面旅行也不行。只要法术仍然生效，宝石就不能被切割或打破。\n\n此版本法术的特殊成分是一颗大型透明宝石，例如刚玉、钻石或红宝石。\n\n***沉睡。*** 目标陷入睡眠，且无法被唤醒。此版本法术的特殊成分由稀有催眠草药组成。\n\n***终止法术。*** 在施放本法术的过程中，无论选择哪一种版本，你都可以指定一个会使法术结束并释放目标的条件。该条件可以按你的选择设置得非常具体或复杂，但 GM 必须同意该条件合理且有可能发生。条件可以基于生物的名字、身份或神祇，但除此之外必须基于可观察的行动或性质，不能基于等级、职业或生命值等无形概念。\n\n*dispel magic* 法术只有在作为 9 环法术施放，并以囚牢或用于创造囚牢的特殊成分为目标时，才能终止本法术。\n\n你一次只能使用某个特定特殊成分创造一个囚牢。如果你使用同一成分再次施放本法术，第一次施法的目标会立即从其束缚中获释。",
+  "焚云术": "*8 环咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 150 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n一团夹杂炽白余烬的旋转烟云出现在射程内一点为中心、半径 20 尺的球体中。云雾会绕过拐角扩散，并造成重度遮蔽。它在持续时间内存在，或直到中等或更强的风（至少每小时 10 英里）将其吹散。\n\n当云雾出现时，其中每个生物都必须进行一次敏捷豁免。豁免失败时，生物受到 10d8 点火焰伤害；豁免成功时，伤害减半。当一个生物在一个回合中首次进入法术区域，或在其中结束其回合时，也必须进行该豁免。\n\n在你每个回合开始时，云雾会沿你选择的方向，径直远离你移动 10 尺。",
+  "致伤术": "*1 环死灵系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n对你触及范围内一个生物进行一次近战法术攻击。命中时，目标受到 3d10 点黯蚀伤害。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放本法术时，法术位每高于 1 环一环，伤害增加 1d10。",
+  "虫群瘟疫": "*5 环咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 300 尺\n\n**成分：** V、S、M（几粒糖、一些谷粒和一抹脂肪）\n\n**持续时间：** 专注，至多 10 分钟\n\n成群啃咬的蝗虫充满以射程内你选择的一点为中心、半径 20 尺的球体。球体会绕过拐角扩散。该球体在持续时间内存在，其区域为轻度遮蔽。球体区域为困难地形。\n\n当该区域出现时，其中每个生物都必须进行一次体质豁免。豁免失败时，生物受到 4d10 点穿刺伤害；豁免成功时，伤害减半。当一个生物在一个回合中首次进入法术区域，或在其中结束其回合时，也必须进行该豁免。\n\n***高环位施法。*** 当你使用 6 环或更高法术位施放本法术时，法术位每高于 5 环一环，伤害增加 1d10。",
+  "即时召唤": "*6 环咒法系（仪式）*\n\n**施法时间：** 1 分钟\n\n**射程：** 接触\n\n**成分：** V、S、M（一颗价值 1,000 gp 的蓝宝石）\n\n**持续时间：** 直至被解除\n\n你接触一个重量不超过 10 磅、最长尺寸不超过 6 尺的物件。本法术在其表面留下一个不可见标记，并将该物品的名称以不可见文字刻写在你用作材料成分的蓝宝石上。你每次施放本法术时，都必须使用不同的蓝宝石。\n\n此后任意时间，你可以使用你的动作说出该物品的名称并捏碎蓝宝石。无论物理距离或位面距离如何，该物品都会立即出现在你手中，且法术结束。\n\n如果另一个生物正持握或携带该物品，捏碎蓝宝石不会将该物品传送给你；相反，你会知晓持有该物件的生物是谁，以及该生物当时的大致位置。\n\n成功作用于蓝宝石的 *dispel magic* 或类似效果会终止本法术效果。",
+  "隐形术": "*2 环幻术系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（一根封在阿拉伯树胶中的睫毛）\n\n**持续时间：** 专注，至多 1 小时\n\n你接触的一个生物变为隐形，直到法术结束。目标所穿戴或携带的任何物品，只要仍在目标身上，也会隐形。若目标攻击或施放法术，其身上的本法术结束。\n\n***高环位施法。*** 当你使用 3 环或更高法术位施放本法术时，法术位每高于 2 环一环，你可以额外指定一个生物为目标。",
+  "难抗之舞": "*6 环惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V\n\n**持续时间：** 专注，至多 1 分钟\n\n选择射程内一个你能看见的生物。目标开始在原地滑稽起舞：拖步、跺脚，并在持续时间内蹦跳。不能被魅惑的生物免疫本法术。\n\n正在起舞的生物必须用尽其全部移动来跳舞，且不能离开其所在位置，并且在敏捷豁免和攻击检定中具有劣势。当目标受本法术影响时，其他生物对它的攻击检定具有优势。正在起舞的生物可以使用一个动作进行一次感知豁免，以重新控制自己。豁免成功时，法术结束。",
+  "跳跃术": "*1 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（一条蚱蜢后腿）\n\n**持续时间：** 1 分钟\n\n你接触一个生物。直到法术结束，该生物的跳跃距离变为三倍。",
+  "敲击术": "*2 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V\n\n**持续时间：** 立即\n\n选择射程内一个你能看见的物件。该物件可以是一扇门、一个盒子、一个箱子、一副镣铐、一把挂锁，或另一个包含普通或魔法手段以阻止进入的物件。\n\n如果目标被普通锁锁住、被卡住或被门闩挡住，它会被解锁、松开或解除门闩。如果该物件有多把锁，只有其中一把会被解锁。\n\n如果你选择的目标被 *arcane lock* 封闭，该法术会被压制 10 分钟，在此期间目标可以正常开启和关闭。\n\n当你施放本法术时，目标物件会发出一声响亮的敲击声，最远可在 300 尺外听见。",
+  "通晓传奇": "*5 环预言系*\n\n**施法时间：** 10 分钟\n\n**射程：** 自身\n\n**成分：** V、S、M（价值至少 250 gp 的熏香，法术会消耗该材料，以及四条各价值至少 50 gp 的象牙条）\n\n**持续时间：** 立即\n\n说出或描述一个人物、地点或物件。本法术会将关于你所命名事物的重要传说的简短摘要带入你的脑海。这些传说可能包括当前流传的故事、被遗忘的故事，甚至从未被广泛知晓的秘密传说。如果你所命名的事物并不具有传奇意义，你不会获得任何信息。你已经掌握的相关信息越多，获得的信息就越精确、越详细。\n\n你获知的信息是准确的，但可能以比喻性语言表达。例如，如果你手中有一把神秘的魔法斧，本法术可能给出如下信息：“祸哉，触碰此斧的作恶者，因为连斧柄也会割伤恶人的手。唯有真正的石之子，摩拉丁所爱且爱摩拉丁者，方能唤醒此斧的真正力量；且唯有口诵圣言 *Rudnogg* 方可。”",
+  "次级复原术": "*2 环防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n你接触一个生物，并可以终止影响它的一种疾病或一种状态。该状态可以是目盲、耳聋、麻痹或中毒。",
+  "浮空术": "*2 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一个小皮环，或一段弯成杯形且一端带长柄的金线）\n\n**持续时间：** 专注，至多 10 分钟\n\n选择射程内一个你能看见的生物或松散物件。目标垂直升起，最高 20 尺，并在持续时间内悬浮在那里。本法术可以使重量最高 500 磅的目标浮空。不自愿的生物若通过一次体质豁免，则不受影响。\n\n目标只能通过推拉触及范围内的固定物件或表面（例如墙壁或天花板）来移动，使其能像攀爬一样移动。在你的回合中，你可以使目标的高度向任一方向改变至多 20 尺。如果你就是目标，你可以将上升或下降作为移动的一部分。否则，你可以使用你的动作移动目标，而目标必须保持在法术射程内。\n\n法术结束时，如果目标仍在空中，它会轻轻飘落到地面。",
+  "光亮术": "*塑能系戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、M（一只萤火虫或一块磷光苔藓）\n\n**持续时间：** 1 小时\n\n你接触一个任一维度不超过 10 尺的物件。直到法术结束，该物件会在 20 尺半径内发出明亮光照，并在额外 20 尺范围内发出微光。光的颜色可由你决定。用不透明物完全覆盖该物件会遮蔽光亮。如果你再次施放本法术，或使用一个动作解除它，则本法术结束。\n\n如果你以一个由敌对生物持握或穿戴的物件为目标，该生物必须通过一次敏捷豁免才能避免本法术。",
+  "闪电束": "*3 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身（100 尺线状）\n\n**成分：** V、S、M（一点毛皮和一根琥珀、水晶或玻璃棒）\n\n**持续时间：** 立即\n\n一道长 100 尺、宽 5 尺的闪电从你身上沿你选择的方向爆发而出。该线状区域内的每个生物都必须进行一次敏捷豁免。豁免失败时，生物受到 8d6 点闪电伤害；豁免成功时，伤害减半。\n\n闪电会点燃区域内未被穿戴或携带的可燃物。\n\n***高环位施法。*** 当你使用 4 环或更高法术位施放本法术时，法术位每高于 3 环一环，伤害增加 1d6。",
+  "动植物定位术": "*2 环预言系（仪式）*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S、M（一点猎犬毛皮）\n\n**持续时间：** 立即\n\n描述或说出一种特定野兽或植物。你专注于周围自然的声音，并获知 5 英里内最近的该类生物或植物的方向和距离（若存在）。",
+  "生物定位术": "*4 环预言系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S、M（一点猎犬毛皮）\n\n**持续时间：** 专注，至多 1 小时\n\n描述或说出一个你熟悉的生物。只要该生物在你 1,000 尺内，你就能感知其位置方向。如果该生物正在移动，你会知道它移动的方向。\n\n本法术可以定位你知晓的一个特定生物，或某一特定种类中最近的生物（例如人类或独角兽），前提是你曾至少一次在近距离看见过这类生物，即 30 尺内。如果你描述或命名的生物处于不同形态，例如受 *polymorph* 法术影响，本法术无法定位该生物。\n\n如果至少 10 尺宽的流水阻断了你与该生物之间的直接路径，本法术无法定位该生物。",
+  "物品定位术": "*2 环预言系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S、M（一根分叉树枝）\n\n**持续时间：** 专注，至多 10 分钟\n\n描述或说出一个你熟悉的物件。只要该物件在你 1,000 尺内，你就能感知其位置方向。如果该物件正在移动，你会知道它移动的方向。\n\n本法术可以定位你知晓的一个特定物件，前提是你曾至少一次在近距离看见过它，即 30 尺内。或者，本法术也可以定位某一特定种类中最近的物件，例如某类服饰、珠宝、家具、工具或武器。\n\n如果任意厚度的铅，即使只是薄片，阻断了你与该物件之间的直接路径，本法术无法定位该物件。",
+  "大步奔行": "*1 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（一撮泥土）\n\n**持续时间：** 1 小时\n\n你接触一个生物。直到法术结束，目标的速度增加 10 尺。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放本法术时，法术位每高于 1 环一环，你可以额外指定一个生物为目标。",
+  "法师护甲": "*1 环防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（一片鞣制皮革）\n\n**持续时间：** 8 小时\n\n你接触一个未穿护甲的自愿生物，保护性的魔法力场会环绕它直到法术结束。目标的基础 AC 变为 13 + 其敏捷调整值。如果目标穿上护甲，或你使用一个动作解除本法术，则法术结束。",
+  "法师之手": "*咒法系戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S\n\n**持续时间：** 1 分钟\n\n一只幽灵般漂浮的手出现在射程内你选择的一点。该手在持续时间内存在，或直到你使用一个动作解除它。如果该手距离你超过 30 尺，或你再次施放本法术，它会消失。\n\n你可以使用你的动作控制该手。你可以用它操纵一个物件、打开未上锁的门或容器、从打开的容器中收纳或取出一件物品，或倒出小瓶中的内容物。每次使用该手时，你可以使其移动至多 30 尺。\n\n该手不能攻击、启动魔法物品，也不能携带超过 10 磅的重量。",
+  "魔法法阵": "*3 环防护系*\n\n**施法时间：** 1 分钟\n\n**射程：** 10 尺\n\n**成分：** V、S、M（价值至少 100 gp 的圣水，或银粉与铁粉，法术会消耗该材料）\n\n**持续时间：** 1 小时\n\n你创造一个以射程内你能看见的地面上一点为中心、半径 10 尺、高 20 尺的魔法能量圆柱体。发光符文会出现在圆柱体与地板或其他表面相交之处。\n\n选择下列一种或多种生物类型：天界生物、元素生物、精类、邪魔或不死生物。法阵会以下列方式影响所选类型的生物：\n\n- 该生物不能以非魔法手段自愿进入圆柱体。如果它试图使用传送或跨位面旅行进入，必须先通过一次魅力豁免。\n- 该生物对圆柱体内目标的攻击检定具有劣势。\n- 圆柱体内的目标不能被该生物魅惑、恐吓或附身。\n\n施放本法术时，你可以选择让其魔法反向运作，阻止指定类型的生物离开圆柱体，并保护圆柱体外的目标。\n\n***高环位施法。*** 当你使用 4 环或更高法术位施放本法术时，法术位每高于 3 环一环，持续时间增加 1 小时。",
+  "魔魂壶": "*6 环死灵系*\n\n**施法时间：** 1 分钟\n\n**射程：** 自身\n\n**成分：** V、S、M（价值至少 500 gp 的宝石、水晶、圣骨匣或其他装饰性容器）\n\n**持续时间：** 直至被解除\n\n你的灵魂离开身体并进入你用作本法术材料成分的容器，你的身体则陷入紧张性木僵状态。当你的灵魂居住在容器中时，你能感知周围环境，如同你位于容器所在空间。你不能移动或使用反应。你唯一能采取的动作，是将灵魂投射到距容器至多 100 尺外，或者返回你的活体身体（并结束法术），或者尝试附身一个人型生物的身体。\n\n你可以尝试附身距你 100 尺内、你能看见的任意人型生物（受 *protection from evil and good* 或 *magic circle* 法术防护的生物不能被附身）。目标必须进行一次魅力豁免。豁免失败时，你的灵魂进入目标身体，目标的灵魂则被困在容器中。豁免成功时，目标抵抗了你的附身尝试，且你在 24 小时内不能再次尝试附身它。\n\n一旦你附身一个生物的身体，你便控制它。你的游戏数据被该生物的数据替代，但你保留自己的阵营，以及你的智力、感知和魅力值。你保留自己职业特性的益处。如果目标拥有任何职业等级，你不能使用其职业特性。\n\n与此同时，被附身生物的灵魂可以从容器中用自己的感官感知，但完全不能移动或采取动作。\n\n附身于身体期间，如果容器在你 100 尺内，你可以使用你的动作从宿主身体返回容器，并使宿主生物的灵魂返回其身体。如果你在宿主身体中时该身体死亡，该生物死亡，而你必须对抗自己的法术 DC 进行一次魅力豁免。豁免成功时，如果容器在你 100 尺内，你返回容器。否则，你死亡。\n\n如果容器被摧毁或法术结束，你的灵魂会立即返回你的身体。如果你的身体距离你超过 100 尺，或当你尝试返回身体时你的身体已死亡，你死亡。如果容器被摧毁时其中有另一个生物的灵魂，且该生物的身体存活并在 100 尺内，则其灵魂返回身体。否则，该生物死亡。\n\n法术结束时，容器被摧毁。",
+  "魔法飞弹": "*1 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n你创造三枚发光的魔法力场飞弹。每枚飞弹都会命中射程内一个你能看见且由你选择的生物。每枚飞弹对其目标造成 1d4 + 1 点力场伤害。所有飞弹同时命中，你可以让它们击中同一个生物或多个生物。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放本法术时，法术位每高于 1 环一环，本法术额外创造一枚飞弹。",
+  "魔嘴术": "*2 环幻术系（仪式）*\n\n**施法时间：** 1 分钟\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一小块蜂巢和价值至少 10 gp 的玉粉，法术会消耗该材料）\n\n**持续时间：** 直至被解除\n\n你在射程内一个物件中植入一段讯息，该讯息会在触发条件满足时被说出。选择一个你能看见且未被其他生物穿戴或携带的物件。然后说出这段讯息，它必须不超过 25 个词，不过可以用长达 10 分钟的时间传达。最后，确定会触发本法术传递讯息的情境。\n\n当该情境发生时，一个魔法嘴巴会出现在物件上，并以你的声音和你说话时的音量朗诵讯息。如果你选择的物件本身有嘴，或有看似嘴巴的部分（例如雕像的嘴），魔法嘴巴会出现在那里，使话语看似从该物件的嘴中传出。施放本法术时，你可以让法术在传递讯息后结束，或让它保留下来，并在触发条件发生时重复讯息。\n\n触发情境可以按你的喜好设置得笼统或详细，但必须基于物件 30 尺内发生的可见或可听条件。例如，你可以指示嘴巴在任何生物移动到物件 30 尺内时说话，或在 30 尺内响起银铃时说话。",
+  "魔化武器": "*2 环变化系*\n\n**施法时间：** 1 附赠动作\n\n**射程：** 接触\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 小时\n\n你接触一件非魔法武器。直到法术结束，该武器变为魔法武器，并在攻击检定和伤害掷骰中获得 +1 加值。\n\n***高环位施法。*** 当你使用 4 环或更高法术位施放本法术时，加值提高到 +2。当你使用 6 环或更高法术位时，加值提高到 +3。",
+  "华丽宅邸": "*7 环咒法系*\n\n**施法时间：** 1 分钟\n\n**射程：** 300 尺\n\n**成分：** V、S、M（一个由象牙雕成的微型门廊、一小块抛光大理石和一把微型银勺，每件物品价值至少 5 gp）\n\n**持续时间：** 24 小时\n\n你在射程内召唤一处跨维度居所，在持续时间内存在。你选择其唯一入口的位置。入口微微闪烁，宽 5 尺、高 10 尺。只要传送门保持开启，你以及你施放本法术时指定的任何生物都可以进入该跨维度居所。如果你在传送门 30 尺内，你可以开启或关闭它。关闭时，传送门不可见。\n\n传送门之外是一座华丽门厅，后方连接着众多房间。其内空气清洁、清新且温暖。\n\n你可以创造任意平面布局，但总空间不能超过 50 个立方体，每个立方体边长 10 尺。此处按照你的选择配备家具与装饰。它含有足以供应最多 100 人享用九道菜宴席的食物。一队 100 名近乎透明的仆从会侍奉所有进入者。你决定这些仆从的外观和服饰。它们完全服从你的命令。每名仆从都能执行普通人类仆从可以执行的任何任务，但不能攻击，也不能采取任何会直接伤害另一个生物的动作。因此，仆从可以取物、清洁、修补、叠衣、点火、上菜、倒酒，等等。仆从可以前往宅邸内任何地方，但不能离开宅邸。本法术创造的家具和其他物件若被移出宅邸，会化作烟雾消散。法术结束时，跨维度空间内的所有生物都会被逐出到距离入口最近的开放空间。",
+  "高等幻影": "*3 环幻术系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S、M（一点羊毛）\n\n**持续时间：** 专注，至多 10 分钟\n\n你创造一个物件、生物或其他可见现象的影像，其大小不能超过一个 20 尺立方体。该影像出现在射程内你能看见的一处地点，并在持续时间内存在。它看起来完全真实，包括与所描绘事物相符的声音、气味和温度。你不能创造足以造成伤害的热或冷，不能创造足以造成雷鸣伤害或使生物耳聋的巨大声音，也不能创造可能使生物恶心的气味（例如穴居人的恶臭）。\n\n只要你在幻象射程内，你可以使用你的动作使影像移动到射程内任意其他地点。随着影像改变位置，你可以改变其外观，使其动作对该影像而言显得自然。例如，如果你创造一个生物影像并移动它，你可以改变影像，使它看起来像是在行走。同样，你可以使幻象在不同时间发出不同声音，甚至例如让它进行对话。\n\n与影像的物理互动会揭示它是幻象，因为事物可以穿过它。使用动作检查该影像的生物，可以通过一次对抗你的法术豁免 DC 的智力（调查）检定来判定它是幻象。如果生物识破该幻象，该生物可以看穿影像，且影像的其他感官性质对它而言变得微弱。\n\n***高环位施法。*** 当你使用 6 环或更高法术位施放本法术时，法术持续到被解除，且不需要你专注。",
+  "群体治疗伤势": "*5 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n一波治疗能量从射程内你选择的一点涌出。选择以该点为中心、半径 30 尺球体内至多六个生物。每个目标恢复等于 3d8 + 你的施法属性调整值的生命值。本法术对不死生物和构装生物无效。\n\n***高环位施法。*** 当你使用 6 环或更高法术位施放本法术时，法术位每高于 5 环一环，治疗量增加 1d8。",
+  "群体医疗术": "*9 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n一股治疗能量洪流从你身上涌向周围受伤的生物。你恢复至多 700 点生命值，并按你的选择分配给射程内任意数量你能看见的生物。由本法术治疗的生物还会治愈所有疾病，并终止任何使其目盲或耳聋的效果。本法术对不死生物和构装生物无效。",
+  "群体治疗真言": "*3 环塑能系*\n\n**施法时间：** 1 附赠动作\n\n**射程：** 60 尺\n\n**成分：** V\n\n**持续时间：** 立即\n\n当你喊出复原之语时，射程内至多六个你能看见且由你选择的生物恢复等于 1d4 + 你的施法属性调整值的生命值。本法术对不死生物和构装生物无效。\n\n***高环位施法。*** 当你使用 4 环或更高法术位施放本法术时，法术位每高于 3 环一环，治疗量增加 1d4。",
+  "群体暗示术": "*6 环惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、M（一条蛇舌，以及一小块蜂巢或一滴甜油）\n\n**持续时间：** 24 小时\n\n你提出一项行动方针（限一两句话），并以魔法影响射程内至多十二个由你选择、你能看见且能听见并理解你的生物。不能被魅惑的生物免疫此效果。暗示必须以使该行动听起来合理的方式措辞。要求生物刺伤自己、扑向长矛、自焚，或做出其他明显有害的行为，会自动使本法术效果失效。\n\n每个目标都必须进行一次感知豁免。豁免失败时，它会尽其所能执行你描述的行动方针。被暗示的行动可以持续整个持续时间。如果该行动能在更短时间内完成，当受术者完成被要求的事情时，法术结束。\n\n你也可以指定在持续时间内触发某项特殊行动的条件。例如，你可以暗示一群士兵把他们所有的钱交给遇到的第一个乞丐。如果条件在法术结束前没有满足，该行动就不会执行。\n\n如果你或你的任何同伴伤害了受本法术影响的生物，该生物身上的法术结束。\n\n***高环位施法。*** 当你使用 7 环法术位施放本法术时，持续时间为 10 天。当你使用 8 环法术位时，持续时间为 30 天。当你使用 9 环法术位时，持续时间为一年零一天。",
+  "迷宫术": "*8 环咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 10 分钟\n\n你将射程内一个你能看见的生物放逐到一个迷宫般的半位面。目标在持续时间内留在那里，直到它逃出迷宫。\n\n目标可以使用其动作尝试逃脱。这样做时，它进行一次 DC 20 的智力检定。若检定成功，它逃脱，且法术结束（牛头人或戈瑞斯托恶魔自动成功）。\n\n法术结束时，目标重新出现在它离开的空间；如果该空间被占据，则出现在最近的未占据空间。",
+  "融入石中": "*3 环变化系（仪式）*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S\n\n**持续时间：** 8 小时\n\n你步入一个足以完全容纳你身体的石质物件或表面，在持续时间内将你自己和你携带的所有装备与石头融合。你使用你的移动，在你能接触的一点进入石头。非魔法感官无法看见或以其他方式察觉你的存在。\n\n与石头融合时，你不能看见外界发生的事，而你为听见外界声音所进行的任何感知（察觉）检定具有劣势。你仍然知道时间流逝，并可以在石中融合时对自己施放法术。你可以使用你的移动从进入处离开石头，这会结束本法术。除此之外，你不能移动。\n\n石头受到轻微物理伤害不会伤害你，但其部分毁坏或形状改变（达到你不再能容纳其中的程度）会将你逐出，并对你造成 6d6 点钝击伤害。石头完全毁坏（或被转化为另一种物质）会将你逐出，并对你造成 50 点钝击伤害。如果你被逐出，你会在最接近你最初进入位置的未占据空间中倒地。",
+  "修复术": "*变化系戏法*\n\n**施法时间：** 1 分钟\n\n**射程：** 接触\n\n**成分：** V、S、M（两块天然磁石）\n\n**持续时间：** 立即\n\n本法术修复你接触的一个物件上的单处破损或撕裂，例如断裂的链环、断钥匙的两半、撕裂的斗篷或漏水的酒囊。只要该破损或撕裂在任一维度上不超过 1 尺，你就能将其修复，且不留下原先损坏的痕迹。\n\n本法术可以物理修复魔法物品或构装生物，但不能为这类物件恢复魔法。",
+  "传讯术": "*变化系戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S、M（一小段铜线）\n\n**持续时间：** 1 轮\n\n你用手指指向射程内一个生物，并低声传递一段讯息。目标（且只有目标）会听见这段讯息，并能以只有你能听见的低语回复。\n\n如果你熟悉目标，并知道它位于障碍物之后，你可以隔着固体物件施放本法术。魔法沉默、1 尺厚的石头、1 寸厚的普通金属、一片薄铅板，或 3 尺厚的木头都会阻挡本法术。法术不必沿直线传播，可以自由绕过拐角或穿过开口。",
+  "流星爆": "*9 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 1 英里\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n炽燃的火球从天而降，落向射程内你能看见的四个不同地点。以你选择的每一点为中心、半径 40 尺球体内的每个生物都必须进行一次敏捷豁免。球体会绕过拐角扩散。豁免失败时，生物受到 20d6 点火焰伤害和 20d6 点钝击伤害；豁免成功时，伤害减半。若一个生物位于多个火焰爆发区域内，它只受到一次影响。\n\n本法术会伤害区域内的物件，并点燃未被穿戴或携带的可燃物。",
+  "心灵屏障": "*8 环防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S\n\n**持续时间：** 24 小时\n\n直到法术结束，你接触的一个自愿生物免疫心灵伤害、任何会感知其情绪或读取其思想的效果、预言法术以及魅惑状态。本法术甚至能挫败用于影响目标心灵或获取目标信息的 *wish* 法术，以及类似威力的法术或效果。",
+  "次级幻影": "*幻术系戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** S、M（一点羊毛）\n\n**持续时间：** 1 分钟\n\n你在射程内创造一个声音或一个物件影像，并在持续时间内存在。如果你使用一个动作解除幻象，或再次施放本法术，幻象也会结束。\n\n如果你创造声音，其音量可以从低语到尖叫不等。它可以是你的声音、他人的声音、狮吼、鼓声，或你选择的任何其他声音。声音会在整个持续时间内不间断持续，或者你可以在法术结束前于不同时间制造彼此分离的声音。\n\n如果你创造一个物件影像，例如椅子、泥泞脚印或小箱子，它不能大于 5 尺立方体。该影像不能创造声音、光、气味或任何其他感官效果。与影像的物理互动会揭示它是幻象，因为事物可以穿过它。\n\n如果生物使用其动作检查该声音或影像，它可以通过一次对抗你的法术豁免 DC 的智力（调查）检定来判定它是幻象。如果生物识破该幻象，幻象对它而言会变得微弱。",
+  "海市蜃楼": "*7 环幻术系*\n\n**施法时间：** 10 分钟\n\n**射程：** 视线\n\n**成分：** V、S\n\n**持续时间：** 10 天\n\n你使最多 1 平方英里区域内的地形在外观、声音、气味甚至触感上变成另一种地形。不过，地形的总体形状保持不变。开阔田野或道路可以变得像沼泽、山丘、裂隙，或其他困难或无法通行的地形。池塘可以变得像草地，悬崖可以变得像缓坡，岩石沟壑可以变得像宽阔平坦的道路。\n\n同样，你可以改变建筑的外观，或在没有建筑的地方加入建筑。本法术不会伪装、隐藏或添加生物。\n\n幻象包含听觉、视觉、触觉和嗅觉元素，因此它可以将平坦地面变成困难地形（反之亦然），或以其他方式阻碍穿越该区域的移动。任何从法术区域移出的幻象地形部分（例如石头或树枝）都会立即消失。\n\n具有真实视觉的生物可以看穿幻象，看见地形的真实形态；然而，幻象的所有其他元素仍然存在，因此尽管该生物知道幻象存在，它仍然可以与幻象发生物理互动。",
+  "镜影术": "*2 环幻术系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S\n\n**持续时间：** 1 分钟\n\n三个你的幻象复制体出现在你的空间内。直到法术结束，这些复制体会随你移动并模仿你的动作，不断变换位置，使人无法追踪哪个影像是真实的。你可以使用你的动作解除这些幻象复制体。\n\n在法术持续时间内，每当一个生物以攻击指定你为目标时，掷一个 d20，以决定该攻击是否改为以你的一个复制体为目标。\n\n如果你有三个复制体，你必须掷出 6 或更高，才能将攻击目标改为复制体。有两个复制体时，你必须掷出 8 或更高。有一个复制体时，你必须掷出 11 或更高。\n\n复制体的 AC 等于 10 + 你的敏捷调整值。如果一次攻击命中复制体，该复制体被摧毁。复制体只能被命中它的攻击摧毁。它忽略所有其他伤害和效果。当三个复制体全部被摧毁时，法术结束。\n\n如果一个生物看不见，依赖视觉以外的感官（例如盲视），或能像凭借真实视觉那样将幻象感知为虚假，则它不受本法术影响。",
+  "误导术": "*5 环幻术系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** S\n\n**持续时间：** 专注，至多 1 小时\n\n你变为隐形，同时一个你的幻象替身出现在你站立的位置。替身在持续时间内存在，但如果你攻击或施放法术，隐形会结束。\n\n你可以使用你的动作使幻象替身移动至多等于你速度两倍的距离，并使它做手势、说话，以及以你选择的任何方式行动。\n\n你可以透过它的眼睛看、透过它的耳朵听，就像你位于它所在的位置。在你的每个回合中，你可以使用附赠动作在使用它的感官和使用你自己的感官之间切换。当你使用它的感官时，就你自身周围环境而言，你处于目盲和耳聋状态。",
+  "迷踪步": "*2 环咒法系*\n\n**施法时间：** 1 附赠动作\n\n**射程：** 自身\n\n**成分：** V\n\n**持续时间：** 立即\n\n你被银色薄雾短暂环绕，传送至多 30 尺，到达一个你能看见的未占据空间。",
+  "修改记忆": "*5 环惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n你尝试重塑另一个生物的记忆。一个你能看见的生物必须进行一次感知豁免。如果你正在与该生物战斗，它在该豁免中具有优势。豁免失败时，目标在持续时间内被你魅惑。被魅惑的目标处于失能状态，且不知晓周围环境，但仍然能听见你。如果它受到任何伤害，或成为另一个法术的目标，本法术结束，且目标的记忆不会被修改。\n\n当此魅惑持续时，你可以影响目标对其过去 24 小时内经历且持续不超过 10 分钟的一件事件的记忆。你可以永久消除它对该事件的所有记忆，使目标能以完美清晰度和精确细节回忆该事件，改变它对事件细节的记忆，或创造对另一个事件的记忆。\n\n你必须对目标说话，描述其记忆如何受到影响，而目标必须能够理解你的语言，修改后的记忆才能扎根。它的心智会填补你描述细节中的任何空白。如果法术在你完成修改记忆的描述前结束，该生物的记忆不会改变。否则，修改后的记忆会在法术结束时生效。\n\n修改后的记忆不一定会影响生物的行为，尤其是在该记忆与生物的天性、阵营或信念相矛盾时。不合逻辑的修改记忆，例如植入该生物非常享受把自己浇满强酸的记忆，会被视为荒唐，也许像一场噩梦。GM 可以判定某段修改记忆过于荒谬，无法以显著方式影响生物。\n\n对目标施放的 *remove curse* 或 *greater restoration* 法术会恢复该生物的真实记忆。\n\n***高环位施法。*** 如果你使用 6 环或更高法术位施放本法术，你可以改变目标对更早事件的记忆：至多 7 天前（6 环）、30 天前（7 环）、1 年前（8 环），或该生物过去任意时间（9 环）。",
+  "月华之光": "*2 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S、M（数粒任意月籽植物的种子和一块乳白色长石）\n\n**持续时间：** 专注，至多 1 分钟\n\n一道银色苍白光束从上方照下，以射程内一点为中心，形成半径 5 尺、高 40 尺的圆柱体。直到法术结束，微光充满该圆柱体。\n\n当一个生物在一个回合中首次进入法术区域，或在其中开始其回合时，它会被幽灵般的火焰吞没并承受灼痛，且必须进行一次体质豁免。豁免失败时，它受到 2d10 点光耀伤害；豁免成功时，伤害减半。\n\n变形生物进行该豁免时具有劣势。如果它豁免失败，还会立即恢复原形，并且在离开本法术光芒前不能变成其他形态。\n\n在你施放本法术后的每个自己回合中，你可以使用一个动作将光束向任意方向移动至多 60 尺。\n\n***高环位施法。*** 当你使用 3 环或更高法术位施放本法术时，法术位每高于 2 环一环，伤害增加 1d10。",
+  "移土术": "*6 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S、M（一片铁刃和一个装有黏土、壤土与沙土混合物的小袋）\n\n**持续时间：** 专注，至多 2 小时\n\n选择射程内一片边长不超过 40 尺的地形区域。在持续时间内，你可以按你选择的任何方式重塑区域内的泥土、沙土或黏土。你可以升高或降低该区域的高度、创造或填平沟渠、竖起或压平土墙，或形成土柱。任何这类改变的幅度不能超过该区域最大尺寸的一半。因此，如果你影响一个 40 尺见方区域，你可以创造最高 20 尺的土柱、将该方形区域升高或降低至多 20 尺、挖出最深 20 尺的沟渠，等等。这些改变需要 10 分钟完成。\n\n你每专注于本法术 10 分钟结束时，可以选择一片新的地形区域作为影响目标。\n\n由于地形变化发生得很慢，区域内的生物通常不会被地面移动困住或伤害。\n\n本法术不能操纵天然石头或石质建筑。岩石和结构会移动以适应新的地形。如果你塑造地形的方式会使结构不稳定，它可能会坍塌。\n\n同样，本法术不会直接影响植物生长。被移动的土地会带着其上的任何植物一起移动。",
+  "回避侦测": "*3 环防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（撒在目标上的一撮价值 25 gp 的钻石粉末，法术会消耗该材料）\n\n**持续时间：** 8 小时\n\n在持续时间内，你使一个你接触的目标避开预言魔法。目标可以是一个自愿生物，或任一维度不超过 10 尺的地点或物件。目标不能成为任何预言魔法的目标，也不能通过魔法探知感官被感知。",
+  "行踪无迹": "*2 环防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S、M（燃尽的槲寄生叶灰和一小枝云杉）\n\n**持续时间：** 专注，至多 1 小时\n\n阴影与寂静的帷幕从你身上散发，掩盖你和你的同伴，使其不易被侦测。在持续时间内，你 30 尺内由你选择的每个生物（包括你自己）在敏捷（隐匿）检定中获得 +10 加值，且除魔法手段外不能被追踪。获得该加值的生物不会留下足迹或其他经过痕迹。",
+  "穿墙术": "*5 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一撮芝麻）\n\n**持续时间：** 1 小时\n\n一条通道出现在射程内你能看见的一处木质、灰泥或石质表面（例如墙壁、天花板或地板）上，并在持续时间内存在。你选择开口的尺寸：最多宽 5 尺、高 8 尺、深 20 尺。该通道不会使其周围结构不稳定。\n\n当开口消失时，仍在本法术创造的通道内的任何生物或物件都会被安全推出，来到距离你施放本法术的表面最近的未占据空间。",
+  "魅影杀手": "*4 环幻术系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n你触及射程内一个你能看见的生物的噩梦，并创造出其最深恐惧的幻象化身，只有该生物能看见。目标必须进行一次感知豁免。豁免失败时，目标在持续时间内陷入恐慌。在法术结束前，目标每个回合结束时必须通过一次感知豁免，否则受到 4d10 点心灵伤害。豁免成功时，法术结束。\n\n***高环位施法。*** 当你使用 5 环或更高法术位施放本法术时，法术位每高于 4 环一环，伤害增加 1d10。",
+  "魅影驹": "*3 环幻术系（仪式）*\n\n**施法时间：** 1 分钟\n\n**射程：** 30 尺\n\n**成分：** V、S\n\n**持续时间：** 1 小时\n\n一个大型、半真实的马形生物出现在射程内你选择的地面未占据空间中。你决定该生物的外观，但它配有鞍、衔铁和缰绳。本法术创造的任何装备若被带离坐骑超过 10 尺，都会化作一阵烟雾消失。\n\n在持续时间内，你或一个由你选择的生物可以骑乘该坐骑。该生物使用骑乘马的数据，但其速度为 100 尺，并且可以在 1 小时内行进 10 英里，或以快步行进 13 英里。法术结束时，坐骑会逐渐淡去，给骑手 1 分钟下马。如果你使用一个动作解除本法术，或该坐骑受到任何伤害，法术结束。",
+  "异界盟友": "*6 环咒法系*\n\n**施法时间：** 10 分钟\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n你恳求一个异界实体提供援助。该存在必须为你所知：一位神祇、一位原初者、一位恶魔领主，或其他具有宇宙力量的存在。该实体会派遣一名忠于它的天界生物、元素生物或邪魔来帮助你，使该生物出现在射程内一个未占据空间中。如果你知道某个特定生物的名字，你可以在施放本法术时说出该名字来请求该生物，不过你仍可能得到另一个生物（由 GM 决定）。\n\n当该生物出现时，它并不被强迫以任何特定方式行事。你可以请求该生物执行一项服务并提供报酬作为交换，但它没有义务接受。请求的任务可以很简单（带我们飞过裂隙，或帮助我们打一场战斗），也可以很复杂（监视我们的敌人，或在我们深入地城时保护我们）。你必须能够与该生物交流，才能为其服务进行谈判。\n\n报酬可以有多种形式。天界生物可能要求向盟友神殿捐献大量金币或魔法物品，而邪魔可能要求活祭或宝物作为礼物。有些生物可能会以你承担一项任务来交换其服务。\n\n作为经验法则，以分钟计量的任务需要每分钟价值 100 gp 的报酬；以小时计量的任务需要每小时 1,000 gp；以天计量的任务（最多 10 天）需要每天 10,000 gp。GM 可以根据你施放本法术时的情况调整这些报酬。如果任务与该生物的信念一致，报酬可能减半，甚至免除。无危险任务通常只需要建议报酬的一半，而特别危险的任务可能需要更高价值的礼物。生物很少接受看似自杀的任务。\n\n当该生物完成任务，或约定的服务持续时间到期后，如果任务性质合适且可行，它会在向你回报后返回其本位面。如果你无法就该生物服务的价格达成一致，该生物会立即返回其本位面。\n\n被招募加入你队伍的生物视为队伍成员，并获得完整的一份经验值奖励。",
+  "异界誓缚": "*5 环防护系*\n\n**施法时间：** 1 小时\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一颗价值至少 1,000 gp 的宝石，法术会消耗该材料）\n\n**持续时间：** 24 小时\n\n借助本法术，你尝试将一个天界生物、元素生物、精类或邪魔束缚为你服务。在整个施法过程中，该生物必须保持在射程内。（通常，该生物会先被召唤到一个反向运作的 *magic circle* 中央，以便在本法术施放期间困住它。）施法完成时，目标必须进行一次魅力豁免。豁免失败时，它在持续时间内被束缚为你服务。如果该生物由另一个法术召唤或创造，该法术的持续时间会延长至与本法术持续时间相同。\n\n被束缚的生物必须尽其所能遵循你的指示。你可以命令它陪你冒险、守卫某个地点，或传递讯息。该生物会按字面服从你的指示，但如果它对你怀有敌意，它会努力曲解你的话，以达成自己的目的。如果该生物在法术结束前完全执行了你的指示，且你与它在同一存在位面，它会前往你处报告此事。如果你们位于不同存在位面，它会返回你束缚它的地点，并停留在那里直到法术结束。\n\n***高环位施法。*** 当你使用更高环位的法术位施放本法术时，持续时间增加：6 环法术位为 10 天，7 环法术位为 30 天，8 环法术位为 180 天，9 环法术位为一年零一天。",
+  "异界传送": "*7 环咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（一根价值至少 250 gp、与某个特定存在位面调谐的分叉金属棒）\n\n**持续时间：** 立即\n\n你和至多八个自愿生物手牵手围成一圈，被传送到另一个存在位面。你可以以概括方式指定目的地，例如火元素位面的黄铜之城，或九狱第二层中狄斯帕特的宫殿，并出现在该目的地内部或附近。例如，如果你试图抵达黄铜之城，你可能会由 GM 决定出现在其钢铁街、灰烬门前，或隔着火海望向城市的位置。\n\n或者，如果你知道另一个存在位面上一座传送法阵的符记序列，本法术可以将你带到该法阵。如果该传送法阵太小，无法容纳你传送的所有生物，它们会出现在法阵旁最近的未占据空间。\n\n你可以用本法术将一个不自愿生物放逐到另一个位面。选择你触及范围内一个生物，并对其进行一次近战法术攻击。命中时，该生物必须进行一次魅力豁免。如果该生物豁免失败，它会被传送到你指定存在位面上的一个随机位置。被如此传送的生物必须自行寻找返回你当前存在位面的道路。",
+  "植物滋长": "*3 环变化系*\n\n**施法时间：** 1 动作或 8 小时\n\n**射程：** 150 尺\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n本法术将生命力引导至特定区域内的植物。法术有两种可能用途，分别提供即时或长期益处。\n\n如果你使用 1 动作施放本法术，选择射程内一点。以该点为中心、半径 100 尺内的所有普通植物都会变得茂密而过度生长。生物在该区域内移动时，每移动 1 尺必须消耗 4 尺移动力。\n\n你可以将法术区域内任意大小的一处或多处区域排除在影响之外。\n\n如果你用 8 小时施放本法术，你会使土地变得肥沃。以射程内一点为中心、半径半英里的所有植物会在 1 年内保持肥沃。收获时，这些植物产出正常数量两倍的食物。",
+  "毒气喷溅": "*咒法系戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 10 尺\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n你向射程内一个你能看见的生物伸出手，并从掌心喷出一团有害气体。该生物必须通过一次体质豁免，否则受到 1d12 点毒素伤害。\n\n当你达到 5 级（2d12）、11 级（3d12）和 17 级（4d12）时，本法术伤害各增加 1d12。",
+  "变形术": "*4 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一只毛虫茧）\n\n**持续时间：** 专注，至多 1 小时\n\n本法术将射程内一个你能看见的生物变成一种新形态。不自愿的生物必须进行一次感知豁免以避免此效果。本法术对变形生物或生命值为 0 的生物无效。\n\n变化在持续时间内存在，或直到目标降至 0 生命值或死亡。新形态可以是任意野兽，其挑战等级必须等于或低于目标的挑战等级（如果目标没有挑战等级，则使用目标等级）。目标的游戏数据，包括精神属性值，都会被所选野兽的数据替代。它保留自身阵营和个性。\n\n目标获得其新形态的生命值。当它恢复正常形态时，该生物回到变形前拥有的生命值。如果它因降至 0 生命值而恢复形态，任何溢出伤害会转移到其正常形态。只要溢出伤害没有使该生物的正常形态降至 0 生命值，它就不会陷入失去意识。\n\n该生物能执行的动作受其新形态性质限制，且它不能说话、施放法术，或采取任何需要手或言语的其他动作。\n\n目标的装备融入新形态。该生物不能启动、使用、挥舞或以其他方式受益于其任何装备。",
+  "律令死亡": "*9 环惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V\n\n**持续时间：** 立即\n\n你说出一道强力言辞，能够迫使射程内一个你能看见的生物立即死亡。如果你选择的生物生命值为 100 或更低，它死亡。否则，本法术无效。",
+  "律令震慑": "*8 环惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V\n\n**持续时间：** 立即\n\n你说出一道强力言辞，能够压垮射程内一个你能看见的生物的心智，使其茫然。如果目标生命值为 150 或更低，它陷入震慑。否则，本法术无效。\n\n震慑目标必须在其每个回合结束时进行一次体质豁免。豁免成功时，此震慑效果结束。",
+  "治疗祷言": "*2 环塑能系*\n\n**施法时间：** 10 分钟\n\n**射程：** 30 尺\n\n**成分：** V\n\n**持续时间：** 立即\n\n射程内至多六个你能看见且由你选择的生物各自恢复等于 2d8 + 你的施法属性调整值的生命值。本法术对不死生物和构装生物无效。\n\n***高环位施法。*** 当你使用 3 环或更高法术位施放本法术时，法术位每高于 2 环一环，治疗量增加 1d8。",
+  "魔法伎俩": "*变化系戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 10 尺\n\n**成分：** V、S\n\n**持续时间：** 至多 1 小时\n\n本法术是一种小型魔法把戏，新手施法者常用它练习。你在射程内创造下列一种魔法效果：\n\n- 你创造一个立即发生且无害的感官效果，例如一阵火花、一股微风、微弱乐音或奇怪气味。\n- 你立即点燃或熄灭一支蜡烛、一支火把或一小堆营火。\n- 你立即清洁或弄脏一个不大于 1 立方尺的物件。\n- 你使至多 1 立方尺的非活体材料变冷、变暖或带上味道，持续 1 小时。\n- 你使一种颜色、一个小标记或一个符号出现在一个物件或表面上，持续 1 小时。\n- 你创造一个能放进你手中的非魔法小饰品或幻象影像，持续到你下个回合结束。\n\n如果你多次施放本法术，你可以同时维持至多三个非立即效果，并且可以使用一个动作解除其中一个此类效果。",
+  "虹光喷射": "*7 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身（60 尺锥状）\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n八道多彩光线从你手中闪出。每道光线颜色不同，力量与用途也不同。60 尺锥状区域内的每个生物都必须进行一次敏捷豁免。对每个目标掷一次 d8，以决定哪种颜色的光线影响它。\n\n- ***红色。*** 豁免失败时，目标受到 10d6 点火焰伤害；豁免成功时，伤害减半。\n- ***橙色。*** 豁免失败时，目标受到 10d6 点强酸伤害；豁免成功时，伤害减半。\n- ***黄色。*** 豁免失败时，目标受到 10d6 点闪电伤害；豁免成功时，伤害减半。\n- ***绿色。*** 豁免失败时，目标受到 10d6 点毒素伤害；豁免成功时，伤害减半。\n- ***蓝色。*** 豁免失败时，目标受到 10d6 点寒冷伤害；豁免成功时，伤害减半。\n- ***靛色。*** 豁免失败时，目标陷入受拘束。随后它必须在其每个回合结束时进行一次体质豁免。如果它成功豁免三次，法术结束。如果它豁免失败三次，它永久变成石头，并陷入石化状态。成功和失败不必连续；分别记录两者，直到目标累积任一方三次。\n- ***紫色。*** 豁免失败时，目标陷入目盲。随后它必须在你下个回合开始时进行一次感知豁免。豁免成功会结束目盲。如果该豁免失败，该生物会被传送到 GM 选择的另一个存在位面，且不再目盲。（通常，位于非本位面的生物会被放逐回家，而其他生物通常会被抛入星界或以太位面。）\n- ***特殊。*** 目标被两道光线击中。再掷两次，若掷出 8 则重掷。",
+  "虹光法墙": "*9 环防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 10 分钟\n\n本法术不再提及抵消权杖，且文本明确 *dispel magic* 只对紫色层有效。\n\n一道闪耀的多彩光面形成一面垂直不透明墙，最长 90 尺、高 30 尺、厚 1 寸，并以射程内你能看见的一点为中心。或者，你可以将墙塑造成以射程内你选择的一点为中心、直径最高 30 尺的球体。墙在持续时间内保持原位。如果你放置墙的位置穿过一个被生物占据的空间，本法术失败，且你的动作和法术位被浪费。\n\n墙会在 100 尺范围内发出明亮光照，并在额外 100 尺范围内发出微光。你以及你施放本法术时指定的生物可以穿过并停留在墙附近而不受伤害。如果另一个能看见墙的生物移动到距墙 20 尺内，或在该处开始其回合，该生物必须通过一次体质豁免，否则目盲 1 分钟。\n\n墙由七层构成，每层颜色不同。当一个生物尝试伸入或穿过墙时，它会逐层穿过墙的所有层。每当它穿过或伸入一层时，都必须进行一次敏捷豁免，否则受到下文所述该层特性的影响。\n\n墙可以被摧毁，同样一次摧毁一层，并按从红到紫的顺序，使用每层对应的特定方式摧毁。一旦一层被摧毁，它会在本法术持续时间内保持被摧毁状态。*antimagic field* 对其无效。\n\n- ***红色。*** 豁免失败时，生物受到 10d6 点火焰伤害；豁免成功时，伤害减半。当此层存在时，非魔法远程攻击不能穿过墙。对该层造成至少 25 点寒冷伤害即可摧毁它。\n- ***橙色。*** 豁免失败时，生物受到 10d6 点强酸伤害；豁免成功时，伤害减半。当此层存在时，魔法远程攻击不能穿过墙。强风会摧毁该层。\n- ***黄色。*** 豁免失败时，生物受到 10d6 点闪电伤害；豁免成功时，伤害减半。对该层造成至少 60 点力场伤害即可摧毁它。\n- ***绿色。*** 豁免失败时，生物受到 10d6 点毒素伤害；豁免成功时，伤害减半。*passwall* 法术，或另一个能在固体表面打开通道且环位相同或更高的法术，会摧毁该层。\n- ***蓝色。*** 豁免失败时，生物受到 10d6 点寒冷伤害；豁免成功时，伤害减半。对该层造成至少 25 点火焰伤害即可摧毁它。\n- ***靛色。*** 豁免失败时，生物陷入受拘束。随后它必须在其每个回合结束时进行一次体质豁免。如果它成功豁免三次，法术结束。如果它豁免失败三次，它永久变成石头，并陷入石化状态。成功和失败不必连续；分别记录两者，直到生物累积任一方三次。当此层存在时，法术不能穿过墙施放。由 *daylight* 法术或环位相同或更高的类似法术发出的明亮光照会摧毁该层。\n- ***紫色。*** 豁免失败时，生物陷入目盲。随后它必须在你下个回合开始时进行一次感知豁免。豁免成功会结束目盲。如果该豁免失败，该生物会被传送到 GM 选择的另一个位面，且不再目盲。（通常，位于非本位面的生物会被放逐回家，而其他生物通常会被抛入星界或以太位面。）*dispel magic* 法术，或另一个能终止法术与魔法效果且环位相同或更高的类似法术，会摧毁该层。",
+  "私密圣所": "*4 环防护系*\n\n**施法时间：** 10 分钟\n\n**射程：** 120 尺\n\n**成分：** V、S、M（一片薄铅片、一块不透明玻璃、一团棉花或布料，以及橄榄石粉末）\n\n**持续时间：** 24 小时\n\n你使射程内一片区域获得魔法保护。该区域是一个立方体，每边可以小至 5 尺，大至 100 尺。法术在持续时间内存在，或直到你使用一个动作解除它。\n\n施放本法术时，你决定法术提供哪类保护，可以选择下列任意或全部特性：\n\n- 声音不能穿过受防护区域边缘的屏障。\n- 受防护区域的屏障显得黑暗且雾蒙蒙，阻止视觉（包括黑暗视觉）穿透。\n- 由预言法术创造的感官不能出现在受保护区域内，也不能穿过其边界屏障。\n- 区域内的生物不能成为预言法术的目标。\n- 任何事物都不能传送进入或离开受防护区域。\n- 位面旅行在受防护区域内被阻断。连续一年每天在同一地点施放本法术，会使此效果永久化。\n\n***高环位施法。*** 当你使用 5 环或更高法术位施放本法术时，法术位每高于 4 环一环，你可以使立方体每边增加 100 尺。因此，使用 5 环法术位时，你可以保护每边最高 200 尺的立方体。",
+  "燃火术": "*咒法系戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S\n\n**持续时间：** 10 分钟\n\n一团摇曳火焰出现在你手中。火焰在持续时间内留在那里，不会伤害你或你的装备。火焰在 10 尺半径内发出明亮光照，并在额外 10 尺范围内发出微光。如果你使用一个动作解除本法术，或再次施放本法术，法术结束。\n\n你也可以用火焰攻击，但这样做会结束本法术。当你施放本法术时，或在之后回合中使用一个动作时，你可以将火焰掷向你 30 尺内一个生物。进行一次远程法术攻击。命中时，目标受到 1d8 点火焰伤害。\n\n当你达到 5 级（2d8）、11 级（3d8）和 17 级（4d8）时，本法术伤害各增加 1d8。",
+  "预置幻象": "*6 环幻术系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S、M（一点羊毛和价值至少 25 gp 的玉粉）\n\n**持续时间：** 直至被解除\n\n你在射程内创造一个物件、生物或其他可见现象的幻象，并使其在特定条件发生时启动。在此之前，幻象不可感知。它不能大于 30 尺立方体，且你在施放本法术时决定幻象如何行动以及会发出什么声音。这段预设演出最多可以持续 5 分钟。\n\n当你指定的条件发生时，幻象突然出现，并按你描述的方式表演。一旦幻象完成表演，它会消失并休眠 10 分钟。此后，幻象可以再次被启动。\n\n触发条件可以按你的喜好设置得笼统或详细，但必须基于该区域 30 尺内发生的可见或可听条件。例如，你可以创造自己的幻象，使其出现并警告试图打开陷阱门的人，或设定只有当生物说出正确词语或短语时才触发幻象。\n\n与影像的物理互动会揭示它是幻象，因为事物可以穿过它。使用动作检查该影像的生物，可以通过一次对抗你的法术豁免 DC 的智力（调查）检定来判定它是幻象。如果生物识破该幻象，该生物可以看穿影像，且影像发出的任何声音对它而言都会显得空洞。",
+  "投影术": "*7 环幻术系*\n\n**施法时间：** 1 动作\n\n**射程：** 500 英里\n\n**成分：** V、S、M（一个由价值至少 5 gp 的材料制成的你的小型复制品）\n\n**持续时间：** 专注，至多 1 天\n\n你创造一个自己的幻象复制体，并在持续时间内存在。该复制体可以出现在射程内你曾见过的任何地点，无论中间有何障碍。幻象看起来和听起来都像你，但没有实体。如果幻象受到任何伤害，它会消失，且法术结束。\n\n你可以使用你的动作使该幻象移动至多等于你速度两倍的距离，并使其做手势、说话，以及以你选择的任何方式行动。它会完美模仿你的举止。\n\n你可以透过它的眼睛看、透过它的耳朵听，就像你位于它的空间内。在你的回合中，你可以使用附赠动作在使用它的感官和使用你自己的感官之间切换。当你使用它的感官时，就你自身周围环境而言，你处于目盲和耳聋状态。\n\n与影像的物理互动会揭示它是幻象，因为事物可以穿过它。使用动作检查该影像的生物，可以通过一次对抗你的法术豁免 DC 的智力（调查）检定来判定它是幻象。如果生物识破该幻象，该生物可以看穿影像，且影像发出的任何声音对它而言都会显得空洞。",
+  "能量防护": "*3 环防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 小时\n\n在持续时间内，你接触的自愿生物对你选择的一种伤害类型具有抗性：强酸、寒冷、火焰、闪电或雷鸣。",
+  "防护善恶": "*1 环防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（圣水，或银粉与铁粉，法术会消耗该材料）\n\n**持续时间：** 专注，至多 10 分钟\n\n直到法术结束，你接触的一个自愿生物受到保护，抵御特定类型的生物：异怪、天界生物、元素生物、精类、邪魔和不死生物。\n\n该保护提供数项益处。这些类型的生物对目标的攻击检定具有劣势。目标也不能被它们魅惑、恐吓或附身。如果目标已经被这类生物魅惑、恐吓或附身，则目标对相关效果进行的任何新的豁免具有优势。",
+  "防护毒素": "*2 环防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S\n\n**持续时间：** 1 小时\n\n你接触一个生物。如果它中毒，你中和该毒素。如果有多种毒素影响目标，你中和一种你知道存在的毒素，或随机中和一种。\n\n在持续时间内，目标对避免中毒的豁免具有优势，并且对毒素伤害具有抗性。",
+  "净化食粮": "*1 环变化系（仪式）*\n\n**施法时间：** 1 动作\n\n**射程：** 10 尺\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n以射程内你选择的一点为中心、半径 5 尺球体内的所有非魔法食物和饮品都会被净化，并清除毒素和疾病。",
+  "死者复活": "*5 环死灵系*\n\n**施法时间：** 1 小时\n\n**射程：** 接触\n\n**成分：** V、S、M（一颗价值至少 500 gp 的钻石，法术会消耗该材料）\n\n**持续时间：** 立即\n\n你使一个你接触的死亡生物复活，前提是它死亡不超过 10 天。如果该生物的灵魂既愿意也有自由回到身体，该生物以 1 点生命值复活。\n\n本法术还会中和该生物死亡时影响它的任何毒素，并治愈非魔法疾病。不过，本法术不会移除魔法疾病、诅咒或类似效果；如果这些效果没有在施放本法术前先被移除，它们会在该生物复活时生效。本法术不能使不死生物复活。\n\n本法术会闭合所有致命伤口，但不会恢复缺失的身体部位。如果该生物缺少其生存所必需的身体部位或器官，例如头颅，本法术自动失败。\n\n死而复生是一场严酷考验。目标的所有攻击检定、豁免和属性检定受到 -4 减值。目标每完成一次长休，该减值减少 1，直到消失。",
+  "衰弱射线": "*2 环死灵系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n一道使人虚弱的黑色能量射线从你手指射向射程内一个生物。对目标进行一次远程法术攻击。命中时，直到法术结束，目标使用力量进行的武器攻击只能造成一半伤害。\n\n在目标每个回合结束时，它可以对本法术进行一次体质豁免。豁免成功时，法术结束。",
+  "冰冻射线": "*塑能系戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n一道寒冷的蓝白光束射向射程内一个生物。对目标进行一次远程法术攻击。命中时，它受到 1d8 点寒冷伤害，且速度降低 10 尺，直到你下个回合开始。\n\n当你达到 5 级（2d8）、11 级（3d8）和 17 级（4d8）时，本法术伤害各增加 1d8。",
+  "再生术": "*7 环变化系*\n\n**施法时间：** 1 分钟\n\n**射程：** 接触\n\n**成分：** V、S、M（一个转经轮和圣水）\n\n**持续时间：** 1 小时\n\n你接触一个生物，并激发其自然愈合能力。目标恢复 4d8 + 15 点生命值。在本法术持续时间内，目标在其每个回合开始时恢复 1 点生命值（每分钟 10 点生命值）。\n\n目标被切断的身体部位（手指、腿、尾巴等）若有，会在 2 分钟后恢复。如果你持有被切断的部位并将其按在残端上，本法术会立即使该肢体接合到残端。",
+  "转生术": "*5 环变化系*\n\n**施法时间：** 1 小时\n\n**射程：** 接触\n\n**成分：** V、S、M（价值至少 1,000 gp 的稀有油和软膏，法术会消耗该材料）\n\n**持续时间：** 立即\n\n你接触一个死亡人型生物，或死亡人型生物的一部分。只要该生物死亡不超过 10 天，本法术会为它形成一具新的成年身体，然后召唤其灵魂进入该身体。\n\n如果目标的灵魂没有自由或不愿这样做，本法术失败。\n\n魔法会为该生物塑造一具新的身体供其居住，这很可能导致该生物的种族改变。GM 掷一个 d100 并查阅下表，以决定该生物复活时采取的形态；或由 GM 选择一种形态。\n\n**表：转生种族**\n\n| d100  | 种族                |\n|-------|---------------------|\n| 01-04 | 龙裔                |\n| 05-13 | 矮人，丘陵          |\n| 14-21 | 矮人，山地          |\n| 22-25 | 精灵，黑暗          |\n| 26-34 | 精灵，高等          |\n| 35-42 | 精灵，木精灵        |\n| 43-46 | 侏儒，森林          |\n| 47-52 | 侏儒，岩地          |\n| 53-56 | 半精灵              |\n| 57-60 | 半兽人              |\n| 61-68 | 半身人，轻足        |\n| 69-76 | 半身人，壮心        |\n| 77-96 | 人类                |\n| 97-00 | 提夫林              |\n|       |                     |\n\n转生后的生物记得其前世生活和经历。它保留原本形态中拥有的能力，但将原本种族替换为新种族，并相应改变其种族特质。",
+  "移除诅咒": "*3 环防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n在你的接触下，影响一个生物或物件的所有诅咒都会结束。如果该物件是一件受诅咒的魔法物品，其诅咒仍然存在，但本法术会打破其所有者与该物件的同调，使其可以被移除或丢弃。",
+  "弹力法球": "*4 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一块透明水晶半球和一块相配的阿拉伯树胶半球）\n\n**持续时间：** 专注，至多 1 分钟\n\n一个闪耀力场构成的球体包围射程内一个大型或更小体型的生物或物件。不自愿的生物必须进行一次敏捷豁免。豁免失败时，该生物在持续时间内被封闭其中。\n\n任何东西，无论是物理物件、能量还是其他法术效果，都不能穿过屏障进出，不过球体内的生物可以呼吸。球体免疫所有伤害，且其中的生物或物件不能被来自外部的攻击或效果伤害，球体内的生物也不能伤害球体外的任何东西。\n\n球体没有重量，且刚好足以容纳其中的生物或物件。被封闭的生物可以使用其动作推挤球壁，从而使球体以至多等于该生物速度一半的速度滚动。同样，其他生物也可以拾起并移动该球体。\n\n以该球体为目标的 *disintegrate* 法术会摧毁它，而不会伤害其中任何东西。",
+  "抵抗术": "*防护系戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（一件微型斗篷）\n\n**持续时间：** 专注，至多 1 分钟\n\n你接触一个自愿生物。在法术结束前一次，目标可以掷一个 d4，并将掷出的数字加到其选择的一次豁免上。它可以在进行豁免前或后掷这个骰子。随后法术结束。",
+  "复生术": "*7 环死灵系*\n\n**施法时间：** 1 小时\n\n**射程：** 接触\n\n**成分：** V、S、M（一颗价值至少 1,000 gp 的钻石，法术会消耗该材料）\n\n**持续时间：** 立即\n\n你接触一个死亡不超过一个世纪、并非死于衰老且不是不死生物的死亡生物。如果其灵魂自由且愿意，目标以全部生命值复活。\n\n本法术会中和该生物死亡时影响它的任何毒素，并治愈普通疾病。不过，它不会移除魔法疾病、诅咒等效果；如果这些效果没有在施放本法术前被移除，它们会在目标复活时影响目标。\n\n本法术会闭合所有致命伤口，并恢复任何缺失的身体部位。\n\n死而复生是一场严酷考验。目标的所有攻击检定、豁免和属性检定受到 -4 减值。目标每完成一次长休，该减值减少 1，直到消失。\n\n施放本法术以复活一个已经死亡一年或更久的生物，会极大消耗你。直到你完成一次长休，你不能再次施放法术，且你的所有攻击检定、属性检定和豁免具有劣势。",
+  "反转重力": "*7 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 100 尺\n\n**成分：** V、S、M（一块天然磁石和铁屑）\n\n**持续时间：** 专注，至多 1 分钟\n\n本法术会反转以射程内一点为中心、半径 50 尺、高 100 尺圆柱体内的重力。区域内所有未以某种方式锚定在地面上的生物和物件，在你施放本法术时向上坠落并到达区域顶部。生物可以进行一次敏捷豁免，以抓住一个其可触及的固定物件，从而避免坠落。\n\n如果在这次坠落中遇到某个固体物件（例如天花板），坠落的物件和生物会像正常向下坠落时那样撞上它。如果物件或生物到达区域顶部且未撞到任何东西，它会在持续时间内留在那里并轻微摆动。\n\n持续时间结束时，受影响的物件和生物会坠落回下方。",
+  "亡者复活": "*3 环死灵系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（价值 300 gp 的钻石，法术会消耗该材料）\n\n**持续时间：** 立即\n\n你接触一个在过去 1 分钟内死亡的生物。该生物以 1 点生命值复活。本法术不能复活死于衰老的生物，也不能恢复任何缺失的身体部位。",
+  "绳技术": "*2 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（玉米提取物粉末和一圈扭转的羊皮纸）\n\n**持续时间：** 1 小时\n\n你接触一段最长 60 尺的绳索。随后绳索一端升入空中，直到整条绳索垂直悬挂于地面。在绳索上端，一个通向跨维度空间的不可见入口开启，并持续到法术结束。\n\n通过爬到绳索顶端可以进入该跨维度空间。该空间最多可容纳八个中型或更小体型的生物。绳索可以被拉入空间中，使其从空间外视野中消失。\n\n攻击和法术不能穿过入口进出跨维度空间，但内部生物可以向外看，就像通过一个以绳索为中心、3 尺乘 5 尺的窗户观看。\n\n法术结束时，跨维度空间内的任何东西都会掉出。",
+  "圣火术": "*塑能系戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n火焰般的光辉降临到射程内一个你能看见的生物身上。目标必须通过一次敏捷豁免，否则受到 1d8 点光耀伤害。目标在此次豁免中不会因掩护获得益处。\n\n当你达到 5 级（2d8）、11 级（3d8）和 17 级（4d8）时，本法术伤害各增加 1d8。",
+  "圣域术": "*1 环防护系*\n\n**施法时间：** 1 附赠动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一面小银镜）\n\n**持续时间：** 1 分钟\n\n你保护射程内一个生物免受攻击。直到法术结束，任何以受保护生物为攻击或有害法术目标的生物，都必须先进行一次感知豁免。豁免失败时，该生物必须选择新的目标，否则失去该攻击或法术。本法术不会保护受保护生物免受区域效果影响，例如 *fireball* 的爆炸。\n\n如果受保护生物进行攻击、施放影响敌人的法术，或对另一个生物造成伤害，本法术结束。",
+  "灼热射线": "*2 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n你创造三道火焰射线，并将它们掷向射程内的目标。你可以将它们掷向同一个目标或多个目标。\n\n为每道射线进行一次远程法术攻击。命中时，目标受到 2d6 点火焰伤害。\n\n***高环位施法。*** 当你使用 3 环或更高法术位施放本法术时，法术位每高于 2 环一环，你额外创造一道射线。",
+  "探知术": "*5 环预言系*\n\n**施法时间：** 10 分钟\n\n**射程：** 自身\n\n**成分：** V、S、M（价值至少 1,000 gp 的法器，例如水晶球、银镜，或装满圣水的水盆）\n\n**持续时间：** 专注，至多 10 分钟\n\n你可以看见并听见一个由你选择、与你位于同一存在位面的特定生物。目标必须进行一次感知豁免，该豁免会根据你对目标的了解程度以及你与目标之间的物理联系类型进行调整。如果目标知道你正在施放本法术，且它愿意被观察，它可以自愿豁免失败。\n\n**表：探知豁免调整值**\n\n| 了解程度                                          | 豁免调整值 |\n|---------------------------------------------------|------------|\n| 间接了解（你听说过目标）                          | +5         |\n| 直接了解（你见过目标）                            | +0         |\n| 熟悉（你很了解目标）                              | -5         |\n| 联系                                              | 豁免调整值 |\n| 肖像或图片                                        | -2         |\n| 所有物或衣物                                      | -4         |\n| 身体部位、一缕头发、一点指甲或类似物              | -10        |\n|                                                   |            |\n\n豁免成功时，目标不受影响，且你在 24 小时内不能再次对其使用本法术。\n\n豁免失败时，本法术会在目标 10 尺内创造一个不可见感官。你可以透过该感官看见并听见，如同你就在该处。感官会随目标移动，并在持续时间内保持在目标 10 尺内。能看见不可见物体的生物会看见该感官是一颗约你拳头大小的发光球体。\n\n你也可以不以生物为目标，而选择一个你曾见过的地点作为本法术目标。这样做时，感官会出现在该地点且不会移动。",
+  "秘藏箱": "*4 环咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（一只由稀有材料制成、3 尺乘 2 尺乘 2 尺、价值至少 5,000 gp 的精美箱子，以及一个由相同材料制成、价值至少 50 gp 的微型复制品）\n\n**持续时间：** 立即\n\n你将一只箱子及其中全部内容隐藏到以太位面。你必须接触该箱子，以及作为本法术材料成分的微型复制品。箱子最多可容纳 12 立方尺的非活体材料（3 尺乘 2 尺乘 2 尺）。\n\n当箱子仍在以太位面时，你可以使用一个动作并接触复制品来召回箱子。它会出现在你 5 尺内地面上的一个未占据空间。你也可以使用一个动作并同时接触箱子和复制品，将箱子送回以太位面。\n\n60 天后，本法术效果每天有累积 5% 的几率结束。如果你再次施放本法术、较小的复制箱被摧毁，或你选择使用一个动作结束本法术，此效果也会结束。如果法术结束时较大的箱子位于以太位面，它会不可挽回地遗失。",
+  "看破隐形": "*2 环预言系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S、M（一撮滑石粉和少量银粉）\n\n**持续时间：** 1 小时\n\n在持续时间内，你能看见隐形生物和物件，如同它们可见；你还可以看入以太位面。以太生物和物件显得幽灵般且半透明。",
+  "群体伪装": "*5 环幻术系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S\n\n**持续时间：** 8 小时\n\n本法术允许你改变射程内任意数量你能看见的生物的外观。你为每个所选目标赋予一个新的幻象外观。不自愿的目标可以进行一次魅力豁免，若成功，则不受本法术影响。\n\n本法术会伪装身体外观以及衣物、护甲、武器和装备。你可以使每个生物看起来矮或高 1 尺，并显得瘦、胖或介于两者之间。你不能改变目标的身体类型，因此必须选择具有相同基本肢体结构的形态。除此之外，幻象的程度由你决定。除非你提前使用动作解除，本法术会持续到持续时间结束。\n\n本法术造成的变化经不起物理检查。例如，如果你用本法术为一个生物的衣着添加帽子，物件会穿过帽子，而任何触碰它的人会什么也摸不到，或摸到该生物的头和头发。如果你用本法术使自己看起来比实际更瘦，伸手触碰你的人会在手看似仍在半空时碰到你。\n\n一个生物可以使用其动作检查目标，并进行一次对抗你的法术豁免 DC 的智力（调查）检定。如果成功，它会意识到目标被伪装了。",
+  "传讯": "*3 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 无限\n\n**成分：** V、S、M（一小段精细铜线）\n\n**持续时间：** 1 轮\n\n你向一个你熟悉的生物发送一段不超过二十五个词的短讯。该生物会在脑中听见这段讯息，如果它认识你，也会认出你是发送者，并能立即以同样方式回答。本法术使智力值至少为 1 的生物能够理解你的讯息含义。\n\n你可以跨越任意距离发送讯息，甚至发送到其他存在位面；但如果目标位于与你不同的位面，讯息有 5% 的几率无法抵达。",
+  "隐匿术": "*7 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（由钻石、祖母绿、红宝石和蓝宝石粉末组成、价值至少 5,000 gp 的粉末，法术会消耗该材料）\n\n**持续时间：** 直至被解除\n\n借助本法术，一个自愿生物或一个物件可以被隐藏起来，并在持续时间内免于侦测。当你施放本法术并接触目标时，目标变为隐形，不能成为预言法术的目标，也不能通过预言法术创造的探知感官被感知。\n\n如果目标是生物，它会陷入假死状态。时间对它停止流动，它不会变老。\n\n你可以设置一个使法术提前结束的条件。该条件可以是你选择的任何内容，但必须发生在目标 1 英里内，或在该范围内可见。例如“1,000 年后”或“当泰拉斯奎巨兽苏醒时”。如果目标受到任何伤害，本法术也会结束。",
+  "形体变化": "*9 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S、M（一个价值至少 1,500 gp 的玉质头环，你必须在施放本法术前将其戴在头上）\n\n**持续时间：** 专注，至多 1 小时\n\n你在持续时间内化为一种不同生物的形态。新形态可以是挑战等级等于或低于你等级的任何生物。该生物不能是构装生物或不死生物，且你必须至少见过该类生物一次。你变成该生物的普通个体，没有任何职业等级或施法特质。\n\n你的游戏数据被所选生物的数据替代，但你保留自己的阵营，以及智力、感知和魅力值。你也保留所有自己的技能和豁免熟练项，并获得该生物的熟练项。如果该生物拥有与你相同的熟练项，且其数据中列出的加值高于你的加值，则使用该生物的加值替代你的加值。你不能使用新形态的任何传奇动作或巢穴动作。\n\n你获得新形态的生命值和生命骰。当你恢复正常形态时，你回到变形前拥有的生命值。如果你因降至 0 生命值而恢复形态，任何溢出伤害会转移到你的正常形态。只要溢出伤害没有使你的正常形态降至 0 生命值，你就不会陷入失去意识。\n\n你保留来自职业、种族或其他来源的任何特性收益，并可以使用它们，前提是你的新形态在身体上能够这样做。你不能使用你拥有的任何特殊感官（例如黑暗视觉），除非你的新形态也拥有该感官。只有当该生物通常能够说话时，你才能说话。\n\n当你变形时，你选择自己的装备掉落到地面、融入新形态，或由新形态穿戴。被穿戴的装备正常运作。GM 根据该生物的形态和体型决定新形态穿戴某件装备是否可行。你的装备不会改变形状或大小以适应新形态，任何新形态不能穿戴的装备必须掉落到地面或融入你的新形态。融入的装备在该状态下无效。\n\n在本法术持续时间内，你可以使用你的动作变为另一种形态，遵循与原形态相同的限制和规则，但有一项例外：如果你的新形态生命值高于当前形态，你的生命值保持当前数值。",
+  "粉碎音波": "*2 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一片云母）\n\n**持续时间：** 立即\n\n一声突然而痛苦强烈的响亮鸣音从射程内你选择的一点爆发。以该点为中心、半径 10 尺球体内的每个生物都必须进行一次体质豁免。豁免失败时，生物受到 3d8 点雷鸣伤害；豁免成功时，伤害减半。由石头、水晶或金属等无机材料构成的生物在该豁免中具有劣势。\n\n区域内未被穿戴或携带的非魔法物件也会受到该伤害。\n\n***高环位施法。*** 当你使用 3 环或更高法术位施放本法术时，法术位每高于 2 环一环，伤害增加 1d8。",
+  "信仰护盾": "*1 环防护系*\n\n**施法时间：** 1 附赠动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一小张写有神圣文字的羊皮纸）\n\n**持续时间：** 专注，至多 10 分钟\n\n一道闪耀力场出现并环绕射程内一个由你选择的生物，使其在持续时间内获得 +2 AC 加值。",
+  "护盾术": "*1 环防护系*\n\n**施法时间：** 1 反应，当你被攻击命中或成为 *magic missile* 法术目标时作出\n\n**射程：** 自身\n\n**成分：** V、S\n\n**持续时间：** 1 轮\n\n一道不可见的魔法力场屏障出现并保护你。直到你下个回合开始，你的 AC 获得 +5 加值，包括对触发本法术的攻击也适用，并且你不会受到 *magic missile* 的伤害。",
+  "橡棍术": "*变化系戏法*\n\n**施法时间：** 1 附赠动作\n\n**射程：** 接触\n\n**成分：** V、S、M（槲寄生、一片三叶草叶，以及一根棍棒或长棍）\n\n**持续时间：** 1 分钟\n\n你所持棍棒或长棍的木质部分被灌注自然力量。在持续时间内，你使用该武器进行近战攻击时，可以用你的施法属性代替力量来进行攻击检定和伤害掷骰，并且该武器的伤害骰变为 d8。如果该武器还不是魔法武器，它也会变为魔法武器。如果你再次施放本法术，或放开该武器，法术结束。",
+  "电爪": "*塑能系戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n闪电从你手中迸出，向你试图接触的生物传递电击。对目标进行一次近战法术攻击。如果目标穿着金属制成的护甲，你在该攻击检定中具有优势。命中时，目标受到 1d8 点闪电伤害，且直到其下个回合开始不能使用反应。\n\n当你达到 5 级（2d8）、11 级（3d8）和 17 级（4d8）时，本法术伤害各增加 1d8。",
+  "沉默术": "*2 环幻术系（仪式）*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 10 分钟\n\n在持续时间内，以射程内你选择的一点为中心、半径 20 尺的球体内不能创造声音，声音也不能穿过该球体。完全处于球体内的任何生物或物件免疫雷鸣伤害，完全处于其中的生物处于耳聋状态。包含言语成分的法术无法在其中施放。",
+  "无声幻影": "*1 环幻术系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一点羊毛）\n\n**持续时间：** 专注，至多 10 分钟\n\n你创造一个物件、生物或其他可见现象的影像，其大小不能超过 15 尺立方体。该影像出现在射程内一处地点，并在持续时间内存在。该影像纯粹是视觉效果，不伴随声音、气味或其他感官效果。\n\n你可以使用你的动作使影像移动到射程内任意地点。随着影像改变位置，你可以改变其外观，使其动作对该影像而言显得自然。例如，如果你创造一个生物影像并移动它，你可以改变影像，使它看起来像是在行走。\n\n与影像的物理互动会揭示它是幻象，因为事物可以穿过它。使用动作检查该影像的生物，可以通过一次对抗你的法术豁免 DC 的智力（调查）检定来判定它是幻象。如果生物识破该幻象，该生物可以看穿影像。",
+  "拟像术": "*7 环幻术系*\n\n**施法时间：** 12 小时\n\n**射程：** 接触\n\n**成分：** V、S、M（足以制成被复制生物等身复制体的雪或冰；放入雪或冰中的该生物的一些头发、指甲剪屑或其他身体部位；以及价值 1,500 gp 的红宝石粉末，撒在复制体上并由法术消耗）\n\n**持续时间：** 直至被解除\n\n你塑造一个在整个施法时间内位于射程内的野兽或人型生物的幻象复制体。该复制体是一个生物，部分真实，由冰或雪构成，能够采取动作，并能像普通生物一样受到影响。它看起来与原体相同，但其生命值上限为该生物的一半，且生成时没有任何装备。除此之外，该幻象使用被复制生物的所有数据，但它是构装生物。\n\n拟像对你以及你指定的生物友善。它服从你的口头命令，按你的意愿移动和行动，并在战斗中于你的回合行动。拟像没有学习或变得更强的能力，因此它永远不会提高等级或其他能力，也不能恢复已消耗的法术位。\n\n如果拟像受到伤害，你可以在炼金实验室中使用稀有草药和矿物修复它，每恢复 1 点生命值需要价值 100 gp 的材料。拟像持续到其降至 0 生命值；此时它会恢复成雪并立即融化。\n\n如果你再次施放本法术，任何你当前用本法术创造并仍存在的复制体都会立即被摧毁。",
+  "睡眠术": "*1 环惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 90 尺\n\n**成分：** V、S、M（一撮细沙、玫瑰花瓣或一只蟋蟀）\n\n**持续时间：** 1 分钟\n\n本法术使生物陷入魔法沉睡。掷 5d8；总数即为本法术可影响生物的生命值总量。以射程内你选择的一点为中心、20 尺内的生物，按其当前生命值从低到高的顺序受到影响（忽略失去意识的生物）。\n\n从当前生命值最低的生物开始，受本法术影响的每个生物都会失去意识，直到法术结束、沉睡者受到伤害，或有人使用动作摇醒或拍醒沉睡者。先从总数中减去该生物的生命值，再继续处理下一个当前生命值最低的生物。一个生物的生命值必须等于或低于剩余总数，该生物才会受到影响。\n\n不死生物以及免疫魅惑的生物不受本法术影响。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放本法术时，法术位每高于 1 环一环，额外掷 2d8。",
+  "冰雨风暴": "*3 环咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 150 尺\n\n**成分：** V、S、M（一撮尘土和几滴水）\n\n**持续时间：** 专注，至多 1 分钟\n\n直到法术结束，冻雨和雨夹雪会落在以射程内你选择的一点为中心、半径 40 尺、高 20 尺的圆柱体内。该区域为重度遮蔽，区域内暴露的火焰会被浇灭。\n\n区域内地面覆盖光滑冰层，使其成为困难地形。当一个生物在一个回合中首次进入法术区域，或在其中开始其回合时，必须进行一次敏捷豁免。豁免失败时，它倒地。\n\n如果一个生物在法术区域内开始其回合且正在专注于一个法术，它必须通过一次对抗你的法术豁免 DC 的体质豁免，否则失去专注。",
+  "迟缓术": "*3 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S、M（一滴糖浆）\n\n**持续时间：** 专注，至多 1 分钟\n\n你改变射程内一个 40 尺立方体中至多六个由你选择的生物周围的时间。每个目标都必须通过一次感知豁免，否则在持续时间内受本法术影响。\n\n受影响目标的速度减半，其 AC 和敏捷豁免受到 -2 减值，且不能使用反应。在其回合中，它只能使用动作或附赠动作之一，不能两者都用。不论该生物的能力或魔法物品如何，它在自己的回合中不能进行超过一次近战或远程攻击。\n\n如果该生物试图施放施法时间为 1 动作的法术，掷一个 d20。若结果为 11 或更高，该法术直到该生物的下个回合才生效，且该生物必须在该回合使用其动作完成该法术。如果它不能这样做，该法术被浪费。\n\n受本法术影响的生物在其每个回合结束时再次进行一次感知豁免。豁免成功时，效果对其结束。",
+  "稳定伤势": "*死灵系戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n你接触一个生命值为 0 的活体生物。该生物变为稳定。本法术对不死生物和构装生物无效。",
+  "动物交谈": "*1 环预言系（仪式）*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S\n\n**持续时间：** 10 分钟\n\n在持续时间内，你获得理解野兽并以语言与其交流的能力。许多野兽的知识和意识受其智力限制，但至少，野兽可以向你提供附近地点和怪物的信息，包括它们能够感知或在过去一天内曾感知到的内容。由 GM 决定，你也许能说服一只野兽为你做一个小忙。",
+  "死者交谈": "*3 环死灵系*\n\n**施法时间：** 1 动作\n\n**射程：** 10 尺\n\n**成分：** V、S、M（燃烧的熏香）\n\n**持续时间：** 10 分钟\n\n你赋予射程内由你选择的一具尸体以生命和智力的表象，使其能够回答你提出的问题。尸体必须仍有嘴，且不能是不死生物。如果该尸体在过去 10 天内曾成为本法术目标，本法术失败。\n\n直到法术结束，你可以向尸体提出至多五个问题。尸体只知道其生前知道的内容，包括它知道的语言。回答通常简短、隐晦或重复；如果你对其怀有敌意，或它认出你是敌人，尸体没有义务提供真实答案。本法术不会使该生物的灵魂返回身体，只是赋予其驱动灵。因此，尸体不能学习新信息，不理解其死亡后发生的任何事，也不能推测未来事件。",
+  "植物交谈": "*3 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身（30 尺半径）\n\n**成分：** V、S\n\n**持续时间：** 10 分钟\n\n你向你 30 尺内的植物灌注有限的知性和活动能力，使它们能够与你交流并遵循你的简单命令。你可以询问植物关于过去一天内法术区域中发生的事件，从而获得经过的生物、天气和其他情况的信息。\n\n你也可以将植物生长造成的困难地形（例如灌木丛和矮树丛）变为持续时间内的普通地形。或者，你可以将有植物存在的普通地形变为持续时间内的困难地形，例如使藤蔓和枝条阻碍追赶者。\n\n由 GM 决定，植物也许能够代表你执行其他任务。本法术不能使植物拔根并四处移动，但它们可以自由移动枝条、卷须和茎秆。\n\n如果区域内有植物生物，你可以与它交流，如同你们拥有共同语言，但你不会获得影响它的魔法能力。\n\n本法术可以使 *entangle* 法术创造的植物释放一个受拘束的生物。",
+  "蛛行术": "*2 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（一滴沥青和一只蜘蛛）\n\n**持续时间：** 专注，至多 1 小时\n\n直到法术结束，你接触的一个自愿生物获得沿垂直表面上下左右移动，以及沿天花板倒挂移动的能力，同时双手仍可空出。目标还获得等同于其步行速度的攀爬速度。",
+  "尖刺丛生": "*2 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 150 尺\n\n**成分：** V、S、M（七根尖锐荆棘，或七根削尖的小树枝）\n\n**持续时间：** 专注，至多 10 分钟\n\n以射程内一点为中心、半径 20 尺内的地面扭曲并长出坚硬尖刺和荆棘。该区域在持续时间内成为困难地形。当一个生物进入该区域或在其中移动时，它每移动 5 尺受到 2d4 点穿刺伤害。\n\n地面的变化会伪装成自然外观。任何在法术施放时看不见该区域的生物，都必须进行一次对抗你的法术豁免 DC 的感知（察觉）检定，才能在进入前认出该地形具有危险。",
+  "灵体卫士": "*3 环咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身（15 尺半径）\n\n**成分：** V、S、M（一个圣徽）\n\n**持续时间：** 专注，至多 10 分钟\n\n你召唤灵体保护你。它们在持续时间内围绕你飞舞，范围至多 15 尺。如果你是善良或中立，它们的幽灵形态显得像天使或精类（由你选择）。如果你是邪恶，它们显得像邪魔。\n\n当你施放本法术时，你可以指定任意数量你能看见的生物不受其影响。受影响生物在该区域内速度减半，并且当该生物在一个回合中首次进入该区域，或在其中开始其回合时，必须进行一次感知豁免。豁免失败时，该生物受到 3d8 点光耀伤害（如果你是善良或中立）或 3d8 点黯蚀伤害（如果你是邪恶）。豁免成功时，伤害减半。\n\n***高环位施法。*** 当你使用 4 环或更高法术位施放本法术时，法术位每高于 3 环一环，伤害增加 1d8。",
+  "灵体武器": "*2 环塑能系*\n\n**施法时间：** 1 附赠动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 1 分钟\n\n你在射程内创造一件漂浮的幽灵武器，并在持续时间内存在，或直到你再次施放本法术。当你施放本法术时，你可以对距该武器 5 尺内一个生物进行一次近战法术攻击。命中时，目标受到等于 1d8 + 你的施法属性调整值的力场伤害。\n\n在你的回合中，你可以使用附赠动作将武器移动至多 20 尺，并再次对距其 5 尺内一个生物进行攻击。\n\n该武器可以采取你选择的任何形态。与某种特定武器有关联的神祇的牧师（例如圣库斯伯特以硬头锤闻名，托尔以战锤闻名）会使本法术效果类似该武器。\n\n***高环位施法。*** 当你使用 3 环或更高法术位施放本法术时，法术位每高于 2 环两环，伤害增加 1d8。",
+  "臭云术": "*3 环咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 90 尺\n\n**成分：** V、S、M（一枚腐蛋或数片臭菘叶）\n\n**持续时间：** 专注，至多 1 分钟\n\n你创造一团半径 20 尺、令人作呕的黄色气体云雾，以射程内一点为中心。云雾会绕过拐角扩散，其区域为重度遮蔽。云雾在持续时间内滞留于空气中。\n\n每个在其回合开始时完全处于云雾内的生物，都必须进行一次对抗毒素的体质豁免。豁免失败时，该生物在该回合花费其动作干呕并踉跄。不需要呼吸或免疫毒素的生物会自动通过该豁免。\n\n中等风力（至少每小时 10 英里）会在 4 轮后驱散云雾。强风（至少每小时 20 英里）会在 1 轮后驱散它。",
+  "塑石术": "*4 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（软黏土，必须被捏成大致符合目标石质物件的形状）\n\n**持续时间：** 立即\n\n你接触一个中型或更小体型的石质物件，或一段任一维度不超过 5 尺的石头，并将其塑造成符合你目的的任意形状。因此，例如你可以将一块大石头塑造成武器、神像或匣子，或在一堵墙中开出一条小通道，只要墙厚小于 5 尺。你也可以塑造一扇石门或其门框，以封死该门。你创造的物件最多可以有两个铰链和一个门闩，但无法形成更精细的机械细节。",
+  "石肤术": "*4 环防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（价值 100 gp 的钻石粉末，法术会消耗该材料）\n\n**持续时间：** 专注，至多 1 小时\n\n本法术使你接触的一个自愿生物的血肉坚硬如石。直到法术结束，目标对非魔法钝击、穿刺和挥砍伤害具有抗性。",
+  "复仇风暴": "*9 环咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 视线\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n一团翻腾的风暴云形成，以你能看见的一点为中心并扩散到 360 尺半径。区域内闪电划过、雷声轰鸣、强风咆哮。云下方的每个生物（距离云下方不超过 5,000 尺）在云出现时必须进行一次体质豁免。豁免失败时，生物受到 2d6 点雷鸣伤害，并耳聋 5 分钟。\n\n你每维持本法术专注一轮，风暴都会在你的回合产生不同效果。\n\n***第 2 轮。*** 酸雨从云中落下。云下方的每个生物和物件受到 1d6 点强酸伤害。\n\n***第 3 轮。*** 你从云中召来六道闪电，打击云下方由你选择的六个生物或物件。同一生物或物件不能被超过一道闪电击中。被击中的生物必须进行一次敏捷豁免。豁免失败时，生物受到 10d6 点闪电伤害；豁免成功时，伤害减半。\n\n***第 4 轮。*** 冰雹从云中降下。云下方的每个生物受到 2d6 点钝击伤害。\n\n***第 5-10 轮。*** 狂风和冻雨袭击云下区域。该区域变为困难地形并处于重度遮蔽。该处每个生物受到 1d6 点寒冷伤害。区域内无法进行远程武器攻击。风雨在维持法术专注时视为严重干扰。最后，强风（每小时 20 到 50 英里）会自动驱散区域内的雾气、薄雾和类似现象，无论其为普通或魔法现象。",
+  "暗示术": "*2 环惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、M（一条蛇舌，以及一小块蜂巢或一滴甜油）\n\n**持续时间：** 专注，至多 8 小时\n\n你提出一项行动方针（限一两句话），并以魔法影响射程内一个你能看见、且能听见并理解你的生物。不能被魅惑的生物免疫此效果。暗示必须以使该行动听起来合理的方式措辞。要求生物刺伤自己、扑向长矛、自焚，或做出其他明显有害的行为，会结束本法术。\n\n目标必须进行一次感知豁免。豁免失败时，它会尽其所能执行你描述的行动方针。被暗示的行动可以持续整个持续时间。如果该行动能在更短时间内完成，当受术者完成被要求的事情时，法术结束。\n\n你也可以指定在持续时间内触发某项特殊行动的条件。例如，你可以暗示一名骑士把她的战马交给遇到的第一个乞丐。如果条件在法术结束前没有满足，该行动就不会执行。\n\n如果你或你的任何同伴伤害了目标，法术结束。",
+  "阳炎射线": "*6 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身（60 尺线状）\n\n**成分：** V、S、M（一面放大镜）\n\n**持续时间：** 专注，至多 1 分钟\n\n一道明亮光束从你手中闪出，形成一条宽 5 尺、长 60 尺的线状区域。该线状区域内的每个生物都必须进行一次体质豁免。豁免失败时，生物受到 6d8 点光耀伤害，并目盲直到你的下个回合。豁免成功时，它受到一半伤害，且不会因本法术目盲。不死生物和泥怪在该豁免中具有劣势。\n\n直到法术结束，你可以在任意回合使用你的动作创造一道新的光耀线。\n\n在持续时间内，一点明亮光辉在你手中闪耀。它会在 30 尺半径内发出明亮光照，并在额外 30 尺范围内发出微光。该光是阳光。",
+  "阳炎爆": "*8 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 150 尺\n\n**成分：** V、S、M（火焰和一块日长石）\n\n**持续时间：** 立即\n\n明亮阳光在射程内你选择的一点为中心、半径 60 尺内闪耀。该光中每个生物都必须进行一次体质豁免。豁免失败时，生物受到 12d6 点光耀伤害，并目盲 1 分钟。豁免成功时，它受到一半伤害，且不会因本法术目盲。不死生物和泥怪在该豁免中具有劣势。\n\n被本法术目盲的生物在其每个回合结束时再次进行一次体质豁免。豁免成功时，它不再目盲。\n\n本法术会解除其区域内由法术创造的任何黑暗。",
+  "徽记术": "*7 环防护系*\n\n**施法时间：** 1 分钟\n\n**射程：** 接触\n\n**成分：** V、S、M（水银、磷，以及总价值至少 1,000 gp 的钻石粉和蛋白石粉，法术会消耗这些材料）\n\n**持续时间：** 直至被解除或触发\n\n当你施放本法术时，你将一个有害符文铭刻在一个表面上（例如一段地板、墙壁或桌子），或铭刻在一个可以关闭以隐藏符文的物件内（例如书本、卷轴或宝箱）。如果你选择一个表面，符文可以覆盖该表面上直径不超过 10 尺的区域。如果你选择一个物件，该物件必须保持原位；如果该物件从你施放本法术的位置被移动超过 10 尺，符文会被破坏，且法术结束而不会被触发。\n\n符文几乎不可见，需要通过一次对抗你的法术豁免 DC 的智力（调查）检定才能找到。\n\n你在施放本法术时决定什么会触发符文。铭刻在表面上的符文最常见的触发条件包括接触或踩踏符文、移走覆盖它的另一个物件、接近到其一定距离内，或操纵承载它的物件。铭刻在物件内的符文最常见的触发条件包括打开该物件、接近到其一定距离内，或看见或阅读该符文。\n\n你可以进一步细化触发条件，使法术只在特定情境下、或根据生物的身体特征（例如身高或体重）或身体种类（例如可以设定防护影响鬼婆或变形生物）触发。你也可以指定不会触发符文的生物，例如说出特定口令者。\n\n铭刻符文时，从下列选项中选择一项作为其效果。一旦触发，符文会发光，使半径 60 尺球体内充满微光，持续 10 分钟；随后法术结束。当符文启动时处于球体内的每个生物都会成为其效果目标，在一个回合中首次进入球体或在其中结束其回合的生物也会成为目标。\n\n***死亡。*** 每个目标必须进行一次体质豁免。豁免失败时受到 10d10 点黯蚀伤害；豁免成功时，伤害减半。\n\n***纷争。*** 每个目标必须进行一次体质豁免。豁免失败时，目标会与其他生物争吵辩论 1 分钟。在此期间，它无法进行有意义的交流，且攻击检定和属性检定具有劣势。\n\n***恐惧。*** 每个目标必须进行一次感知豁免。豁免失败时，目标恐慌 1 分钟。处于恐慌时，目标会丢下它正持握的任何东西，并且如果能做到，必须在其每个回合中移动至少 30 尺远离符文。\n\n***绝望。*** 每个目标必须进行一次魅力豁免。豁免失败时，目标被绝望压垮 1 分钟。在此期间，它不能攻击，也不能以有害能力、法术或其他魔法效果指定任何生物为目标。\n\n***疯狂。*** 每个目标必须进行一次智力豁免。豁免失败时，目标疯狂 1 分钟。疯狂生物不能采取动作，不能理解其他生物说的话，不能阅读，并且只会胡言乱语。GM 控制其移动，其移动混乱无序。\n\n***痛苦。*** 每个目标必须进行一次体质豁免。豁免失败时，目标因剧痛而失能 1 分钟。\n\n***睡眠。*** 每个目标必须进行一次感知豁免。豁免失败时，目标失去意识 10 分钟。如果一个生物受到伤害，或有人使用一个动作摇醒或拍醒它，它会醒来。\n\n***震慑。*** 每个目标必须进行一次感知豁免。豁免失败时，目标震慑 1 分钟。",
+  "念动力": "*5 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 10 分钟\n\n你获得以思想移动或操纵生物或物件的能力。当你施放本法术时，以及在持续时间内每轮使用你的动作时，你可以对射程内一个你能看见的生物或物件施加意志，造成下列对应效果。你可以逐轮影响同一目标，也可以随时选择新目标。如果你更换目标，先前目标不再受本法术影响。\n\n***生物。*** 你可以尝试移动一个超大型或更小体型的生物。使用你的施法属性进行一次属性检定，与该生物的力量检定对抗。如果你赢得对抗，你可以将该生物向任意方向移动至多 30 尺，包括向上，但不能超出本法术射程。直到你下个回合结束，该生物在你的念动力握持中处于受拘束状态。被向上举起的生物会悬浮在半空。\n\n在随后的轮中，你可以使用你的动作重复该对抗，以尝试维持你对该生物的念动力握持。\n\n***物件。*** 你可以尝试移动一个重量不超过 1,000 磅的物件。如果该物件未被穿戴或携带，你可以自动将其向任意方向移动至多 30 尺，但不能超出本法术射程。\n\n如果该物件由某个生物穿戴或携带，你必须使用你的施法属性进行一次属性检定，与该生物的力量检定对抗。如果你成功，你将该物件从该生物身上拉开，并可以将其向任意方向移动至多 30 尺，但不能超出本法术射程。\n\n你可以用念动力握持对物件进行精细控制，例如操纵简单工具、打开门或容器、从打开的容器中收纳或取出物品，或倒出小瓶中的内容物。",
+  "心灵连结": "*5 环预言系（仪式）*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（来自两种不同生物的蛋壳碎片）\n\n**持续时间：** 1 小时\n\n你在射程内至多八个由你选择的自愿生物之间建立心灵链接，在持续时间内以精神将每个生物与所有其他生物相连。智力值为 2 或更低的生物不受本法术影响。\n\n直到法术结束，目标之间无论是否拥有共同语言，都可以通过该连结进行心灵交流。交流可以跨越任意距离，但不能延伸到其他存在位面。",
+  "传送术": "*7 环咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 10 尺\n\n**成分：** V\n\n**持续时间：** 立即\n\n本法术会立即将你和至多八个射程内你能看见且由你选择的自愿生物，或一个射程内你能看见的单一物件，传送到你选择的目的地。如果你以物件为目标，它必须能够完全放入一个 10 尺立方体内，且不能由不自愿生物持握或携带。\n\n你选择的目的地必须为你所知，且必须与你位于同一存在位面。你对目的地的熟悉程度决定你是否能成功抵达。GM 掷 d100 并查阅下表。\n\n**表：传送熟悉度**\n\n| 熟悉度           | 意外事故 | 相似区域 | 偏离目标 | 命中目标 |\n|------------------|----------|----------|----------|----------|\n| 永久法阵         | -        | -        | -        | 01-100   |\n| 关联物件         | -        | -        | -        | 01-100   |\n| 非常熟悉         | 01-05    | 06-13    | 14-24    | 25-100   |\n| 偶然见过         | 01-33    | 34-43    | 44-53    | 54-100   |\n| 只看过一次       | 01-43    | 44-53    | 54-73    | 74-100   |\n| 描述             | 01-43    | 44-53    | 54-73    | 74-100   |\n| 虚假目的地       | 01-50    | 51-100   | -        | -        |\n|                  |          |          |          |          |\n\n***熟悉度。*** “永久法阵”指你知道其符记序列的永久传送法阵。“关联物件”指你拥有一个在过去六个月内从目标目的地取来的物件，例如来自法师图书馆的一本书、王室套房的床单，或巫妖秘密陵墓中的一块大理石。\n\n“非常熟悉”是你经常去过、仔细研究过，或施放本法术时能看见的地点。“偶然见过”是你见过不止一次但并不十分熟悉的地点。“只看过一次”是你看过一次的地点，可能是借助魔法看见。“描述”是你通过他人描述知道其位置和外观的地点，也许来自地图。\n\n“虚假目的地”是不存在的地点。也许你试图探知敌人的圣所，却看见了一个幻象；或者你正尝试传送到一个熟悉但已经不复存在的地点。\n\n***命中目标。*** 你和你的队伍（或目标物件）出现在你想去的位置。\n\n***偏离目标。*** 你和你的队伍（或目标物件）出现在距目的地随机距离、随机方向的位置。偏离距离为原本要旅行距离的 1d10 × 1d10%。例如，如果你试图旅行 120 英里，结果偏离目标，并在两个 d10 上掷出 5 和 3，那么你偏离 15%，即 18 英里。GM 通过掷 d8 随机决定偏离方向，指定 1 为北、2 为东北、3 为东，依此按罗盘方位类推。如果你传送到一座海滨城市，却最终落在海上 18 英里处，你可能会有麻烦。\n\n***相似区域。*** 你和你的队伍（或目标物件）最终出现在一个视觉或主题上与目标区域相似的不同区域。例如，如果你要前往自己的实验室，可能会出现在另一位法师的实验室，或一家拥有许多与你实验室相同工具和器具的炼金补给店。通常，你会出现在最近的相似地点；但由于本法术没有距离限制，理论上你可能出现在该位面任何地方。\n\n***意外事故。*** 本法术不可预测的魔法导致一次艰难旅程。每个传送中的生物（或目标物件）受到 3d10 点力场伤害，随后 GM 在表上重新掷骰以决定你最终到达何处（可能发生多次意外事故，每次都会造成伤害）。",
+  "传送法阵": "*5 环咒法系*\n\n**施法时间：** 1 分钟\n\n**射程：** 10 尺\n\n**成分：** V、M（灌注贵重宝石、价值 50 gp 的稀有粉笔和墨水，法术会消耗这些材料）\n\n**持续时间：** 1 轮\n\n施放本法术时，你在地面绘制一个直径 10 尺的圆，并在其中刻写符记，使你所在位置连接到一个你选择、你知道其符记序列且与你位于同一存在位面的永久传送法阵。一个闪烁传送门会在你绘制的圆内开启，并保持开启直到你下个回合结束。任何进入传送门的生物都会立即出现在目的地法阵 5 尺内，或如果该空间被占据，则出现在最近的未占据空间。\n\n许多大型神殿、公会和其他重要地点都在其内部某处刻有永久传送法阵。每个这样的法阵都包含一个独特的符记序列，即一串按特定图案排列的魔法符文。当你首次获得施放本法术的能力时，你学会由 GM 决定的两个物质位面目的地的符记序列。你可以在冒险中学习额外的符记序列。研究一个新的符记序列 1 分钟后，你可以将其记入记忆。\n\n如果你连续一年每天在同一地点施放本法术，可以创造一个永久传送法阵。以这种方式施放本法术时，你不必使用法阵进行传送。",
+  "奇术": "*变化系戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V\n\n**持续时间：** 至多 1 分钟\n\n你在射程内显现一个小型奇迹，作为超自然力量的征兆。你在射程内创造下列一种魔法效果：\n\n- 你的声音在 1 分钟内变得至多为正常音量的三倍。\n- 你使火焰在 1 分钟内闪烁、变亮、变暗或改变颜色。\n- 你使地面在 1 分钟内产生无害震动。\n- 你创造一个立即发生、源自射程内你选择的一点的声音，例如雷鸣、乌鸦叫声或不祥低语。\n- 你立即使一扇未上锁的门或窗猛然打开或砰然关上。\n- 你改变自己眼睛的外观，持续 1 分钟。如果你多次施放本法术，你可以同时维持至多三个持续 1 分钟的效果，并且可以使用一个动作解除其中一个此类效果。",
+  "雷鸣波": "*1 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身（15 尺立方体）\n\n**成分：** V、S\n\n**持续时间：** 立即\n\n一波雷鸣力场从你身上扫出。每个处于以你为起点的 15 尺立方体内的生物都必须进行一次体质豁免。豁免失败时，生物受到 2d8 点雷鸣伤害，并被推离你 10 尺。豁免成功时，生物受到一半伤害，且不会被推动。\n\n此外，完全处于效果区域内且未被固定的物件会被本法术效果自动推离你 10 尺，并且本法术发出一声雷鸣巨响，最远可在 300 尺外听见。\n\n***高环位施法。*** 当你使用 2 环或更高法术位施放本法术时，法术位每高于 1 环一环，伤害增加 1d8。",
+  "时间停止": "*9 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V\n\n**持续时间：** 立即\n\n你短暂停止除自己之外所有人的时间流动。其他生物的时间不会流逝，而你连续进行 1d4 + 1 个回合，在此期间你可以正常使用动作和移动。\n\n如果你在这段时间内使用的一个动作，或你在这段时间内创造的任何效果，影响了你以外的生物或由你以外的人穿戴或携带的物件，本法术结束。此外，如果你移动到距施放本法术位置超过 1,000 尺的地点，本法术也会结束。",
+  "小屋术": "*3 环塑能系（仪式）*\n\n**施法时间：** 1 分钟\n\n**射程：** 自身（10 尺半径半球）\n\n**成分：** V、S、M（一颗小水晶珠）\n\n**持续时间：** 8 小时\n\n一个半径 10 尺、不可移动的力场穹顶在你周围和上方生成，并在持续时间内保持固定。如果你离开其区域，本法术结束。\n\n九个中型或更小体型的生物可以与你一起待在穹顶内。如果其区域内包含更大体型的生物或超过九个生物，本法术失败。你施放本法术时位于穹顶内的生物和物件可以自由穿过它。所有其他生物和物件都被阻止穿过它。法术和其他魔法效果不能延伸穿过穹顶，也不能穿过穹顶施放。无论外界天气如何，空间内的空气都舒适且干燥。\n\n直到法术结束，你可以命令内部变为微光或黑暗。穹顶从外部看是不透明的，颜色由你选择，但从内部看是透明的。",
+  "通晓语言（2）": "*3 环预言系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、M（一座金字形神塔的小型黏土模型）\n\n**持续时间：** 1 小时\n\n本法术赋予你接触的生物理解其听到的任何口语语言的能力。此外，当目标说话时，任何知道至少一种语言且能听见目标的生物都能理解它所说的话。",
+  "植物传送": "*6 环咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 10 尺\n\n**成分：** V、S\n\n**持续时间：** 1 轮\n\n本法术在射程内一株大型或更大体型的无生命植物与同一存在位面上任意距离外的另一株植物之间创造魔法链接。你必须曾至少一次见过或接触过目的地植物。在持续时间内，任何生物都可以花费 5 尺移动进入目标植物，并从目的地植物中离开。",
+  "树跃术": "*5 环咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n你获得进入一棵树，并从其内部移动到 500 尺内另一棵同类树内部的能力。两棵树都必须是活树，且至少与你同等大小。你必须使用 5 尺移动进入一棵树。你会立即知道 500 尺内所有其他同类树的位置，并且作为用于进入树的移动的一部分，你可以进入其中一棵树，或从你所在的树中走出。你会出现在目的地树 5 尺内由你选择的一处地点，并再使用 5 尺移动。如果你没有剩余移动，你会出现在你进入的那棵树 5 尺内。\n\n你可以在持续时间内每轮使用一次这种传送能力。你必须在树外结束每个回合。",
+  "完全变形术": "*9 环变化系*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一滴水银、一团阿拉伯树胶和一缕烟）\n\n**持续时间：** 专注，至多 1 小时\n\n选择射程内一个你能看见的生物或非魔法物件。你将该生物变成另一种生物、将该生物变成非魔法物件，或将该物件变成生物（该物件不能由另一个生物穿戴或携带）。变化在持续时间内存在，或直到目标降至 0 生命值或死亡。如果你在完整持续时间内维持本法术专注，该变化会持续到被解除。\n\n本法术对变形生物或生命值为 0 的生物无效。不自愿的生物可以进行一次感知豁免，若成功，则不受本法术影响。\n\n***生物变生物。*** 如果你将一个生物变成另一类生物，新形态可以是你选择的任意种类，其挑战等级必须等于或低于目标的挑战等级（如果目标没有挑战等级，则使用其等级）。目标的游戏数据，包括精神属性值，都会被新形态的数据替代。它保留自身阵营和个性。\n\n目标获得其新形态的生命值，当它恢复正常形态时，该生物回到变形前拥有的生命值。如果它因降至 0 生命值而恢复形态，任何溢出伤害会转移到其正常形态。只要溢出伤害没有使该生物的正常形态降至 0 生命值，它就不会陷入失去意识。\n\n该生物能执行的动作受其新形态性质限制，且它不能说话、施放法术，或采取任何需要手或言语的其他动作，除非其新形态能够执行这类动作。\n\n目标的装备融入新形态。该生物不能启动、使用、挥舞或以其他方式受益于其任何装备。\n\n***物件变生物。*** 你可以将一个物件变成任意种类的生物，前提是该生物的体型不大于该物件的体型，且该生物的挑战等级为 9 或更低。该生物对你和你的同伴友善。它在你的每个回合行动。你决定它采取什么动作以及如何移动。GM 拥有该生物的数据，并结算其所有动作和移动。\n\n如果本法术变为永久，你不再控制该生物。取决于你如何对待它，它可能仍然对你友善。\n\n***生物变物件。*** 如果你将一个生物变成物件，它会连同其穿戴和携带的一切一同变成该形态，前提是该物件的体型不大于该生物的体型。该生物的数据变为该物件的数据；当法术结束并恢复正常形态后，该生物不会记得处于此形态期间的时间。",
+  "完全复活术": "*9 环死灵系*\n\n**施法时间：** 1 小时\n\n**射程：** 接触\n\n**成分：** V、S、M（少量圣水和价值至少 25,000 gp 的钻石，法术会消耗这些材料）\n\n**持续时间：** 立即\n\n你接触一个死亡不超过 200 年且并非死于衰老的生物。如果该生物的灵魂自由且愿意，该生物以全部生命值复活。\n\n本法术会闭合所有伤口、中和任何毒素、治愈所有疾病，并解除该生物死亡时影响它的任何诅咒。法术会替换受损或缺失的器官和肢体。如果该生物曾是不死生物，它会恢复为非不死形态。\n\n如果原身体已不存在，本法术甚至可以提供一具新身体；此时你必须说出该生物的名字。该生物随后出现在你 10 尺内由你选择的一个未占据空间中。",
+  "真实视觉": "*6 环预言系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（用于眼睛的药膏，价值 25 gp，由蘑菇粉、藏红花和脂肪制成，并由法术消耗）\n\n**持续时间：** 1 小时\n\n本法术赋予你接触的自愿生物看见事物真实面貌的能力。在持续时间内，该生物拥有真实视觉，能注意到由魔法隐藏的暗门，并能看入以太位面，所有这些效果的范围均为 120 尺。",
+  "克敌机先": "*预言系戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** S\n\n**持续时间：** 专注，至多 1 轮\n\n你伸出手，手指指向射程内一个目标。你的魔法让你短暂洞察目标的防御。你的下个回合中，只要本法术尚未结束，你对该目标进行的第一次攻击检定具有优势。",
+  "隐形仆役": "*1 环咒法系（仪式）*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一段线和一小块木头）\n\n**持续时间：** 1 小时\n\n本法术创造一个不可见、无心智、无形状的中型力场，在法术结束前按你的命令执行简单任务。仆役在射程内地面上的一个未占据空间中生成。它的 AC 为 10，生命值为 1，力量为 2，且不能攻击。如果它降至 0 生命值，法术结束。\n\n在你的每个回合中，你可以使用一次附赠动作，以心灵命令仆役移动至多 15 尺并与一个物件互动。仆役可以执行人类仆役能做的简单任务，例如取物、清洁、修补、叠衣、点火、上菜和倒酒。一旦你发出命令，仆役会尽其所能执行任务直到完成，然后等待你的下一个命令。\n\n如果你命令仆役执行会使其移动到距你超过 60 尺的任务，本法术结束。",
+  "吸血鬼之触": "*3 环死灵系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n你被阴影缠绕的手触碰他人时，可以汲取生命力来治疗你的伤口。对你触及范围内一个生物进行一次近战法术攻击。命中时，目标受到 3d6 点黯蚀伤害，且你恢复等于所造成黯蚀伤害一半的生命值。直到法术结束，你可以在自己的每个回合使用动作再次进行该攻击。\n\n***高环位施法。*** 当你使用 4 环或更高法术位施放本法术时，法术位每高于 3 环一环，伤害增加 1d6。",
+  "恶毒嘲笑": "*惑控系戏法*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V\n\n**持续时间：** 立即\n\n你向射程内一个你能看见的生物释放一串夹杂微妙惑控魔法的辱骂。如果目标能听见你（尽管它不需要理解你），它必须通过一次感知豁免，否则受到 1d4 点心灵伤害，并且在其下个回合结束前进行的下一次攻击检定具有劣势。\n\n当你达到 5 级（2d4）、11 级（3d4）和 17 级（4d4）时，本法术伤害各增加 1d4。",
+  "火墙术": "*4 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S、M（一小块磷）\n\n**持续时间：** 专注，至多 1 分钟\n\n你在射程内一个固体表面上创造一道火墙。你可以使墙最长 60 尺、高 20 尺、厚 1 尺，或形成一道直径最高 20 尺、高 20 尺、厚 1 尺的环形墙。墙是不透明的，并在持续时间内存在。\n\n当墙出现时，其区域内的每个生物都必须进行一次敏捷豁免。豁免失败时，生物受到 5d8 点火焰伤害；豁免成功时，伤害减半。\n\n墙的一侧由你在施放本法术时选择，对每个在该侧 10 尺内或墙内结束其回合的生物造成 5d8 点火焰伤害。生物在一个回合中首次进入墙内或在墙内结束其回合时，也受到相同伤害。墙的另一侧不造成伤害。\n\n***高环位施法。*** 当你使用 5 环或更高法术位施放本法术时，法术位每高于 4 环一环，伤害增加 1d8。",
+  "力场墙": "*5 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S、M（一撮由透明宝石碾碎制成的粉末）\n\n**持续时间：** 专注，至多 10 分钟\n\n一道不可见力场墙在射程内你选择的一点生成。墙可以按你选择的任意朝向出现，作为水平、垂直或倾斜屏障。它可以自由悬浮，也可以立在固体表面上。你可以将其塑造成半球形穹顶或半径最高 10 尺的球体，或塑造成由十块 10 尺乘 10 尺面板组成的平面。每块面板必须与另一块面板相邻。无论何种形态，墙厚 1/4 寸，并在持续时间内存在。如果墙出现时切过某个生物的空间，该生物会被推到墙的一侧（由你选择哪一侧）。\n\n任何东西都不能在物理上穿过墙。它免疫所有伤害，且不能被 *dispel magic* 解除。不过，*disintegrate* 法术会立即摧毁该墙。墙也延伸到以太位面，阻挡穿过该墙的以太旅行。",
+  "冰墙术": "*6 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S、M（一小块石英）\n\n**持续时间：** 专注，至多 10 分钟\n\n你在射程内一个固体表面上创造一道冰墙。你可以将其塑造成半球形穹顶或半径最高 10 尺的球体，或塑造成由十块 10 尺见方面板组成的平面。每块面板必须与另一块面板相邻。无论何种形态，墙厚 1 尺，并在持续时间内存在。\n\n如果墙出现时切过某个生物的空间，其区域内的生物会被推到墙的一侧，并且必须进行一次敏捷豁免。豁免失败时，生物受到 10d6 点寒冷伤害；豁免成功时，伤害减半。\n\n墙是一个可被伤害并因此可被破开的物件。它的 AC 为 12，每个 10 尺区段有 30 点生命值，且对火焰伤害具有易伤。将一段 10 尺区段的墙降至 0 生命值会摧毁它，并在墙曾占据的空间留下一片寒冷空气。一个生物在一个回合中首次穿过这片寒冷空气时，必须进行一次体质豁免。豁免失败时，该生物受到 5d6 点寒冷伤害；豁免成功时，伤害减半。\n\n***高环位施法。*** 当你使用 7 环或更高法术位施放本法术时，法术位每高于 6 环一环，墙出现时造成的伤害增加 2d6，穿过寒冷空气造成的伤害增加 1d6。",
+  "石墙术": "*5 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S、M（一小块花岗岩）\n\n**持续时间：** 专注，至多 10 分钟\n\n一道非魔法实体石墙在射程内你选择的一点生成。墙厚 6 寸，由十块 10 尺乘 10 尺面板组成。每块面板必须与至少一块其他面板相邻。或者，你可以创造 10 尺乘 20 尺、但仅 3 寸厚的面板。\n\n如果墙出现时切过某个生物的空间，该生物会被推到墙的一侧（由你选择）。如果一个生物会被墙（或墙与另一固体表面）从四面包围，该生物可以进行一次敏捷豁免。豁免成功时，它可以使用其反应移动至多等于其速度的距离，使其不再被墙围住。\n\n墙可以具有你想要的任何形状，但不能占据与生物或物件相同的空间。墙不需要垂直，也不需要立在坚实基础上。然而，它必须与既有石头融合并由其稳固支撑。因此，你可以用本法术跨越裂隙或创造斜坡。\n\n如果你创造长度超过 20 尺的跨度，必须将每块面板的尺寸减半以创造支撑。你可以粗略塑造墙，以创造垛口、胸墙等结构。\n\n墙是一个由石头制成、可被伤害并因此可被破开的物件。每块面板 AC 为 15，每寸厚度有 30 点生命值。将一块面板降至 0 生命值会摧毁它，并可能由 GM 决定导致相连面板坍塌。\n\n如果你在本法术完整持续时间内维持专注，墙会变为永久且不能被解除。否则，墙会在法术结束时消失。",
+  "荆棘墙": "*6 环咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S、M（一把荆棘）\n\n**持续时间：** 专注，至多 10 分钟\n\n你创造一道坚韧、柔韧且缠结的灌木墙，上面布满针般尖锐的荆棘。墙出现在射程内一个固体表面上，并在持续时间内存在。你可以选择使墙最长 60 尺、高 10 尺、厚 5 尺，或形成一个直径 20 尺、高至多 20 尺、厚 5 尺的圆环。墙会阻挡视线。\n\n当墙出现时，其区域内的每个生物都必须进行一次敏捷豁免。豁免失败时，生物受到 7d8 点穿刺伤害；豁免成功时，伤害减半。\n\n生物可以穿过墙，但过程缓慢且痛苦。生物在墙内每移动 1 尺，必须消耗 4 尺移动。此外，生物在一个回合中首次进入墙内或在墙内结束其回合时，必须进行一次敏捷豁免。豁免失败时，它受到 7d8 点挥砍伤害；豁免成功时，伤害减半。\n\n***高环位施法。*** 当你使用 7 环或更高法术位施放本法术时，法术位每高于 6 环一环，两种伤害都增加 1d8。",
+  "守护之链": "*2 环防护系*\n\n**施法时间：** 1 动作\n\n**射程：** 接触\n\n**成分：** V、S、M（一对各价值至少 50 gp 的铂金戒指，你和目标必须在持续时间内佩戴）\n\n**持续时间：** 1 小时\n\n本法术守护你接触的一个自愿生物，并在你与目标之间创造一道神秘联系，直到法术结束。当目标位于你 60 尺内时，它的 AC 和豁免获得 +1 加值，并且对所有伤害具有抗性。此外，每当它受到伤害时，你受到等量伤害。\n\n如果你降至 0 生命值，或你与目标相距超过 60 尺，本法术结束。如果本法术再次施放到任一相连生物身上，它也会结束。你也可以使用一个动作解除本法术。",
+  "水下呼吸": "*3 环变化系（仪式）*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一小段芦苇或稻草）\n\n**持续时间：** 24 小时\n\n本法术赋予射程内至多十个你能看见的自愿生物水下呼吸能力，直到法术结束。受影响生物也保留其正常呼吸方式。",
+  "水面行走": "*3 环变化系（仪式）*\n\n**施法时间：** 1 动作\n\n**射程：** 30 尺\n\n**成分：** V、S、M（一块软木）\n\n**持续时间：** 1 小时\n\n本法术赋予在任何液体表面上移动的能力，例如水、强酸、泥浆、雪、流沙或熔岩，如同其为无害固体地面（穿越熔融熔岩的生物仍可能因热量受到伤害）。射程内至多十个你能看见的自愿生物在持续时间内获得此能力。\n\n如果你以浸没在液体中的生物为目标，本法术会以每轮 60 尺的速度将目标带到液体表面。",
+  "蛛网术": "*2 环咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S、M（一点蛛网）\n\n**持续时间：** 专注，至多 1 小时\n\n你在射程内你选择的一点召唤一团厚重黏稠的蛛网。蛛网从该点起填满一个 20 尺立方体，并在持续时间内存在。蛛网是困难地形，并使其区域轻度遮蔽。\n\n如果蛛网没有锚定在两个固体物体之间（例如墙壁或树木），也没有铺在地板、墙壁或天花板上，召唤出的蛛网会自行坍塌，且法术在你下个回合开始时结束。铺在平坦表面上的蛛网深 5 尺。\n\n每个在蛛网中开始其回合，或在其回合中进入蛛网的生物，都必须进行一次敏捷豁免。豁免失败时，只要该生物仍处于蛛网中或直到它挣脱，它就处于受拘束状态。\n\n被蛛网束缚的生物可以使用其动作进行一次对抗你的法术豁免 DC 的力量检定。若成功，它不再受拘束。\n\n蛛网易燃。任何暴露于火焰中的 5 尺立方体蛛网会在 1 轮内烧尽，并对任何在火焰中开始其回合的生物造成 2d4 点火焰伤害。",
+  "怪影杀手": "*9 环幻术系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S\n\n**持续时间：** 专注，至多 1 分钟\n\n你汲取一群生物最深层的恐惧，在它们的心智中创造只有它们能看见的幻象生物。以射程内你选择的一点为中心、半径 30 尺球体内的每个生物都必须进行一次感知豁免。豁免失败时，生物在持续时间内陷入恐慌。幻象唤起该生物最深的恐惧，将其最糟糕的噩梦显化为不可阻挡的威胁。在该恐慌生物每个回合结束时，它必须通过一次感知豁免，否则受到 4d10 点心灵伤害。豁免成功时，该生物身上的法术结束。",
+  "风行术": "*6 环变化系*\n\n**施法时间：** 1 分钟\n\n**射程：** 30 尺\n\n**成分：** V、S、M（火焰和圣水）\n\n**持续时间：** 8 小时\n\n你和射程内至多十个你能看见的自愿生物在持续时间内化为气态形体，外观如云缕。处于这种云形态时，生物飞行速度为 300 尺，并且对非魔法武器造成的伤害具有抗性。生物在此形态下唯一能采取的动作是疾走动作，或恢复正常形态。恢复需要 1 分钟；在此期间，生物处于失能状态且不能移动。直到法术结束，生物可以恢复云形态，这同样需要 1 分钟转化。\n\n如果效果结束时生物处于云形态并正在飞行，该生物每轮下降 60 尺，持续 1 分钟，直到其着陆，并且安全着陆。如果 1 分钟后它仍无法着陆，该生物会坠落剩余距离。",
+  "风墙术": "*3 环塑能系*\n\n**施法时间：** 1 动作\n\n**射程：** 120 尺\n\n**成分：** V、S、M（一把微型扇子和一根异域羽毛）\n\n**持续时间：** 专注，至多 1 分钟\n\n一道强风之墙从射程内你选择的一点的地面升起。你可以使墙最长 50 尺、高 15 尺、厚 1 尺。只要墙沿地面形成一条连续路径，你可以按你选择的任何方式塑造它。墙在持续时间内存在。\n\n当墙出现时，其区域内每个生物都必须进行一次力量豁免。豁免失败时，生物受到 3d8 点钝击伤害；豁免成功时，伤害减半。\n\n强风会阻挡雾、烟和其他气体。小型或更小的飞行生物或物件不能穿过墙。被带入墙内的松散轻质材料会向上飞起。射向墙后目标的箭、弩矢和其他普通投射物会被向上偏转并自动未命中。（由巨人或攻城器械投掷的巨石，以及类似投射物不受影响。）气态形体的生物不能穿过它。",
+  "祈愿术": "*9 环咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 自身\n\n**成分：** V\n\n**持续时间：** 立即\n\n*Wish* 是凡俗生物能够施放的最强大法术。仅凭开口说出愿望，你就能按照自己的欲求改变现实的根基。\n\n本法术的基本用途是复制任意 8 环或更低环位的其他法术。你不需要满足该法术的任何要求，包括昂贵成分。该法术会直接生效。\n\n或者，你可以创造下列一种由你选择的效果：\n\n- 你创造一个价值最高 25,000 gp 且不是魔法物品的物件。该物件任一维度不能超过 300 尺，并出现在地面上一个你能看见的未占据空间中。\n- 你允许至多二十个你能看见的生物恢复所有生命值，并终止它们身上所有在 *greater restoration* 法术中描述的效果。\n- 你赋予至多十个你能看见的生物对你选择的一种伤害类型的抗性。\n- 你赋予至多十个你能看见的生物对一个单一法术或其他魔法效果的免疫，持续 8 小时。例如，你可以使自己和所有同伴免疫巫妖的生命吸取攻击。\n- 你撤销一个最近发生的单一事件，强制重掷上一轮内进行的任意一次掷骰（包括你的上个回合）。现实会重塑自身以适应新的结果。例如，*wish* 法术可以撤销对手成功的豁免、敌人的重击，或朋友失败的豁免。你可以强制该重掷具有优势或劣势，并可以选择使用重掷结果或原始结果。\n\n你也许能够达成超出上述示例范围的事情。尽可能精确地向 GM 陈述你的愿望。GM 在裁定此类情况下发生什么时拥有很大余地；愿望越大，出错的可能性越高。本法术可能直接失败，你想要的效果可能只部分达成，或者你可能因愿望措辞而遭受某种意外后果。例如，希望某个反派死亡，可能会将你推进到该反派已不在人世的未来时期，从而实际上把你移出游戏。同样，希望获得一件传奇魔法物品或神器，可能会立即将你传送到该物品当前拥有者面前。\n\n施放本法术以产生复制另一个法术以外的任何效果所带来的压力会削弱你。在承受该压力后，直到你完成一次长休，每当你施放法术时，你都会受到每环位 1d10 点黯蚀伤害。该伤害不能以任何方式降低或防止。此外，如果你的力量不是已经为 3 或更低，你的力量会降至 3，持续 2d4 天。在这些天中，你每花一天休息并且只进行轻度活动，剩余恢复时间就减少 2 天。最后，如果你承受了这种压力，则有 33% 的几率再也无法施放 *wish*。",
+  "回返真言": "*6 环咒法系*\n\n**施法时间：** 1 动作\n\n**射程：** 5 尺\n\n**成分：** V\n\n**持续时间：** 立即\n\n你和你 5 尺内至多五个自愿生物立即传送到一个先前指定的圣所。你以及与你一同传送的任何生物会出现在你准备圣所时指定地点最近的未占据空间（见下文）。如果你没有先准备圣所就施放本法术，本法术无效。\n\n你必须在一个献给你的神祇或与其强烈关联的地点内施放本法术，以指定一处圣所，例如神殿。如果你试图在并非献给你神祇的区域中以这种方式施放本法术，本法术无效。",
+  "诚实之域": "*2 环惑控系*\n\n**施法时间：** 1 动作\n\n**射程：** 60 尺\n\n**成分：** V、S\n\n**持续时间：** 10 分钟\n\n你创造一个防止欺骗的魔法区域，以射程内你选择的一点为中心，形成半径 15 尺的球体。直到法术结束，当一个生物在一个回合中首次进入法术区域或在其中开始其回合时，必须进行一次魅力豁免。豁免失败时，生物在该半径内不能故意说谎。你知道每个生物在其豁免中成功或失败。\n\n受影响的生物知道本法术存在，因此可以避免回答通常会以谎言回应的问题。只要其回答仍处于真相边界内，该生物可以含糊其辞。"
+ },
+ "keywords": {
+  "施法/法术环位": [
+   "施法/法术环位",
+   "法术环位"
+  ],
+  "施法/已知与已准备法术": [
+   "施法/已知与已准备法术",
+   "已知与已准备法术"
+  ],
+  "施法/法术位": [
+   "施法/法术位",
+   "法术位"
+  ],
+  "施法/施法时间": [
+   "施法/施法时间",
+   "施法时间"
+  ],
+  "施法/法术射程": [
+   "施法/法术射程",
+   "法术射程"
+  ],
+  "施法/成分": [
+   "施法/成分",
+   "成分"
+  ],
+  "施法/持续时间": [
+   "施法/持续时间",
+   "持续时间"
+  ],
+  "施法/目标": [
+   "施法/目标",
+   "目标"
+  ],
+  "施法/效果区域": [
+   "施法/效果区域",
+   "效果区域"
+  ],
+  "法术列表（替代版）/吟游诗人法术": [
+   "法术列表（替代版）/吟游诗人法术",
+   "吟游诗人法术"
+  ],
+  "法术列表（替代版）/牧师法术": [
+   "法术列表（替代版）/牧师法术",
+   "牧师法术"
+  ],
+  "法术列表（替代版）/德鲁伊法术": [
+   "法术列表（替代版）/德鲁伊法术",
+   "德鲁伊法术"
+  ],
+  "法术列表（替代版）/圣武士法术": [
+   "法术列表（替代版）/圣武士法术",
+   "圣武士法术"
+  ],
+  "法术列表（替代版）/游侠法术": [
+   "法术列表（替代版）/游侠法术",
+   "游侠法术"
+  ],
+  "法术列表（替代版）/术士法术": [
+   "法术列表（替代版）/术士法术",
+   "术士法术"
+  ],
+  "法术列表（替代版）/邪术师法术": [
+   "法术列表（替代版）/邪术师法术",
+   "邪术师法术"
+  ],
+  "法术列表（替代版）/法师法术": [
+   "法术列表（替代版）/法师法术",
+   "法师法术"
+  ],
+  "法术列表/吟游诗人法术": [
+   "法术列表/吟游诗人法术",
+   "吟游诗人法术"
+  ],
+  "法术列表/牧师法术": [
+   "法术列表/牧师法术",
+   "牧师法术"
+  ],
+  "法术列表/德鲁伊法术": [
+   "法术列表/德鲁伊法术",
+   "德鲁伊法术"
+  ],
+  "法术列表/圣武士法术": [
+   "法术列表/圣武士法术",
+   "圣武士法术"
+  ],
+  "法术列表/游侠法术": [
+   "法术列表/游侠法术",
+   "游侠法术"
+  ],
+  "法术列表/术士法术": [
+   "法术列表/术士法术",
+   "术士法术"
+  ],
+  "法术列表/邪术师法术": [
+   "法术列表/邪术师法术",
+   "邪术师法术"
+  ],
+  "法术列表/法师法术": [
+   "法术列表/法师法术",
+   "法师法术"
+  ],
+  "强酸箭": [
+   "强酸箭",
+   "2环",
+   "塑能系",
+   "2环塑能系"
+  ],
+  "酸液飞溅": [
+   "酸液飞溅"
+  ],
+  "援助术": [
+   "援助术",
+   "2环",
+   "防护系",
+   "2环防护系"
+  ],
+  "警报术": [
+   "警报术",
+   "1环",
+   "防护系（仪式）",
+   "1环防护系（仪式）"
+  ],
+  "变身自我": [
+   "变身自我",
+   "2环",
+   "变化系",
+   "2环变化系"
+  ],
+  "动物友谊": [
+   "动物友谊",
+   "1环",
+   "惑控系",
+   "1环惑控系"
+  ],
+  "动物信使": [
+   "动物信使",
+   "2环",
+   "惑控系（仪式）",
+   "2环惑控系（仪式）"
+  ],
+  "动物形态": [
+   "动物形态",
+   "8环",
+   "变化系",
+   "8环变化系"
+  ],
+  "操纵死尸": [
+   "操纵死尸",
+   "3环",
+   "死灵系",
+   "3环死灵系"
+  ],
+  "操纵物件": [
+   "操纵物件",
+   "5环",
+   "变化系",
+   "5环变化系"
+  ],
+  "反生物法罩": [
+   "反生物法罩",
+   "5环",
+   "防护系",
+   "5环防护系"
+  ],
+  "反魔法力场": [
+   "反魔法力场",
+   "8环",
+   "防护系",
+   "8环防护系"
+  ],
+  "厌恶术/共感术": [
+   "厌恶术/共感术",
+   "共感术",
+   "8环",
+   "惑控系",
+   "8环惑控系"
+  ],
+  "奥术眼": [
+   "奥术眼",
+   "4环",
+   "预言系",
+   "4环预言系"
+  ],
+  "奥术之手": [
+   "奥术之手",
+   "5环",
+   "塑能系",
+   "5环塑能系"
+  ],
+  "奥术锁": [
+   "奥术锁",
+   "2环",
+   "防护系",
+   "2环防护系"
+  ],
+  "奥术之剑": [
+   "奥术之剑",
+   "7环",
+   "塑能系",
+   "7环塑能系"
+  ],
+  "奥术师魔法灵光": [
+   "奥术师魔法灵光",
+   "2环",
+   "幻术系",
+   "2环幻术系"
+  ],
+  "星界投影": [
+   "星界投影",
+   "9环",
+   "死灵系",
+   "9环死灵系"
+  ],
+  "卜筮术": [
+   "卜筮术",
+   "2环",
+   "预言系（仪式）",
+   "2环预言系（仪式）"
+  ],
+  "启蒙术": [
+   "启蒙术",
+   "5环",
+   "变化系",
+   "5环变化系"
+  ],
+  "灾祸术": [
+   "灾祸术",
+   "1环",
+   "惑控系",
+   "1环惑控系"
+  ],
+  "放逐术": [
+   "放逐术",
+   "4环",
+   "防护系",
+   "4环防护系"
+  ],
+  "树皮术": [
+   "树皮术",
+   "2环",
+   "变化系",
+   "2环变化系"
+  ],
+  "希望信标": [
+   "希望信标",
+   "3环",
+   "防护系",
+   "3环防护系"
+  ],
+  "降咒术": [
+   "降咒术",
+   "3环",
+   "死灵系",
+   "3环死灵系"
+  ],
+  "黑触手": [
+   "黑触手",
+   "4环",
+   "咒法系",
+   "4环咒法系"
+  ],
+  "刀刃屏障": [
+   "刀刃屏障",
+   "6环",
+   "塑能系",
+   "6环塑能系"
+  ],
+  "祝福术": [
+   "祝福术",
+   "1环",
+   "惑控系",
+   "1环惑控系"
+  ],
+  "枯萎术": [
+   "枯萎术",
+   "4环",
+   "死灵系",
+   "4环死灵系"
+  ],
+  "致盲术/致聋术": [
+   "致盲术/致聋术",
+   "致聋术",
+   "2环",
+   "死灵系",
+   "2环死灵系"
+  ],
+  "闪现术": [
+   "闪现术",
+   "3环",
+   "变化系",
+   "3环变化系"
+  ],
+  "模糊术": [
+   "模糊术",
+   "2环",
+   "幻术系",
+   "2环幻术系"
+  ],
+  "印记斩": [
+   "印记斩",
+   "2环",
+   "塑能系",
+   "2环塑能系"
+  ],
+  "燃烧之手": [
+   "燃烧之手",
+   "1环",
+   "塑能系",
+   "1环塑能系"
+  ],
+  "召雷术": [
+   "召雷术",
+   "3环",
+   "咒法系",
+   "3环咒法系"
+  ],
+  "安定心神": [
+   "安定心神",
+   "2环",
+   "惑控系",
+   "2环惑控系"
+  ],
+  "连锁闪电": [
+   "连锁闪电",
+   "6环",
+   "塑能系",
+   "6环塑能系"
+  ],
+  "魅惑人类": [
+   "魅惑人类",
+   "1环",
+   "惑控系",
+   "1环惑控系"
+  ],
+  "寒冷之触": [
+   "寒冷之触"
+  ],
+  "死亡法环": [
+   "死亡法环",
+   "6环",
+   "死灵系",
+   "6环死灵系"
+  ],
+  "千里眼/顺风耳": [
+   "千里眼/顺风耳",
+   "顺风耳",
+   "3环",
+   "预言系",
+   "3环预言系"
+  ],
+  "克隆术": [
+   "克隆术",
+   "8环",
+   "死灵系",
+   "8环死灵系"
+  ],
+  "死云术": [
+   "死云术",
+   "5环",
+   "咒法系",
+   "5环咒法系"
+  ],
+  "七彩喷射": [
+   "七彩喷射",
+   "1环",
+   "幻术系",
+   "1环幻术系"
+  ],
+  "命令术": [
+   "命令术",
+   "1环",
+   "惑控系",
+   "1环惑控系"
+  ],
+  "通晓自然": [
+   "通晓自然",
+   "5环",
+   "预言系（仪式）",
+   "5环预言系（仪式）"
+  ],
+  "通神术": [
+   "通神术",
+   "5环",
+   "预言系（仪式）",
+   "5环预言系（仪式）"
+  ],
+  "通晓语言": [
+   "通晓语言",
+   "1环",
+   "预言系（仪式）",
+   "1环预言系（仪式）"
+  ],
+  "强迫术": [
+   "强迫术",
+   "4环",
+   "惑控系",
+   "4环惑控系"
+  ],
+  "寒冰锥": [
+   "寒冰锥",
+   "5环",
+   "塑能系",
+   "5环塑能系"
+  ],
+  "困惑术": [
+   "困惑术",
+   "4环",
+   "惑控系",
+   "4环惑控系"
+  ],
+  "召唤动物": [
+   "召唤动物",
+   "3环",
+   "咒法系",
+   "3环咒法系"
+  ],
+  "召唤天界生物": [
+   "召唤天界生物",
+   "7环",
+   "咒法系",
+   "7环咒法系"
+  ],
+  "召唤元素生物": [
+   "召唤元素生物",
+   "5环",
+   "咒法系",
+   "5环咒法系"
+  ],
+  "召唤精类": [
+   "召唤精类",
+   "6环",
+   "咒法系",
+   "6环咒法系"
+  ],
+  "召唤次级元素生物": [
+   "召唤次级元素生物",
+   "4环",
+   "咒法系",
+   "4环咒法系"
+  ],
+  "召唤林地生物": [
+   "召唤林地生物",
+   "4环",
+   "咒法系",
+   "4环咒法系"
+  ],
+  "异界探知": [
+   "异界探知",
+   "5环",
+   "预言系（仪式）",
+   "5环预言系（仪式）"
+  ],
+  "疫病术": [
+   "疫病术",
+   "5环",
+   "死灵系",
+   "5环死灵系"
+  ],
+  "触发术": [
+   "触发术",
+   "6环",
+   "塑能系",
+   "6环塑能系"
+  ],
+  "恒焰术": [
+   "恒焰术",
+   "2环",
+   "塑能系",
+   "2环塑能系"
+  ],
+  "操控水体": [
+   "操控水体",
+   "4环",
+   "变化系",
+   "4环变化系"
+  ],
+  "操控天气": [
+   "操控天气",
+   "8环",
+   "变化系",
+   "8环变化系"
+  ],
+  "反制法术": [
+   "反制法术",
+   "3环",
+   "防护系",
+   "3环防护系"
+  ],
+  "创造食物和水": [
+   "创造食物和水",
+   "3环",
+   "咒法系",
+   "3环咒法系"
+  ],
+  "创造不死生物": [
+   "创造不死生物",
+   "6环",
+   "死灵系",
+   "6环死灵系"
+  ],
+  "造水术/毁水术": [
+   "造水术/毁水术",
+   "毁水术",
+   "1环",
+   "变化系",
+   "1环变化系"
+  ],
+  "创造术": [
+   "创造术",
+   "5环",
+   "幻术系",
+   "5环幻术系"
+  ],
+  "治疗伤势": [
+   "治疗伤势",
+   "1环",
+   "塑能系",
+   "1环塑能系"
+  ],
+  "舞光术": [
+   "舞光术"
+  ],
+  "黑暗术": [
+   "黑暗术",
+   "2环",
+   "塑能系",
+   "2环塑能系"
+  ],
+  "黑暗视觉": [
+   "黑暗视觉",
+   "2环",
+   "变化系",
+   "2环变化系"
+  ],
+  "昼明术": [
+   "昼明术",
+   "3环",
+   "塑能系",
+   "3环塑能系"
+  ],
+  "死亡防护": [
+   "死亡防护",
+   "4环",
+   "防护系",
+   "4环防护系"
+  ],
+  "延迟爆裂火球": [
+   "延迟爆裂火球",
+   "7环",
+   "塑能系",
+   "7环塑能系"
+  ],
+  "半位面": [
+   "半位面",
+   "8环",
+   "咒法系",
+   "8环咒法系"
+  ],
+  "侦测善恶": [
+   "侦测善恶",
+   "1环",
+   "预言系",
+   "1环预言系"
+  ],
+  "侦测魔法": [
+   "侦测魔法",
+   "1环",
+   "预言系（仪式）",
+   "1环预言系（仪式）"
+  ],
+  "侦测毒素和疾病": [
+   "侦测毒素和疾病",
+   "1环",
+   "预言系（仪式）",
+   "1环预言系（仪式）"
+  ],
+  "侦测思想": [
+   "侦测思想",
+   "2环",
+   "预言系",
+   "2环预言系"
+  ],
+  "任意门": [
+   "任意门",
+   "4环",
+   "咒法系",
+   "4环咒法系"
+  ],
+  "易容术": [
+   "易容术",
+   "1环",
+   "幻术系",
+   "1环幻术系"
+  ],
+  "解离术": [
+   "解离术",
+   "6环",
+   "变化系",
+   "6环变化系"
+  ],
+  "解除善恶": [
+   "解除善恶",
+   "5环",
+   "防护系",
+   "5环防护系"
+  ],
+  "解除魔法": [
+   "解除魔法",
+   "3环",
+   "防护系",
+   "3环防护系"
+  ],
+  "占卜术": [
+   "占卜术",
+   "4环",
+   "预言系（仪式）",
+   "4环预言系（仪式）"
+  ],
+  "神恩": [
+   "神恩",
+   "1环",
+   "塑能系",
+   "1环塑能系"
+  ],
+  "神圣真言": [
+   "神圣真言",
+   "7环",
+   "塑能系",
+   "7环塑能系"
+  ],
+  "支配野兽": [
+   "支配野兽",
+   "4环",
+   "惑控系",
+   "4环惑控系"
+  ],
+  "支配怪物": [
+   "支配怪物",
+   "8环",
+   "惑控系",
+   "8环惑控系"
+  ],
+  "支配人类": [
+   "支配人类",
+   "5环",
+   "惑控系",
+   "5环惑控系"
+  ],
+  "托梦术": [
+   "托梦术",
+   "5环",
+   "幻术系",
+   "5环幻术系"
+  ],
+  "德鲁伊伎俩": [
+   "德鲁伊伎俩"
+  ],
+  "地震术": [
+   "地震术",
+   "8环",
+   "塑能系",
+   "8环塑能系"
+  ],
+  "魔能爆": [
+   "魔能爆"
+  ],
+  "强化属性": [
+   "强化属性",
+   "2环",
+   "变化系",
+   "2环变化系"
+  ],
+  "变巨术/缩小术": [
+   "变巨术/缩小术",
+   "缩小术",
+   "2环",
+   "变化系",
+   "2环变化系"
+  ],
+  "缠绕术": [
+   "缠绕术",
+   "1环",
+   "咒法系",
+   "1环咒法系"
+  ],
+  "迷魂术": [
+   "迷魂术",
+   "2环",
+   "惑控系",
+   "2环惑控系"
+  ],
+  "以太化": [
+   "以太化",
+   "7环",
+   "变化系",
+   "7环变化系"
+  ],
+  "脚底抹油": [
+   "脚底抹油",
+   "1环",
+   "变化系",
+   "1环变化系"
+  ],
+  "摄魂目光": [
+   "摄魂目光",
+   "6环",
+   "死灵系",
+   "6环死灵系"
+  ],
+  "加工术": [
+   "加工术",
+   "4环",
+   "变化系",
+   "4环变化系"
+  ],
+  "妖火": [
+   "妖火",
+   "1环",
+   "塑能系",
+   "1环塑能系"
+  ],
+  "忠犬术": [
+   "忠犬术",
+   "4环",
+   "咒法系",
+   "4环咒法系"
+  ],
+  "虚假生命": [
+   "虚假生命",
+   "1环",
+   "死灵系",
+   "1环死灵系"
+  ],
+  "恐惧术": [
+   "恐惧术",
+   "3环",
+   "幻术系",
+   "3环幻术系"
+  ],
+  "羽落术": [
+   "羽落术",
+   "1环",
+   "变化系",
+   "1环变化系"
+  ],
+  "弱智术": [
+   "弱智术",
+   "8环",
+   "惑控系",
+   "8环惑控系"
+  ],
+  "寻获魔宠": [
+   "寻获魔宠",
+   "1环",
+   "咒法系（仪式）",
+   "1环咒法系（仪式）"
+  ],
+  "寻获坐骑": [
+   "寻获坐骑",
+   "2环",
+   "咒法系",
+   "2环咒法系"
+  ],
+  "寻找陷阱": [
+   "寻找陷阱",
+   "2环",
+   "预言系",
+   "2环预言系"
+  ],
+  "寻路术": [
+   "寻路术",
+   "6环",
+   "预言系",
+   "6环预言系"
+  ],
+  "死亡一指": [
+   "死亡一指",
+   "7环",
+   "死灵系",
+   "7环死灵系"
+  ],
+  "火焰箭": [
+   "火焰箭"
+  ],
+  "火焰护盾": [
+   "火焰护盾",
+   "4环",
+   "塑能系",
+   "4环塑能系"
+  ],
+  "火焰风暴": [
+   "火焰风暴",
+   "7环",
+   "塑能系",
+   "7环塑能系"
+  ],
+  "火球术": [
+   "火球术",
+   "3环",
+   "塑能系",
+   "3环塑能系"
+  ],
+  "火焰刀": [
+   "火焰刀",
+   "2环",
+   "塑能系",
+   "2环塑能系"
+  ],
+  "焰击术": [
+   "焰击术",
+   "5环",
+   "塑能系",
+   "5环塑能系"
+  ],
+  "炽焰法球": [
+   "炽焰法球",
+   "2环",
+   "咒法系",
+   "2环咒法系"
+  ],
+  "石化术": [
+   "石化术",
+   "6环",
+   "变化系",
+   "6环变化系"
+  ],
+  "浮碟术": [
+   "浮碟术",
+   "1环",
+   "咒法系（仪式）",
+   "1环咒法系（仪式）"
+  ],
+  "飞行术": [
+   "飞行术",
+   "3环",
+   "变化系",
+   "3环变化系"
+  ],
+  "云雾术": [
+   "云雾术",
+   "1环",
+   "咒法系",
+   "1环咒法系"
+  ],
+  "禁制术": [
+   "禁制术",
+   "6环",
+   "防护系（仪式）",
+   "6环防护系（仪式）"
+  ],
+  "力场牢笼": [
+   "力场牢笼",
+   "7环",
+   "塑能系",
+   "7环塑能系"
+  ],
+  "预知术": [
+   "预知术",
+   "9环",
+   "预言系",
+   "9环预言系"
+  ],
+  "行动自如": [
+   "行动自如",
+   "4环",
+   "防护系",
+   "4环防护系"
+  ],
+  "冰封法球": [
+   "冰封法球",
+   "6环",
+   "塑能系",
+   "6环塑能系"
+  ],
+  "气化形体": [
+   "气化形体",
+   "3环",
+   "变化系",
+   "3环变化系"
+  ],
+  "异界之门": [
+   "异界之门",
+   "9环",
+   "咒法系",
+   "9环咒法系"
+  ],
+  "指使术": [
+   "指使术",
+   "5环",
+   "惑控系",
+   "5环惑控系"
+  ],
+  "遗体防腐": [
+   "遗体防腐",
+   "2环",
+   "死灵系（仪式）",
+   "2环死灵系（仪式）"
+  ],
+  "巨虫术": [
+   "巨虫术",
+   "4环",
+   "变化系",
+   "4环变化系"
+  ],
+  "花言巧语": [
+   "花言巧语",
+   "8环",
+   "变化系",
+   "8环变化系"
+  ],
+  "法术无效结界": [
+   "法术无效结界",
+   "6环",
+   "防护系",
+   "6环防护系"
+  ],
+  "守护刻文": [
+   "守护刻文",
+   "3环",
+   "防护系",
+   "3环防护系"
+  ],
+  "神莓术": [
+   "神莓术",
+   "1环",
+   "变化系",
+   "1环变化系"
+  ],
+  "油腻术": [
+   "油腻术",
+   "1环",
+   "咒法系",
+   "1环咒法系"
+  ],
+  "高等隐形术": [
+   "高等隐形术",
+   "4环",
+   "幻术系",
+   "4环幻术系"
+  ],
+  "高等复原术": [
+   "高等复原术",
+   "5环",
+   "防护系",
+   "5环防护系"
+  ],
+  "信仰守卫": [
+   "信仰守卫",
+   "4环",
+   "咒法系",
+   "4环咒法系"
+  ],
+  "警戒守卫": [
+   "警戒守卫",
+   "6环",
+   "防护系",
+   "6环防护系"
+  ],
+  "神导术": [
+   "神导术"
+  ],
+  "曳光弹": [
+   "曳光弹",
+   "1环",
+   "塑能系",
+   "1环塑能系"
+  ],
+  "造风术": [
+   "造风术",
+   "2环",
+   "塑能系",
+   "2环塑能系"
+  ],
+  "圣化术": [
+   "圣化术",
+   "5环",
+   "塑能系",
+   "5环塑能系"
+  ],
+  "幻景地形": [
+   "幻景地形",
+   "4环",
+   "幻术系",
+   "4环幻术系"
+  ],
+  "伤害术": [
+   "伤害术",
+   "6环",
+   "死灵系",
+   "6环死灵系"
+  ],
+  "加速术": [
+   "加速术",
+   "3环",
+   "变化系",
+   "3环变化系"
+  ],
+  "医疗术": [
+   "医疗术",
+   "6环",
+   "塑能系",
+   "6环塑能系"
+  ],
+  "治疗真言": [
+   "治疗真言",
+   "1环",
+   "塑能系",
+   "1环塑能系"
+  ],
+  "灼热金属": [
+   "灼热金属",
+   "2环",
+   "变化系",
+   "2环变化系"
+  ],
+  "地狱斥喝": [
+   "地狱斥喝",
+   "1环",
+   "塑能系",
+   "1环塑能系"
+  ],
+  "英雄宴": [
+   "英雄宴",
+   "6环",
+   "咒法系",
+   "6环咒法系"
+  ],
+  "英勇术": [
+   "英勇术",
+   "1环",
+   "惑控系",
+   "1环惑控系"
+  ],
+  "狂笑术": [
+   "狂笑术",
+   "1环",
+   "惑控系",
+   "1环惑控系"
+  ],
+  "怪物定身术": [
+   "怪物定身术",
+   "5环",
+   "惑控系",
+   "5环惑控系"
+  ],
+  "人类定身术": [
+   "人类定身术",
+   "2环",
+   "惑控系",
+   "2环惑控系"
+  ],
+  "神圣灵光": [
+   "神圣灵光",
+   "8环",
+   "防护系",
+   "8环防护系"
+  ],
+  "猎人印记": [
+   "猎人印记",
+   "1环",
+   "预言系",
+   "1环预言系"
+  ],
+  "催眠图纹": [
+   "催眠图纹",
+   "3环",
+   "幻术系",
+   "3环幻术系"
+  ],
+  "冰风暴": [
+   "冰风暴",
+   "4环",
+   "塑能系",
+   "4环塑能系"
+  ],
+  "鉴定术": [
+   "鉴定术",
+   "1环",
+   "预言系（仪式）",
+   "1环预言系（仪式）"
+  ],
+  "幻术文字": [
+   "幻术文字",
+   "1环",
+   "幻术系（仪式）",
+   "1环幻术系（仪式）"
+  ],
+  "禁锢术": [
+   "禁锢术",
+   "9环",
+   "防护系",
+   "9环防护系"
+  ],
+  "焚云术": [
+   "焚云术",
+   "8环",
+   "咒法系",
+   "8环咒法系"
+  ],
+  "致伤术": [
+   "致伤术",
+   "1环",
+   "死灵系",
+   "1环死灵系"
+  ],
+  "虫群瘟疫": [
+   "虫群瘟疫",
+   "5环",
+   "咒法系",
+   "5环咒法系"
+  ],
+  "即时召唤": [
+   "即时召唤",
+   "6环",
+   "咒法系（仪式）",
+   "6环咒法系（仪式）"
+  ],
+  "隐形术": [
+   "隐形术",
+   "2环",
+   "幻术系",
+   "2环幻术系"
+  ],
+  "难抗之舞": [
+   "难抗之舞",
+   "6环",
+   "惑控系",
+   "6环惑控系"
+  ],
+  "跳跃术": [
+   "跳跃术",
+   "1环",
+   "变化系",
+   "1环变化系"
+  ],
+  "敲击术": [
+   "敲击术",
+   "2环",
+   "变化系",
+   "2环变化系"
+  ],
+  "通晓传奇": [
+   "通晓传奇",
+   "5环",
+   "预言系",
+   "5环预言系"
+  ],
+  "次级复原术": [
+   "次级复原术",
+   "2环",
+   "防护系",
+   "2环防护系"
+  ],
+  "浮空术": [
+   "浮空术",
+   "2环",
+   "变化系",
+   "2环变化系"
+  ],
+  "光亮术": [
+   "光亮术"
+  ],
+  "闪电束": [
+   "闪电束",
+   "3环",
+   "塑能系",
+   "3环塑能系"
+  ],
+  "动植物定位术": [
+   "动植物定位术",
+   "2环",
+   "预言系（仪式）",
+   "2环预言系（仪式）"
+  ],
+  "生物定位术": [
+   "生物定位术",
+   "4环",
+   "预言系",
+   "4环预言系"
+  ],
+  "物品定位术": [
+   "物品定位术",
+   "2环",
+   "预言系",
+   "2环预言系"
+  ],
+  "大步奔行": [
+   "大步奔行",
+   "1环",
+   "变化系",
+   "1环变化系"
+  ],
+  "法师护甲": [
+   "法师护甲",
+   "1环",
+   "防护系",
+   "1环防护系"
+  ],
+  "法师之手": [
+   "法师之手"
+  ],
+  "魔法法阵": [
+   "魔法法阵",
+   "3环",
+   "防护系",
+   "3环防护系"
+  ],
+  "魔魂壶": [
+   "魔魂壶",
+   "6环",
+   "死灵系",
+   "6环死灵系"
+  ],
+  "魔法飞弹": [
+   "魔法飞弹",
+   "1环",
+   "塑能系",
+   "1环塑能系"
+  ],
+  "魔嘴术": [
+   "魔嘴术",
+   "2环",
+   "幻术系（仪式）",
+   "2环幻术系（仪式）"
+  ],
+  "魔化武器": [
+   "魔化武器",
+   "2环",
+   "变化系",
+   "2环变化系"
+  ],
+  "华丽宅邸": [
+   "华丽宅邸",
+   "7环",
+   "咒法系",
+   "7环咒法系"
+  ],
+  "高等幻影": [
+   "高等幻影",
+   "3环",
+   "幻术系",
+   "3环幻术系"
+  ],
+  "群体治疗伤势": [
+   "群体治疗伤势",
+   "5环",
+   "塑能系",
+   "5环塑能系"
+  ],
+  "群体医疗术": [
+   "群体医疗术",
+   "9环",
+   "塑能系",
+   "9环塑能系"
+  ],
+  "群体治疗真言": [
+   "群体治疗真言",
+   "3环",
+   "塑能系",
+   "3环塑能系"
+  ],
+  "群体暗示术": [
+   "群体暗示术",
+   "6环",
+   "惑控系",
+   "6环惑控系"
+  ],
+  "迷宫术": [
+   "迷宫术",
+   "8环",
+   "咒法系",
+   "8环咒法系"
+  ],
+  "融入石中": [
+   "融入石中",
+   "3环",
+   "变化系（仪式）",
+   "3环变化系（仪式）"
+  ],
+  "修复术": [
+   "修复术"
+  ],
+  "传讯术": [
+   "传讯术"
+  ],
+  "流星爆": [
+   "流星爆",
+   "9环",
+   "塑能系",
+   "9环塑能系"
+  ],
+  "心灵屏障": [
+   "心灵屏障",
+   "8环",
+   "防护系",
+   "8环防护系"
+  ],
+  "次级幻影": [
+   "次级幻影"
+  ],
+  "海市蜃楼": [
+   "海市蜃楼",
+   "7环",
+   "幻术系",
+   "7环幻术系"
+  ],
+  "镜影术": [
+   "镜影术",
+   "2环",
+   "幻术系",
+   "2环幻术系"
+  ],
+  "误导术": [
+   "误导术",
+   "5环",
+   "幻术系",
+   "5环幻术系"
+  ],
+  "迷踪步": [
+   "迷踪步",
+   "2环",
+   "咒法系",
+   "2环咒法系"
+  ],
+  "修改记忆": [
+   "修改记忆",
+   "5环",
+   "惑控系",
+   "5环惑控系"
+  ],
+  "月华之光": [
+   "月华之光",
+   "2环",
+   "塑能系",
+   "2环塑能系"
+  ],
+  "移土术": [
+   "移土术",
+   "6环",
+   "变化系",
+   "6环变化系"
+  ],
+  "回避侦测": [
+   "回避侦测",
+   "3环",
+   "防护系",
+   "3环防护系"
+  ],
+  "行踪无迹": [
+   "行踪无迹",
+   "2环",
+   "防护系",
+   "2环防护系"
+  ],
+  "穿墙术": [
+   "穿墙术",
+   "5环",
+   "变化系",
+   "5环变化系"
+  ],
+  "魅影杀手": [
+   "魅影杀手",
+   "4环",
+   "幻术系",
+   "4环幻术系"
+  ],
+  "魅影驹": [
+   "魅影驹",
+   "3环",
+   "幻术系（仪式）",
+   "3环幻术系（仪式）"
+  ],
+  "异界盟友": [
+   "异界盟友",
+   "6环",
+   "咒法系",
+   "6环咒法系"
+  ],
+  "异界誓缚": [
+   "异界誓缚",
+   "5环",
+   "防护系",
+   "5环防护系"
+  ],
+  "异界传送": [
+   "异界传送",
+   "7环",
+   "咒法系",
+   "7环咒法系"
+  ],
+  "植物滋长": [
+   "植物滋长",
+   "3环",
+   "变化系",
+   "3环变化系"
+  ],
+  "毒气喷溅": [
+   "毒气喷溅"
+  ],
+  "变形术": [
+   "变形术",
+   "4环",
+   "变化系",
+   "4环变化系"
+  ],
+  "律令死亡": [
+   "律令死亡",
+   "9环",
+   "惑控系",
+   "9环惑控系"
+  ],
+  "律令震慑": [
+   "律令震慑",
+   "8环",
+   "惑控系",
+   "8环惑控系"
+  ],
+  "治疗祷言": [
+   "治疗祷言",
+   "2环",
+   "塑能系",
+   "2环塑能系"
+  ],
+  "魔法伎俩": [
+   "魔法伎俩"
+  ],
+  "虹光喷射": [
+   "虹光喷射",
+   "7环",
+   "塑能系",
+   "7环塑能系"
+  ],
+  "虹光法墙": [
+   "虹光法墙",
+   "9环",
+   "防护系",
+   "9环防护系"
+  ],
+  "私密圣所": [
+   "私密圣所",
+   "4环",
+   "防护系",
+   "4环防护系"
+  ],
+  "燃火术": [
+   "燃火术"
+  ],
+  "预置幻象": [
+   "预置幻象",
+   "6环",
+   "幻术系",
+   "6环幻术系"
+  ],
+  "投影术": [
+   "投影术",
+   "7环",
+   "幻术系",
+   "7环幻术系"
+  ],
+  "能量防护": [
+   "能量防护",
+   "3环",
+   "防护系",
+   "3环防护系"
+  ],
+  "防护善恶": [
+   "防护善恶",
+   "1环",
+   "防护系",
+   "1环防护系"
+  ],
+  "防护毒素": [
+   "防护毒素",
+   "2环",
+   "防护系",
+   "2环防护系"
+  ],
+  "净化食粮": [
+   "净化食粮",
+   "1环",
+   "变化系（仪式）",
+   "1环变化系（仪式）"
+  ],
+  "死者复活": [
+   "死者复活",
+   "5环",
+   "死灵系",
+   "5环死灵系"
+  ],
+  "衰弱射线": [
+   "衰弱射线",
+   "2环",
+   "死灵系",
+   "2环死灵系"
+  ],
+  "冰冻射线": [
+   "冰冻射线"
+  ],
+  "再生术": [
+   "再生术",
+   "7环",
+   "变化系",
+   "7环变化系"
+  ],
+  "转生术": [
+   "转生术",
+   "5环",
+   "变化系",
+   "5环变化系"
+  ],
+  "移除诅咒": [
+   "移除诅咒",
+   "3环",
+   "防护系",
+   "3环防护系"
+  ],
+  "弹力法球": [
+   "弹力法球",
+   "4环",
+   "塑能系",
+   "4环塑能系"
+  ],
+  "抵抗术": [
+   "抵抗术"
+  ],
+  "复生术": [
+   "复生术",
+   "7环",
+   "死灵系",
+   "7环死灵系"
+  ],
+  "反转重力": [
+   "反转重力",
+   "7环",
+   "变化系",
+   "7环变化系"
+  ],
+  "亡者复活": [
+   "亡者复活",
+   "3环",
+   "死灵系",
+   "3环死灵系"
+  ],
+  "绳技术": [
+   "绳技术",
+   "2环",
+   "变化系",
+   "2环变化系"
+  ],
+  "圣火术": [
+   "圣火术"
+  ],
+  "圣域术": [
+   "圣域术",
+   "1环",
+   "防护系",
+   "1环防护系"
+  ],
+  "灼热射线": [
+   "灼热射线",
+   "2环",
+   "塑能系",
+   "2环塑能系"
+  ],
+  "探知术": [
+   "探知术",
+   "5环",
+   "预言系",
+   "5环预言系"
+  ],
+  "秘藏箱": [
+   "秘藏箱",
+   "4环",
+   "咒法系",
+   "4环咒法系"
+  ],
+  "看破隐形": [
+   "看破隐形",
+   "2环",
+   "预言系",
+   "2环预言系"
+  ],
+  "群体伪装": [
+   "群体伪装",
+   "5环",
+   "幻术系",
+   "5环幻术系"
+  ],
+  "传讯": [
+   "传讯",
+   "3环",
+   "塑能系",
+   "3环塑能系"
+  ],
+  "隐匿术": [
+   "隐匿术",
+   "7环",
+   "变化系",
+   "7环变化系"
+  ],
+  "形体变化": [
+   "形体变化",
+   "9环",
+   "变化系",
+   "9环变化系"
+  ],
+  "粉碎音波": [
+   "粉碎音波",
+   "2环",
+   "塑能系",
+   "2环塑能系"
+  ],
+  "信仰护盾": [
+   "信仰护盾",
+   "1环",
+   "防护系",
+   "1环防护系"
+  ],
+  "护盾术": [
+   "护盾术",
+   "1环",
+   "防护系",
+   "1环防护系"
+  ],
+  "橡棍术": [
+   "橡棍术"
+  ],
+  "电爪": [
+   "电爪"
+  ],
+  "沉默术": [
+   "沉默术",
+   "2环",
+   "幻术系（仪式）",
+   "2环幻术系（仪式）"
+  ],
+  "无声幻影": [
+   "无声幻影",
+   "1环",
+   "幻术系",
+   "1环幻术系"
+  ],
+  "拟像术": [
+   "拟像术",
+   "7环",
+   "幻术系",
+   "7环幻术系"
+  ],
+  "睡眠术": [
+   "睡眠术",
+   "1环",
+   "惑控系",
+   "1环惑控系"
+  ],
+  "冰雨风暴": [
+   "冰雨风暴",
+   "3环",
+   "咒法系",
+   "3环咒法系"
+  ],
+  "迟缓术": [
+   "迟缓术",
+   "3环",
+   "变化系",
+   "3环变化系"
+  ],
+  "稳定伤势": [
+   "稳定伤势"
+  ],
+  "动物交谈": [
+   "动物交谈",
+   "1环",
+   "预言系（仪式）",
+   "1环预言系（仪式）"
+  ],
+  "死者交谈": [
+   "死者交谈",
+   "3环",
+   "死灵系",
+   "3环死灵系"
+  ],
+  "植物交谈": [
+   "植物交谈",
+   "3环",
+   "变化系",
+   "3环变化系"
+  ],
+  "蛛行术": [
+   "蛛行术",
+   "2环",
+   "变化系",
+   "2环变化系"
+  ],
+  "尖刺丛生": [
+   "尖刺丛生",
+   "2环",
+   "变化系",
+   "2环变化系"
+  ],
+  "灵体卫士": [
+   "灵体卫士",
+   "3环",
+   "咒法系",
+   "3环咒法系"
+  ],
+  "灵体武器": [
+   "灵体武器",
+   "2环",
+   "塑能系",
+   "2环塑能系"
+  ],
+  "臭云术": [
+   "臭云术",
+   "3环",
+   "咒法系",
+   "3环咒法系"
+  ],
+  "塑石术": [
+   "塑石术",
+   "4环",
+   "变化系",
+   "4环变化系"
+  ],
+  "石肤术": [
+   "石肤术",
+   "4环",
+   "防护系",
+   "4环防护系"
+  ],
+  "复仇风暴": [
+   "复仇风暴",
+   "9环",
+   "咒法系",
+   "9环咒法系"
+  ],
+  "暗示术": [
+   "暗示术",
+   "2环",
+   "惑控系",
+   "2环惑控系"
+  ],
+  "阳炎射线": [
+   "阳炎射线",
+   "6环",
+   "塑能系",
+   "6环塑能系"
+  ],
+  "阳炎爆": [
+   "阳炎爆",
+   "8环",
+   "塑能系",
+   "8环塑能系"
+  ],
+  "徽记术": [
+   "徽记术",
+   "7环",
+   "防护系",
+   "7环防护系"
+  ],
+  "念动力": [
+   "念动力",
+   "5环",
+   "变化系",
+   "5环变化系"
+  ],
+  "心灵连结": [
+   "心灵连结",
+   "5环",
+   "预言系（仪式）",
+   "5环预言系（仪式）"
+  ],
+  "传送术": [
+   "传送术",
+   "7环",
+   "咒法系",
+   "7环咒法系"
+  ],
+  "传送法阵": [
+   "传送法阵",
+   "5环",
+   "咒法系",
+   "5环咒法系"
+  ],
+  "奇术": [
+   "奇术"
+  ],
+  "雷鸣波": [
+   "雷鸣波",
+   "1环",
+   "塑能系",
+   "1环塑能系"
+  ],
+  "时间停止": [
+   "时间停止",
+   "9环",
+   "变化系",
+   "9环变化系"
+  ],
+  "小屋术": [
+   "小屋术",
+   "3环",
+   "塑能系（仪式）",
+   "3环塑能系（仪式）"
+  ],
+  "通晓语言（2）": [
+   "通晓语言（2）",
+   "3环",
+   "预言系",
+   "3环预言系"
+  ],
+  "植物传送": [
+   "植物传送",
+   "6环",
+   "咒法系",
+   "6环咒法系"
+  ],
+  "树跃术": [
+   "树跃术",
+   "5环",
+   "咒法系",
+   "5环咒法系"
+  ],
+  "完全变形术": [
+   "完全变形术",
+   "9环",
+   "变化系",
+   "9环变化系"
+  ],
+  "完全复活术": [
+   "完全复活术",
+   "9环",
+   "死灵系",
+   "9环死灵系"
+  ],
+  "真实视觉": [
+   "真实视觉",
+   "6环",
+   "预言系",
+   "6环预言系"
+  ],
+  "克敌机先": [
+   "克敌机先"
+  ],
+  "隐形仆役": [
+   "隐形仆役",
+   "1环",
+   "咒法系（仪式）",
+   "1环咒法系（仪式）"
+  ],
+  "吸血鬼之触": [
+   "吸血鬼之触",
+   "3环",
+   "死灵系",
+   "3环死灵系"
+  ],
+  "恶毒嘲笑": [
+   "恶毒嘲笑"
+  ],
+  "火墙术": [
+   "火墙术",
+   "4环",
+   "塑能系",
+   "4环塑能系"
+  ],
+  "力场墙": [
+   "力场墙",
+   "5环",
+   "塑能系",
+   "5环塑能系"
+  ],
+  "冰墙术": [
+   "冰墙术",
+   "6环",
+   "塑能系",
+   "6环塑能系"
+  ],
+  "石墙术": [
+   "石墙术",
+   "5环",
+   "塑能系",
+   "5环塑能系"
+  ],
+  "荆棘墙": [
+   "荆棘墙",
+   "6环",
+   "咒法系",
+   "6环咒法系"
+  ],
+  "守护之链": [
+   "守护之链",
+   "2环",
+   "防护系",
+   "2环防护系"
+  ],
+  "水下呼吸": [
+   "水下呼吸",
+   "3环",
+   "变化系（仪式）",
+   "3环变化系（仪式）"
+  ],
+  "水面行走": [
+   "水面行走",
+   "3环",
+   "变化系（仪式）",
+   "3环变化系（仪式）"
+  ],
+  "蛛网术": [
+   "蛛网术",
+   "2环",
+   "咒法系",
+   "2环咒法系"
+  ],
+  "怪影杀手": [
+   "怪影杀手",
+   "9环",
+   "幻术系",
+   "9环幻术系"
+  ],
+  "风行术": [
+   "风行术",
+   "6环",
+   "变化系",
+   "6环变化系"
+  ],
+  "风墙术": [
+   "风墙术",
+   "3环",
+   "塑能系",
+   "3环塑能系"
+  ],
+  "祈愿术": [
+   "祈愿术",
+   "9环",
+   "咒法系",
+   "9环咒法系"
+  ],
+  "回返真言": [
+   "回返真言",
+   "6环",
+   "咒法系",
+   "6环咒法系"
+  ],
+  "诚实之域": [
+   "诚实之域",
+   "2环",
+   "惑控系",
+   "2环惑控系"
+  ]
+ }
+}

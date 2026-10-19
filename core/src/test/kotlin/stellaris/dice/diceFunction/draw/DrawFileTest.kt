@@ -1,11 +1,14 @@
 package stellaris.dice.diceFunction.draw
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.io.TempDir
+import java.io.File
 
 
 
@@ -82,6 +85,20 @@ class DrawFileTest {
     fun `YAML 缺 command 则加载失败`() {
 
         assertThrows(IllegalStateException::class.java) { file("default:\n  - 甲\n") }
+    }
+
+
+    @TempDir
+    lateinit var temp: File
+
+    @Test
+    fun `yaml 反序列化 gadget 被拒绝且不落地文件`() {
+        val canary = File(temp, "canary.txt")
+        val source = "!!java.io.FileOutputStream [ !!str \"${canary.path.replace('\\', '/')}\" ]"
+        assertThrows(IllegalStateException::class.java) {
+            DrawFile(source, "evil.yaml", 1L, false)
+        }
+        assertFalse(canary.exists(), "gadget 类不应被实例化：${canary.path}")
     }
 
 

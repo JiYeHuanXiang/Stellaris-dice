@@ -46,9 +46,10 @@ dependencies {
 
     implementation 'org.yaml:snakeyaml:1.33'
 
-    implementation 'org.mozilla:rhino:1.7.14'
+    implementation 'org.mozilla:rhino:1.7.14.1'
 
     implementation 'com.moandjiezana.toml:toml4j:0.7.2'
+    implementation 'com.google.code.gson:gson:2.10.1'
 
     implementation 'org.luaj:luaj-jse:3.0.1'
 

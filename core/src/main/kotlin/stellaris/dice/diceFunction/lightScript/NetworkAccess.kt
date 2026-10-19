@@ -135,6 +135,9 @@ object NetworkAccess {
             if (a == 198 && (b == 18 || b == 19)) return false
             if (a >= 224) return false
         } else if (bytes.size == 16) {
+            if (bytes[10].toInt() == 0xFF && bytes[11].toInt() == 0xFF) {
+                return isPublic(java.net.InetAddress.getByAddress(bytes.copyOfRange(12, 16)))
+            }
             if (bytes.all { it.toInt() == 0 }) return false
             val first = bytes[0].toInt() and 0xFF
             val second = bytes[1].toInt() and 0xFF

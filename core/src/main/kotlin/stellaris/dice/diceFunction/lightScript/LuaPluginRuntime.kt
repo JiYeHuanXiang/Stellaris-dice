@@ -105,6 +105,7 @@ class LuaPluginRuntime(
     fun load() {
         try {
             val g = JsePlatform.standardGlobals()
+            applySandboxLimits(g)
             val sdk = sdk(g)
             g.set("ZhaoDiceSDK", sdk)
             g.set("json", jsonLibrary())
@@ -116,6 +117,65 @@ class LuaPluginRuntime(
             DiceLogger.error("Lua 插件 $pluginId 载入失败：$t")
             globals = null
         }
+    }
+
+    /** 沙箱收敛：移除 Java 互操作、模块加载与宿主文件/进程入口，os 只保留 time/clock/date。 */
+    private fun applySandboxLimits(g: Globals) {
+        g.set("luajava", LuaValue.NIL)
+        g.set("io", LuaValue.NIL)
+        g.set("require", LuaValue.NIL)
+        g.set("package", LuaValue.NIL)
+        g.set("loadfile", LuaValue.NIL)
+        g.set("dofile", LuaValue.NIL)
+        g.set("os", restrictedOs())
+    }
+
+    private fun restrictedOs(): LuaTable {
+        val os = LuaTable()
+        os.set("time", function { args ->
+            if (args.narg() >= 1 && args.arg1().istable()) {
+                val t = args.arg1()
+                val at = java.time.LocalDateTime.of(
+                    t.get("year").optint(0),
+                    t.get("month").optint(1),
+                    t.get("day").optint(1),
+                    t.get("hour").optint(0),
+                    t.get("min").optint(0),
+                    t.get("sec").optint(0)
+                )
+                LuaValue.valueOf(at.atZone(java.time.ZoneId.systemDefault()).toEpochSecond().toDouble())
+            } else {
+                LuaValue.valueOf((System.currentTimeMillis() / 1000).toDouble())
+            }
+        })
+        os.set("clock", function { _ ->
+            LuaValue.valueOf(System.nanoTime() / 1e9)
+        })
+        os.set("date", function { args ->
+            val format = if (args.narg() >= 1 && args.arg1().isstring()) {
+                args.arg1().tojstring()
+            } else {
+                "%Y-%m-%d %H:%M:%S"
+            }
+            val instant = if (args.narg() >= 2 && args.arg(2).isnumber()) {
+                java.time.Instant.ofEpochSecond(args.arg(2).tolong())
+            } else {
+                java.time.Instant.now()
+            }
+            val t = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault())
+            LuaValue.valueOf(
+                format
+                    .replace("%F", String.format("%04d-%02d-%02d", t.year, t.monthValue, t.dayOfMonth))
+                    .replace("%T", String.format("%02d:%02d:%02d", t.hour, t.minute, t.second))
+                    .replace("%Y", String.format("%04d", t.year))
+                    .replace("%m", String.format("%02d", t.monthValue))
+                    .replace("%d", String.format("%02d", t.dayOfMonth))
+                    .replace("%H", String.format("%02d", t.hour))
+                    .replace("%M", String.format("%02d", t.minute))
+                    .replace("%S", String.format("%02d", t.second))
+            )
+        })
+        return os
     }
 
     private fun readHooks(g: Globals) {

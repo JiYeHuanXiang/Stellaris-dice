@@ -63,4 +63,34 @@ class NetworkAccessTest {
         assertEquals("", NetworkAccess.httpGet("file:///etc/passwd", allowLocal = true))
         assertEquals("", NetworkAccess.httpGet("ftp://127.0.0.1/file", allowLocal = true))
     }
+
+    @Test
+    fun `本机地址的数字与缩写形式被拒绝`() {
+        for (host in listOf(
+            "127.1", "2130706433", "0x7f.0.0.1", "0177.0.0.1",
+            "[::1]", "[::ffff:127.0.0.1]", "[::ffff:7f00:1]"
+        )) {
+            assertEquals("", NetworkAccess.httpGet("http://$host:$port/hello"), host)
+        }
+    }
+
+    @Test
+    fun `内网与保留段被拒绝`() {
+        for (host in listOf(
+            "10.0.0.1", "172.16.0.1", "192.168.1.1", "169.254.1.1", "100.64.0.1",
+            "224.0.0.1", "[fc00::1]", "[fe80::1]", "[::ffff:192.168.1.1]"
+        )) {
+            assertEquals("", NetworkAccess.httpGet("http://$host/hello"), host)
+        }
+    }
+
+    @Test
+    fun `重定向继续走同一校验`() {
+        server.createContext("/hop") { exchange ->
+            exchange.responseHeaders.add("Location", "/hello")
+            exchange.sendResponseHeaders(302, -1)
+        }
+        assertEquals("你好", NetworkAccess.httpGet("http://127.0.0.1:$port/hop", allowLocal = true))
+        assertEquals("", NetworkAccess.httpGet("http://127.0.0.1:$port/hop"))
+    }
 }

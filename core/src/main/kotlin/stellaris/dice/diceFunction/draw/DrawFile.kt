@@ -4,6 +4,7 @@ import blue.endless.jankson.Jankson
 import blue.endless.jankson.JsonArray
 import org.json.JSONObject
 import org.yaml.snakeyaml.Yaml
+import org.yaml.snakeyaml.constructor.SafeConstructor
 import java.io.Serializable
 import java.util.ArrayList
 
@@ -162,7 +163,7 @@ class DrawFile(
 
     private fun loadYaml(source: String) {
         data.clear()
-        val yaml = Yaml().load<Map<String, Any>>(source)
+        val yaml = Yaml(SafeConstructor()).load<Map<String, Any>>(source)
 
         for ((key, value) in yaml) {
             if (value is String) {

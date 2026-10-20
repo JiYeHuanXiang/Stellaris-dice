@@ -104,6 +104,8 @@ object DiceCommandDecoder {
 
     fun registeredCommands(): List<String> = Collections.unmodifiableList(registerCommands)
 
+    fun isBuiltInCommand(command: String): Boolean =
+        registerCommands.any { it.equals(command, ignoreCase = true) }
 
     fun isProtected(command: String): Boolean = protectedCommands.contains(command)
 
@@ -124,11 +126,12 @@ object DiceCommandDecoder {
             throw IllegalStateException("指令改写递归超过 5 层，改写规则可能互相打架：$input")
         }
 
-        val commands = ArrayList<String>().apply {
-            addAll(registerCommands)
-            addAll(diceCommandCallback.extraCommands())
-        }
-        commands.sortWith(SortByLengthComparator())
+        val commands = (registerCommands + diceCommandCallback.extraCommands())
+            .asSequence()
+            .filter { it.isNotBlank() && it.none { char -> char.isWhitespace() } }
+            .distinctBy { it.lowercase() }
+            .sortedWith(SortByLengthComparator())
+            .toList()
 
         for (command in commands) {
             if (!input.startsWith(command, ignoreCase = true)) {

@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 package onedice.function
 
 import java.util.Random

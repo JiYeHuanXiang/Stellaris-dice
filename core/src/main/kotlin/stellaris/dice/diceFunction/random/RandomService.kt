@@ -1,19 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 package stellaris.dice.diceFunction.random
 
 import stellaris.dice.diceFunction.DiceLogger

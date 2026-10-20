@@ -87,6 +87,20 @@ class DrawFileTest {
         assertThrows(IllegalStateException::class.java) { file("default:\n  - 甲\n") }
     }
 
+    @Test
+    fun `YAML 重复键被拒绝`() {
+        assertThrows(IllegalStateException::class.java) {
+            file(
+                """
+                command: draw
+                command: draw
+                default:
+                  - 甲
+                """.trimIndent()
+            )
+        }
+    }
+
 
     @TempDir
     lateinit var temp: File

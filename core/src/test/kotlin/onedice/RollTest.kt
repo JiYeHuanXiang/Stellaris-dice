@@ -143,6 +143,23 @@ class RollTest {
         assertEquals(7, roll("0?2:3+4").resInt)
     }
 
+    @Test
+    fun `三元式只求值被选中的分支`() {
+        assertEquals(1, roll("1?1:$9").resInt, "未选中的未赋值临时变量不应报错")
+        assertEquals(2, roll("0?1:2").resInt)
+
+        val result = roll("1?1d6:99", 2)
+        assertEquals(3, result.resInt)
+        assertEquals(1, result.resIntMin, "区间应来自实际选中的分支")
+        assertEquals(6, result.resIntMax)
+    }
+
+    @Test
+    fun `逻辑运算短路未选中的分支`() {
+        assertEquals(0, roll("0&(1/0)").resInt)
+        assertEquals(1, roll("1|(1/0)").resInt)
+    }
+
 
 
     @Test

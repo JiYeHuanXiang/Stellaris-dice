@@ -3,8 +3,11 @@ package stellaris.dice.diceFunction.draw
 import blue.endless.jankson.Jankson
 import blue.endless.jankson.JsonArray
 import org.json.JSONObject
+import org.yaml.snakeyaml.DumperOptions
+import org.yaml.snakeyaml.LoaderOptions
 import org.yaml.snakeyaml.Yaml
 import org.yaml.snakeyaml.constructor.SafeConstructor
+import org.yaml.snakeyaml.representer.Representer
 import java.io.Serializable
 import java.util.ArrayList
 
@@ -52,6 +55,10 @@ class DrawFile(
 ) : Serializable {
 
     companion object {
+
+        private const val MAX_YAML_CODE_POINTS = 1_000_000
+        private const val MAX_YAML_ALIASES = 50
+        private const val MAX_YAML_NESTING = 20
 
         private val BOM = String(byteArrayOf(0xEF.toByte(), 0xBB.toByte(), 0xBF.toByte()), Charsets.UTF_8)
 
@@ -163,7 +170,19 @@ class DrawFile(
 
     private fun loadYaml(source: String) {
         data.clear()
-        val yaml = Yaml(SafeConstructor()).load<Map<String, Any>>(source)
+        val options = LoaderOptions().apply {
+            isAllowDuplicateKeys = false
+            maxAliasesForCollections = MAX_YAML_ALIASES
+            nestingDepthLimit = MAX_YAML_NESTING
+            codePointLimit = MAX_YAML_CODE_POINTS
+        }
+        val constructor = SafeConstructor(options)
+        val yaml = Yaml(
+            constructor,
+            Representer(DumperOptions()),
+            DumperOptions(),
+            options
+        ).load<Map<String, Any>>(source)
 
         for ((key, value) in yaml) {
             if (value is String) {

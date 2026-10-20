@@ -115,7 +115,7 @@ object NetworkAccess {
         }
     }
 
-    private fun isPublic(address: InetAddress): Boolean {
+    internal fun isPublic(address: InetAddress): Boolean {
         if (address.isAnyLocalAddress || address.isLoopbackAddress ||
             address.isLinkLocalAddress || address.isSiteLocalAddress ||
             address.isMulticastAddress
@@ -123,29 +123,55 @@ object NetworkAccess {
             return false
         }
         val bytes = address.address
-        if (bytes.size == 4) {
-            val a = bytes[0].toInt() and 0xFF
-            val b = bytes[1].toInt() and 0xFF
-            if (a == 0 || a == 10 || a == 127) return false
-            if (a == 169 && b == 254) return false
-            if (a == 172 && b in 16..31) return false
-            if (a == 192 && b == 168) return false
-            if (a == 100 && b in 64..127) return false
-            if (a == 192 && b == 0) return false
-            if (a == 198 && (b == 18 || b == 19)) return false
-            if (a >= 224) return false
-        } else if (bytes.size == 16) {
-            if (bytes[10].toInt() == 0xFF && bytes[11].toInt() == 0xFF) {
-                return isPublic(java.net.InetAddress.getByAddress(bytes.copyOfRange(12, 16)))
-            }
-            if (bytes.all { it.toInt() == 0 }) return false
-            val first = bytes[0].toInt() and 0xFF
-            val second = bytes[1].toInt() and 0xFF
-            if ((first and 0xFE) == 0xFC) return false
-            if (first == 0xFE && (second and 0xC0) == 0x80) return false
-            if (first == 0xFE && (second and 0xC0) == 0xC0) return false
-            if (first == 0xFF) return false
+        return when (bytes.size) {
+            4 -> isPublicIpv4(bytes)
+            16 -> isPublicIpv6(bytes)
+            else -> false
         }
+    }
+
+    private fun isPublicIpv4(bytes: ByteArray): Boolean {
+        val a = bytes[0].toInt() and 0xFF
+        val b = bytes[1].toInt() and 0xFF
+        val c = bytes[2].toInt() and 0xFF
+        if (a == 0 || a == 10 || a == 127) return false
+        if (a == 100 && b in 64..127) return false
+        if (a == 169 && b == 254) return false
+        if (a == 172 && b in 16..31) return false
+        if (a == 192 && b == 168) return false
+        if (a == 192 && b == 0) return false
+        if (a == 192 && b == 88 && c == 99) return false
+        if (a == 198 && (b == 18 || b == 19)) return false
+        if (a == 198 && b == 51 && c == 100) return false
+        if (a == 203 && b == 0 && c == 113) return false
+        return a < 224
+    }
+
+    private fun isPublicIpv6(bytes: ByteArray): Boolean {
+        val first = bytes[0].toInt() and 0xFF
+        val second = bytes[1].toInt() and 0xFF
+        val third = bytes[2].toInt() and 0xFF
+        val fourth = bytes[3].toInt() and 0xFF
+
+        // 只接受 2000::/3 的全球单播地址段，直接排除 ::/8、IPv4 兼容/映射地址、
+        // ULA、链路本地和组播地址。
+        if ((first and 0xE0) != 0x20) return false
+
+        // 文档、基准测试、Teredo 与 6to4 地址不应被插件当作普通公网出口。
+        if (first == 0x20 && second == 0x01) {
+            if (third == 0x0D && fourth == 0xB8) return false
+            if (third == 0x00 && fourth == 0x00) return false
+            if (third == 0x00 && fourth == 0x02 &&
+                bytes[4].toInt() == 0 && bytes[5].toInt() == 0
+            ) {
+                return false
+            }
+            if (third == 0x00 && ((fourth and 0xF0) == 0x10 || (fourth and 0xF0) == 0x20)) {
+                return false
+            }
+        }
+        if (first == 0x20 && second == 0x02) return false
+        if (first == 0x3F && (second and 0xF0) == 0xF0) return false
         return true
     }
 }

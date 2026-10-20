@@ -26,7 +26,7 @@ class JsPluginRuntime(
             if (text == null || text == "undefined" || text == "null" || text == "kotlin.Unit") {
                 null
             } else {
-                text
+                PluginLimits.limitResult(text)
             }
         } catch (t: Throwable) {
             DiceLogger.error("JS 插件 $pluginId 执行失败：$t")
@@ -36,7 +36,7 @@ class JsPluginRuntime(
 
     fun evalIsolated(script: String): String? {
         return try {
-            DiceJsSandbox.create().eval(script)?.toString()
+            PluginLimits.limitResult(DiceJsSandbox.create().eval(script)?.toString())
         } catch (t: Throwable) {
             DiceLogger.error("JS eval 失败：$t")
             null

@@ -8,6 +8,7 @@ import org.luaj.vm2.LuaString
 import org.luaj.vm2.LuaTable
 import org.luaj.vm2.LuaValue
 import org.luaj.vm2.Varargs
+import org.luaj.vm2.lib.DebugLib
 import org.luaj.vm2.lib.VarArgFunction
 import org.luaj.vm2.lib.jse.JsePlatform
 import stellaris.dice.diceFunction.DiceLogger
@@ -81,7 +82,8 @@ class LuaPluginRuntime(
     private val host: PluginHost,
     private val dataDir: java.io.File,
     /** 数据文件名（插件文件名去后缀）。 */
-    private val storageId: String = pluginId
+    private val storageId: String = pluginId,
+    private val executionTimeoutMillis: Long = PluginLimits.DEFAULT_EXECUTION_TIMEOUT_MILLIS
 ) {
 
     private var globals: Globals? = null
@@ -91,6 +93,9 @@ class LuaPluginRuntime(
 
     /** 本条消息的上下文。`draw.open` 需要群号。 */
     private val activeMessage = ThreadLocal<LuaMessage?>()
+
+    /** 当前 Lua 调用的截止时间；由 debug hook 在固定指令间隔检查。 */
+    private val executionDeadlineNanos = ThreadLocal<Long>()
 
     private val decks = HashMap<Int, PluginDeck>()
     private var nextDeckId = 1
@@ -105,12 +110,15 @@ class LuaPluginRuntime(
     fun load() {
         try {
             val g = JsePlatform.standardGlobals()
+            installExecutionGuard(g)
             applySandboxLimits(g)
             val sdk = sdk(g)
             g.set("ZhaoDiceSDK", sdk)
             g.set("json", jsonLibrary())
             g.set("LINE", LuaValue.valueOf("\n"))
-            g.load(source, pluginId).call()
+            withExecutionDeadline {
+                g.load(source, pluginId).call()
+            }
             globals = g
             readHooks(g)
         } catch (t: Throwable) {
@@ -121,13 +129,47 @@ class LuaPluginRuntime(
 
     /** 沙箱收敛：移除 Java 互操作、模块加载与宿主文件/进程入口，os 只保留 time/clock/date。 */
     private fun applySandboxLimits(g: Globals) {
+        g.set("debug", LuaValue.NIL)
         g.set("luajava", LuaValue.NIL)
         g.set("io", LuaValue.NIL)
         g.set("require", LuaValue.NIL)
         g.set("package", LuaValue.NIL)
+        g.set("coroutine", LuaValue.NIL)
         g.set("loadfile", LuaValue.NIL)
         g.set("dofile", LuaValue.NIL)
         g.set("os", restrictedOs())
+    }
+
+    private fun installExecutionGuard(g: Globals) {
+        val debugLib = DebugLib()
+        g.set("debug", debugLib.call(LuaValue.valueOf("debug"), g))
+        g.set("__stellaris_deadline_check", function { _ ->
+            val deadline = executionDeadlineNanos.get()
+            if (deadline != null && System.nanoTime() >= deadline) {
+                throw PluginExecutionTimeout("Lua 插件执行超时")
+            }
+            LuaValue.NIL
+        })
+        g.load(
+            """
+            local check = __stellaris_deadline_check
+            debug.sethook(function() check() end, "", 10000)
+            __stellaris_deadline_check = nil
+            """.trimIndent(),
+            "sandbox-deadline"
+        ).call()
+        g.set("debug", LuaValue.NIL)
+    }
+
+    private inline fun <T> withExecutionDeadline(block: () -> T): T {
+        executionDeadlineNanos.set(
+            System.nanoTime() + executionTimeoutMillis * 1_000_000L
+        )
+        return try {
+            block()
+        } finally {
+            executionDeadlineNanos.remove()
+        }
     }
 
     private fun restrictedOs(): LuaTable {
@@ -235,8 +277,10 @@ class LuaPluginRuntime(
             val value = g.get(function)
             if (!value.isfunction()) return null
             activeMessage.set(message)
-            val result = value.call(messageTable(message))
-            if (result.isnil()) null else result.tojstring()
+            val result = withExecutionDeadline {
+                value.call(messageTable(message))
+            }
+            if (result.isnil()) null else PluginLimits.limitResult(result.tojstring())
         } catch (t: Throwable) {
             DiceLogger.error("Lua 插件 $pluginId 的 $function 执行失败：$t")
             null

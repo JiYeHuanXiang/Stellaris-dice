@@ -1,7 +1,10 @@
 package stellaris.dice.diceFunction.lightScript
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.Timeout
+import javax.script.ScriptException
 
 class JsSandboxProbeTest {
 
@@ -25,6 +28,22 @@ class JsSandboxProbeTest {
             "importClass", "importPackage", "JavaAdapter", "MWArray", "doctest"
         )) {
             assertEquals("undefined", probe("typeof $name"), name)
+        }
+    }
+
+    @Test
+    @Timeout(5)
+    fun `死循环会被执行时限终止`() {
+        assertThrows(ScriptException::class.java) {
+            DiceJsSandbox.create(executionTimeoutMillis = 80)
+                .eval("try { while (true) {} } catch (e) {}")
+        }
+    }
+
+    @Test
+    fun `超长脚本在进入引擎前被拒绝`() {
+        assertThrows(ScriptException::class.java) {
+            DiceJsSandbox.create(maxScriptChars = 16).eval("var marker = '0123456789';")
         }
     }
 

@@ -315,6 +315,40 @@ class DiceCommandDecoderTest {
     }
 
     @Test
+    fun `非法插件指令名被忽略且内置名优先`() {
+        val seen = ArrayList<Pair<String, String>>()
+        val callback = object : DiceCommandCallback {
+            override fun onException(exception: DiceException) = Unit
+
+            override fun onCommand(command: String, param: String, isProtected: Boolean): Boolean {
+                seen.add(command to param)
+                return true
+            }
+
+            override fun extraCommands(): ArrayList<String> =
+                arrayListOf("", "bad command", "R", "plugin")
+        }
+
+        assertTrue(DiceCommandDecoder.invoke(callback, "plugin 参数"))
+        assertEquals(listOf("plugin" to "参数"), seen)
+
+        seen.clear()
+        assertFalse(DiceCommandDecoder.invoke(callback, "bad command"), "含空白的指令名不应进入匹配表")
+        assertFalse(DiceCommandDecoder.invoke(callback, "x"), "空指令名不应吞掉普通文本")
+
+        seen.clear()
+        assertTrue(DiceCommandDecoder.invoke(callback, "R 3d6"))
+        assertEquals(listOf("r" to "3d6"), seen, "忽略大小写的重复项保留内置指令")
+    }
+
+    @Test
+    fun `内置指令查询忽略大小写`() {
+        assertTrue(DiceCommandDecoder.isBuiltInCommand("R"))
+        assertTrue(DiceCommandDecoder.isBuiltInCommand("SeTdG"))
+        assertFalse(DiceCommandDecoder.isBuiltInCommand("plugin"))
+    }
+
+    @Test
     fun `指令表快照 含关键指令且去重`() {
         val table = DiceCommandDecoder.registeredCommands()
         assertTrue(table.contains("r"))

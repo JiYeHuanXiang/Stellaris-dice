@@ -1,21 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 package stellaris.dice.diceFunction.lightScript
 
 import stellaris.dice.DiceIntentEvent

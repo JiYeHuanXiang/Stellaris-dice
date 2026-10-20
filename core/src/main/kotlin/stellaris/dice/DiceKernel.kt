@@ -33,6 +33,7 @@ object DiceKernel : KernelProvider {
 
 
 
+    @Synchronized
     override fun setBasePath(path: String) {
         if (basePath != null && basePath != path) {
             throw IllegalStateException("数据根只允许设置一次：已设为 $basePath，拒绝改为 $path")
@@ -40,6 +41,7 @@ object DiceKernel : KernelProvider {
         basePath = path
     }
 
+    @Synchronized
     override fun getBasePath(): String =
         basePath ?: throw IllegalStateException("数据根未设置：请先调用 DiceManager.setBasePath(...)")
 
@@ -55,6 +57,7 @@ object DiceKernel : KernelProvider {
 
 
 
+    @Synchronized
     override fun createDice(id: Any, diceIntentEvent: DiceIntentEvent?): DiceHelper {
         val key = id.toString()
         val existing = instances[key]
@@ -73,8 +76,10 @@ object DiceKernel : KernelProvider {
         return helper
     }
 
+    @Synchronized
     override fun getDice(id: Any): DiceHelper? = instances[id.toString()]
 
+    @Synchronized
     override fun getDiceList(): List<DiceBrief> = instances.values.map {
         DiceBrief(ready = it.intentEvent != null, botId = it.botId, nick = "")
     }
@@ -89,5 +94,6 @@ object DiceKernel : KernelProvider {
     private fun instanceRoot(botId: String): String = "${getBasePath()}/${DiceConstant.DATA_DIR_PREFIX}$botId"
 
 
+    @Synchronized
     fun instanceCount(): Int = instances.size
 }

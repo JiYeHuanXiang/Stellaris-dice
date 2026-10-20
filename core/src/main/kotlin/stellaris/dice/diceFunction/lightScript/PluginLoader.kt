@@ -34,6 +34,7 @@ class PluginLoader(private val rootPath: String) : DiceCustomFileLoader {
         files.clear()
         luaRuntimes.clear()
         timers.clear()
+        timerFiredAt.clear()
         customCommands.clear()
         val dir = File(rootPath, "custom")
         if (!dir.isDirectory) return
@@ -201,7 +202,7 @@ class PluginLoader(private val rootPath: String) : DiceCustomFileLoader {
                     auto.content[DiceCalculation.getRandomInt(0, auto.content.size - 1)]
                 }
                 if (body.isEmpty()) continue
-                return AutoReply(body)
+                return AutoReply(PluginLimits.limitResult(body) ?: body)
             }
         }
         return null

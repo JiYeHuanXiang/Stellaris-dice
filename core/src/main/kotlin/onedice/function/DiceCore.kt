@@ -71,6 +71,40 @@ class DiceCore(private val diceConfigs: DiceConfigs) {
         )
     }
 
+    fun calculationTernaryOperator(condition: Int, selected: ResRecursive, whenTrue: Boolean): ResRecursive {
+        val branch = if (whenTrue) "then" else "else"
+        return ResRecursive(
+            selected.resInt,
+            format(
+                DiceProcessFormat.LEVEL_3,
+                Format.build("if {replace} $branch {replace}", condition, selected.resDetail),
+                selected.resNumberDetail
+            ),
+            selected.resNumberDetail,
+            resIntMin = selected.resIntMin,
+            resIntMax = selected.resIntMax
+        )
+    }
+
+    fun calculationShortCircuit(operator: Char, left: ResRecursive): ResRecursive {
+        val result = when (operator) {
+            '&' -> 0
+            '|' -> 1
+            else -> throw IllegalArgumentException("unsupported short-circuit operator: $operator")
+        }
+        val word = if (operator == '&') "and" else "or"
+        return ResRecursive(
+            result,
+            format(
+                DiceProcessFormat.LEVEL_3,
+                Format.build("{replace} $word <短路>", left.resDetail),
+                result
+            ),
+            resIntMin = 0,
+            resIntMax = 1
+        )
+    }
+
 
     fun calculationEqual(a: Int, b: Int): ResRecursive =
         boolean(a == b) { Format.build("{replace} equ {replace}", a, b) }

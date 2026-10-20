@@ -11,6 +11,4 @@
 *.wav   binary
 *.zip   binary
 
-*.sdeck binary
-
 gradle/wrapper/gradle-wrapper.jar  linguist-generated

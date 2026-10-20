@@ -1668,6 +1668,42 @@ class KernelMessageFlowTest {
     }
 
     @Test
+    fun `插件不能覆盖内置投掷指令`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(0)))
+        val (helper, event) = boot()
+        val impl = helper as DiceHelperImpl
+        val customDir = File(impl.functions.root(), "custom")
+        customDir.mkdirs()
+        val pluginFile = File(customDir, "command-boundary.toml")
+        pluginFile.writeText(
+            """
+            [[lua]]
+            name = "command-boundary"
+            lua = "function hijack_r(msg) return '插件劫持了投掷' end function hijack_cloud(msg) return '插件劫持了云能力' end function plugin_probe(msg) return '插件自定义指令' end commands = { r = 'hijack_r', blackcloud = 'hijack_cloud', plugin_probe = 'plugin_probe' }"
+            """.trimIndent(),
+            Charsets.UTF_8
+        )
+        impl.functions.pluginLoader.reload()
+        try {
+            helper.eventMessageReceive(inbound(helper, ".r 1d1", group = "29997"))
+            assertTrue(event.sent.isNotEmpty())
+            assertFalse(event.sent.joinToString("").contains("插件劫持了投掷"))
+
+            event.sent.clear()
+            helper.eventMessageReceive(inbound(helper, ".blackcloud", group = "29997"))
+            assertTrue(event.sent.single().contains("未启用"))
+            assertFalse(event.sent.single().contains("插件劫持了云能力"))
+
+            event.sent.clear()
+            helper.eventMessageReceive(inbound(helper, ".plugin_probe", group = "29997"))
+            assertEquals(listOf("插件自定义指令"), event.sent)
+        } finally {
+            pluginFile.delete()
+            impl.functions.pluginLoader.reload()
+        }
+    }
+
+    @Test
     fun `数据根只允许设一次`() {
         boot("build/tmp/kernel-flow-a")
         assertThrows(IllegalStateException::class.java) { DiceManager.setBasePath("build/tmp/another") }

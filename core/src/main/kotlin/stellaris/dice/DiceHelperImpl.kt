@@ -91,7 +91,11 @@ class DiceHelperImpl(
                 nick = "",
                 isGroupMsg = true
             )
-            send(text, context, DiceMessageSource(DiceMessageSource.Type.GROUP, group))
+            send(
+                stellaris.dice.diceFunction.lightScript.PluginLimits.limitResult(text) ?: "",
+                context,
+                DiceMessageSource(DiceMessageSource.Type.GROUP, group)
+            )
         }
 
         override fun sendPrivateMessage(text: String, userId: String) {
@@ -102,7 +106,11 @@ class DiceHelperImpl(
                 nick = "",
                 isGroupMsg = false
             )
-            send(text, context, DiceMessageSource(DiceMessageSource.Type.PERSON, userId))
+            send(
+                stellaris.dice.diceFunction.lightScript.PluginLimits.limitResult(text) ?: "",
+                context,
+                DiceMessageSource(DiceMessageSource.Type.PERSON, userId)
+            )
         }
 
         override fun roll(expression: String): Int =
@@ -323,7 +331,10 @@ class DiceHelperImpl(
                 respond(command, param, context, message, isProtected)
 
             override fun extraCommands(): ArrayList<String> =
-                ArrayList(EXTRA_COMMANDS + functions.pluginLoader.customCommands)
+                ArrayList(
+                    (EXTRA_COMMANDS + functions.pluginLoader.customCommands)
+                        .filterNot { isCoreCommand(it) }
+                )
         }
         val commandText = if (hadTrigger) {
             functions.pluginLoader.replace(
@@ -410,7 +421,7 @@ class DiceHelperImpl(
         val base = X_VARIANTS[normalized] ?: normalized
         val effectiveContext = if (base != normalized) context.withSimplify() else context
 
-        if (!isProtected) {
+        if (!isProtected && !isCoreCommand(base)) {
             val pluginReply = functions.pluginLoader.invokeCommand(
                 base,
                 param,
@@ -3286,6 +3297,10 @@ class DiceHelperImpl(
 
 
 
+
+        private fun isCoreCommand(command: String): Boolean =
+            EXTRA_COMMANDS.any { it.equals(command, ignoreCase = true) } ||
+                DiceCommandDecoder.isBuiltInCommand(command)
 
         private fun stripLeadingTrigger(content: String): String =
             content.removePrefix(".").removePrefix("。")

@@ -1,20 +1,10 @@
 package stellaris.dice.diceFunction.draw
 
+import onedice.function.BoundedRandom
 import stellaris.dice.diceFunction.DiceRandomManager
 import java.io.Serializable
 import java.util.Random
-
-
-
-
-
-
-
-
-
-
-
-
+import kotlin.math.roundToLong
 
 class DrawData(
     val parent: DrawFile = DrawFile(null, "undefined", random.nextLong(), false),
@@ -22,131 +12,73 @@ class DrawData(
     val hidden: Boolean = false
 ) : Serializable {
 
-    companion object {
+    private companion object {
+        const val DEFAULT_WEIGHT = 1.0
+        const val MAX_DECIMAL_SCALE = 6
+        const val MAX_SINGLE_WEIGHT = 1_000_000_000L
 
-
-
-
-        private val random: Random = try {
-            DiceRandomManager.randomInstance
-        } catch (t: Throwable) {
-            Random()
-        }
+        val random: Random
+            get() = DiceRandomManager.randomInstance
     }
-
 
     val format get() = parent.format
 
-
     val metadata get() = parent.metaData
-
 
     private val data: ArrayList<String> = ArrayList()
 
-
     private val prioritiesDynamic: ArrayList<String> = ArrayList()
 
+    private val priorities: ArrayList<Long> = ArrayList()
 
-    private val priorities: ArrayList<Int> = ArrayList()
+    private var prioritiesSum: Long = 0
 
-    private var prioritiesSum: Int = 0
-
-
-    fun remain(): Int = prioritiesSum
-
+    fun remain(): Int = prioritiesSum.coerceIn(0L, Int.MAX_VALUE.toLong()).toInt()
 
     fun detail(): String = "还剩下${prioritiesSum}个可抽取项目"
 
-
-
-
-
-
-
-
-
-
-
     fun freshPriorities() {
+        val factor = decimalFactor(decimalScale())
         priorities.clear()
-
-        var maxDecimalDigit = 0
-        prioritiesDynamic.forEach {
-            try {
-                val parts = it.split('.', limit = 2)
-                if (parts.size == 2) {
-                    if (parts[1].toInt() > 0 && parts[0].toInt() >= 0) {
-                        val len = parts[1].length
-                        if (len > maxDecimalDigit) {
-                            maxDecimalDigit = len
-                        }
-                    }
-                }
-            } catch (t: Throwable) {
-
-            }
+        prioritiesDynamic.forEach { raw ->
+            val weight = resolveWeight(raw)
+            priorities.add((weight * factor).roundToLong().coerceIn(1L, MAX_SINGLE_WEIGHT))
         }
-
-        prioritiesDynamic.forEach {
-            var realNumber = try {
-                it.toDouble()
-            } catch (t: Throwable) {
-                DrawWeights.evaluate(it) ?: 1.0
-            }
-            repeat(maxDecimalDigit) {
-                realNumber *= 10
-            }
-            priorities.add(realNumber.toInt())
+        prioritiesSum = priorities.fold(0L) { total, weight ->
+            if (total > Long.MAX_VALUE - weight) Long.MAX_VALUE else total + weight
         }
-
-        prioritiesSum = priorities.sumOf { it }
     }
-
 
     fun appendData(str: String, priority: String = "1") {
         data.add(str)
         prioritiesDynamic.add(priority)
     }
 
-
-
-
-
     fun clone(): DrawData {
         val copy = DrawData(parent, title, hidden)
-        data.forEach { copy.data.add(it) }
-        prioritiesDynamic.forEach { copy.prioritiesDynamic.add(it) }
+        copy.data.addAll(data)
+        copy.prioritiesDynamic.addAll(prioritiesDynamic)
         copy.freshPriorities()
         return copy
     }
-
-
-
-
-
-
-
-
 
     fun draw(putBack: Boolean): String {
         if (isEmpty()) {
             throw IllegalStateException("Draw data is empty!")
         }
-        val position = random.nextInt(prioritiesSum)
+        val position = BoundedRandom.boundedLong(random, prioritiesSum)
 
-
-        var cursor = 0
+        var cursor = 0L
         priorities.forEachIndexed { index, value ->
             if (position >= cursor && position < cursor + value) {
                 val hit = data[index]
                 if (!putBack) {
-                    if (priorities[index] == 1) {
-
+                    if (value == 1L) {
                         data.removeAt(index)
                         priorities.removeAt(index)
                         prioritiesDynamic.removeAt(index)
                     } else {
-                        priorities[index]--
+                        priorities[index] = value - 1
                     }
                     prioritiesSum--
                 }
@@ -155,20 +87,39 @@ class DrawData(
             cursor += value
         }
 
-
         throw IllegalStateException("Draw data error!")
     }
 
+    fun isTitle(name: String): Boolean =
+        title.any { it.equals(name, ignoreCase = true) }
 
-    fun isTitle(name: String): Boolean {
-        title.forEach {
-            if (it.equals(name, ignoreCase = true)) {
-                return true
-            }
+    fun isEmpty(): Boolean = prioritiesSum == 0L
+
+    private fun resolveWeight(raw: String): Double {
+        val expression = raw.trim()
+        val numeric = expression.toDoubleOrNull()
+        if (numeric != null) {
+            return numeric.takeIf { it.isFinite() && it > 0.0 } ?: DEFAULT_WEIGHT
         }
-        return false
+        return DrawWeights.evaluate(expression)
+            ?.takeIf { it.isFinite() && it > 0.0 }
+            ?: DEFAULT_WEIGHT
     }
 
+    private fun decimalScale(): Int {
+        return prioritiesDynamic
+            .asSequence()
+            .mapNotNull { it.trim().toBigDecimalOrNull() }
+            .filter { it.signum() > 0 }
+            .map { it.stripTrailingZeros().scale().coerceAtLeast(0) }
+            .maxOrNull()
+            ?.coerceAtMost(MAX_DECIMAL_SCALE)
+            ?: 0
+    }
 
-    fun isEmpty(): Boolean = prioritiesSum == 0
+    private fun decimalFactor(scale: Int): Double {
+        var factor = 1.0
+        repeat(scale) { factor *= 10.0 }
+        return factor
+    }
 }

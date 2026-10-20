@@ -186,12 +186,7 @@ class Roll(
 
         is Factorial -> factorial(expr.operand, evaluate(expr.operand))
 
-        is Ternary -> {
-            val condition = evaluate(expr.condition)
-            val thenBranch = evaluate(expr.thenBranch)
-            val elseBranch = evaluate(expr.elseBranch)
-            diceCore.calculationTernaryOperator(condition.resInt, thenBranch.resInt, elseBranch.resInt)
-        }
+        is Ternary -> evaluateTernary(expr)
 
         is Binary -> evaluateBinary(expr)
 
@@ -202,8 +197,21 @@ class Roll(
     private fun literal(value: Int): ResRecursive =
         ResRecursive(value, value.toString(), value.toString(), resIntMin = value, resIntMax = value)
 
+    private fun evaluateTernary(expr: Ternary): ResRecursive {
+        val condition = evaluate(expr.condition)
+        val whenTrue = condition.resInt != 0
+        val selected = evaluate(if (whenTrue) expr.thenBranch else expr.elseBranch)
+        return diceCore.calculationTernaryOperator(condition.resInt, selected, whenTrue)
+    }
+
     private fun evaluateBinary(expr: Binary): ResRecursive {
         val left = evaluate(expr.left)
+        if (expr.operator == '&' && left.resInt == 0) {
+            return diceCore.calculationShortCircuit('&', left)
+        }
+        if (expr.operator == '|' && left.resInt != 0) {
+            return diceCore.calculationShortCircuit('|', left)
+        }
         val right = evaluate(expr.right)
         val priority = OperatorTable.priorityOf(expr.operator)
         val leftDetail = DetailParenthesis.wrap(expr.left, left.resDetail, priority, isRightSide = false)

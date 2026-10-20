@@ -124,7 +124,7 @@ class CardEditorTest {
         assertEquals(
             1 + 10,
             card.readProperty("斗殴"),
-            "上游标准技能表未落，故按 PlayerCardData.DEFAULT_PROPERTY_VALUE 起算"
+            "静态解析入口未注入内容表，故按 PlayerCardData.DEFAULT_PROPERTY_VALUE 起算"
         )
     }
 

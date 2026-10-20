@@ -20,6 +20,7 @@ package stellaris.dice
 
 object DiceManager {
 
+    @Volatile
     private var provider: KernelProvider? = null
 
 

@@ -3,9 +3,11 @@ package stellaris.dice.diceFunction.lightScript
 import com.sun.net.httpserver.HttpServer
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import java.net.InetAddress
 import java.net.InetSocketAddress
 import java.nio.charset.StandardCharsets
 
@@ -82,6 +84,19 @@ class NetworkAccessTest {
         )) {
             assertEquals("", NetworkAccess.httpGet("http://$host/hello"), host)
         }
+    }
+
+    @Test
+    fun `IPv6 特殊地址与 IPv4 文档段不会被当成公网`() {
+        for (host in listOf(
+            "::127.0.0.1", "0:0:0:0:0:0:7f00:1", "::ffff:127.0.0.1",
+            "2001:db8::1", "2002:c0a8:0101::1", "2001:0::1", "3fff::1", "100::1",
+            "192.0.2.1", "198.51.100.1", "203.0.113.1"
+        )) {
+            assertFalse(NetworkAccess.isPublic(InetAddress.getByName(host)), host)
+        }
+        assertTrue(NetworkAccess.isPublic(InetAddress.getByName("8.8.8.8")))
+        assertTrue(NetworkAccess.isPublic(InetAddress.getByName("2606:4700:4700::1111")))
     }
 
     @Test

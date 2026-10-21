@@ -8,6 +8,38 @@ import javax.script.ScriptException
 
 class JsSandboxProbeTest {
 
+    private class StubHost : PluginHost {
+        override fun setGroupCard(user: String, text: String, group: String): Boolean = false
+        override fun configureAutoName(
+            user: String,
+            group: String,
+            format: String,
+            enabled: Boolean
+        ): AutoNameReceipt? = null
+
+        override fun syncAutoName(user: String, group: String): Boolean = false
+        override fun sendGroupMessage(text: String, group: String) {}
+        override fun sendPrivateMessage(text: String, userId: String) {}
+        override fun roll(expression: String): Int = 1
+        override fun draw(group: String, name: String): String? = null
+        override fun setGroupTitle(title: String, userId: String, group: String): Boolean = false
+        override fun setGroupWholeBan(ban: Boolean, group: String): Boolean = false
+        override fun reloadPlugins() {}
+    }
+
+    private fun engineWithLib(executionTimeoutMillis: Long = 80): javax.script.ScriptEngine {
+        val runtime = JsPluginRuntime(
+            pluginId = "probe",
+            host = StubHost(),
+            defines = emptyMap(),
+            config = emptyMap(),
+            variables = ProgramVariables(java.io.File("build/tmp/js-nested-probe"))
+        )
+        val engine = DiceJsSandbox.create(executionTimeoutMillis = executionTimeoutMillis)
+        engine.put("Lib", runtime.Lib(JsPluginRuntime.JsContext("10001", "20002", true, "probe")))
+        return engine
+    }
+
     private fun probe(script: String): String =
         DiceJsSandbox.create().eval(script)?.toString() ?: "nil"
 
@@ -37,6 +69,20 @@ class JsSandboxProbeTest {
         assertThrows(ScriptException::class.java) {
             DiceJsSandbox.create(executionTimeoutMillis = 80)
                 .eval("try { while (true) {} } catch (e) {}")
+        }
+    }
+
+    @Test
+    fun `嵌套 eval 仍能正常返回`() {
+        assertEquals("1", engineWithLib().eval("Lib.eval('1')")?.toString())
+    }
+
+    @Test
+    @Timeout(5)
+    fun `嵌套 eval 返回后外层执行时限仍然生效`() {
+        val engine = engineWithLib()
+        assertThrows(ScriptException::class.java) {
+            engine.eval("Lib.eval('1'); var i = 0; while (i < 20000000) { i += 1; } i;")
         }
     }
 

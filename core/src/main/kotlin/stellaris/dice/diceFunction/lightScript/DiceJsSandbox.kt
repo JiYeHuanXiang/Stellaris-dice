@@ -144,8 +144,9 @@ internal object DiceJsSandbox {
                 throw ScriptException("JS 插件脚本过长：${script.length} > $maxScriptChars")
             }
             val cx = SandboxContextFactory.enterContext()
+            val previousDeadline = evaluationDeadlineNanos.get()
             evaluationDeadlineNanos.set(
-                System.nanoTime() + executionTimeoutMillis * 1_000_000L
+                previousDeadline ?: (System.nanoTime() + executionTimeoutMillis * 1_000_000L)
             )
             try {
                 val bindings = context.getBindings(ScriptContext.ENGINE_SCOPE)
@@ -164,8 +165,12 @@ internal object DiceJsSandbox {
             } catch (t: Throwable) {
                 throw if (t is Exception) ScriptException(t) else ScriptException(t.toString())
             } finally {
+                if (previousDeadline == null) {
+                    evaluationDeadlineNanos.remove()
+                } else {
+                    evaluationDeadlineNanos.set(previousDeadline)
+                }
                 Context.exit()
-                evaluationDeadlineNanos.remove()
             }
         }
 

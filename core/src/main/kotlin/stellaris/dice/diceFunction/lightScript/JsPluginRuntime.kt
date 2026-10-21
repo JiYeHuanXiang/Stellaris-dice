@@ -20,7 +20,7 @@ class JsPluginRuntime(
         return try {
             val engine = DiceJsSandbox.create()
             engine.put("Lib", Lib(context))
-            engine.put("ZhaoDiceSDK", Sdk(context))
+            engine.put("StellarisSDK", Sdk(context))
             val result = engine.eval(script)
             val text = result?.toString()
             if (text == null || text == "undefined" || text == "null" || text == "kotlin.Unit") {

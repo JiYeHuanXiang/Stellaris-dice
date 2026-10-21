@@ -59,7 +59,7 @@ class LuaSandboxProbeTest {
             add("coroutine", coroutine ~= nil)
             add("require_luajava", pcall(require, "luajava"))
             add("require_lib_class", pcall(require, "org.luaj.vm2.lib.jse.JseIoLib"))
-            ZhaoDiceSDK.chat.sendToPerson(table.concat(parts, ","), "10001", "")
+            StellarisSDK.chat.sendToPerson(table.concat(parts, ","), "10001", "")
             '''
             """.trimIndent(),
             Charsets.UTF_8

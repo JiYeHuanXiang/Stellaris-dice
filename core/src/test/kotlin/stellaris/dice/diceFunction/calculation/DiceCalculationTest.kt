@@ -1,7 +1,7 @@
 package stellaris.dice.diceFunction.calculation
 
-import onedice.defines.ResErrorException
-import onedice.defines.ResErrorType
+import stellaris.core.defines.ResErrorException
+import stellaris.core.defines.ResErrorType
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse

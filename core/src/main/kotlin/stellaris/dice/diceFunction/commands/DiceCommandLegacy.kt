@@ -1,6 +1,6 @@
 package stellaris.dice.diceFunction.commands
 
-import onedice.function.DiceCore
+import stellaris.core.function.DiceCore
 import java.util.regex.Pattern
 
 

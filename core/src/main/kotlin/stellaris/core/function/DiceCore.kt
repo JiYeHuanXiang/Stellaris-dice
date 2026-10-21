@@ -1,11 +1,11 @@
-package onedice.function
+package stellaris.core.function
 
-import onedice.data.DiceConfigs
-import onedice.data.DiceProcessFormat
-import onedice.data.Format
-import onedice.data.ResRecursive
-import onedice.defines.ResErrorException
-import onedice.defines.ResErrorType
+import stellaris.core.data.DiceConfigs
+import stellaris.core.data.DiceProcessFormat
+import stellaris.core.data.Format
+import stellaris.core.data.ResRecursive
+import stellaris.core.defines.ResErrorException
+import stellaris.core.defines.ResErrorType
 import java.util.Random
 
 

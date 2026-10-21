@@ -1,9 +1,9 @@
 package stellaris.dice.diceFunction.calculation
 
-import onedice.Roll
-import onedice.data.DiceConfigs
-import onedice.data.DiceProcessFormat
-import onedice.function.BoundedRandom
+import stellaris.core.Roll
+import stellaris.core.data.DiceConfigs
+import stellaris.core.data.DiceProcessFormat
+import stellaris.core.function.BoundedRandom
 import stellaris.dice.diceFunction.DiceConstant
 import stellaris.dice.diceFunction.DiceRandomManager
 import stellaris.dice.diceFunction.card.CardAbilities

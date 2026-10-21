@@ -1,6 +1,6 @@
-package onedice
+package stellaris.core
 
-import onedice.data.DiceConfigs
+import stellaris.core.data.DiceConfigs
 import org.junit.jupiter.api.Assumptions.assumeTrue
 import org.junit.jupiter.api.Test
 import java.io.File
@@ -119,7 +119,7 @@ class RollOracleDiffTest {
         val oracleDir = System.getenv("ONEDICE_ORACLE_DIR")
         assumeTrue(
             oracleDir != null && File(oracleDir, "onedice").isDirectory,
-            "未设 ONEDICE_ORACLE_DIR（或其中没有 onedice/），跳过差分比对"
+            "未设 ONEDICE_ORACLE_DIR（或其中没有上游 onedice/），跳过差分比对"
         )
 
 
@@ -129,6 +129,7 @@ class RollOracleDiffTest {
             arrayOf(File(oracleDir!!).toURI().toURL(), stdlib.toURI().toURL()),
             ClassLoader.getPlatformClassLoader()
         )
+        // 参考实现取自外部 onedice 工程，保留其原始包名用于反射加载。
         val rollClass = loader.loadClass("onedice.Roll")
         val configsClass = loader.loadClass("onedice.data.DiceConfigs")
         val configs = configsClass
@@ -196,7 +197,7 @@ class RollOracleDiffTest {
         val result = Roll(expression, DiceConfigs(1_000, true, ZeroRandom())).start()
         "OK  值=${result.resInt} 区间=[${result.resIntMin},${result.resIntMax}] 明细=${result.resDetail}"
     } catch (e: Throwable) {
-        "ERR ${(e as? onedice.defines.ResErrorException)?.type ?: e::class.simpleName}"
+        "ERR ${(e as? stellaris.core.defines.ResErrorException)?.type ?: e::class.simpleName}"
     }
 
 

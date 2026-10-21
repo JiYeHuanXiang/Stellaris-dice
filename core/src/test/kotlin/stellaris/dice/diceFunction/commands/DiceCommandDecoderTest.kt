@@ -1,8 +1,8 @@
 package stellaris.dice.diceFunction.commands
 
-import onedice.defines.DiceException
-import onedice.defines.ResErrorException
-import onedice.defines.ResErrorType
+import stellaris.core.defines.DiceException
+import stellaris.core.defines.ResErrorException
+import stellaris.core.defines.ResErrorType
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertNotNull

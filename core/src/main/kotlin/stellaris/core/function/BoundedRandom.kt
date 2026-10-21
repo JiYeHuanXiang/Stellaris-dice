@@ -1,4 +1,4 @@
-package onedice.function
+package stellaris.core.function
 
 import java.util.Random
 

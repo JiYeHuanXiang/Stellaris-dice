@@ -53,7 +53,7 @@ class AllCommandsSweepTest {
     private val KNOWN_PLACEHOLDERS = emptySet<String>()
 
 
-    private val leakMarkers = listOf("Exception", "ERROR:", "at onedice", "at stellaris", "ResError")
+    private val leakMarkers = listOf("Exception", "ERROR:", "at stellaris", "ResError")
 
 
 

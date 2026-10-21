@@ -113,7 +113,7 @@ class LuaPluginRuntime(
             installExecutionGuard(g)
             applySandboxLimits(g)
             val sdk = sdk(g)
-            g.set("ZhaoDiceSDK", sdk)
+            g.set("StellarisSDK", sdk)
             g.set("json", jsonLibrary())
             g.set("LINE", LuaValue.valueOf("\n"))
             withExecutionDeadline {

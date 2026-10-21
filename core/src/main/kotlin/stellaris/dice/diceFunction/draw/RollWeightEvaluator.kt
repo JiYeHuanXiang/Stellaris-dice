@@ -1,7 +1,7 @@
 package stellaris.dice.diceFunction.draw
 
-import onedice.Roll
-import onedice.data.DiceConfigs
+import stellaris.core.Roll
+import stellaris.core.data.DiceConfigs
 import stellaris.dice.diceFunction.DiceLogger
 
 

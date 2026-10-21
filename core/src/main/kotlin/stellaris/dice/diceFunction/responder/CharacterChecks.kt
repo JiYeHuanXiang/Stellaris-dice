@@ -1,6 +1,6 @@
 package stellaris.dice.diceFunction.responder
 
-import onedice.defines.DiceException
+import stellaris.core.defines.DiceException
 import stellaris.dice.diceFunction.calculation.DiceCalculation
 
 

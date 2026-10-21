@@ -1,7 +1,7 @@
-package onedice.data
+package stellaris.core.data
 
-import onedice.defines.ResErrorException
-import onedice.defines.ResErrorType
+import stellaris.core.defines.ResErrorException
+import stellaris.core.defines.ResErrorType
 
 
 

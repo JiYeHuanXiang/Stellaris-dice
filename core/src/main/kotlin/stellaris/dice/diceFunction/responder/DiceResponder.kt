@@ -1,6 +1,6 @@
 package stellaris.dice.diceFunction.responder
 
-import onedice.defines.DiceException
+import stellaris.core.defines.DiceException
 import stellaris.dice.diceFunction.DiceConstant
 import stellaris.dice.diceFunction.RuleMode
 import stellaris.dice.diceFunction.calculation.DiceCalculation
@@ -157,7 +157,7 @@ object DiceResponder {
     fun range(context: RespondContext): String {
         val expression = context.param.trim()
         return try {
-            val roll = onedice.Roll(expression)
+            val roll = stellaris.core.Roll(expression)
             val result = roll.start()
             val detail = if (result.resDetail.length > RANGE_DETAIL_LIMIT) {
                 result.resDetail.take(RANGE_DETAIL_LIMIT) + "..."

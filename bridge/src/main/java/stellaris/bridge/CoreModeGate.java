@@ -463,7 +463,7 @@ public final class CoreModeGate {
                             hit.add(command == null ? "" : command.toLowerCase());
                             return true;
                         }
-                        @Override public void onException(onedice.defines.DiceException e) { }
+                        @Override public void onException(stellaris.core.defines.DiceException e) { }
                     }, in);
         } catch (Throwable t) {
             return "";

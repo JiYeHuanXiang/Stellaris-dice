@@ -40,7 +40,7 @@ object DiceCommandRouter {
     fun route(input: String, extras: List<String> = emptyList()): DiceCommandDecision? {
         var decision: DiceCommandDecision? = null
         val capture = object : DiceCommandCallback {
-            override fun onException(exception: onedice.defines.DiceException) {
+            override fun onException(exception: stellaris.core.defines.DiceException) {
 
             }
 

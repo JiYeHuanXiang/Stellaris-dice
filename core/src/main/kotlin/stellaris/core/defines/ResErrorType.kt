@@ -1,4 +1,4 @@
-package onedice.defines
+package stellaris.core.defines
 
 
 

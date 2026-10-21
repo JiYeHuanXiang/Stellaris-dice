@@ -1,13 +1,13 @@
-package onedice
+package stellaris.core
 
-import onedice.data.DiceConfigs
-import onedice.data.Format
-import onedice.data.ResRecursive
-import onedice.defines.DiceException
-import onedice.defines.ResErrorException
-import onedice.defines.ResErrorType
-import onedice.function.DiceCore
-import onedice.function.Mode
+import stellaris.core.data.DiceConfigs
+import stellaris.core.data.Format
+import stellaris.core.data.ResRecursive
+import stellaris.core.defines.DiceException
+import stellaris.core.defines.ResErrorException
+import stellaris.core.defines.ResErrorType
+import stellaris.core.function.DiceCore
+import stellaris.core.function.Mode
 import java.util.concurrent.atomic.AtomicReference
 
 

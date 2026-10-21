@@ -136,10 +136,10 @@ local function receipt(r)
 end
 
 local function apply_format(user, group, format, enabled)
-    if not ZhaoDiceSDK.group.setCard(user, "", group) then
+    if not StellarisSDK.group.setCard(user, "", group) then
         return NOT_ADMIN
     end
-    local r = ZhaoDiceSDK.playerCard.configureAutoName(user, group, format, enabled)
+    local r = StellarisSDK.playerCard.configureAutoName(user, group, format, enabled)
     if r == nil then
         return "自动名片设置失败（人物卡可能已达数量上限）"
     end
@@ -175,7 +175,7 @@ local function handle_sn(msg)
         if text == "" then
             return "用法：.sn set 要设置的群名片文本"
         end
-        if ZhaoDiceSDK.group.setCard(user, text, group) then
+        if StellarisSDK.group.setCard(user, text, group) then
             return "设置完成"
         end
         return "设置失败"
@@ -187,7 +187,7 @@ local function handle_sn(msg)
     if keyword == "off" then
 
 
-        local r = ZhaoDiceSDK.playerCard.configureAutoName(user, group, "", false)
+        local r = StellarisSDK.playerCard.configureAutoName(user, group, "", false)
         if r == nil then
             return "自动名片设置失败（人物卡可能已达数量上限）"
         end
@@ -237,6 +237,6 @@ function onAfterMessage(msg)
     if msg.fromGroup == nil or msg.fromQQ == nil then
         return
     end
-    ZhaoDiceSDK.playerCard.syncAutoName(msg.fromQQ, msg.fromGroup)
+    StellarisSDK.playerCard.syncAutoName(msg.fromQQ, msg.fromGroup)
 end
 '''

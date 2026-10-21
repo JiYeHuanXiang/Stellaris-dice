@@ -191,26 +191,26 @@ class LuaPluginRuntimeTest {
             commands = { ["stw"] = "onWrite", ["str"] = "onRead",
                          ["ttlw"] = "onTtlWrite", ["ttlr"] = "onTtlRead", ["drawt"] = "onDraw" }
             function onWrite(msg)
-                ZhaoDiceSDK.storage.write("k", msg.fromParams, 0)
+                StellarisSDK.storage.write("k", msg.fromParams, 0)
                 return "ok"
             end
-            function onRead(msg) return tostring(ZhaoDiceSDK.storage.read("k")) end
+            function onRead(msg) return tostring(StellarisSDK.storage.read("k")) end
             function onTtlWrite(msg)
-                ZhaoDiceSDK.storage.write("t", "x", 1)
+                StellarisSDK.storage.write("t", "x", 1)
                 return "written"
             end
             function onTtlRead(msg)
-                return tostring(ZhaoDiceSDK.storage.read("t"))
+                return tostring(StellarisSDK.storage.read("t"))
             end
             function onDraw(msg)
-                ZhaoDiceSDK.draw.load('{"测试堆":["甲","乙"]}', false)
-                local h = ZhaoDiceSDK.draw.open("测试堆")
+                StellarisSDK.draw.load('{"测试堆":["甲","乙"]}', false)
+                local h = StellarisSDK.draw.open("测试堆")
                 if h == nil then return "no" end
-                local first = ZhaoDiceSDK.draw.read(h, false)
-                local remain = ZhaoDiceSDK.draw.remain(h)
-                ZhaoDiceSDK.draw.write(h, "丙", "1")
-                local remain2 = ZhaoDiceSDK.draw.remain(h)
-                ZhaoDiceSDK.draw.recycle(h)
+                local first = StellarisSDK.draw.read(h, false)
+                local remain = StellarisSDK.draw.remain(h)
+                StellarisSDK.draw.write(h, "丙", "1")
+                local remain2 = StellarisSDK.draw.remain(h)
+                StellarisSDK.draw.recycle(h)
                 return first .. "/" .. remain .. "/" .. remain2
             end
         """.trimIndent()
@@ -239,20 +239,20 @@ class LuaPluginRuntimeTest {
             """
             commands = { ["misc"] = "onMisc" }
             function onMisc(msg)
-                ZhaoDiceSDK.lifecycle.write("x", { a = 7 })
-                local v = ZhaoDiceSDK.lifecycle.read("x")
-                ZhaoDiceSDK.lifecycle.push("p")
-                local p = ZhaoDiceSDK.lifecycle.pop()
-                local missing = pcall(function() ZhaoDiceSDK.lifecycle.read("nope") end)
-                local card = ZhaoDiceSDK.readPlayerCard("10001", "卡A")
-                local name = ZhaoDiceSDK.readPlayerName("10001", "20002")
-                local config = ZhaoDiceSDK.readSystemConfig("MASTER_QQ")
-                local group = ZhaoDiceSDK.readLastAppearedGroup("10001")
+                StellarisSDK.lifecycle.write("x", { a = 7 })
+                local v = StellarisSDK.lifecycle.read("x")
+                StellarisSDK.lifecycle.push("p")
+                local p = StellarisSDK.lifecycle.pop()
+                local missing = pcall(function() StellarisSDK.lifecycle.read("nope") end)
+                local card = StellarisSDK.readPlayerCard("10001", "卡A")
+                local name = StellarisSDK.readPlayerName("10001", "20002")
+                local config = StellarisSDK.readSystemConfig("MASTER_QQ")
+                local group = StellarisSDK.readLastAppearedGroup("10001")
                 local encoded = json.encode({ b = "c" })
                 local decoded = json.decode('{"n":3}').n
-                local net = ZhaoDiceSDK.network.httpGet("https://example.com")
-                local posted = ZhaoDiceSDK.network.httpPost("https://example.com", "d", { ["X-Test"] = "h" })
-                ZhaoDiceSDK.system.load()
+                local net = StellarisSDK.network.httpGet("https://example.com")
+                local posted = StellarisSDK.network.httpPost("https://example.com", "d", { ["X-Test"] = "h" })
+                StellarisSDK.system.load()
                 return v.a .. p .. tostring(missing) .. card["力量"] .. name .. config .. group ..
                     encoded .. decoded .. net .. posted
             end
@@ -274,9 +274,9 @@ class LuaPluginRuntimeTest {
             """
             commands = { ["grp"] = "onGrp" }
             function onGrp(msg)
-                local title = ZhaoDiceSDK.group.setTitle(msg.fromQQ, "头衔", msg.fromGroup)
-                local ban = ZhaoDiceSDK.group.setWholeBan(true, msg.fromGroup)
-                local card = ZhaoDiceSDK.group.setCard(msg.fromQQ, "", msg.fromGroup)
+                local title = StellarisSDK.group.setTitle(msg.fromQQ, "头衔", msg.fromGroup)
+                local ban = StellarisSDK.group.setWholeBan(true, msg.fromGroup)
+                local card = StellarisSDK.group.setCard(msg.fromQQ, "", msg.fromGroup)
                 return tostring(title) .. tostring(ban) .. tostring(card)
             end
             """.trimIndent(),
@@ -298,10 +298,10 @@ class LuaPluginRuntimeTest {
             commands = { ["rex"] = "onRex" }
             function onRex(msg)
                 msg.regexStructure.middle = "查42号"
-                local ok = ZhaoDiceSDK.regex("查(\\d+)", msg.regexStructure)
+                local ok = StellarisSDK.regex("查(\\d+)", msg.regexStructure)
                 return tostring(ok) .. "/" .. msg.regexStructure.middle .. "/" ..
                     tostring(msg.regexStructure.finds[1]) .. "/" ..
-                    tostring(ZhaoDiceSDK.contains("号", msg.regexStructure))
+                    tostring(StellarisSDK.contains("号", msg.regexStructure))
             end
             """.trimIndent()
         )
@@ -315,7 +315,7 @@ class LuaPluginRuntimeTest {
             """
             commands = { ["pm"] = "onPm" }
             function onPm(msg)
-                ZhaoDiceSDK.chat.sendToPerson("hi", "10001")
+                StellarisSDK.chat.sendToPerson("hi", "10001")
                 return "after"
             end
             """.trimIndent(),
@@ -347,7 +347,7 @@ class LuaPluginRuntimeTest {
             name = "shared"
             lua = '''
             commands = { ["st"] = "onSt" }
-            function onSt(msg) return tostring(ZhaoDiceSDK.storage.read("k")) end
+            function onSt(msg) return tostring(StellarisSDK.storage.read("k")) end
             '''
             """.trimIndent(),
             Charsets.UTF_8

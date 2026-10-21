@@ -1,4 +1,4 @@
-package onedice.data
+package stellaris.core.data
 
 
 

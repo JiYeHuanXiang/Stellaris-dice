@@ -1,6 +1,6 @@
 package stellaris.dice.diceFunction.draw
 
-import onedice.function.BoundedRandom
+import stellaris.core.function.BoundedRandom
 import stellaris.dice.diceFunction.DiceRandomManager
 import java.io.Serializable
 import java.util.Random

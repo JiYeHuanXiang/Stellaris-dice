@@ -1,6 +1,6 @@
 package stellaris.dice
 
-import onedice.defines.DiceException
+import stellaris.core.defines.DiceException
 import stellaris.dice.diceFunction.DiceFunctionImpl
 import stellaris.dice.diceFunction.DiceConfigStore
 import stellaris.dice.diceFunction.RuleMode

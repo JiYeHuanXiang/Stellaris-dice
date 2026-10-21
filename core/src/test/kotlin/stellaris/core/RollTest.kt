@@ -1,9 +1,9 @@
-package onedice
+package stellaris.core
 
-import onedice.data.DiceConfigs
-import onedice.data.ResRecursive
-import onedice.defines.ResErrorException
-import onedice.defines.ResErrorType
+import stellaris.core.data.DiceConfigs
+import stellaris.core.data.ResRecursive
+import stellaris.core.defines.ResErrorException
+import stellaris.core.defines.ResErrorType
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull

@@ -57,20 +57,6 @@ class DiceCore(private val diceConfigs: DiceConfigs) {
 
 
 
-    fun calculationTernaryOperator(condition: Int, t: Int, f: Int): ResRecursive {
-        val select = if (condition != 0) t else f
-        return ResRecursive(
-            select,
-            format(
-                DiceProcessFormat.LEVEL_3,
-                Format.build("if {replace} then {replace} else {replace}", condition, t, f),
-                select
-            ),
-            resIntMin = minOf(t, select),
-            resIntMax = maxOf(t, select)
-        )
-    }
-
     fun calculationTernaryOperator(condition: Int, selected: ResRecursive, whenTrue: Boolean): ResRecursive {
         val branch = if (whenTrue) "then" else "else"
         return ResRecursive(

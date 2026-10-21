@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import java.net.Inet6Address
 import java.net.InetAddress
 import java.net.InetSocketAddress
 import java.nio.charset.StandardCharsets
@@ -97,6 +98,41 @@ class NetworkAccessTest {
         }
         assertTrue(NetworkAccess.isPublic(InetAddress.getByName("8.8.8.8")))
         assertTrue(NetworkAccess.isPublic(InetAddress.getByName("2606:4700:4700::1111")))
+    }
+
+    private fun ipv6(vararg words: Int): InetAddress {
+        val bytes = ByteArray(16)
+        words.forEachIndexed { index, word ->
+            bytes[index * 2] = (word ushr 8).toByte()
+            bytes[index * 2 + 1] = word.toByte()
+        }
+        return Inet6Address.getByAddress(null, bytes, 0)
+    }
+
+    @Test
+    fun `IPv6 判定直接覆盖 16 字节分支`() {
+        // getByName 与 InetAddress.getByAddress 都会把 IPv4 映射地址归一化成 Inet4Address，
+        // 这里用 Inet6Address.getByAddress 强制保留 16 字节，确保判定走 isPublicIpv6。
+        val rejected = listOf(
+            intArrayOf(0, 0, 0, 0, 0, 0xffff, 0x7f00, 0x0001),
+            intArrayOf(0, 0, 0, 0, 0, 0xffff, 0xc0a8, 0x0101),
+            intArrayOf(0, 0, 0, 0, 0, 0, 0, 1),
+            intArrayOf(0xfc00, 0, 0, 0, 0, 0, 0, 1),
+            intArrayOf(0xfe80, 0, 0, 0, 0, 0, 0, 1),
+            intArrayOf(0xff02, 0, 0, 0, 0, 0, 0, 1),
+            intArrayOf(0x2001, 0x0db8, 0, 0, 0, 0, 0, 1),
+            intArrayOf(0x2002, 0xc0a8, 0x0101, 0, 0, 0, 0, 1),
+            intArrayOf(0x2001, 0, 0, 0, 0, 0, 0, 1),
+            intArrayOf(0x3fff, 0, 0, 0, 0, 0, 0, 1)
+        )
+        for (words in rejected) {
+            val address = ipv6(*words)
+            assertEquals(16, address.address.size, "必须走 IPv6 分支")
+            assertFalse(NetworkAccess.isPublic(address), address.hostAddress)
+        }
+
+        assertTrue(NetworkAccess.isPublic(ipv6(0x2606, 0x4700, 0x4700, 0, 0, 0, 0, 0x1111)))
+        assertTrue(NetworkAccess.isPublic(ipv6(0x2001, 0x4860, 0x4860, 0, 0, 0, 0, 0x8888)))
     }
 
     @Test

@@ -72,6 +72,20 @@ class NameCommandTest {
     }
 
     @Test
+    fun `name encn 生成中欧名`() {
+        seedDraw()
+        val event = RecordingIntentEvent()
+        val helper = DiceHelperImpl("9997", tempDir.toString(), event)
+
+        helper.eventMessageReceive(inbound(helper, ".name encn 2"))
+
+        assertEquals(1, event.sent.size, "只该回一条：${event.sent}")
+        val lines = event.sent[0].lines()
+        assertEquals(3, lines.size, "标题 + 2 个名字：${event.sent[0]}")
+        assertTrue(lines[0].contains("为甲生成了以下名字"), event.sent[0])
+    }
+
+    @Test
     fun `name 缺内容时如实提示`() {
         val event = RecordingIntentEvent()
         val helper = DiceHelperImpl("9998", tempDir.toString(), event)

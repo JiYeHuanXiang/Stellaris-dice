@@ -63,7 +63,7 @@ object DiceCommandDecoder {
             "dismiss", "init", "name", "jrrp",
             "log", "set", "coc", "dnd", "coc6",
             "dg", "setdg", "fate", "setfate", "wx", "setwx", "cpr", "setcpr", "setdx", "setdnd",
-            "rb", "rp", "rd", "blackcloud",
+            "rb", "rp", "rd",
             "find", "查询", "查找",
             "sn", "setasn",
             "nn", "en", "st", "ob",

@@ -57,6 +57,7 @@ class RuleModeTest {
     fun `各体系裸 r 使用各自默认骰`() {
         RandomService.installTestProvider(ScriptedRandom(listOf(0)))
         assertTrue(render(context("", RuleMode.DND5E)).contains("1d20="), "DND 默认 d20")
+        assertTrue(render(context("", RuleMode.DND5R)).contains("1d20="), "DND 5R 默认 d20")
         assertTrue(render(context("", RuleMode.DG)).contains("1d100="), "DG 默认 d100")
         assertTrue(render(context("", RuleMode.FATE)).contains("f="), "FATE 默认 4dF")
         assertTrue(render(context("", RuleMode.DX)).contains("1c10="), "DX 默认 1c10")
@@ -78,6 +79,40 @@ class RuleModeTest {
         val text = render(context("15", RuleMode.DND5E), RollRules.RA)
         assertTrue(text.contains("1d20=20/15"), text)
         assertTrue(text.contains("大成功"), text)
+    }
+
+    @Test
+    fun `DND 5R 检定掷高且 20 大成功`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(19)))
+        val text = render(context("15", RuleMode.DND5R), RollRules.RA)
+        assertTrue(text.contains("1d20=20/15"), text)
+        assertTrue(text.contains("大成功"), text)
+    }
+
+    @Test
+    fun `DND 5R 力竭每级减 2`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(11)))
+        val exhausted = object : CardAbilities {
+            override fun readProperty(name: String): Int = if (name == "力竭") 2 else 0
+            override fun hasProperty(name: String): Boolean = name == "力竭"
+        }
+        val template = DiceMessageTemplate()
+        RespondContext.seedTemplate(template, "甲", "10001", "20002")
+        val context = RespondContext(
+            param = "10",
+            isGroupMsg = true,
+            groupId = "20002",
+            senderId = "10001",
+            senderNick = "甲",
+            template = template,
+            sentences = DefaultSentences,
+            defaultDiceNumber = 100,
+            card = exhausted,
+            ruleMode = RuleMode.DND5R
+        )
+        val text = render(context, RollRules.RA)
+        assertTrue(text.contains("1d20=12/14"), "力竭 2 级：目标 10 → 14：$text")
+        assertTrue(text.contains("失败"), text)
     }
 
     @Test

@@ -851,6 +851,12 @@ public final class OneBotIntentEvent implements DiceIntentEvent {
     }
 
     @Override
+    public boolean requestRestart() {
+        // 桥本身不持有进程生命周期；需要时由宿主子类/包装层实现。
+        return false;
+    }
+
+    @Override
     public void setDismiss(String groupId, final kotlin.jvm.functions.Function1<? super Boolean, kotlin.Unit> callback) {
         boolean ok;
         try {

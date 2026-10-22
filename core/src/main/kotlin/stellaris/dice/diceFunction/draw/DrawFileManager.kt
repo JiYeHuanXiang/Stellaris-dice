@@ -1,5 +1,7 @@
 package stellaris.dice.diceFunction.draw
 
+import org.json.JSONArray
+import org.json.JSONObject
 import stellaris.dice.diceFunction.DiceConstant
 import stellaris.dice.diceFunction.DiceLogger
 import java.io.File
@@ -32,13 +34,13 @@ class DrawFileManager(private val rootPath: String) {
 
     private var engine = DrawEngine(files)
 
-    init {
-        reload()
-    }
-
 
     private val drawDirectory: File
         get() = File(rootPath, DiceConstant.SAVE_PATH_DRAW)
+
+
+    private val stateFile: File
+        get() = File(File(rootPath, DiceConstant.SAVE_PATH_DATA), STATE_FILE_NAME)
 
 
 
@@ -61,7 +63,7 @@ class DrawFileManager(private val rootPath: String) {
                             fileName = file.name,
 
                             uuid = file.name.hashCode().toLong(),
-                            hidden = false
+                            hidden = file.name.startsWith('_')
                         )
                     )
                 } catch (t: Throwable) {
@@ -116,6 +118,11 @@ class DrawFileManager(private val rootPath: String) {
 
     private val defaultNames = HashMap<String, String>()
 
+    init {
+        reload()
+        loadState()
+    }
+
 
 
 
@@ -124,31 +131,31 @@ class DrawFileManager(private val rootPath: String) {
 
 
     @Synchronized
-    fun setInlineDeck(group: String, entries: List<String>, minimumEntries: Int = 2): Boolean {
+    fun setInlineDeck(identity: String, entries: List<String>, minimumEntries: Int = 2): Boolean {
         if (entries.size < minimumEntries) {
             return false
         }
         val deck = DrawData()
         entries.forEach { deck.appendData(it) }
         deck.freshPriorities()
-        inlineMasters[group] = deck
-        workingDecks[group]?.remove(INLINE_DECK_NAME)
-        defaultNames[group] = INLINE_DECK_NAME
+        inlineMasters[identity] = deck
+        workingDecks[identity]?.remove(INLINE_DECK_NAME)
+        defaultNames[identity] = INLINE_DECK_NAME
         return true
     }
 
 
     @Synchronized
-    fun inlineRemain(group: String): Int = inlineMasters[group]?.remain() ?: 0
+    fun inlineRemain(identity: String): Int = inlineMasters[identity]?.remain() ?: 0
 
 
     @Synchronized
-    fun runtimeDefaultName(group: String): String? = defaultNames[group]
+    fun runtimeDefaultName(identity: String): String? = defaultNames[identity]
 
 
     @Synchronized
-    fun clearRuntimeDefault(group: String) {
-        defaultNames.remove(group)
+    fun clearRuntimeDefault(identity: String) {
+        defaultNames.remove(identity)
     }
 
 
@@ -157,8 +164,13 @@ class DrawFileManager(private val rootPath: String) {
 
 
     @Synchronized
-    fun draw(group: String, name: String, count: Int): List<String>? =
-        drawResolved(group, name, count, linkedSetOf(name), 0)
+    fun draw(identity: String, name: String, count: Int): List<String>? {
+        val drawn = drawResolved(identity, name, count, linkedSetOf(name), 0)
+        if (drawn != null) {
+            persist()
+        }
+        return drawn
+    }
 
 
 
@@ -171,18 +183,18 @@ class DrawFileManager(private val rootPath: String) {
 
 
     private fun drawResolved(
-        group: String,
+        identity: String,
         name: String,
         count: Int,
         seen: Set<String>,
         depth: Int
     ): List<String>? {
         val master = if (name == INLINE_DECK_NAME) {
-            inlineMasters[group] ?: return null
+            inlineMasters[identity] ?: return null
         } else {
             find(name) ?: return null
         }
-        val decks = workingDecks.getOrPut(group) { HashMap() }
+        val decks = workingDecks.getOrPut(identity) { HashMap() }
         val drawn = ArrayList<String>()
         repeat(count.coerceAtLeast(1)) {
             var deck = decks[name]
@@ -191,13 +203,13 @@ class DrawFileManager(private val rootPath: String) {
                 deck = master.clone()
                 decks[name] = deck
             }
-            drawn.add(resolveReferences(group, deck.draw(putBack = false), seen, depth))
+            drawn.add(resolveReferences(identity, deck.draw(putBack = false), seen, depth))
         }
         return drawn
     }
 
     private fun resolveReferences(
-        group: String,
+        identity: String,
         text: String,
         seen: Set<String>,
         depth: Int
@@ -212,7 +224,7 @@ class DrawFileManager(private val rootPath: String) {
                 return@forEach
             }
             val nested = drawResolved(
-                group,
+                identity,
                 refName,
                 1,
                 seen + refName,
@@ -229,13 +241,13 @@ class DrawFileManager(private val rootPath: String) {
 
 
     @Synchronized
-    fun remain(group: String, name: String): Int? {
+    fun remain(identity: String, name: String): Int? {
         val master = if (name == INLINE_DECK_NAME) {
-            inlineMasters[group] ?: return null
+            inlineMasters[identity] ?: return null
         } else {
             find(name) ?: return null
         }
-        return workingDecks[group]?.get(name)?.remain() ?: master.remain()
+        return workingDecks[identity]?.get(name)?.remain() ?: master.remain()
     }
 
 
@@ -245,19 +257,100 @@ class DrawFileManager(private val rootPath: String) {
 
 
     @Synchronized
-    fun reset(group: String, name: String? = null): Int {
-        val decks = workingDecks[group] ?: return 0
-        return if (name == null) {
+    fun reset(identity: String, name: String? = null): Int {
+        val decks = workingDecks[identity] ?: return 0
+        val cleared = if (name == null) {
             val size = decks.size
             decks.clear()
+            if (size > 0) workingDecks.remove(identity)
             size
         } else {
             if (decks.remove(name) != null) 1 else 0
+        }
+        if (cleared > 0) {
+            persist()
+        }
+        return cleared
+    }
+
+    @Synchronized
+    private fun loadState() {
+        if (!stateFile.isFile) {
+            return
+        }
+        try {
+            val root = JSONObject(stateFile.readText(Charsets.UTF_8))
+            val identities = root.keys()
+            while (identities.hasNext()) {
+                val identity = identities.next()
+                val entry = root.optJSONObject(identity) ?: continue
+                val decks = entry.optJSONObject(FIELD_DECKS) ?: continue
+                val restored = HashMap<String, DrawData>()
+                val names = decks.keys()
+                while (names.hasNext()) {
+                    val name = names.next()
+                    val master = find(name) ?: continue
+                    val array = decks.optJSONArray(name) ?: continue
+                    val entries = ArrayList<Pair<String, Long>>()
+                    for (i in 0 until array.length()) {
+                        val pair = array.optJSONArray(i) ?: continue
+                        val text = pair.optString(0, "")
+                        val weight = pair.optLong(1, 1L)
+                        if (text.isNotEmpty()) {
+                            entries.add(text to weight)
+                        }
+                    }
+                    if (entries.isNotEmpty()) {
+                        restored[name] = DrawData.restore(
+                            master.parent,
+                            master.title,
+                            master.hidden,
+                            entries
+                        )
+                    }
+                }
+                if (restored.isNotEmpty()) {
+                    workingDecks[identity] = restored
+                }
+            }
+        } catch (t: Throwable) {
+            DiceLogger.error("牌堆进度读取失败，按满堆继续：$t", LOG_TAG)
+        }
+    }
+
+    @Synchronized
+    private fun persist() {
+        try {
+            val root = JSONObject()
+            workingDecks.forEach { (identity, decks) ->
+                val out = JSONObject()
+                decks.forEach { (name, deck) ->
+                    if (deck.isEmpty()) {
+                        return@forEach
+                    }
+                    val array = JSONArray()
+                    deck.snapshot().forEach { (text, weight) ->
+                        array.put(JSONArray().put(text).put(weight))
+                    }
+                    out.put(name, array)
+                }
+                if (out.length() > 0) {
+                    root.put(identity, JSONObject().put(FIELD_DECKS, out))
+                }
+            }
+            stateFile.parentFile?.mkdirs()
+            stateFile.writeText(root.toString(), Charsets.UTF_8)
+        } catch (t: Throwable) {
+            DiceLogger.error("牌堆进度落盘失败（本次运行的内存进度不受影响）：$t", LOG_TAG)
         }
     }
 
     private companion object {
         const val LOG_TAG = "DrawFiles"
+
+        const val STATE_FILE_NAME = "deckstate.json"
+
+        const val FIELD_DECKS = "decks"
 
 
         val REFERENCE = Regex("\\{([^{}]+)}")

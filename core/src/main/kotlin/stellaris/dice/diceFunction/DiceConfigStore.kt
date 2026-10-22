@@ -58,6 +58,21 @@ class DiceConfigStore(private val rootPath: String) : DiceConfig, RollSentences 
         this[SENTENCE_CARD_NO_SUCH_ABILITY] = DefaultSentences.sentenceCardNoSuchAbility
         this[SENTENCE_GROWTH] = DefaultSentences.sentenceGrowth
         this[SENTENCE_SAN_CHECK] = DefaultSentences.sentenceSanCheck
+        this[SC_PRE_SENTENCE] = DefaultSentences.sentenceScPre
+        this[SC_SUCCESS] = DefaultSentences.sentenceScSuccess
+        this[SC_FAILURE] = DefaultSentences.sentenceScFailure
+        this[SC_BIG_SUCCESS] = DefaultSentences.sentenceScBigSuccess
+        this[SC_BIG_FAILURE] = DefaultSentences.sentenceScBigFailure
+        this[SC_INNOCENT_CRAZY] = DefaultSentences.sentenceScInnocent
+        this[SC_TEMPORARY_CRAZY] = DefaultSentences.sentenceScTemporary
+        this[SC_RANDOM_CRAZY] = DefaultSentences.sentenceScRandom
+        this[SC_PERMANENT_CRAZY] = DefaultSentences.sentenceScPermanent
+        this[SENTENCE_BIG_SUCCESS] = DefaultSentences.sentenceBigSuccess
+        this[SENTENCE_VERY_HARD_SUCCESS] = DefaultSentences.sentenceVeryHardSuccess
+        this[SENTENCE_HARD_SUCCESS] = DefaultSentences.sentenceHardSuccess
+        this[SENTENCE_SUCCESS] = DefaultSentences.sentenceSuccess
+        this[SENTENCE_FAILURE] = DefaultSentences.sentenceFailure
+        this[SENTENCE_BIG_FAILURE] = DefaultSentences.sentenceBigFailure
         this[SENTENCE_OPPOSED_START] = DefaultSentences.sentenceOpposedStart
         this[SENTENCE_OPPOSED_FIRST_WIN] = DefaultSentences.sentenceOpposedFirstWin
         this[SENTENCE_OPPOSED_LAST_WIN] = DefaultSentences.sentenceOpposedLastWin
@@ -66,6 +81,43 @@ class DiceConfigStore(private val rootPath: String) : DiceConfig, RollSentences 
         this[SENTENCE_FIRST_ATTACKING] = DefaultSentences.sentenceFirstAttacking
         this[SENTENCE_DRAW] = DefaultSentences.sentenceDraw
         this[SENTENCE_MADNESS] = DefaultSentences.sentenceMadness
+
+        this[SENTENCE_DICE_OPEN] = "本群骰子已开启"
+        this[SENTENCE_DICE_CLOSE] = "本群骰子已关闭（.bot on 可重新打开）"
+        this[SENTENCE_DICE_DENIED] = "只有群主、群管理员或 master 能改本群设置"
+        this[SENTENCE_DICE_HELP_TEXT] = "用法：.bot on / .bot off（群主/群管理员/master）"
+        this[SENTENCE_DICE_ROBOT_TEXT] =
+            "群星 Stellaris Dice · ${stellaris.dice.BuildConfig.BUILD_ID}"
+        this[SENTENCE_OPEN_ALREADY] = "本群骰子已开启"
+        this[SENTENCE_CLOSE_ALREADY] = "本群骰子已关闭（.bot on 可重新打开）"
+
+        this[SENTENCE_LOG_OPEN] = "已开始记录日志：{name}（log end 结束并上传）"
+        this[SENTENCE_LOG_CLOSE] = "已暂停记录日志：{name}（用 log on {name} 继续，log end 上传）"
+        this[SENTENCE_LOG_END] = "日志已结束并上传：{name}"
+        this[SENTENCE_LOG_RESUME] = "已继续记录日志：{name}"
+        this[SENTENCE_LOG_ALREADY] = "本群已经有一份日志在记录中（先 log end/log off）"
+        this[SENTENCE_LOG_NOT_OPEN] = "本群没有正在记录的日志"
+        this[SENTENCE_LOG_NOT_FOUND] = "没有找到日志：{name}"
+        this[SENTENCE_LOG_DENIED] = "只有群主、群管理员或 master 能改本群设置"
+
+        this[SENTENCE_OB_JOIN] = "已将{player}加入OB位"
+        this[SENTENCE_OB_JOIN_FAILURE] = "你已经处于OB位了，无法再次加入"
+        this[SENTENCE_OB_EXIT] = "你不再处于OB位"
+        this[SENTENCE_OB_EXIT_FAILURE] = "你已经不在OB位了"
+
+        this[SENTENCE_NAME] = "为{player}生成了以下名字："
+        this[SENTENCE_JRRP] = "{player}今日人品：{value}（1~100）"
+        this[SENTENCE_CHANGE_CARD] = "本群已切换到人物卡：{name}"
+        this[SENTENCE_CHANGE_NAME] = "已将人物卡「{from}」改名为「{to}」"
+        this[SENTENCE_SETCOC_DENIED] = "只有群主、群管理员或 master 能改本群设置"
+        this[SENTENCE_RULE_QUERY_FAILURE] = "{result}"
+        this[SENTENCE_DRAW_SUCCESS] = "{result}"
+        this[SENTENCE_DRAW_FAILURE] = "{result}"
+
+        this[AVOID_CLEARING_GROUP_LIST] = ""
+        this[GROUP_CLEANED_SORRY_REPLY] =
+            "本群已经 {days} 天没有使用过我了，我先退群啦。需要我的时候再拉我回来～"
+        this[PREFIX] = ".。!！"
         this[DEFAULT_DICE_NUMBER] = stellaris.dice.diceFunction.responder.RespondContext.DEFAULT_DICE_NUMBER.toString()
     }
 
@@ -136,6 +188,20 @@ class DiceConfigStore(private val rootPath: String) : DiceConfig, RollSentences 
             writeGroup(group, COC_HOUSE_RULE, rule.code.toString())
         } else {
             writePerson(person, COC_HOUSE_RULE, rule.code.toString())
+        }
+    }
+
+
+    /** 当前房规的原始值：数字（旧数据）或规则名（含自定义）。 */
+    fun cocJudgeName(isGroupMsg: Boolean, group: String, person: String): String =
+        if (isGroupMsg) readGroup(group, COC_HOUSE_RULE) else readPerson(person, COC_HOUSE_RULE)
+
+
+    fun writeCocJudgeName(isGroupMsg: Boolean, group: String, person: String, name: String) {
+        if (isGroupMsg) {
+            writeGroup(group, COC_HOUSE_RULE, name)
+        } else {
+            writePerson(person, COC_HOUSE_RULE, name)
         }
     }
 
@@ -247,6 +313,36 @@ class DiceConfigStore(private val rootPath: String) : DiceConfig, RollSentences 
 
     override val sentenceSanCheck: String get() = readGlobal(SENTENCE_SAN_CHECK)
 
+    override val sentenceScPre: String get() = readGlobal(SC_PRE_SENTENCE)
+
+    override val sentenceScSuccess: String get() = readGlobal(SC_SUCCESS)
+
+    override val sentenceScFailure: String get() = readGlobal(SC_FAILURE)
+
+    override val sentenceScBigSuccess: String get() = readGlobal(SC_BIG_SUCCESS)
+
+    override val sentenceScBigFailure: String get() = readGlobal(SC_BIG_FAILURE)
+
+    override val sentenceScInnocent: String get() = readGlobal(SC_INNOCENT_CRAZY)
+
+    override val sentenceScTemporary: String get() = readGlobal(SC_TEMPORARY_CRAZY)
+
+    override val sentenceScRandom: String get() = readGlobal(SC_RANDOM_CRAZY)
+
+    override val sentenceScPermanent: String get() = readGlobal(SC_PERMANENT_CRAZY)
+
+    override val sentenceBigSuccess: String get() = readGlobal(SENTENCE_BIG_SUCCESS)
+
+    override val sentenceVeryHardSuccess: String get() = readGlobal(SENTENCE_VERY_HARD_SUCCESS)
+
+    override val sentenceHardSuccess: String get() = readGlobal(SENTENCE_HARD_SUCCESS)
+
+    override val sentenceSuccess: String get() = readGlobal(SENTENCE_SUCCESS)
+
+    override val sentenceFailure: String get() = readGlobal(SENTENCE_FAILURE)
+
+    override val sentenceBigFailure: String get() = readGlobal(SENTENCE_BIG_FAILURE)
+
     override val sentenceOpposedStart: String get() = readGlobal(SENTENCE_OPPOSED_START)
 
     override val sentenceOpposedFirstWin: String get() = readGlobal(SENTENCE_OPPOSED_FIRST_WIN)
@@ -263,12 +359,72 @@ class DiceConfigStore(private val rootPath: String) : DiceConfig, RollSentences 
 
     override val sentenceMadness: String get() = readGlobal(SENTENCE_MADNESS)
 
+    val sentenceDiceOpen: String get() = readGlobal(SENTENCE_DICE_OPEN)
+
+    val sentenceDiceClose: String get() = readGlobal(SENTENCE_DICE_CLOSE)
+
+    val sentenceDiceDenied: String get() = readGlobal(SENTENCE_DICE_DENIED)
+
+    val sentenceDiceHelpText: String get() = readGlobal(SENTENCE_DICE_HELP_TEXT)
+
+    val sentenceDiceRobotText: String get() = readGlobal(SENTENCE_DICE_ROBOT_TEXT)
+
+    val sentenceOpenAlready: String get() = readGlobal(SENTENCE_OPEN_ALREADY)
+
+    val sentenceCloseAlready: String get() = readGlobal(SENTENCE_CLOSE_ALREADY)
+
+    val sentenceLogOpen: String get() = readGlobal(SENTENCE_LOG_OPEN)
+
+    val sentenceLogClose: String get() = readGlobal(SENTENCE_LOG_CLOSE)
+
+    val sentenceLogEnd: String get() = readGlobal(SENTENCE_LOG_END)
+
+    val sentenceLogResume: String get() = readGlobal(SENTENCE_LOG_RESUME)
+
+    val sentenceLogAlready: String get() = readGlobal(SENTENCE_LOG_ALREADY)
+
+    val sentenceLogNotOpen: String get() = readGlobal(SENTENCE_LOG_NOT_OPEN)
+
+    val sentenceLogNotFound: String get() = readGlobal(SENTENCE_LOG_NOT_FOUND)
+
+    val sentenceLogDenied: String get() = readGlobal(SENTENCE_LOG_DENIED)
+
+    val sentenceObJoin: String get() = readGlobal(SENTENCE_OB_JOIN)
+
+    val sentenceObJoinFailure: String get() = readGlobal(SENTENCE_OB_JOIN_FAILURE)
+
+    val sentenceObExit: String get() = readGlobal(SENTENCE_OB_EXIT)
+
+    val sentenceObExitFailure: String get() = readGlobal(SENTENCE_OB_EXIT_FAILURE)
+
+    val sentenceName: String get() = readGlobal(SENTENCE_NAME)
+
+    val sentenceJrrp: String get() = readGlobal(SENTENCE_JRRP)
+
+    val sentenceChangeCard: String get() = readGlobal(SENTENCE_CHANGE_CARD)
+
+    val sentenceChangeName: String get() = readGlobal(SENTENCE_CHANGE_NAME)
+
+    val sentenceSetcocDenied: String get() = readGlobal(SENTENCE_SETCOC_DENIED)
+
+    val sentenceRuleQueryFailure: String get() = readGlobal(SENTENCE_RULE_QUERY_FAILURE)
+
+    val sentenceDrawSuccess: String get() = readGlobal(SENTENCE_DRAW_SUCCESS)
+
+    val sentenceDrawFailure: String get() = readGlobal(SENTENCE_DRAW_FAILURE)
 
 
 
 
 
 
+
+
+
+    @Synchronized
+    fun flushNow() {
+        flush()
+    }
 
 
     @Synchronized
@@ -391,6 +547,27 @@ class DiceConfigStore(private val rootPath: String) : DiceConfig, RollSentences 
 
         const val DEBUG_ON = "DEBUG_ON"
 
+        /** `.system split on/off`：长输出里的系统分段符是否拆成多条消息。 */
+        const val SYSTEM_SPLIT = "SYSTEM_SPLIT"
+
+        /** `.system censorship on/off`：出口敏感词审查总开关。 */
+        const val SYSTEM_CENSORSHIP = "SYSTEM_CENSORSHIP"
+
+        /** 每行一个敏感词；命中替换为等长 `*`。 */
+        const val FORBIDDEN_WORDS = "FORBIDDEN_WORDS"
+
+        /** 每行 `词=替换`；替换写 `-` 表示整条拦截。 */
+        const val REPLACE_FORBIDDEN_WORDS = "REPLACE_FORBIDDEN_WORDS"
+
+        /** `.master groupclr` 的免清群名单，每行一个群号。 */
+        const val AVOID_CLEARING_GROUP_LIST = "AVOID_CLEARING_GROUP_LIST"
+
+        /** 清理久未使用群时发送的告别语，可用 `{days}`。 */
+        const val GROUP_CLEANED_SORRY_REPLY = "GROUP_CLEANED_SORRY_REPLY"
+
+        /** 指令触发符集合，默认 `.。!！`；每个字符都算触发符。 */
+        const val PREFIX = "PREFIX"
+
         const val SENTENCE_ROLL = "SENTENCE_ROLL"
         const val SENTENCE_ROLL_WITH_REASON = "SENTENCE_ROLL_WITH_REASON"
         const val SENTENCE_ILLEGAL = "SENTENCE_ILLEGAL"
@@ -428,6 +605,24 @@ class DiceConfigStore(private val rootPath: String) : DiceConfig, RollSentences 
         const val SENTENCE_SAN_CHECK = "SENTENCE_SAN_CHECK"
 
 
+        const val SC_PRE_SENTENCE = "SC_PRE_SENTENCE"
+        const val SC_SUCCESS = "SC_SUCCESS"
+        const val SC_FAILURE = "SC_FAILURE"
+        const val SC_BIG_SUCCESS = "SC_BIG_SUCCESS"
+        const val SC_BIG_FAILURE = "SC_BIG_FAILURE"
+        const val SC_INNOCENT_CRAZY = "SC_INNOCENT_CRAZY"
+        const val SC_TEMPORARY_CRAZY = "SC_TEMPORARY_CRAZY"
+        const val SC_RANDOM_CRAZY = "SC_RANDOM_CRAZY"
+        const val SC_PERMANENT_CRAZY = "SC_PERMANENT_CRAZY"
+
+        const val SENTENCE_BIG_SUCCESS = "SENTENCE_BIG_SUCCESS"
+        const val SENTENCE_VERY_HARD_SUCCESS = "SENTENCE_VERY_HARD_SUCCESS"
+        const val SENTENCE_HARD_SUCCESS = "SENTENCE_HARD_SUCCESS"
+        const val SENTENCE_SUCCESS = "SENTENCE_SUCCESS"
+        const val SENTENCE_FAILURE = "SENTENCE_FAILURE"
+        const val SENTENCE_BIG_FAILURE = "SENTENCE_BIG_FAILURE"
+
+
 
 
 
@@ -447,6 +642,38 @@ class DiceConfigStore(private val rootPath: String) : DiceConfig, RollSentences 
 
 
         const val SENTENCE_MADNESS = "SENTENCE_MADNESS"
+
+
+        const val SENTENCE_DICE_OPEN = "SENTENCE_DICE_OPEN"
+        const val SENTENCE_DICE_CLOSE = "SENTENCE_DICE_CLOSE"
+        const val SENTENCE_DICE_DENIED = "SENTENCE_DICE_DENIED"
+        const val SENTENCE_DICE_HELP_TEXT = "SENTENCE_DICE_HELP_TEXT"
+        const val SENTENCE_DICE_ROBOT_TEXT = "SENTENCE_DICE_ROBOT_TEXT"
+        const val SENTENCE_OPEN_ALREADY = "SENTENCE_OPEN_ALREADY"
+        const val SENTENCE_CLOSE_ALREADY = "SENTENCE_CLOSE_ALREADY"
+
+        const val SENTENCE_LOG_OPEN = "SENTENCE_LOG_OPEN"
+        const val SENTENCE_LOG_CLOSE = "SENTENCE_LOG_CLOSE"
+        const val SENTENCE_LOG_END = "SENTENCE_LOG_END"
+        const val SENTENCE_LOG_RESUME = "SENTENCE_LOG_RESUME"
+        const val SENTENCE_LOG_ALREADY = "SENTENCE_LOG_ALREADY"
+        const val SENTENCE_LOG_NOT_OPEN = "SENTENCE_LOG_NOT_OPEN"
+        const val SENTENCE_LOG_NOT_FOUND = "SENTENCE_LOG_NOT_FOUND"
+        const val SENTENCE_LOG_DENIED = "SENTENCE_LOG_DENIED"
+
+        const val SENTENCE_OB_JOIN = "SENTENCE_OB_JOIN"
+        const val SENTENCE_OB_JOIN_FAILURE = "SENTENCE_OB_JOIN_FAILURE"
+        const val SENTENCE_OB_EXIT = "SENTENCE_OB_EXIT"
+        const val SENTENCE_OB_EXIT_FAILURE = "SENTENCE_OB_EXIT_FAILURE"
+
+        const val SENTENCE_NAME = "SENTENCE_NAME"
+        const val SENTENCE_JRRP = "SENTENCE_JRRP"
+        const val SENTENCE_CHANGE_CARD = "SENTENCE_CHANGE_CARD"
+        const val SENTENCE_CHANGE_NAME = "SENTENCE_CHANGE_NAME"
+        const val SENTENCE_SETCOC_DENIED = "SENTENCE_SETCOC_DENIED"
+        const val SENTENCE_RULE_QUERY_FAILURE = "SENTENCE_RULE_QUERY_FAILURE"
+        const val SENTENCE_DRAW_SUCCESS = "SENTENCE_DRAW_SUCCESS"
+        const val SENTENCE_DRAW_FAILURE = "SENTENCE_DRAW_FAILURE"
 
 
         private const val CONFIG_FILE_NAME = "config.json"

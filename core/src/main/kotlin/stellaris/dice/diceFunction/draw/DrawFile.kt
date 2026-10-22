@@ -136,7 +136,7 @@ class DrawFile(
         format = DrawFileFormat.Json
         for (headerKey in json.keys()) {
             val headerArray = json.getJSONArray(headerKey)
-            val drawData = DrawData(this, arrayListOf(headerKey), headerKey.startsWith('_'))
+            val drawData = DrawData(this, arrayListOf(headerKey), hidden || headerKey.startsWith('_'))
             for (i in 0 until headerArray.length()) {
                 appendDrawContent(drawData, headerArray.getString(i))
             }
@@ -153,7 +153,7 @@ class DrawFile(
         for (headerKey in json5.keys) {
             val headerArray = json5[headerKey]
             if (headerArray is JsonArray) {
-                val drawData = DrawData(this, arrayListOf(headerKey), headerKey.startsWith('_'))
+                val drawData = DrawData(this, arrayListOf(headerKey), hidden || headerKey.startsWith('_'))
                 for (i in 0 until headerArray.size) {
                     appendDrawContent(drawData, headerArray.getString(i, ""))
                 }
@@ -214,7 +214,7 @@ class DrawFile(
                 titles.add("$command $key")
             }
 
-            val drawData = DrawData(this, titles, key.startsWith('_'))
+            val drawData = DrawData(this, titles, hidden || key.startsWith('_'))
             (value as ArrayList<*>).forEach { item ->
                 var content = item as String
                 val match = sitanyaRepeater.find(content)

@@ -3,11 +3,14 @@ package stellaris.dice.diceFunction.lightScript
 import org.mozilla.javascript.ClassShutter
 import org.mozilla.javascript.Context
 import org.mozilla.javascript.ContextFactory
+import org.mozilla.javascript.Function
+import org.mozilla.javascript.Scriptable
 import org.mozilla.javascript.ScriptableObject
 import stellaris.dice.diceFunction.DiceLogger
 import java.io.Reader
 import javax.script.AbstractScriptEngine
 import javax.script.Bindings
+import javax.script.Invocable
 import javax.script.ScriptContext
 import javax.script.ScriptEngine
 import javax.script.ScriptEngineFactory
@@ -42,7 +45,7 @@ internal object DiceJsSandbox {
         if (n.startsWith("java.lang.")) return LANG_DENY.any { n == it || n.startsWith(it) }
         return n.startsWith("java.") || n.startsWith("javax.") || n.startsWith("jdk.") ||
             n.startsWith("sun.") || n.startsWith("com.sun.") ||
-            n.startsWith("stellaris.") || n.startsWith("presence.")
+            n.startsWith("stellaris.")
     }
 
     private object SandboxContextFactory : ContextFactory() {
@@ -98,9 +101,59 @@ internal object DiceJsSandbox {
     private class SandboxEngine(
         private val executionTimeoutMillis: Long,
         private val maxScriptChars: Int
-    ) : AbstractScriptEngine() {
+    ) : AbstractScriptEngine(), Invocable {
 
         private val scope: ScriptableObject? = newScope()
+
+        override fun get(key: String): Any? {
+            val s = scope ?: return null
+            return ScriptableObject.getProperty(s, key).takeIf { it != Scriptable.NOT_FOUND }
+        }
+
+        override fun put(key: String, value: Any?) {
+            scope?.let { ScriptableObject.putProperty(it, key, value) }
+        }
+
+        override fun invokeFunction(name: String, vararg args: Any?): Any? {
+            val s = scope ?: throw ScriptException("JS 沙箱不可用")
+            return withSandboxContext {
+                val function = ScriptableObject.getProperty(s, name)
+                if (function !is Function) {
+                    throw NoSuchMethodException("没有函数 $name")
+                }
+                function.call(it, s, s, args)
+            }
+        }
+
+        override fun invokeMethod(thiz: Any?, name: String, vararg args: Any?): Any? {
+            val s = scope ?: throw ScriptException("JS 沙箱不可用")
+            return withSandboxContext { cx ->
+                val target = Context.javaToJS(thiz, s) as? Scriptable ?: s
+                val function = ScriptableObject.getProperty(target, name)
+                if (function !is Function) {
+                    throw NoSuchMethodException("没有方法 $name")
+                }
+                function.call(cx, s, target, args)
+            }
+        }
+
+        override fun <T : Any?> getInterface(clazz: Class<T>): T? = null
+
+        override fun <T : Any?> getInterface(thiz: Any?, clazz: Class<T>): T? = null
+
+        private fun <T> withSandboxContext(block: (Context) -> T): T {
+            val cx = SandboxContextFactory.enterContext()
+            val previousDeadline = evaluationDeadlineNanos.get()
+            evaluationDeadlineNanos.set(
+                previousDeadline ?: (System.nanoTime() + executionTimeoutMillis * 1_000_000L)
+            )
+            try {
+                return block(cx)
+            } finally {
+                evaluationDeadlineNanos.set(previousDeadline)
+                Context.exit()
+            }
+        }
 
         private fun newScope(): ScriptableObject? {
             return try {

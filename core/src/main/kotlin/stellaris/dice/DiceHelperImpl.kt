@@ -10,6 +10,7 @@ import stellaris.dice.diceFunction.card.CardEditor
 import stellaris.dice.diceFunction.calculation.DiceCalculation
 import stellaris.dice.diceFunction.commands.DiceCommandCallback
 import stellaris.dice.diceFunction.commands.DiceCommandDecoder
+import stellaris.dice.diceFunction.draw.DeckIdentity
 import stellaris.dice.diceFunction.find.FindEngine
 import stellaris.dice.diceFunction.initiative.InitiativeEntry
 import stellaris.dice.diceFunction.initiative.InitiativeList
@@ -19,6 +20,7 @@ import stellaris.dice.diceFunction.observer.ObserverStore
 import stellaris.dice.diceFunction.opposed.OpposedContestStore
 import stellaris.dice.diceFunction.responder.CharacterChecks
 import stellaris.dice.diceFunction.responder.CheckArguments
+import stellaris.dice.diceFunction.responder.CheckLevel
 import stellaris.dice.diceFunction.responder.CheckRule
 import stellaris.dice.diceFunction.responder.CocHouseRule
 import stellaris.dice.diceFunction.responder.Madness
@@ -26,6 +28,7 @@ import stellaris.dice.diceFunction.responder.DiceResponder
 import stellaris.dice.diceFunction.responder.RespondContext
 import stellaris.dice.diceFunction.responder.RollOptions
 import stellaris.dice.diceFunction.responder.RollRules
+import stellaris.dice.diceFunction.responder.label
 import stellaris.dice.diceFunction.template.DiceMessageTemplate
 import stellaris.dice.diceFunction.template.decodeXdX
 import stellaris.dice.receive.MessageReceived
@@ -234,7 +237,7 @@ class DiceHelperImpl(
 
 
     override fun eventMessageReceive(message: MessageReceived) {
-        val content = if (message.isMaster) {
+        val sanitized = if (message.isMaster) {
             message.contentReal
         } else {
 
@@ -242,10 +245,11 @@ class DiceHelperImpl(
             message.groupNick = MessageSanitizer.sanitize(message.groupNick)
             MessageSanitizer.sanitize(message.contentReal)
         }
+        val content = stellaris.dice.diceFunction.text.ZhTranslate.hk2zh(sanitized)
 
-        val hadTrigger = content.startsWith(".") || content.startsWith("。") ||
-            content.startsWith("!") || content.startsWith("！")
-        val raw = stripLeadingTrigger(content).trim()
+        val prefix = functions.configStore.readGlobal(DiceConfigStore.PREFIX).ifEmpty { DEFAULT_PREFIX }
+        val hadTrigger = content.isNotEmpty() && prefix.indexOf(content[0]) >= 0
+        val raw = stripLeadingTrigger(content, prefix).trim()
         if (raw.isEmpty()) {
             return
         }
@@ -265,6 +269,7 @@ class DiceHelperImpl(
         }
         if (message.isGroupMsg) {
             functions.lastAppearedStore.record(message.triggerId, message.group)
+            functions.groupRegistry.touch(message.group)
         }
 
         if (message.isGroupMsg && functions.configStore.readGroup(message.group, DiceConfigStore.BOT_OFF) == "1") {
@@ -315,6 +320,12 @@ class DiceHelperImpl(
                 message.isGroupMsg, message.group, message.triggerId
             ),
 
+            judgeRule = functions.judgeRegistry.find(
+                functions.configStore.cocJudgeName(
+                    message.isGroupMsg, message.group, message.triggerId
+                )
+            ),
+
             ruleMode = functions.configStore.ruleMode(
                 message.isGroupMsg, message.group, message.triggerId
             )
@@ -331,10 +342,7 @@ class DiceHelperImpl(
                 respond(command, param, context, message, isProtected)
 
             override fun extraCommands(): ArrayList<String> =
-                ArrayList(
-                    (EXTRA_COMMANDS + functions.pluginLoader.customCommands)
-                        .filterNot { isCoreCommand(it) }
-                )
+                ArrayList(functions.pluginLoader.customCommands.filterNot { isCoreCommand(it) })
         }
         val commandText = if (hadTrigger) {
             functions.pluginLoader.replace(
@@ -525,6 +533,9 @@ class DiceHelperImpl(
             return send(randomName(param, message), message, message.identity)
         }
         if (base == "system") {
+            if (!message.isMaster) {
+                return send(MASTER_ONLY, message, message.identity)
+            }
             return send(systemCommand(param), message, message.identity)
         }
 
@@ -536,14 +547,6 @@ class DiceHelperImpl(
 
         if (base == "rb" || base == "rp") {
             return send(bonusPenaltyRoll(base, param, effectiveContext, message), message, message.identity)
-        }
-
-        if (base == "blackcloud") {
-            return send(
-                "云端黑名单在群星基准模版中未启用（无网络路径）；本地黑名单请用 .black。",
-                message,
-                message.identity
-            )
         }
 
         if (base == "sn" || base == "setasn") {
@@ -636,7 +639,10 @@ class DiceHelperImpl(
             if (groupFeatureDisabled(DiceConfigStore.DISABLE_HELP, message)) {
                 return send("本群已禁用帮助。", message, message.identity)
             }
-            return send(helpCommand(param), message, message.identity)
+            if (base == "helpdoc") {
+                return send(helpDocCommand(param, message), message, message.identity)
+            }
+            return send(helpCommand(param, functions.helpDocStore), message, message.identity)
         }
 
         if (base == "about") {
@@ -652,7 +658,7 @@ class DiceHelperImpl(
             return send(botCommand(param, message), message, message.identity)
         }
         if (base == "admin") {
-            return send(adminState(message), message, message.identity)
+            return send(adminCommand(param, message), message, message.identity)
         }
         if (base == "master") {
             return send(masterCommand(param, message), message, message.identity)
@@ -708,17 +714,22 @@ class DiceHelperImpl(
     private fun setCoc(param: String, message: MessageReceived): String {
         val argument = param.trim()
         if (argument.isEmpty()) {
-            return "COC检定房规（.setcoc <0~5>）：\n${CocHouseRule.listing()}"
+            return "COC检定房规（.setcoc <0~5|规则名>）：\n${functions.judgeRegistry.listing()}"
         }
         if (!canChangeGroupSettings(message)) {
-            return SETTINGS_DENIED
+            return functions.configStore.sentenceSetcocDenied
         }
-        val rule = CocHouseRule.parse(argument)
-            ?: return "用法：.setcoc 0~5（不带参数=列出全部房规）"
-        functions.configStore.writeCocHouseRule(
-            message.isGroupMsg, message.group, message.triggerId, rule
+        val judge = functions.judgeRegistry.find(argument)
+            ?: return "没有这个房规：$argument\n用法：.setcoc 0~5|规则名（不带参数=列出全部房规）"
+        functions.configStore.writeCocJudgeName(
+            message.isGroupMsg, message.group, message.triggerId, judge.name
         )
-        return "COC检定房规已设为：${rule.label}（${rule.code}）"
+        val builtin = judge as? stellaris.dice.diceFunction.judge.BuiltinJudgeRule
+        return if (builtin != null) {
+            "COC检定房规已设为：${judge.name}（${builtin.rule.code}）"
+        } else {
+            "COC检定房规已设为：${judge.name}（自定义）"
+        }
     }
 
 
@@ -824,7 +835,10 @@ class DiceHelperImpl(
                 "人物卡「${outcome.card.playerName}」（${outcome.card.rule.name}）：" +
                     CardEditor.render(outcome.card, outcome.card.propertyNames)
 
-            is CardCommands.Outcome.Bound -> "本群已切换到人物卡：${outcome.card.playerName}"
+            is CardCommands.Outcome.Bound -> renderSentence(
+                functions.configStore.sentenceChangeCard,
+                "name" to outcome.card.playerName
+            )
 
             is CardCommands.Outcome.Copied -> "已复制人物卡：${outcome.from} → ${outcome.to}"
 
@@ -846,8 +860,11 @@ class DiceHelperImpl(
 
             CardCommands.Outcome.Unbound -> "已解除本场会话的人物卡绑定（回到默认卡）"
 
-            is CardCommands.Outcome.Renamed ->
-                "已将人物卡「${outcome.from}」改名为「${outcome.to}」"
+            is CardCommands.Outcome.Renamed -> renderSentence(
+                functions.configStore.sentenceChangeName,
+                "from" to outcome.from,
+                "to" to outcome.to
+            )
 
             is CardCommands.Outcome.ShownAbove -> {
                 val names = outcome.card.propertyNames.filter {
@@ -957,15 +974,76 @@ class DiceHelperImpl(
             context.template.add("skill", CharacterChecks.SAN_ATTRIBUTE)
             return context.sentences.sentenceCardNoSuchAbility
         }
-        val result = CharacterChecks.sanity(request, target, context.houseRule)
+        val result = CharacterChecks.sanity(request, target, context.judgeForCheck())
             ?: return context.sentences.sentenceIllegal
         card.setProperty(CharacterChecks.SAN_ATTRIBUTE, result.newValue)
         functions.cardManager.savePlayer(card)
-        if (context.simplify) {
-            return result.rollSegment
+
+        val line = buildString {
+            append("1d100=").append(result.roll).append('/').append(result.target).append(' ')
+                .append(scLevelText(result.level, context.sentences))
+                .append("，理智减少").append(result.loss).append("点（")
+                .append(result.target).append('→').append(result.newValue).append('）')
+            when {
+                result.newValue == 0 ->
+                    append('\n').append(context.sentences.sentenceScPermanent)
+
+                result.loss >= result.target * MADNESS_RANDOM_RATIO ->
+                    append('\n').append(context.sentences.sentenceScRandom)
+
+                result.loss >= MADNESS_CHECK_MIN_LOSS -> {
+                    val insight = readInsight(card)
+                    if (insight == null) {
+                        append('\n').append(NO_INSIGHT_NOTE)
+                    } else {
+                        val roll = DiceCalculation.rollCalculation("1d100").intNumber
+                        val level = context.judgeForCheck().judge(roll, insight)
+                        val status = if (level.isFailure) {
+                            context.sentences.sentenceScInnocent
+                        } else {
+                            context.sentences.sentenceScTemporary
+                        }
+                        append('\n').append("智力灵感检定 1d100=")
+                            .append(roll).append('/').append(insight).append(' ').append(status)
+                    }
+                }
+            }
         }
-        context.template.add("roll", result.rollSegment)
-        return context.sentences.sentenceSanCheck
+
+        if (context.simplify) {
+            return line
+        }
+        val pre = context.sentences.sentenceScPre
+        return if (pre.isNotBlank()) {
+            context.template.add("result", line)
+            pre
+        } else {
+            context.template.add("roll", line)
+            context.sentences.sentenceSanCheck
+        }
+    }
+
+    private fun scLevelText(
+        level: CheckLevel,
+        sentences: stellaris.dice.diceFunction.responder.RollSentences
+    ): String = when (level) {
+        CheckLevel.CRITICAL_SUCCESS -> sentences.sentenceScBigSuccess
+        CheckLevel.EXTREME_SUCCESS -> sentences.sentenceVeryHardSuccess.ifBlank { CheckLevel.EXTREME_SUCCESS.text }
+        CheckLevel.HARD_SUCCESS -> sentences.sentenceHardSuccess.ifBlank { CheckLevel.HARD_SUCCESS.text }
+        CheckLevel.SUCCESS -> sentences.sentenceScSuccess
+        CheckLevel.FAILURE -> sentences.sentenceScFailure
+        CheckLevel.CRITICAL_FAILURE -> sentences.sentenceScBigFailure
+    }
+
+    private fun readInsight(
+        card: stellaris.dice.diceFunction.card.PlayerCardData
+    ): Int? {
+        for (name in INSIGHT_ATTRIBUTES) {
+            if (card.hasProperty(name)) {
+                return card.readProperty(name)
+            }
+        }
+        return null
     }
 
 
@@ -1404,7 +1482,11 @@ class DiceHelperImpl(
         val day = java.time.LocalDate.now().toString()
         val seed = "$day:${message.triggerId}".hashCode().toLong()
         val value = ((seed and 0xFFFFFFFFL) % 100).toInt() + 1
-        return "${context.senderNick}今日人品：$value（1~100）"
+        return renderSentence(
+            functions.configStore.sentenceJrrp,
+            "player" to context.senderNick,
+            "value" to value.toString()
+        )
     }
 
 
@@ -1438,9 +1520,9 @@ class DiceHelperImpl(
             "help" -> OB_USAGE
 
             "exit" -> if (functions.observerStore.leave(message.group, message.triggerId)) {
-                "你不再处于OB位"
+                functions.configStore.sentenceObExit
             } else {
-                "你已经不在OB位了"
+                functions.configStore.sentenceObExitFailure
             }
 
             "list" -> {
@@ -1479,8 +1561,12 @@ class DiceHelperImpl(
                     message.group, message.triggerId, context.senderNick
                 )
             ) {
-                ObserverStore.JoinResult.JOINED -> "已将${context.senderNick}加入OB位"
-                ObserverStore.JoinResult.ALREADY -> "你已经处于OB位了，无法再次加入"
+                ObserverStore.JoinResult.JOINED -> renderSentence(
+                    functions.configStore.sentenceObJoin,
+                    "player" to context.senderNick
+                )
+
+                ObserverStore.JoinResult.ALREADY -> functions.configStore.sentenceObJoinFailure
                 ObserverStore.JoinResult.FULL ->
                     "OB位已满（最多 ${ObserverStore.MAX_OBSERVERS} 人）"
             }
@@ -1519,9 +1605,10 @@ class DiceHelperImpl(
             return send(context.sentences.sentenceIllegal, message, message.identity)
         }
         functions.hiyStore.record(message.triggerId, "psy", roll)
-        val level = CheckRule.level(roll, targetValue, context.houseRule)
+        val level = context.judgeForCheck().judge(roll, targetValue)
         val targetName = card.readFriendlyName(defaultName = targetId)
-        val result = "玩家 $targetName 技能 $skill：1d100=$roll/$targetValue ${level.text}"
+        val result = "玩家 $targetName 技能 $skill：1d100=$roll/$targetValue " +
+            level.label(context.sentences)
         return deliverHidden(result, context, message)
     }
 
@@ -1606,52 +1693,57 @@ class DiceHelperImpl(
         val rest = if (trimmed.contains(' ')) trimmed.substringAfter(' ').trim() else ""
         val manager = functions.logManager
         val isAdmin = canAdministerGroup(message)
+        val config = functions.configStore
         return when (sub) {
             "", "help" -> LOG_USAGE
 
             "list" -> logList(message.group)
 
-            "on", "new" -> if (!isAdmin) SETTINGS_DENIED else startLog(rest, message)
+            "on", "new" -> if (!isAdmin) config.sentenceLogDenied else startLog(rest, message)
 
             "off", "stop" -> if (!isAdmin) {
-                SETTINGS_DENIED
+                config.sentenceLogDenied
             } else {
                 val name = manager.stop(message.group)
                 if (name == null) {
-                    "本群没有正在记录的日志"
+                    config.sentenceLogNotOpen
                 } else {
-                    "已暂停记录日志：$name（用 log on $name 继续，log end 上传）"
+                    renderSentence(config.sentenceLogClose, "name" to name)
                 }
             }
 
-            "end", "get", "exit" -> if (!isAdmin) SETTINGS_DENIED else endLog(rest, message)
+            "end", "get", "exit" -> if (!isAdmin) config.sentenceLogDenied else endLog(rest, message)
 
-            "rm", "del" -> if (!isAdmin) SETTINGS_DENIED else removeLog(rest, message)
+            "rm", "del" -> if (!isAdmin) config.sentenceLogDenied else removeLog(rest, message)
 
             "clr" -> if (!isAdmin) {
-                SETTINGS_DENIED
+                config.sentenceLogDenied
             } else {
                 val count = manager.clear(message.group)
                 if (count == 0) "本群还没有日志" else "已清空 $count 份日志"
             }
 
 
-            else -> if (!isAdmin) SETTINGS_DENIED else startLog(trimmed, message)
+            else -> if (!isAdmin) config.sentenceLogDenied else startLog(trimmed, message)
         }
     }
 
 
     private fun startLog(name: String, message: MessageReceived): String {
         val manager = functions.logManager
+        val config = functions.configStore
         return when (manager.start(message.group, name)) {
-            LogManager.StartResult.STARTED ->
-                "已开始记录日志：${manager.activeName(message.group)}（log end 结束并上传）"
+            LogManager.StartResult.STARTED -> renderSentence(
+                config.sentenceLogOpen,
+                "name" to manager.activeName(message.group).orEmpty()
+            )
 
-            LogManager.StartResult.RESUMED ->
-                "已继续记录日志：${manager.activeName(message.group)}"
+            LogManager.StartResult.RESUMED -> renderSentence(
+                config.sentenceLogResume,
+                "name" to manager.activeName(message.group).orEmpty()
+            )
 
-            LogManager.StartResult.ALREADY ->
-                "本群已经有一份日志在记录中（先 log end/log off）"
+            LogManager.StartResult.ALREADY -> config.sentenceLogAlready
 
             LogManager.StartResult.TOO_MANY ->
                 "本群日志已达上限 ${DiceConstant.MAX_LOG_COUNT} 份，请先 log rm/log clr"
@@ -1668,13 +1760,14 @@ class DiceHelperImpl(
 
     private fun endLog(name: String, message: MessageReceived): String {
         val manager = functions.logManager
+        val config = functions.configStore
         val targetName = name.ifEmpty { manager.activeName(message.group) ?: "" }
         if (targetName.isEmpty()) {
-            return "本群没有正在记录的日志"
+            return config.sentenceLogNotOpen
         }
         manager.stopIfActive(message.group, targetName)
         val file = manager.find(message.group, targetName)
-            ?: return "没有找到日志：$targetName"
+            ?: return renderSentence(config.sentenceLogNotFound, "name" to targetName)
         val uploadName = "${targetName}.txt"
         val bridge = intentEvent
             ?: return "日志已停止记录，但宿主未就绪，无法上传：$uploadName（文件：${file.absolutePath}）"
@@ -1684,7 +1777,7 @@ class DiceHelperImpl(
             false
         }
         return if (uploaded) {
-            "日志已结束并上传：$uploadName"
+            renderSentence(config.sentenceLogEnd, "name" to uploadName)
         } else {
             "日志已保存，但宿主未提供上传能力：$uploadName（文件：${file.absolutePath}）"
         }
@@ -1693,6 +1786,7 @@ class DiceHelperImpl(
 
     private fun removeLog(name: String, message: MessageReceived): String {
         val manager = functions.logManager
+        val config = functions.configStore
         val targetName = name.ifEmpty { manager.activeName(message.group) ?: "" }
         if (targetName.isEmpty()) {
             return "用法：log rm <文件名>"
@@ -1700,7 +1794,7 @@ class DiceHelperImpl(
         return if (manager.remove(message.group, targetName)) {
             "已删除日志：$targetName"
         } else {
-            "没有找到日志：$targetName"
+            renderSentence(config.sentenceLogNotFound, "name" to targetName)
         }
     }
 
@@ -1751,7 +1845,7 @@ class DiceHelperImpl(
 
         val name = tokens.firstOrNull()?.ifEmpty { null }
 
-            ?: functions.drawManager.runtimeDefaultName(message.group)
+            ?: functions.drawManager.runtimeDefaultName(deckKey(message))
             ?: functions.configStore.drawDefaultDeck(
                 message.isGroupMsg, message.group, message.triggerId
             )
@@ -1761,23 +1855,31 @@ class DiceHelperImpl(
 
         val count = tokens.getOrNull(1)?.toIntOrNull()?.coerceIn(1, MAX_DRAW_COUNT) ?: 1
         val drawn = try {
-            functions.drawManager.draw(message.group, name, count)
+            functions.drawManager.draw(deckKey(message), name, count)
         } catch (t: Throwable) {
-            return "这个牌堆抽不出东西：$name"
-        } ?: return "没有这个牌堆：$name"
+            return drawFailure("这个牌堆抽不出东西：$name")
+        } ?: return drawFailure("没有这个牌堆：$name")
         if (drawn.isEmpty()) {
-            return "这个牌堆是空的：$name"
+            return drawFailure("这个牌堆是空的：$name")
         }
 
-        val remain = functions.drawManager.remain(message.group, name) ?: 0
+        val remain = functions.drawManager.remain(deckKey(message), name) ?: 0
         val drawnText = drawn.joinToString("\n")
         if (context.simplify) {
-            return drawnText
+            return drawSuccess(drawnText)
         }
         context.template.add("draw", drawnText)
         context.template.add("remain", if (remain > 0) "（还剩${remain}）" else "")
-        return context.sentences.sentenceDraw
+        return drawSuccess(context.sentences.sentenceDraw)
     }
+
+
+    private fun drawSuccess(result: String): String =
+        renderSentence(functions.configStore.sentenceDrawSuccess, "result" to result)
+
+
+    private fun drawFailure(result: String): String =
+        renderSentence(functions.configStore.sentenceDrawFailure, "result" to result)
 
 
 
@@ -1805,7 +1907,7 @@ class DiceHelperImpl(
                             SETTINGS_DENIED
                         } else {
                             functions.drawManager.setInlineDeck(
-                                message.group,
+                                deckKey(message),
                                 (1..numeric).map { it.toString() },
                                 minimumEntries = 1
                             )
@@ -1820,7 +1922,7 @@ class DiceHelperImpl(
                             message.isGroupMsg, message.group, message.triggerId, rest
                         )
 
-                        functions.drawManager.clearRuntimeDefault(message.group)
+                        functions.drawManager.clearRuntimeDefault(deckKey(message))
                         "默认牌堆已设为：$rest"
                     }
                 }
@@ -1833,7 +1935,7 @@ class DiceHelperImpl(
                 } else if (!canChangeGroupSettings(message)) {
                     SETTINGS_DENIED
                 } else {
-                    functions.drawManager.setInlineDeck(message.group, entries)
+                    functions.drawManager.setInlineDeck(deckKey(message), entries)
                     "已创建临时牌堆并设为默认（${entries.size} 条，抽取不放回）"
                 }
             }
@@ -1845,11 +1947,11 @@ class DiceHelperImpl(
                     val target = rest.ifEmpty { null }
                     val known = target == null ||
                         functions.drawManager.find(target) != null ||
-                        target == functions.drawManager.runtimeDefaultName(message.group)
+                        target == functions.drawManager.runtimeDefaultName(deckKey(message))
                     if (!known) {
                         "没有这个牌堆：$target"
                     } else {
-                        val count = functions.drawManager.reset(message.group, target)
+                        val count = functions.drawManager.reset(deckKey(message), target)
                         if (target == null) "已重置本群全部牌堆的抽取进度（$count 个）"
                         else "已重置牌堆「$target」的抽取进度"
                     }
@@ -1863,7 +1965,7 @@ class DiceHelperImpl(
 
     private fun deckList(message: MessageReceived): String {
         val titles = functions.drawManager.titles()
-        val inline = functions.drawManager.inlineRemain(message.group)
+        val inline = functions.drawManager.inlineRemain(deckKey(message))
         if (titles.isEmpty() && inline == 0) {
             return "还没有可用的牌堆（把牌堆文件放进实例的 draw/ 目录）"
         }
@@ -1875,11 +1977,11 @@ class DiceHelperImpl(
                 append("可用牌堆：").append(titles.joinToString("、"))
             }
             if (inline > 0) {
-                if (titles.isNotEmpty()) append('\n')
+                if (titles.isNotEmpty()) append(DiceConstant.SYSTEM_SPLIT_STRING)
                 append("临时牌堆：$inline 条（.deck new 建的，不落盘）")
             }
             if (current.isNotEmpty()) {
-                append("\n默认牌堆：").append(current)
+                append(DiceConstant.SYSTEM_SPLIT_STRING).append("默认牌堆：").append(current)
             }
         }
     }
@@ -1929,7 +2031,7 @@ class DiceHelperImpl(
         RuleMode.NONE -> "coc"
         RuleMode.COC -> "coc"
         RuleMode.COC6 -> "coc6"
-        RuleMode.DND5E, RuleMode.DND3R -> "dnd"
+        RuleMode.DND5E, RuleMode.DND5R, RuleMode.DND3R -> "dnd"
         RuleMode.DG -> "dg"
         RuleMode.FATE -> "fate"
         RuleMode.DX -> "dx"
@@ -1949,17 +2051,18 @@ class DiceHelperImpl(
         var count = DEFAULT_NAME_COUNT
         param.trim().split("\\s+".toRegex()).filter { it.isNotEmpty() }.forEach { token ->
             when (token.lowercase()) {
-                "cn", "jp", "en" -> language = token.lowercase()
+                "cn", "jp", "en", "encn", "enzh" -> language = token.lowercase()
                 else -> token.toIntOrNull()?.let { count = it.coerceIn(1, MAX_NAME_COUNT) }
             }
         }
         val deck = when (language) {
             "jp" -> "随机姓名_jp"
             "en" -> "随机姓名_en"
+            "encn", "enzh" -> "随机姓名_enzh"
             else -> "随机姓名_cn"
         }
         val names = try {
-            functions.drawManager.draw(message.group, deck, count)
+            functions.drawManager.draw(deckKey(message), deck, count)
         } catch (t: Throwable) {
             null
         } ?: return NAME_CONTENT_MISSING
@@ -1967,7 +2070,8 @@ class DiceHelperImpl(
             return NAME_CONTENT_MISSING
         }
         val displayName = message.nick.ifEmpty { message.groupNick }.ifEmpty { message.triggerId }
-        return "为${displayName}生成了以下名字：\n" + names.joinToString("\n")
+        return renderSentence(functions.configStore.sentenceName, "player" to displayName) + "\n" +
+            names.joinToString("\n") { stellaris.dice.diceFunction.text.ZhTranslate.hk2zh(it) }
     }
 
 
@@ -1977,17 +2081,31 @@ class DiceHelperImpl(
 
 
 
-    private fun findCommand(param: String, message: MessageReceived): String {
+    private fun findCommand(
+        param: String,
+        message: MessageReceived,
+        failureTemplate: String? = null
+    ): String {
         val engine = functions.findEngine
         val args = engine.parse(param)
         if (args.groupCommand) {
-            return findGroupCommand(args.groupArgument, message)
+            return findGroupCommand(args.groupArgument, message, failureTemplate)
         }
         val scope = if (message.isGroupMsg) message.group else message.triggerId
-        return engine.render(engine.search(args, findDefaultGroup(message), scope))
+        val result = engine.search(args, findDefaultGroup(message), scope)
+        val rendered = engine.render(result)
+        return if (failureTemplate != null && result is FindEngine.Result.Error) {
+            renderFailure(failureTemplate, rendered, param)
+        } else {
+            rendered
+        }
     }
 
-    private fun findGroupCommand(argument: String, message: MessageReceived): String {
+    private fun findGroupCommand(
+        argument: String,
+        message: MessageReceived,
+        failureTemplate: String? = null
+    ): String {
         val engine = functions.findEngine
         val arg = argument.trim()
         if (arg.isEmpty()) {
@@ -1998,10 +2116,21 @@ class DiceHelperImpl(
             return "已取消本群默认分组"
         }
         val group = engine.resolveGroup(arg)
-            ?: return "没有这个分组：$arg（可用：${engine.groups().joinToString("、")}）"
+            ?: return renderFailure(
+                failureTemplate,
+                "没有这个分组：$arg（可用：${engine.groups().joinToString("、")}）",
+                arg
+            )
         writeFindGroup(message, group)
         return "本群默认分组已设为：$group"
     }
+
+    private fun renderFailure(template: String?, fallback: String, query: String): String =
+        if (template == null) {
+            fallback
+        } else {
+            renderSentence(template, "result" to fallback, "query" to query)
+        }
 
     private fun findDefaultGroup(message: MessageReceived): String? {
         val value = if (message.isGroupMsg) {
@@ -2036,22 +2165,31 @@ class DiceHelperImpl(
             val rest = tokens.drop(1).joinToString(" ").trim()
             if (rest.isEmpty()) return findGroupCommand("off", message)
             val group = functions.findEngine.resolveGroup(rest) ?: legacyRuleAlias(rest) ?: rest
-            return findGroupCommand(group, message)
+            return findGroupCommand(
+                group,
+                message,
+                functions.configStore.sentenceRuleQueryFailure
+            )
         }
         val split = raw.indexOfFirst { it == ':' || it == '：' }
         if (split > 0) {
             val rule = raw.substring(0, split).trim()
             val keyword = raw.substring(split + 1).trim()
             val group = functions.findEngine.resolveGroup(rule) ?: legacyRuleAlias(rule) ?: rule
-            return findCommand(if (keyword.isEmpty()) "#$group" else "#$group $keyword", message)
+            return findCommand(
+                if (keyword.isEmpty()) "#$group" else "#$group $keyword",
+                message,
+                functions.configStore.sentenceRuleQueryFailure
+            )
         }
-        return findCommand(raw, message)
+        return findCommand(raw, message, functions.configStore.sentenceRuleQueryFailure)
     }
 
     private fun legacyRuleAlias(rule: String): String? =
         when (DiceCalculation.toDBC(rule).trim().lowercase()) {
             "coc", "coc7" -> "COC7"
             "dnd", "dnd5e", "5e" -> "5E"
+            "5r", "dnd5r" -> "5R"
             "dg", "delta", "deltagreen", "三角洲" -> "DG"
             "fate", "命运", "圣杯" -> "FATE"
             "dx", "双重十字" -> "DX"
@@ -2061,15 +2199,80 @@ class DiceHelperImpl(
         }
 
 
-    private fun helpCommand(param: String): String {
-        val topic = param.trim().lowercase()
-        if (topic.isEmpty() || topic == "help" || topic == "helpdoc") {
-            return HELP_OVERVIEW
+    private fun helpCommand(
+        param: String,
+        store: stellaris.dice.diceFunction.help.HelpDocStore
+    ): String {
+        val raw = param.trim()
+        if (raw.isEmpty() || raw.equals("help", true) || raw.equals("helpdoc", true)) {
+            val extra = if (store.size() > 0) {
+                "\n自定义词条 ${store.size()} 条（用 .help 词条名 查看；.helpdoc 维护）"
+            } else {
+                ""
+            }
+            return HELP_OVERVIEW + extra
         }
+        val topic = raw.lowercase()
         if (topic.contains("find") || topic.contains("查询") || topic.contains("查找")) {
             return functions.findEngine.helpText()
         }
-        return HELP_TOPICS[topic] ?: "没有找到「${param.trim()}」的帮助条目。\n$HELP_OVERVIEW"
+        val matches = store.find(store.resolveRedirect(raw))
+        if (matches.isNotEmpty()) {
+            return matches.joinToString(DiceConstant.SYSTEM_SPLIT_STRING + "\n") {
+                "${it.keyword}：\n${store.expand(it.content)}"
+            }
+        }
+        return HELP_TOPICS[topic] ?: "没有找到「$raw」的帮助条目。\n$HELP_OVERVIEW"
+    }
+
+    private fun helpDocCommand(param: String, message: MessageReceived): String {
+        if (!message.isMaster) {
+            return MASTER_ONLY
+        }
+        val text = param.trim()
+        if (text.isEmpty()) {
+            return HELPDOC_USAGE
+        }
+        val amp = text.indexOf('&')
+        if (amp > 0) {
+            val key = text.substring(0, amp).trim()
+            val target = text.substring(amp + 1).trim()
+            return when {
+                functions.helpDocStore.validateKeyword(key) == null ->
+                    "关键词不能为空，且不得超过 ${DiceConstant.MAX_HELPDOC_KEYWORD_LENGTH} 个字符"
+
+                functions.helpDocStore.validateKeyword(target) == null ->
+                    "重定向目标不能为空，且不得超过 ${DiceConstant.MAX_HELPDOC_KEYWORD_LENGTH} 个字符"
+
+                functions.helpDocStore.addRedirect(key, target) ->
+                    "已设置自定义 helpdoc，关键词重定向：$key→$target"
+
+                else -> HELPDOC_USAGE
+            }
+        }
+        val split = text.split(Regex("\\s+"), limit = 2)
+        if (split.size == 2) {
+            val key = split[0].trim()
+            val content = split[1].trim()
+            return when {
+                functions.helpDocStore.validateKeyword(key) == null ->
+                    "关键词不能为空，且不得超过 ${DiceConstant.MAX_HELPDOC_KEYWORD_LENGTH} 个字符"
+
+                content.isEmpty() -> HELPDOC_USAGE
+
+                else -> {
+                    functions.helpDocStore.setEntry(key, content)
+                    "已设置自定义 helpdoc，关键词是：$key"
+                }
+            }
+        }
+        val removedEntry = functions.helpDocStore.deleteEntry(text)
+        val removedRedirect = functions.helpDocStore.deleteRedirect(text)
+        return if (removedEntry || removedRedirect) {
+            "已删除自定义 helpdoc 的关键词及其重定向：$text"
+        } else {
+            "没有找到自定义 helpdoc 关键词：$text"
+        }
     }
 
 
@@ -2111,20 +2314,36 @@ class DiceHelperImpl(
 
     private fun botCommand(param: String, message: MessageReceived): String {
         val action = param.trim().lowercase()
+        val config = functions.configStore
         val off = message.isGroupMsg &&
-            functions.configStore.readGroup(message.group, DiceConfigStore.BOT_OFF) == "1"
+            config.readGroup(message.group, DiceConfigStore.BOT_OFF) == "1"
         if (action.isEmpty()) {
-            return "群星 Stellaris Dice · ${BuildConfig.BUILD_ID}\n" +
+            return "${config.sentenceDiceRobotText}\n" +
                 "本群开关：${if (off) "关闭" else "开启"}\n" +
-                "用法：.bot on / .bot off（群主/群管理员/master）"
+                config.sentenceDiceHelpText
         }
         if (!message.isGroupMsg) return "只能在群内使用 .bot on/off"
         if (action != "on" && action != "off") return "用法：.bot on / .bot off"
-        if (!canAdministerGroup(message)) return SETTINGS_DENIED
-        functions.configStore.writeGroup(message.group, DiceConfigStore.BOT_OFF, if (action == "off") "1" else "0")
-        return if (action == "off") "本群骰子已关闭（.bot on 可重新打开）" else "本群骰子已开启"
+        if (!canAdministerGroup(message)) return config.sentenceDiceDenied
+        config.writeGroup(message.group, DiceConfigStore.BOT_OFF, if (action == "off") "1" else "0")
+        return if (action == "off") {
+            if (off) config.sentenceCloseAlready else config.sentenceDiceClose
+        } else {
+            if (!off) config.sentenceOpenAlready else config.sentenceDiceOpen
+        }
     }
 
+
+    private fun adminCommand(param: String, message: MessageReceived): String {
+        val tokens = param.trim().split("\\s+".toRegex()).filter { it.isNotEmpty() }
+        if (tokens.isEmpty() || tokens[0].equals("state", true)) {
+            return adminState(message)
+        }
+        if (tokens[0].equals("black", true)) {
+            return blackCommand(tokens.drop(1).joinToString(" "), message)
+        }
+        return "用法：.admin state\n.admin black add|rm|find|detail|count|list …（同 .black）"
+    }
 
     private fun adminState(message: MessageReceived): String {
         val mode = functions.configStore.ruleMode(
@@ -2152,7 +2371,7 @@ class DiceHelperImpl(
             val masters = masterQqList()
             return "本骰 master：${if (masters.isEmpty()) "未配置" else masters.joinToString("、")}\n" +
                 "你是 master：${if (message.isMaster) "是" else "否"}\n" +
-                "可用：.master rh on/off"
+                "可用：.master rh on/off、.master groupclr count|天数 [enforce]"
         }
         if (tokens[0].equals("rh", true)) {
             if (!message.isMaster) return SETTINGS_DENIED
@@ -2161,7 +2380,66 @@ class DiceHelperImpl(
             functions.configStore.writeGlobal("MASTER_RH", if (action == "on") "1" else "0")
             return "暗骰总开关已${if (action == "on") "开启" else "关闭"}"
         }
-        return "用法：.master / .master rh on/off"
+        if (tokens[0].equals("groupclr", true)) {
+            return masterGroupClr(tokens.drop(1), message)
+        }
+        return "用法：.master / .master rh on/off / .master groupclr count|天数 [enforce]"
+    }
+
+    private fun masterGroupClr(tokens: List<String>, message: MessageReceived): String {
+        if (!message.isMaster) {
+            return MASTER_ONLY
+        }
+        if (functions.groupRegistry.size() == 0) {
+            try {
+                intentEvent?.getGroupInfo()?.forEach {
+                    functions.groupRegistry.seed(listOf(it.id.toString() to it.groupName))
+                }
+            } catch (t: Throwable) {
+                stellaris.dice.diceFunction.DiceLogger.error("群列表初始化失败：$t", "GroupClr")
+            }
+        }
+        if (tokens.firstOrNull()?.equals("count", true) == true) {
+            val days = tokens.getOrNull(1)?.toIntOrNull() ?: 30
+            return "共 ${functions.groupRegistry.unused(days).size} 个群聊在 $days 天内未使用。"
+        }
+        val days = tokens.firstOrNull()?.toIntOrNull() ?: return MASTER_GROUPCLR_USAGE
+        if (days <= 0) {
+            return MASTER_GROUPCLR_USAGE
+        }
+        val enforce = tokens.any { it.equals("enforce", true) }
+        if (days < GROUP_CLEAN_MIN_DAYS && !enforce) {
+            return "危险操作！确定要清理 $days 天未使用本骰的群聊吗？\n" +
+                "确认请改用：.master groupclr $days enforce"
+        }
+        val avoid = functions.configStore.readGlobal(DiceConfigStore.AVOID_CLEARING_GROUP_LIST)
+            .split('\n', ',', '，')
+            .map { it.trim() }
+            .filter { it.isNotEmpty() }
+            .toSet()
+        val targets = functions.groupRegistry.unused(days).filter { it.id !in avoid }
+        val template = functions.configStore.readGlobal(DiceConfigStore.GROUP_CLEANED_SORRY_REPLY)
+            .replace("{days}", days.toString())
+        var dismissed = 0
+        targets.forEach { entry ->
+            if (template.isNotEmpty()) {
+                val context = MessageReceived.buildMessageEvent(
+                    instance = functions,
+                    content = "",
+                    group = entry.id,
+                    triggerId = botId,
+                    isGroupMsg = true
+                )
+                send(
+                    template,
+                    context,
+                    DiceMessageSource(DiceMessageSource.Type.GROUP, entry.id)
+                )
+            }
+            intentEvent?.setDismiss(entry.id)
+            dismissed++
+        }
+        return "本次共清理 $dismissed 个在 $days 天内不使用的群聊"
     }
 
 
@@ -2245,19 +2523,64 @@ class DiceHelperImpl(
 
 
     private fun systemCommand(param: String): String {
-        val sub = param.trim().substringBefore(' ').lowercase()
+        val tokens = param.trim().split("\\s+".toRegex()).filter { it.isNotEmpty() }
+        val sub = tokens.firstOrNull()?.lowercase() ?: ""
+        val argument = tokens.getOrNull(1)?.lowercase() ?: ""
         return when (sub) {
             "load" -> {
                 val files = functions.drawManager.reload()
                 val entries = functions.findEngine.reload()
                 functions.pluginLoader.reload()
+                functions.helpDocStore.reload()
+                val customJudges = functions.judgeRegistry.reload()
                 "已重新加载：牌堆 $files 个文件（${functions.drawManager.deckCount} 个牌堆）；" +
-                    "词条库 $entries 条；插件 ${functions.pluginLoader.pluginCount} 个"
+                    "词条库 $entries 条；插件 ${functions.pluginLoader.pluginCount} 个；" +
+                    "自定义帮助 ${functions.helpDocStore.size()} 条；自定义房规 $customJudges 条"
+            }
+
+            "save" -> {
+                functions.configStore.flushNow()
+                "已立即保存：配置、人物卡、先攻、对抗、围观、日志与牌堆进度均为写入即落盘"
+            }
+
+            "reload" -> if (intentEvent?.requestRestart() == true) {
+                "已请求宿主重启骰核"
+            } else {
+                "当前宿主不支持自动重启，请手动重启"
+            }
+
+            "split" -> when (argument) {
+                "", "status" -> "长消息分段：${if (systemSplitEnabled()) "开启" else "关闭"}（.system split on/off）"
+                "on", "开", "开启", "1" -> {
+                    functions.configStore.writeGlobal(DiceConfigStore.SYSTEM_SPLIT, "1")
+                    "长消息分段已开启"
+                }
+                "off", "关", "关闭", "0" -> {
+                    functions.configStore.writeGlobal(DiceConfigStore.SYSTEM_SPLIT, "0")
+                    "长消息分段已关闭"
+                }
+                else -> SYSTEM_USAGE
+            }
+
+            "censorship" -> when (argument) {
+                "", "status" -> functions.censorshipStore.status()
+                "on", "开", "开启", "1" -> {
+                    functions.configStore.writeGlobal(DiceConfigStore.SYSTEM_CENSORSHIP, "1")
+                    "敏感词审查已开启（" + functions.censorshipStore.status() + "）"
+                }
+                "off", "关", "关闭", "0" -> {
+                    functions.configStore.writeGlobal(DiceConfigStore.SYSTEM_CENSORSHIP, "0")
+                    "敏感词审查已关闭"
+                }
+                else -> SYSTEM_USAGE
             }
 
             else -> SYSTEM_USAGE
         }
     }
+
+    private fun systemSplitEnabled(): Boolean =
+        functions.configStore.readGlobal(DiceConfigStore.SYSTEM_SPLIT) == "1"
 
 
 
@@ -2278,7 +2601,7 @@ class DiceHelperImpl(
 
         if (functions.drawManager.find(kind.deckName) != null) {
             val drawn = try {
-                functions.drawManager.draw(message.group, kind.deckName, 1)
+                functions.drawManager.draw(deckKey(message), kind.deckName, 1)
             } catch (t: Throwable) {
                 null
             }
@@ -2337,12 +2660,25 @@ class DiceHelperImpl(
             value = tokens.getOrNull(2)?.lowercase()
         }
 
+        if (family == "dnd" && action == "exh") {
+            val card = functions.cardManager.getCurrentPlayer(message.triggerId, message.group)
+            val level = tokens.getOrNull(1)?.toIntOrNull()
+            if (level == null) {
+                return "当前力竭：${card.readProperty("力竭")}（用法：.dnd exh 0~6；5R 检定 -2×等级）"
+            }
+            card.setProperty("力竭", level.coerceIn(0, MAX_EXHAUSTION))
+            functions.cardManager.savePlayer(card)
+            return "力竭等级已设为：${card.readProperty("力竭")}（5R 检定 -2×等级）"
+        }
+
         val target = when {
             action in MODE_OFF_WORDS -> RuleMode.NONE
             family == "dnd" && action == "5e" -> RuleMode.DND5E
+            family == "dnd" && action == "5r" -> RuleMode.DND5R
             family == "dnd" && action == "3r" -> RuleMode.DND3R
             family == "dnd" && action in MODE_ON_WORDS -> when (value) {
                 "3r" -> RuleMode.DND3R
+                "5r" -> RuleMode.DND5R
                 "5e", null -> RuleMode.DND5E
                 else -> return usage
             }
@@ -2522,9 +2858,6 @@ class DiceHelperImpl(
         if (!message.isMaster) return MASTER_ONLY
         val tokens = param.trim().split("\\s+".toRegex()).filter { it.isNotEmpty() }
         if (tokens.isEmpty()) return BLACK_USAGE
-        if (tokens[0].equals("cloud", ignoreCase = true) || tokens[0] == "云" || tokens[0] == "云端") {
-            return "云端黑名单在群星基准模版中未启用（无网络路径）；本地黑名单请用 .black。"
-        }
         return when (tokens[0].lowercase()) {
             "add", "添加" -> {
                 if (tokens.size < 3) return BLACK_USAGE
@@ -2780,6 +3113,7 @@ class DiceHelperImpl(
         RuleMode.COC -> "CoC7"
         RuleMode.COC6 -> "CoC6"
         RuleMode.DND5E -> "DND 5e"
+        RuleMode.DND5R -> "DND 5r"
         RuleMode.DND3R -> "DND 3r"
         RuleMode.DG -> "Delta Green"
         RuleMode.FATE -> "FATE"
@@ -2793,6 +3127,37 @@ class DiceHelperImpl(
 
 
 
+
+
+    private fun renderSentence(template: String, vararg values: Pair<String, String>): String {
+        if (values.isEmpty()) {
+            return template
+        }
+        val replacements = values.toMap()
+        val builder = StringBuilder(template.length)
+        var index = 0
+        while (index < template.length) {
+            val open = template.indexOf('{', index)
+            if (open < 0) {
+                builder.append(template, index, template.length)
+                break
+            }
+            val close = template.indexOf('}', open + 1)
+            if (close < 0) {
+                builder.append(template, index, template.length)
+                break
+            }
+            builder.append(template, index, open)
+            val value = replacements[template.substring(open + 1, close)]
+            if (value == null) {
+                builder.append(template, open, close + 1)
+            } else {
+                builder.append(value)
+            }
+            index = close + 1
+        }
+        return builder.toString()
+    }
 
 
     private fun canAdministerGroup(message: MessageReceived): Boolean =
@@ -2812,18 +3177,46 @@ class DiceHelperImpl(
 
 
 
+    private fun deckKey(message: MessageReceived): String =
+        DeckIdentity.key(message.isGroupMsg, message.group, message.triggerId)
+
     private fun send(content: String, message: MessageReceived, target: DiceMessageSource): Boolean {
-        val text = content.trim()
-        if (text.isEmpty()) {
+        val trimmed = content.trim()
+        if (trimmed.isEmpty()) {
             return false
         }
         val bridge = intentEvent ?: return false
+        val censored = functions.censorshipStore.check(trimmed)
+        if (censored.blocked) {
+            stellaris.dice.diceFunction.DiceLogger.log(
+                "出口敏感词拦截：${censored.matched.joinToString("、")}",
+                "Censorship"
+            )
+            return false
+        }
+        val text = normalizeSystemSplit(censored.text)
+        if (text.isEmpty()) {
+            return false
+        }
         bridge.sendMessage(text, message, target)
 
         if (target.isGroup()) {
             functions.logManager.appendBot(target.id, botId, text)
         }
         return true
+    }
+
+    /** `.system split on` 时把系统分段符换成宿主认的多消息分隔符，否则并入换行。 */
+    private fun normalizeSystemSplit(text: String): String {
+        if (!text.contains(DiceConstant.SYSTEM_SPLIT_STRING)) {
+            return text
+        }
+        val replacement = if (functions.configStore.readGlobal(DiceConfigStore.SYSTEM_SPLIT) == "1") {
+            DiceConstant.USER_SPLIT_STRING
+        } else {
+            "\n"
+        }
+        return text.replace(DiceConstant.SYSTEM_SPLIT_STRING, replacement)
     }
 
 
@@ -3056,6 +3449,16 @@ class DiceHelperImpl(
         private const val OPPOSED_GROUP_ONLY = "本命令暂时只能群聊使用"
 
 
+        private const val MADNESS_CHECK_MIN_LOSS = 5
+
+        private const val MADNESS_RANDOM_RATIO = 0.2
+
+        private val INSIGHT_ATTRIBUTES = listOf("智力灵感", "智力", "灵感")
+
+        private const val NO_INSIGHT_NOTE =
+            "（人物卡上没有「智力灵感」，跳过灵感检定）"
+
+
         private const val INITIATIVE_DICE_FACES = 20
 
         private const val INITIATIVE_GROUP_ONLY = "ri 指令仅限群聊使用"
@@ -3147,12 +3550,25 @@ class DiceHelperImpl(
 
 
         private const val NAME_CONTENT_MISSING =
-            "随机名字库尚未随包（需把 content/draw 播种到实例目录）；用法：.name [cn/jp/en] [数量]"
+            "随机名字库尚未随包（需把 content/draw 播种到实例目录）；用法：.name [cn/jp/en/encn] [数量]"
 
         private const val DEFAULT_NAME_COUNT = 10
         private const val MAX_NAME_COUNT = 20
 
-        private const val SYSTEM_USAGE = "用法：.system load（重新加载牌堆文件）"
+        private const val SYSTEM_USAGE =
+            "用法：\n" +
+                ".system load            重新加载牌堆 / 词条 / 插件 / 自定义帮助\n" +
+                ".system save            立即落盘并回报\n" +
+                ".system reload          请求宿主重启骰核\n" +
+                ".system split on|off    长消息分段开关（不带参数=查看状态）\n" +
+                ".system censorship on|off  敏感词审查开关（不带参数=查看状态）"
+
+        private const val HELPDOC_USAGE =
+            "用法（仅 master）：\n" +
+                ".helpdoc 词条名 词条内容    添加/覆盖自定义词条\n" +
+                ".helpdoc 词条名&目标词条    让 .help 词条名 重定向到目标词条\n" +
+                ".helpdoc 词条名             删除词条与重定向\n" +
+                "词条名最长 ${DiceConstant.MAX_HELPDOC_KEYWORD_LENGTH} 个字符"
 
         private const val REPLY_USAGE =
             "用法：.reply on/off（全局，master） / .reply on/off this（本群，群管理） / .reply list"
@@ -3163,6 +3579,13 @@ class DiceHelperImpl(
         private const val SETTINGS_DENIED = "只有群主、群管理员或 master 能改本群设置"
 
         private const val MASTER_ONLY = "本命令只能 master 使用"
+
+        private const val GROUP_CLEAN_MIN_DAYS = 30
+
+        private const val MASTER_GROUPCLR_USAGE =
+            "用法：\n" +
+                ".master groupclr count [天数]      查看有多少群在 N 天内未使用\n" +
+                ".master groupclr 天数 [enforce]    清理 N 天内未使用的群（<30 天需加 enforce）"
 
         private const val BLACK_USAGE =
             "用法：.black add user|group <号码> [理由] / rm <uuid> / find <号码> / " +
@@ -3191,7 +3614,10 @@ class DiceHelperImpl(
         private const val AUTO_AGREE_GROUP = "AUTO_AGREE_GROUP"
 
         private const val DND_USAGE =
-            "用法：.dnd mode on 5e / .dnd mode on 3r / .dnd mode off（不带参数=查看当前模式）"
+            "用法：.dnd mode on 5e|5r|3r / .dnd mode off（不带参数=查看当前模式）\n" +
+                "力竭：.dnd exh 0~6（5R 检定 -2×等级）"
+
+        private const val MAX_EXHAUSTION = 6
 
         private const val COC_USAGE = "用法：.coc mode on / .coc mode off（不带参数=查看当前模式）"
 
@@ -3291,18 +3717,17 @@ class DiceHelperImpl(
 
 
 
-        private val EXTRA_COMMANDS = listOf("blackcloud")
-
-
-
-
-
-
         private fun isCoreCommand(command: String): Boolean =
-            EXTRA_COMMANDS.any { it.equals(command, ignoreCase = true) } ||
-                DiceCommandDecoder.isBuiltInCommand(command)
+            DiceCommandDecoder.isBuiltInCommand(command)
 
-        private fun stripLeadingTrigger(content: String): String =
-            content.removePrefix(".").removePrefix("。")
+
+
+
+
+
+        private const val DEFAULT_PREFIX = ".。!！"
+
+        private fun stripLeadingTrigger(content: String, prefix: String): String =
+            if (content.isNotEmpty() && prefix.indexOf(content[0]) >= 0) content.substring(1) else content
     }
 }

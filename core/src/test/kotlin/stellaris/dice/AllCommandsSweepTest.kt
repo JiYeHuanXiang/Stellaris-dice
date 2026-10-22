@@ -72,7 +72,7 @@ class AllCommandsSweepTest {
         val helper = DiceManager.createDice("10000", event)
 
         val extras = listOf(
-            "rb", "rp", "find", "查询", "查找", "blackcloud",
+            "rb", "rp", "find", "查询", "查找",
             "dg", "setdg", "fate", "setfate", "wx", "setwx", "cpr", "setcpr", "setdx"
         )
         val defects = ArrayList<String>()
@@ -119,7 +119,6 @@ class AllCommandsSweepTest {
         assertTrue(send(".rp 2").contains("惩罚d100"), "`.rp 2` 应是普通惩罚骰")
         assertTrue(send(".dg").contains("当前规则模式"), "`.dg` 应回模式状态")
         assertTrue(send(".setdg").contains("当前规则模式"), "`.setdg` 与 `.dg` 同义")
-        assertTrue(send(".blackcloud").contains("未启用"), "云端能力应是明确的注释态提示")
         assertTrue(send(".fate").contains("f="), "`.fate` 该真掷")
     }
 

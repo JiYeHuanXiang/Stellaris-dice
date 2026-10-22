@@ -62,6 +62,17 @@ class DrawFileManagerTest {
 
 
     @Test
+    fun `下划线开头的文件整体隐藏`() {
+        writeDeck("_secret.json", """{"暗堆": ["暗"]}""")
+        writeDeck("public.json", """{"明堆": ["明"]}""")
+        val manager = DrawFileManager(tempDir.toString())
+
+        assertEquals(listOf("明堆"), manager.titles(), "隐藏文件里的堆不该出现在清单")
+        assertEquals("暗", manager.find("暗堆")!!.draw(true), "但按名字仍可抽")
+    }
+
+
+    @Test
     fun `坏文件跳过 其余照常`() {
         writeDeck("bad.json", "{ 这不是合法 JSON")
         writeDeck("good.json", """{"好堆": ["a"]}""")
@@ -135,6 +146,46 @@ class DrawFileManagerTest {
         manager.draw("20002", "小堆", 2)
         assertEquals(0, manager.remain("20002", "小堆"))
         assertEquals(2, manager.remain("30003", "小堆"), "另一个群还是满的")
+    }
+
+
+    @Test
+    fun `私聊进度按人分开`() {
+        writeDeck("d1.json", """{"小堆": ["甲","乙"]}""")
+        val manager = DrawFileManager(tempDir.toString())
+
+        manager.draw("PERSON:10001", "小堆", 2)
+        assertEquals(0, manager.remain("PERSON:10001", "小堆"))
+        assertEquals(2, manager.remain("PERSON:10002", "小堆"), "另一个私聊用户不受影响")
+    }
+
+
+    @Test
+    fun `抽取进度重启后保持`() {
+        writeDeck("d1.json", """{"小堆": ["甲","乙","丙"]}""")
+        val first = DrawFileManager(tempDir.toString())
+        first.draw("GROUP:20002", "小堆", 2)
+        assertEquals(1, first.remain("GROUP:20002", "小堆"))
+        val stateFile = java.io.File(tempDir.toFile(), "data/deckstate.json")
+        assertTrue(stateFile.isFile, "进度文件应已落盘：${stateFile.absolutePath}")
+
+        val restarted = DrawFileManager(tempDir.toString())
+        assertEquals(1, restarted.remain("GROUP:20002", "小堆"), "重启后余量要接上")
+        val last = restarted.draw("GROUP:20002", "小堆", 1)!!.single()
+        assertEquals(0, restarted.remain("GROUP:20002", "小堆"))
+        assertTrue(last in setOf("甲", "乙", "丙"))
+    }
+
+
+    @Test
+    fun `重置后落盘`() {
+        writeDeck("d1.json", """{"小堆": ["甲","乙"]}""")
+        val manager = DrawFileManager(tempDir.toString())
+        manager.draw("GROUP:20002", "小堆", 2)
+        manager.reset("GROUP:20002", "小堆")
+
+        val restarted = DrawFileManager(tempDir.toString())
+        assertEquals(2, restarted.remain("GROUP:20002", "小堆"))
     }
 
 

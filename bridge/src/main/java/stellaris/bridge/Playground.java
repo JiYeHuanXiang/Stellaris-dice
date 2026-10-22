@@ -243,6 +243,12 @@ public final class Playground {
         }
 
         @Override
+        public boolean requestRestart() {
+            DiceIntentEvent d = delegate;
+            return d != null && d.requestRestart();
+        }
+
+        @Override
         public void setDismiss(String groupId,
                                kotlin.jvm.functions.Function1<? super Boolean, kotlin.Unit> callback) {
             if (mineGroup(groupId)) { st().virtualIntent.setDismiss(groupId, callback); return; }

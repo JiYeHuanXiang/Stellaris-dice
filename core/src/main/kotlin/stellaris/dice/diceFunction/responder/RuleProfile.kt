@@ -149,6 +149,33 @@ private object Dnd5eEngine : CheckEngine {
     }
 }
 
+private object Dnd5rEngine : CheckEngine {
+
+    override val mode = RuleMode.DND5R
+
+    override fun resolveTarget(args: CheckArguments, base: Int, rule: RollRules): Int =
+        (base + (args.targetDelta ?: 0)).coerceAtLeast(0)
+
+    override fun rollExpression(args: CheckArguments, rule: RollRules, target: Int): String = when {
+        rule.isBonusDie -> "2d20k1"
+        rule.isPenaltyDie -> "2d20q1"
+        else -> "1d20"
+    }
+
+    override fun level(roll: Int, target: Int, houseRule: CocHouseRule): CheckLevel = when {
+        roll == 20 -> CheckLevel.CRITICAL_SUCCESS
+        roll == 1 -> CheckLevel.CRITICAL_FAILURE
+        roll >= target -> CheckLevel.SUCCESS
+        else -> CheckLevel.FAILURE
+    }
+
+    override fun plainBonusHint(bonus: Boolean): String = if (bonus) {
+        "DND(5R) 没有 d100 奖惩骰：优势请用 .rab 2 目标值（2d20 取高），单纯骰点请用 .r 1d20"
+    } else {
+        "DND(5R) 没有 d100 奖惩骰：劣势请用 .rap 2 目标值（2d20 取低），单纯骰点请用 .r 1d20"
+    }
+}
+
 private object Dnd3rEngine : CheckEngine {
 
     override val mode = RuleMode.DND3R
@@ -314,7 +341,7 @@ data class RuleProfile(val mode: RuleMode, val engine: CheckEngine) {
     fun defaultExpression(setNumber: Int): String = when (mode) {
         RuleMode.NONE -> "1d$setNumber"
         RuleMode.COC, RuleMode.COC6, RuleMode.DG -> "1d100"
-        RuleMode.DND5E, RuleMode.DND3R -> "1d20"
+        RuleMode.DND5E, RuleMode.DND5R, RuleMode.DND3R -> "1d20"
         RuleMode.FATE -> "f"
         RuleMode.DX -> "1c10"
         RuleMode.WX -> "1a10"
@@ -333,7 +360,7 @@ data class RuleProfile(val mode: RuleMode, val engine: CheckEngine) {
                 RuleMode.FATE -> "${count}f"
                 RuleMode.DX -> "${count}c10"
                 RuleMode.WX -> "${count}a10"
-                RuleMode.DND5E, RuleMode.DND3R -> "${count}d20"
+                RuleMode.DND5E, RuleMode.DND5R, RuleMode.DND3R -> "${count}d20"
                 RuleMode.CPR -> "${count}d10"
                 RuleMode.COC, RuleMode.COC6, RuleMode.DG -> "${count}d100"
                 RuleMode.NONE -> "${count}d$setNumber"
@@ -352,6 +379,7 @@ data class RuleProfile(val mode: RuleMode, val engine: CheckEngine) {
             RuleMode.COC -> RuleProfile(mode, CocEngine)
             RuleMode.COC6 -> RuleProfile(mode, CocEngine)
             RuleMode.DND5E -> RuleProfile(mode, Dnd5eEngine)
+            RuleMode.DND5R -> RuleProfile(mode, Dnd5rEngine)
             RuleMode.DND3R -> RuleProfile(mode, Dnd3rEngine)
             RuleMode.DG -> RuleProfile(mode, DgEngine)
             RuleMode.FATE -> RuleProfile(mode, FateEngine)

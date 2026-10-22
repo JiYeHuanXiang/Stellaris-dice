@@ -60,7 +60,8 @@ object CardBuilder {
             PlayerCardData.RuleType.COC7 -> buildCoc(card, force)
 
             PlayerCardData.RuleType.DND3R,
-            PlayerCardData.RuleType.DND5E -> buildDnd(card, force)
+            PlayerCardData.RuleType.DND5E,
+            PlayerCardData.RuleType.DND5R -> buildDnd(card, force)
 
             else -> null
         }
@@ -98,7 +99,9 @@ object CardBuilder {
         setIf(card, "dndmaxhp", maxHp, force)
         setIf(card, "ac", ac, force)
         setIf(card, "体力", maxHp, force)
-        if (card.rule == PlayerCardData.RuleType.DND5E) {
+        if (card.rule == PlayerCardData.RuleType.DND5E ||
+            card.rule == PlayerCardData.RuleType.DND5R
+        ) {
             setIf(card, "pp", pp, force)
         }
 
@@ -106,7 +109,9 @@ object CardBuilder {
             val value = card.readProperty(name)
             "$name$value(${modifierText(modifier(value))})"
         }
-        val derived = if (card.rule == PlayerCardData.RuleType.DND5E) {
+        val derived = if (card.rule == PlayerCardData.RuleType.DND5E ||
+            card.rule == PlayerCardData.RuleType.DND5R
+        ) {
             "血量上限$maxHp 无甲AC$ac 被动察觉$pp"
         } else {
             "血量上限$maxHp 无甲AC$ac"

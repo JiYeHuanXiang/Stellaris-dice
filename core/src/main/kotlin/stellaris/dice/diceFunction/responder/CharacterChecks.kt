@@ -142,9 +142,15 @@ object CharacterChecks {
         request: SanRequest,
         target: Int,
         houseRule: CocHouseRule = CocHouseRule.DEFAULT
+    ): SanResult? = sanity(request, target, stellaris.dice.diceFunction.judge.BuiltinJudgeRule(houseRule))
+
+    fun sanity(
+        request: SanRequest,
+        target: Int,
+        judge: stellaris.dice.diceFunction.judge.JudgeRule
     ): SanResult? {
         val roll = DiceCalculation.rollCalculation("1d100").intNumber
-        val level = CheckRule.level(roll, target, houseRule)
+        val level = judge.judge(roll, target)
         val loss = try {
             when (level) {
 

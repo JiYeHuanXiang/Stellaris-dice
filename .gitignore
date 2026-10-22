@@ -64,6 +64,5 @@ nul
 !host-pc/
 !host-android/
 !bridge/
-!presence/
 !content/
 !LICENSE

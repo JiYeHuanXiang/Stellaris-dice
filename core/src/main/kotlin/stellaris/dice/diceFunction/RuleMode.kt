@@ -42,6 +42,9 @@ enum class RuleMode(val word: String) {
     DND5E("dnd5e"),
 
 
+    DND5R("dnd5r"),
+
+
     DND3R("dnd3r"),
 
 

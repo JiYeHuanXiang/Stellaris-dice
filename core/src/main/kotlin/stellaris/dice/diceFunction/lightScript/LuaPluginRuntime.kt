@@ -69,7 +69,12 @@ data class LuaMessage(
     val isAtMe: Boolean = false,
     val regexMiddle: String = "",
     val regexFinds: List<String> = emptyList()
-)
+) {
+
+    /** 牌堆进度作用域：群聊按群、私聊按人。 */
+    val identityKey: String
+        get() = stellaris.dice.diceFunction.draw.DeckIdentity.key(isGroup, groupId, senderId)
+}
 
 /**
  * 单个 `[[lua]]` 条目的运行实例。解析 `commands` / `msg_order` / `replaces`
@@ -441,7 +446,7 @@ class LuaPluginRuntime(
         draw.set("open", function { args ->
             val name = args.arg(1).tojstring()
             val deck = loadedDecks[name]?.clone()?.let { DrawDeckHandle(it) }
-                ?: host.openDeck(activeMessage.get()?.groupId.orEmpty(), name)
+                ?: host.openDeck(activeMessage.get()?.identityKey.orEmpty(), name)
             if (deck == null) {
                 LuaValue.NIL
             } else {

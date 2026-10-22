@@ -72,8 +72,25 @@ class RespondContext(
 
     val houseRule: CocHouseRule = CocHouseRule.DEFAULT,
 
+    /** 当前房规（内置或自定义）；为空时按 [houseRule] 走内置档位。 */
+    val judgeRule: stellaris.dice.diceFunction.judge.JudgeRule? = null,
+
     val ruleMode: stellaris.dice.diceFunction.RuleMode = stellaris.dice.diceFunction.RuleMode.NONE
 ) {
+
+
+    /** 这条检定该用的判档规则：不跟随房规的指令恒用规则书。 */
+    fun judgeFor(rule: RollRules): stellaris.dice.diceFunction.judge.JudgeRule =
+        if (!rule.followsHouseRule) {
+            stellaris.dice.diceFunction.judge.BuiltinJudgeRule(CocHouseRule.RULEBOOK)
+        } else {
+            judgeForCheck()
+        }
+
+
+    /** 不区分指令的判档规则（`.sc` 等固定走房规的路径）。 */
+    fun judgeForCheck(): stellaris.dice.diceFunction.judge.JudgeRule =
+        judgeRule ?: stellaris.dice.diceFunction.judge.BuiltinJudgeRule(houseRule)
 
 
 
@@ -97,6 +114,7 @@ class RespondContext(
         cardProvider = cardProvider,
         rollRecorder = rollRecorder,
         houseRule = houseRule,
+        judgeRule = judgeRule,
         ruleMode = ruleMode
     )
 
@@ -124,6 +142,7 @@ class RespondContext(
             cardProvider = cardProvider,
             rollRecorder = rollRecorder,
             houseRule = houseRule,
+        judgeRule = judgeRule,
             ruleMode = ruleMode
         )
     }
@@ -144,6 +163,7 @@ class RespondContext(
         cardProvider = cardProvider,
         rollRecorder = recorder,
         houseRule = houseRule,
+        judgeRule = judgeRule,
         ruleMode = ruleMode
     )
 

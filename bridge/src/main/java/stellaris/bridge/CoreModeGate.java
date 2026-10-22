@@ -431,7 +431,6 @@ public final class CoreModeGate {
                                 try {
                                     extra.addAll(dice.getDiceFunction()
                                             .getDiceCustomFileLoader().getCustomCommands());
-                                    extra.add("blackcloud");
 
 
                                     extra.add("find");

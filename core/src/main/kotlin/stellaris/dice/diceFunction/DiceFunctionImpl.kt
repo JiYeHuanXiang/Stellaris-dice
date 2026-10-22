@@ -84,6 +84,9 @@ class DiceFunctionImpl(private val rootPath: String) : DiceFunctions {
 
     val logManager = stellaris.dice.diceFunction.log.LogManager(rootPath)
 
+
+    val helpDocStore = stellaris.dice.diceFunction.help.HelpDocStore(rootPath)
+
     override fun root(): String = rootPath
 
     override val diceConfig: DiceConfig get() = configStore
@@ -105,6 +108,12 @@ class DiceFunctionImpl(private val rootPath: String) : DiceFunctions {
     val blacklistStore = stellaris.dice.diceFunction.ops.BlacklistStore(rootPath)
 
     val guardStore = stellaris.dice.diceFunction.ops.GuardStore(rootPath)
+
+    val censorshipStore = stellaris.dice.diceFunction.ops.CensorshipStore(configStore)
+
+    val groupRegistry = stellaris.dice.diceFunction.ops.GroupRegistry(rootPath)
+
+    val judgeRegistry = stellaris.dice.diceFunction.judge.JudgeRegistry(rootPath)
 
     val recoveryManager = stellaris.dice.diceFunction.ops.RecoveryManager(rootPath)
 

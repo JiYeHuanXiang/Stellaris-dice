@@ -45,6 +45,12 @@ object DiceResponder {
 
     private const val MAX_REPEAT_TIMES = 10
 
+    private const val EXHAUSTION_ATTRIBUTE = "力竭"
+
+    private const val MAX_EXHAUSTION = 6
+
+    private const val EXHAUSTION_PENALTY = 2
+
 
     private const val MULTI_ROLL_DETAIL_THRESHOLD = 50
 
@@ -220,7 +226,7 @@ object DiceResponder {
             ?: return context.sentences.sentenceIllegal
 
         val expression = checkExpression(rule, arguments.bonusPenaltyCount)
-        val houseRule = houseRuleOf(rule, context.houseRule)
+        val judge = context.judgeFor(rule)
         val rolls = try {
             List(arguments.repeatTimes) {
                 DiceCalculation.rollCalculation(expression, RollOptions()).intNumber
@@ -230,13 +236,14 @@ object DiceResponder {
         }
         rolls.forEach { context.rollRecorder?.invoke(it) }
 
-        val levels = rolls.map { CheckRule.level(it, target, houseRule) }
+        val levels = rolls.map { judge.judge(it, target) }
         val rollSegment = buildRollSegment(
             expression,
             rolls.map { it.toString() },
             levels,
             target.toString(),
-            showTarget = true
+            showTarget = true,
+            context.sentences
         )
         return assembleCheckReply(context, arguments, rollSegment, if (rolls.size == 1) levels[0] else null)
     }
@@ -260,7 +267,14 @@ object DiceResponder {
         }
         val profile = RuleProfile.of(context.ruleMode)
         val engine = profile.engine
-        val target = engine.resolveTarget(arguments, rawBase, rule)
+        val exhaustion = if (context.ruleMode == RuleMode.DND5R) {
+            context.card.readProperty(EXHAUSTION_ATTRIBUTE).coerceIn(0, MAX_EXHAUSTION) * EXHAUSTION_PENALTY
+        } else {
+            0
+        }
+        // 5R 的 target 是“掷到多少算成功”，力竭提高它（等价于检定 -2/级）。
+        val base = rawBase + exhaustion
+        val target = engine.resolveTarget(arguments, base, rule)
         val expression = engine.rollExpression(arguments, rule, target)
         val houseRule = houseRuleOf(rule, context.houseRule)
         val results = try {
@@ -271,13 +285,14 @@ object DiceResponder {
         results.forEach { context.rollRecorder?.invoke(it.value) }
 
         val levels = results.map { engine.level(it.value, target, houseRule) }
-        val targetText = engine.displayTarget(arguments, target, rule, rawBase)
+        val targetText = engine.displayTarget(arguments, target, rule, base)
         val rollSegment = buildRollSegment(
             expression,
             results.map { engine.displayRoll(it) },
             levels,
             targetText,
-            engine.showsTarget
+            engine.showsTarget,
+            context.sentences
         )
         return assembleCheckReply(context, arguments, rollSegment, if (results.size == 1) levels[0] else null)
     }
@@ -287,14 +302,15 @@ object DiceResponder {
         rolls: List<String>,
         levels: List<CheckLevel>,
         targetText: String,
-        showTarget: Boolean
+        showTarget: Boolean,
+        sentences: RollSentences
     ): String {
         val suffix = if (showTarget) "/$targetText" else ""
         return if (rolls.size == 1) {
             "$expression=${rolls[0]}$suffix"
         } else {
             rolls.indices.joinToString("\n") { index ->
-                "$expression=${rolls[index]}$suffix ${levels[index].text}"
+                "$expression=${rolls[index]}$suffix ${levels[index].label(sentences)}"
             }
         }
     }
@@ -306,7 +322,7 @@ object DiceResponder {
         singleLevel: CheckLevel?
     ): String {
         if (context.simplify) {
-            return if (singleLevel != null) "$rollSegment ${singleLevel.text}" else rollSegment
+            return if (singleLevel != null) "$rollSegment ${singleLevel.label(context.sentences)}" else rollSegment
         }
 
         val prefix = if (arguments.repeatTimes == 1) {
@@ -331,7 +347,7 @@ object DiceResponder {
         )
         context.template.add("roll", rollSegment).addTailIfNotExist = true
         if (singleLevel != null) {
-            context.template.add("success", singleLevel.text)
+            context.template.add("success", singleLevel.label(context.sentences))
         }
         return prefix
     }
@@ -381,7 +397,7 @@ object DiceResponder {
         val profile = RuleProfile.of(mode)
         val engine = profile.engine
         val expression = when (mode) {
-            RuleMode.DND5E, RuleMode.DND3R -> "1d20"
+            RuleMode.DND5E, RuleMode.DND5R, RuleMode.DND3R -> "1d20"
             RuleMode.DG -> "1d100"
             RuleMode.CPR -> "1d10"
             else -> "1d100"
@@ -398,20 +414,20 @@ object DiceResponder {
         }
         context.rollRecorder?.invoke(firstRoll)
         context.rollRecorder?.invoke(lastRoll)
-        val firstLevel = if (mode in setOf(RuleMode.DND5E, RuleMode.DND3R, RuleMode.DG, RuleMode.CPR)) {
+        val firstLevel = if (mode in setOf(RuleMode.DND5E, RuleMode.DND5R, RuleMode.DND3R, RuleMode.DG, RuleMode.CPR)) {
             engine.level(firstRoll, first.target, houseRule)
         } else {
-            CheckRule.level(firstRoll, first.target, houseRule)
+            context.judgeFor(rule).judge(firstRoll, first.target)
         }
-        val lastLevel = if (mode in setOf(RuleMode.DND5E, RuleMode.DND3R, RuleMode.DG, RuleMode.CPR)) {
+        val lastLevel = if (mode in setOf(RuleMode.DND5E, RuleMode.DND5R, RuleMode.DND3R, RuleMode.DG, RuleMode.CPR)) {
             engine.level(lastRoll, last.target, houseRule)
         } else {
-            CheckRule.level(lastRoll, last.target, houseRule)
+            context.judgeFor(rule).judge(lastRoll, last.target)
         }
 
         val result = "先手(${first.name})：${first.skill} $expression=$firstRoll/${first.target} " +
-            "${firstLevel.text}\n后手(${last.name})：${last.skill} $expression=$lastRoll/${last.target} " +
-            lastLevel.text
+            "${firstLevel.label(context.sentences)}\n后手(${last.name})：${last.skill} $expression=$lastRoll/${last.target} " +
+            lastLevel.label(context.sentences)
         if (context.simplify) {
             return result
         }

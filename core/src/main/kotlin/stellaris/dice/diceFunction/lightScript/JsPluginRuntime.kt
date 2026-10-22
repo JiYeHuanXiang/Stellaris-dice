@@ -48,7 +48,12 @@ class JsPluginRuntime(
         val groupId: String,
         val isGroup: Boolean,
         val autoName: String
-    )
+    ) {
+
+        /** 牌堆进度作用域：群聊按群、私聊按人。 */
+        val identityKey: String
+            get() = stellaris.dice.diceFunction.draw.DeckIdentity.key(isGroup, groupId, senderId)
+    }
 
     inner class Lib(private val context: JsContext) {
         fun roll(expression: String): Int = try {
@@ -63,7 +68,7 @@ class JsPluginRuntime(
             ""
         }
 
-        fun draw(name: String): String? = host.draw(context.groupId, name)
+        fun draw(name: String): String? = host.draw(context.identityKey, name)
 
         fun jrrp(salt: String?): Int {
             val seed = "${LocalDate.now()}:${context.senderId}:${salt ?: ""}".hashCode().toLong()
@@ -155,7 +160,7 @@ class JsPluginRuntime(
 
     inner class Sdk(private val context: JsContext) {
         fun roll(expression: String): Int = Lib(context).roll(expression)
-        fun draw(name: String): String? = host.draw(context.groupId, name)
+        fun draw(name: String): String? = host.draw(context.identityKey, name)
         fun getSender(): String = context.senderId
     }
 

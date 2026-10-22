@@ -12,13 +12,32 @@ class DrawData(
     val hidden: Boolean = false
 ) : Serializable {
 
-    private companion object {
-        const val DEFAULT_WEIGHT = 1.0
-        const val MAX_DECIMAL_SCALE = 6
-        const val MAX_SINGLE_WEIGHT = 1_000_000_000L
+    companion object {
+        private const val DEFAULT_WEIGHT = 1.0
+        private const val MAX_DECIMAL_SCALE = 6
+        private const val MAX_SINGLE_WEIGHT = 1_000_000_000L
 
-        val random: Random
+        private val random: Random
             get() = DiceRandomManager.randomInstance
+
+        /** 从快照恢复；权重按快照里的剩余值原样重建。 */
+        fun restore(
+            parent: DrawFile?,
+            title: ArrayList<String>,
+            hidden: Boolean,
+            entries: List<Pair<String, Long>>
+        ): DrawData {
+            val deck = if (parent == null) {
+                DrawData(title = title, hidden = hidden)
+            } else {
+                DrawData(parent = parent, title = title, hidden = hidden)
+            }
+            entries.forEach { (text, weight) ->
+                deck.appendData(text, weight.coerceAtLeast(1L).toString())
+            }
+            deck.freshPriorities()
+            return deck
+        }
     }
 
     val format get() = parent.format
@@ -94,6 +113,10 @@ class DrawData(
         title.any { it.equals(name, ignoreCase = true) }
 
     fun isEmpty(): Boolean = prioritiesSum == 0L
+
+    /** 抽取进度快照：每条形如 `(内容, 剩余权重)`，可直接落盘。 */
+    fun snapshot(): List<Pair<String, Long>> =
+        data.indices.map { data[it] to priorities[it] }
 
     private fun resolveWeight(raw: String): Double {
         val expression = raw.trim()

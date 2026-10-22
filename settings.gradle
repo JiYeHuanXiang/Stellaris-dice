@@ -9,12 +9,6 @@ include 'core'
 project(':core').projectDir = file('core')
 
 
-include 'presence'
-project(':presence').projectDir = file('presence')
-
-
-
-
 include 'bridge'
 project(':bridge').projectDir = file('bridge')
 

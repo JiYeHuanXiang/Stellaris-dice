@@ -154,6 +154,7 @@ class PlayerCardData {
         COC7("coc7"),
         DND3R("dnd3r"),
         DND5E("dnd5e"),
+        DND5R("dnd5r"),
         DX("dx"),
         FATE("fate"),
         DG("dg"),

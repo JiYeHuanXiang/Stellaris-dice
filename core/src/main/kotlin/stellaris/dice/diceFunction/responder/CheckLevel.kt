@@ -29,7 +29,6 @@ package stellaris.dice.diceFunction.responder
 
 enum class CheckLevel(val text: String) {
 
-
     CRITICAL_SUCCESS("大成功"),
 
 
@@ -51,6 +50,9 @@ enum class CheckLevel(val text: String) {
     val isSuccess: Boolean
         get() = this == CRITICAL_SUCCESS || this == EXTREME_SUCCESS ||
             this == HARD_SUCCESS || this == SUCCESS
+
+    val isFailure: Boolean
+        get() = !isSuccess
 }
 
 
@@ -76,6 +78,17 @@ enum class CheckLevel(val text: String) {
 
 
 
+
+
+/** 按配置取成功级别的写法；配置为空时回落到枚举内置文案。 */
+fun CheckLevel.label(sentences: RollSentences): String = when (this) {
+    CheckLevel.CRITICAL_SUCCESS -> sentences.sentenceBigSuccess.ifBlank { text }
+    CheckLevel.EXTREME_SUCCESS -> sentences.sentenceVeryHardSuccess.ifBlank { text }
+    CheckLevel.HARD_SUCCESS -> sentences.sentenceHardSuccess.ifBlank { text }
+    CheckLevel.SUCCESS -> sentences.sentenceSuccess.ifBlank { text }
+    CheckLevel.FAILURE -> sentences.sentenceFailure.ifBlank { text }
+    CheckLevel.CRITICAL_FAILURE -> sentences.sentenceBigFailure.ifBlank { text }
+}
 
 
 enum class CocHouseRule(val code: Int, val description: String) {

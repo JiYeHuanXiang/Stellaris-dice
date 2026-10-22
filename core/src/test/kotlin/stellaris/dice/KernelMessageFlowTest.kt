@@ -614,6 +614,87 @@ class KernelMessageFlowTest {
 
 
     @Test
+    fun `sc 损失达到五分之一 进入不定时疯狂`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(50)))
+        val (helper, event) = boot()
+
+        helper.eventMessageReceive(inbound(helper, ".st san10"))
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".sc 1/4"))
+        assertEquals(
+            "甲的理智检定:1d100=51/10 失败，理智减少4点（10→6）\n（sc）掉san达到1/5，不定时疯狂",
+            event.sent[0]
+        )
+    }
+
+
+    @Test
+    fun `sc 归零进入永久疯狂`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(50)))
+        val (helper, event) = boot()
+
+        helper.eventMessageReceive(inbound(helper, ".st san1"))
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".sc 1/1"))
+        assertEquals(
+            "甲的理智检定:1d100=51/1 失败，理智减少1点（1→0）\n（sc）掉san为0，永久疯狂",
+            event.sent[0]
+        )
+    }
+
+
+    @Test
+    fun `sc 掉五点到灵感成功 进入临时疯狂`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(70, 0)))
+        val (helper, event) = boot()
+
+        helper.eventMessageReceive(inbound(helper, ".st san60"))
+        helper.eventMessageReceive(inbound(helper, ".st 智力50"))
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".sc 1/6"))
+        assertEquals(
+            "甲的理智检定:1d100=71/60 失败，理智减少6点（60→54）\n" +
+                "智力灵感检定 1d100=1/50 （sc）掉san超过5，临时疯狂",
+            event.sent[0]
+        )
+    }
+
+
+    @Test
+    fun `sc 掉五点到灵感失败 傻人有傻福`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(70, 60)))
+        val (helper, event) = boot()
+
+        helper.eventMessageReceive(inbound(helper, ".st san60"))
+        helper.eventMessageReceive(inbound(helper, ".st 智力50"))
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".sc 1/6"))
+        assertEquals(
+            "甲的理智检定:1d100=71/60 失败，理智减少6点（60→54）\n" +
+                "智力灵感检定 1d100=61/50 （sc）掉san超过5，灵感失败：傻人有傻福",
+            event.sent[0]
+        )
+    }
+
+
+    @Test
+    fun `sc 没有灵感属性时跳过灵感检定`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(70)))
+        val (helper, event) = boot()
+
+        helper.eventMessageReceive(inbound(helper, ".pc new 无灵感卡"))
+        helper.eventMessageReceive(inbound(helper, ".st san60"))
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".sc 1/6"))
+        assertEquals(
+            "甲的理智检定:1d100=71/60 失败，理智减少6点（60→54）\n" +
+                "（人物卡上没有「智力灵感」，跳过灵感检定）",
+            event.sent[0]
+        )
+    }
+
+
+    @Test
     fun `对抗检定 先手登记 后手结算`() {
         RandomService.installTestProvider(ScriptedRandom(listOf(39, 59)))
         val (helper, event) = boot()
@@ -878,6 +959,30 @@ class KernelMessageFlowTest {
 
 
 
+
+
+    @Test
+    fun `DND 5R 模式与力竭`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(11)))
+        val (helper, event) = boot()
+        val group = "28889"
+
+        helper.eventMessageReceive(inbound(helper, ".dnd mode on 5r", group = group, admin = true))
+        assertEquals("规则模式已设为：DND 5r", event.sent[0])
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".dnd exh 2", group = group))
+        assertTrue(event.sent[0].contains("力竭等级已设为：2"), event.sent[0])
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".ra 10", group = group))
+        assertTrue(event.sent[0].contains("1d20=12/14"), "力竭 2 级：目标 10 → 14：${event.sent[0]}")
+        assertTrue(event.sent[0].contains("失败"), event.sent[0])
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".dnd exh 0", group = group))
+        assertTrue(event.sent[0].contains("力竭等级已设为：0"), event.sent[0])
+    }
 
 
     @Test
@@ -1485,6 +1590,236 @@ class KernelMessageFlowTest {
     }
 
     @Test
+    fun `helpdoc 写入 查询 重定向 删除`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(0)))
+        val (helper, event) = boot()
+        helper.writeDiceConfig(DiceConfigStore.MASTER_QQ, SENDER_ID)
+
+        helper.eventMessageReceive(inbound(helper, ".helpdoc 追仙子 追仙后，先过一个聆听。"))
+        assertEquals("已设置自定义 helpdoc，关键词是：追仙子", event.sent[0])
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".help 追仙子"))
+        assertTrue(event.sent[0].contains("追仙后，先过一个聆听。"), event.sent[0])
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".helpdoc 追仙&追仙子"))
+        assertEquals("已设置自定义 helpdoc，关键词重定向：追仙→追仙子", event.sent[0])
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".help 追仙"))
+        assertTrue(event.sent[0].contains("追仙后，先过一个聆听。"), "重定向后应命中目标词条：${event.sent[0]}")
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".helpdoc 追仙子"))
+        assertEquals("已删除自定义 helpdoc 的关键词及其重定向：追仙子", event.sent[0])
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".help 追仙子"))
+        assertTrue(event.sent[0].startsWith("没有找到"), event.sent[0])
+    }
+
+    @Test
+    fun `helpdoc 仅 master 可写`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(0)))
+        val (helper, event) = boot()
+
+        helper.eventMessageReceive(inbound(helper, ".helpdoc 越权 内容", sender = "10999", nick = "乙"))
+        assertEquals("本命令只能 master 使用", event.sent[0])
+    }
+
+    @Test
+    fun `system split 控制帮助分段`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(0)))
+        val (helper, event) = boot()
+        helper.writeDiceConfig(DiceConfigStore.MASTER_QQ, SENDER_ID)
+        helper.eventMessageReceive(inbound(helper, ".helpdoc 分段测试甲 内容一"))
+        helper.eventMessageReceive(inbound(helper, ".helpdoc 分段测试乙 内容二"))
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".help 分段测试"))
+        assertTrue(event.sent[0].contains("\n\n"), "默认并入换行：${event.sent[0]}")
+        assertTrue(!event.sent[0].contains("#{SPLIT}"), event.sent[0])
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".system split on"))
+        assertEquals("长消息分段已开启", event.sent[0])
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".help 分段测试"))
+        assertTrue(event.sent[0].contains("#{SPLIT}"), "开启后应交给宿主分段：${event.sent[0]}")
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".system split off"))
+        assertEquals("长消息分段已关闭", event.sent[0])
+        helper.eventMessageReceive(inbound(helper, ".helpdoc 分段测试甲"))
+        helper.eventMessageReceive(inbound(helper, ".helpdoc 分段测试乙"))
+    }
+
+
+    @Test
+    fun `system censorship 词汇替换与关闭`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(0)))
+        val (helper, event) = boot()
+        helper.writeDiceConfig(DiceConfigStore.MASTER_QQ, SENDER_ID)
+        helper.writeDiceConfig(DiceConfigStore.FORBIDDEN_WORDS, "禁词XYZ")
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".system censorship on"))
+        assertTrue(event.sent[0].contains("已开启"), event.sent[0])
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".r 1d6 禁词XYZ"))
+        assertTrue(event.sent[0].startsWith("由于*****，"), "敏感词应被替换：${event.sent[0]}")
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".system censorship off"))
+        assertTrue(event.sent[0].contains("已关闭"), event.sent[0])
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".r 1d6 禁词XYZ"))
+        assertTrue(event.sent[0].contains("禁词XYZ"), "关闭后不再处理：${event.sent[0]}")
+        helper.writeDiceConfig(DiceConfigStore.FORBIDDEN_WORDS, "")
+    }
+
+
+    @Test
+    fun `admin black 别名转调黑名单`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(0)))
+        val (helper, event) = boot()
+        helper.writeDiceConfig(DiceConfigStore.MASTER_QQ, SENDER_ID)
+
+        helper.eventMessageReceive(inbound(helper, ".admin black add user 10888 测试"))
+        assertTrue(event.sent[0].contains("已加入"), event.sent[0])
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".admin black list"))
+        assertTrue(event.sent[0].contains("10888"), event.sent[0])
+    }
+
+
+    @Test
+    fun `master groupclr 权限与危险操作确认`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(0)))
+        val (helper, event) = boot()
+        helper.writeDiceConfig(DiceConfigStore.MASTER_QQ, SENDER_ID)
+
+        helper.eventMessageReceive(inbound(helper, ".master groupclr 5", sender = "10999", nick = "乙"))
+        assertEquals("本命令只能 master 使用", event.sent[0])
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".master groupclr 5"))
+        assertTrue(event.sent[0].contains("危险操作"), event.sent[0])
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".master groupclr count 30"))
+        assertTrue(event.sent[0].contains("天内未使用"), event.sent[0])
+    }
+
+
+    @Test
+    fun `成功级别文案可配置`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(39)))
+        val (helper, event) = boot()
+        helper.writeDiceConfig(DiceConfigStore.SENTENCE_SUCCESS, "通过")
+
+        helper.eventMessageReceive(inbound(helper, ".ra 50"))
+        assertTrue(event.sent[0].contains("通过"), "成功级别应读配置：${event.sent[0]}")
+
+        helper.writeDiceConfig(DiceConfigStore.SENTENCE_SUCCESS, "成功")
+    }
+
+
+    @Test
+    fun `感叹号触发符与自定义前缀`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(2)))
+        val (helper, event) = boot()
+
+        helper.eventMessageReceive(inbound(helper, "!r 1d6"))
+        assertEquals(1, event.sent.size, "感叹号应能触发指令：${event.sent}")
+        assertTrue(event.sent[0].contains("1d6=3"), event.sent[0])
+
+        helper.writeDiceConfig(DiceConfigStore.PREFIX, "#")
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, "#r 1d6"))
+        assertEquals(1, event.sent.size, "自定义前缀应能触发指令：${event.sent}")
+        helper.writeDiceConfig(DiceConfigStore.PREFIX, ".。!！")
+    }
+
+
+    @Test
+    fun `自定义房规接入 setcoc 与检定`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(90)))
+        val (helper, event) = boot()
+        helper.writeDiceConfig(DiceConfigStore.MASTER_QQ, SENDER_ID)
+
+        val rules = File(helper.getDiceFunction().root(), "rules")
+        rules.mkdirs()
+        File(rules, "always.js").writeText(
+            """
+            var name = "恒成功";
+            var describe = "测试用：一律成功";
+            function onJudgeExtremeLevel(rand, ability) { return null; }
+            function onJudgeNormalLevel(rand, ability) { return "SUCCESS"; }
+            """.trimIndent(),
+            Charsets.UTF_8
+        )
+
+        helper.eventMessageReceive(inbound(helper, ".system load"))
+        assertTrue(event.sent[0].contains("自定义房规 1 条"), event.sent[0])
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".setcoc 恒成功", admin = true))
+        assertEquals("COC检定房规已设为：恒成功（自定义）", event.sent[0])
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".ra 50"))
+        assertTrue(event.sent[0].contains("成功"), "自定义规则应一律成功：${event.sent[0]}")
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".setcoc 0", admin = true))
+        assertTrue(event.sent[0].contains("规则书"), event.sent[0])
+    }
+
+
+    @Test
+    fun `繁体输入按简体处理`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(0)))
+        val (helper, event) = boot()
+
+        helper.eventMessageReceive(inbound(helper, ".st 偵查50"))
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".st show 侦查"))
+        assertEquals("甲的人物卡属性:侦查50", event.sent[0], "繁体属性名应归一到简体")
+
+        event.sent.clear()
+        helper.eventMessageReceive(inbound(helper, ".r 3d6 為了測試"))
+        assertTrue(event.sent[0].contains("为了测试"), "理由里的繁体应被归一：${event.sent[0]}")
+    }
+
+
+    @Test
+    fun `system reload 如实反映宿主能力`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(0)))
+        val (helper, event) = boot()
+        helper.writeDiceConfig(DiceConfigStore.MASTER_QQ, SENDER_ID)
+
+        helper.eventMessageReceive(inbound(helper, ".system reload"))
+        assertEquals("当前宿主不支持自动重启，请手动重启", event.sent[0])
+    }
+
+
+    @Test
+    fun `system 指令仅 master 可用`() {
+        RandomService.installTestProvider(ScriptedRandom(listOf(0)))
+        val (helper, event) = boot()
+
+        helper.eventMessageReceive(inbound(helper, ".system load", sender = "10999", nick = "乙"))
+        assertEquals("本命令只能 master 使用", event.sent[0])
+    }
+
+
+    @Test
     fun `本地黑名单静默拦截与 uuid 解黑`() {
         RandomService.installTestProvider(ScriptedRandom(listOf(0)))
         val (helper, event) = boot()
@@ -1618,8 +1953,8 @@ class KernelMessageFlowTest {
         assertTrue(event.sent[0].contains("sn.toml"), event.sent[0])
 
         event.sent.clear()
-        helper.eventMessageReceive(inbound(helper, ".black cloud"))
-        assertTrue(event.sent[0].contains("未启用"), event.sent[0])
+        helper.eventMessageReceive(inbound(helper, ".black count"))
+        assertTrue(event.sent[0].contains("本地黑名单共"), event.sent[0])
     }
 
     @Test
@@ -1668,7 +2003,7 @@ class KernelMessageFlowTest {
     }
 
     @Test
-    fun `插件不能覆盖内置投掷指令`() {
+    fun `插件不能覆盖内置投掷指令但可以接管云黑指令`() {
         RandomService.installTestProvider(ScriptedRandom(listOf(0)))
         val (helper, event) = boot()
         val impl = helper as DiceHelperImpl
@@ -1691,8 +2026,7 @@ class KernelMessageFlowTest {
 
             event.sent.clear()
             helper.eventMessageReceive(inbound(helper, ".blackcloud", group = "29997"))
-            assertTrue(event.sent.single().contains("未启用"))
-            assertFalse(event.sent.single().contains("插件劫持了云能力"))
+            assertEquals(listOf("插件劫持了云能力"), event.sent)
 
             event.sent.clear()
             helper.eventMessageReceive(inbound(helper, ".plugin_probe", group = "29997"))
